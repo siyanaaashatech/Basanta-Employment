@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CoverImageController;
+use App\Http\Controllers\SiteSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Auth::routes();
+
 Route::get('/', function () {
-    return view('admin.login');
+    return redirect()->route('login');
 });
 
-Route::get('index', [AdminController::class, 'index'])->name('admin.index');
+
+Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
+
+    // For Sitesetting
+    Route::resource('site-settings', SiteSettingController::class);
+
+    // For Cover Image
+    Route::resource('cover-images', CoverImageController::class);
+    // Route::get('cover-images', [CoverImageController::class, 'index'])->name('cover-images.index');
+    // Route::get('cover-images/create', [CoverImageController::class, 'create'])->name('cover-images.create');
+    // Route::post('cover-images', [CoverImageController::class, 'store'])->name('cover-images.store');
+    // Route::get('cover-images/{id}', [CoverImageController::class, 'show'])->name('cover-images.show');
+    // Route::get('cover-images/{id}/edit', [CoverImageController::class, 'edit'])->name('cover-images.edit');
+    // Route::put('cover-images/{id}', [CoverImageController::class, 'update'])->name('cover-images.update');
+    // Route::delete('cover-images/{id}', [CoverImageController::class, 'destroy'])->name('cover-images.destroy');
+
+
+});
+
+
