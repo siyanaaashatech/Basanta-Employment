@@ -25,7 +25,15 @@ class RolePermissionSeeder extends Seeder
             'create_cover_images',
             'list_cover_images',
             'edit_cover_images',
-            'delete_cover_images'
+            'delete_cover_images',
+            'create_about_us',
+            'list_about_us',
+            'edit_about_us',
+            'delete_about_us',
+            'create_services',
+            'list_services',
+            'edit_services',
+            'delete_services'
         ];
 
         // Create the permissions
@@ -44,7 +52,15 @@ class RolePermissionSeeder extends Seeder
             'create_cover_images',
             'list_cover_images',
             'edit_cover_images',
-            'delete_cover_images'
+            'delete_cover_images',
+            'create_about_us',
+            'list_about_us',
+            'edit_about_us',
+            'delete_about_us',
+            'create_services',
+            'list_services',
+            'edit_services',
+            'delete_services'
 
         ];
 

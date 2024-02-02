@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CoverImageController;
 use App\Http\Controllers\SiteSettingController;
@@ -40,7 +42,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     // Route::put('cover-images/{id}', [CoverImageController::class, 'update'])->name('cover-images.update');
     // Route::delete('cover-images/{id}', [CoverImageController::class, 'destroy'])->name('cover-images.destroy');
 
+    // For About
+    Route::resource('about-us', AboutController::class);
 
+    // For Services
+    Route::resource('services', ServiceController::class);
 });
 
 

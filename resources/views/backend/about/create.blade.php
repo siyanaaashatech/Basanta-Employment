@@ -4,7 +4,6 @@
 @section('content')
     <!-- Content Wrapper. Contains page content -->
 
-
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -19,12 +18,13 @@
 
 
 
+
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
-        </div>
+        </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
@@ -33,38 +33,52 @@
         </div>
     </div>
 
-    <form id="quickForm" novalidate="novalidate" method="POST" action="{{ route('admin.cover-images.store') }}"
-        enctype="multipart/form-data">
+
+
+    <form id="quickForm" method="POST" action="{{ route('admin.about-us.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <label for="title">Title</label><span style="color:red; font-size:large"> *</span>
-                <input style="width:auto;" type="text" name="title" class="form-control" id="title"
-                    value="{{ old('title') }}" placeholder="Title">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" name="title" class="form-control" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Subtitle</label>
+                <input type="text" name="subtitle" class="form-control" placeholder="Subtitle">
             </div>
 
             <div class="form-group">
-                <label for="image">Image</label><span style="color:red; font-size:large"> *</span>
-                <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)"
-                    placeholder="image" required>
+                <label for="exampleInputEmail1">Image</label>
+                <input type="file" name="image" class="form-control" onchange="previewImage(event)" placeholder="Image"
+                    required>
             </div>
             <img id="preview" style="max-width: 500px; max-height:500px" />
 
+            <div class="form-group">
+                <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
 
+                <textarea style="max-width: 30%;" type="text" class="form-control" name="description" id="description"
+                    placeholder="Add Description" value="{{ old('description') }}"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="summernote">Content</label><span style="color:red; font-size:large"> *</span>
+                <textarea id="summernote" name="content">
+            {{ old('content') }}
+        </textarea>
+
+            </div>
 
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Create About</button>
         </div>
     </form>
 
 
+
     <!-- Main row -->
-
-
-
-
     <script>
         const previewImage = e => {
             const reader = new FileReader();

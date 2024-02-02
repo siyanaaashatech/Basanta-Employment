@@ -1,7 +1,9 @@
 @extends('backend.layouts.master')
 
+
 @section('content')
     <!-- Content Wrapper. Contains page content -->
+
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -17,8 +19,8 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.cover-images.create') }}"><button class="btn btn-primary btn-sm"><i
-                        class="fa fa-plus"></i>Add Cover Image</button></a>
+            <a href="{{ route('admin.services.create') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
+                    Services</button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -27,9 +29,8 @@
                 <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard v1</li>
             </ol>
-        </div>
-    </div>
-
+        </div><!-- /.col -->
+    </div><!-- /.row -->
 
     <table class="table table-bordered table-hover">
         <thead>
@@ -37,24 +38,25 @@
                 <th>S.N.</th>
                 <th>Title</th>
                 <th>Image</th>
+                <th>Description</th>
                 <th>Action</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach ($coverimages as $coverimage)
+            @foreach ($services as $service)
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
-                    <td>{{ $coverimage->title ?? '' }}</td>
-                    <td> <img id="preview{{ $loop->iteration }}"
-                            src="{{ asset('uploads/coverimage/' . $coverimage->image) }}"
+                    <td>{{ $service->title ?? '' }}</td>
+                    <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/service/' . $service->image) }}"
                             style="width: 150px; height:150px" /></td>
+                    <td>{{ $service->description ?? '' }}</td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
-                            <a href="{{ route('admin.cover-images.edit', $coverimage->id) }}"
-                                class="btn btn-warning btn-sm" style="margin-right: 5px;"><i class="fas fa-edit"></i>
+                            <a href="{{ route('admin.services.edit', $service->id) }}" class="btn btn-warning btn-sm"
+                                style="margin-right: 5px;"><i class="fas fa-edit"></i>
                                 Edit</a>
-                            <form action="{{ route('admin.cover-images.destroy', $coverimage->id) }}" method="POST"
+                            <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST"
                                 onsubmit="return confirm('Are you sure you want to delete this item?');">
                                 @csrf
                                 @method('DELETE')
@@ -65,12 +67,8 @@
                 </tr>
             @endforeach
         </tbody>
-
     </table>
 
-
-    {{-- </div>
-    </section> --}}
 
 
     <script>

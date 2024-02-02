@@ -76,6 +76,81 @@
 
                 {{-- End of Cover Image --}}
 
+                {{-- Beginning of About --}}
+
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        {{-- <hr class="my-4"> --}}
+                        <!-- label-->
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">About</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button" data-bs-toggle="collapse"
+                            aria-expanded="true" aria-controls="dashboard">
+                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
+                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">About us
+                                </span></div>
+                        </a>
+                        <ul class="nav collapse  {{ Request::segment(2) == 'about-us' ? 'show' : '' }}" id="dashboard6">
+                            @can('list_about_us')
+                                <li class="nav-item"><a class="nav-link {{ Request::segment(2) == 'about-us' ? 'active' : '' }}"
+                                        href="{{ route('admin.about-us.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i> About Us
+
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                        </ul>
+                    </li>
+                    </li>
+                @endhasanyrole
+
+                {{-- End of About --}}
+
+
+                {{-- Beginning of Services --}}
+
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">Services</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button" data-bs-toggle="collapse"
+                            aria-expanded="true" aria-controls="dashboard">
+                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
+                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Services
+                                </span></div>
+                        </a>
+                        <ul class="nav collapse  {{ Request::segment(2) == 'services' ? 'show' : '' }}" id="dashboard6">
+                            @can('list_services')
+                                <li class="nav-item"><a
+                                        class="nav-link {{ Request::segment(2) == 'services' ? 'active' : '' }}"
+                                        href="{{ route('admin.services.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            service
+
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                        </ul>
+                    </li>
+                    </li>
+                @endhasanyrole
+
+                {{-- End of Services --}}
+
 
 
             </ul>
