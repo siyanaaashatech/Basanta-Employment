@@ -33,7 +33,11 @@ class RolePermissionSeeder extends Seeder
             'create_services',
             'list_services',
             'edit_services',
-            'delete_services'
+            'delete_services',
+            'create_favicons',
+            'list_favicons',
+            'edit_favicons',
+            'delete_favicons'
         ];
 
         // Create the permissions
@@ -60,7 +64,11 @@ class RolePermissionSeeder extends Seeder
             'create_services',
             'list_services',
             'edit_services',
-            'delete_services'
+            'delete_services',
+            'create_favicons',
+            'list_favicons',
+            'edit_favicons',
+            'delete_favicons'
 
         ];
 
