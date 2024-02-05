@@ -37,7 +37,11 @@ class RolePermissionSeeder extends Seeder
             'create_favicons',
             'list_favicons',
             'edit_favicons',
-            'delete_favicons'
+            'delete_favicons',
+            'create_photo_galleries',
+            'list_photo_galleries',
+            'edit_photo_galleries',
+            'delete_photo_galleries'
         ];
 
         // Create the permissions
@@ -68,7 +72,11 @@ class RolePermissionSeeder extends Seeder
             'create_favicons',
             'list_favicons',
             'edit_favicons',
-            'delete_favicons'
+            'delete_favicons',
+            'create_photo_galleries',
+            'list_photo_galleries',
+            'edit_photo_galleries',
+            'delete_photo_galleries'
 
         ];
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FaviconController;
+use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
@@ -51,6 +52,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     // For Favicon
     Route::resource('favicons', FaviconController::class);
+
+    // For Photo-Gallery
+    Route::resource('photo-galleries', PhotoGalleryController::class);
 });
 
 
