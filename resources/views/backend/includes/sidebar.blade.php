@@ -94,8 +94,7 @@
                                         class="fas fa-users"></i></span><span class="nav-link-text ps-1">Cover Image
                                 </span></div>
                         </a>
-                        <ul class="nav collapse  {{ Request::segment(2) == 'cover-images' || Request::segment(2) == 'cover-images' ? 'show' : '' }}"
-                            id="dashboard6">
+                        <ul class="nav collapse  {{ Request::segment(2) == 'cover-images' ? 'show' : '' }}" id="dashboard6">
                             @can('list_cover_images')
                                 <li class="nav-item"><a
                                         class="nav-link {{ Request::segment(2) == 'cover-images' ? 'active' : '' }}"
@@ -256,6 +255,17 @@
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
                                             Photo Gallery
 
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                            @can('list_video_galleries')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'video-galleries' ? 'active' : '' }}"
+                                        href="{{ route('admin.video-galleries.index') }}">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa fa-angle-double-right"></i> Video Gallery
                                         </div>
                                     </a>
                                 </li>

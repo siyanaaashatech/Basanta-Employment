@@ -41,7 +41,12 @@ class RolePermissionSeeder extends Seeder
             'create_photo_galleries',
             'list_photo_galleries',
             'edit_photo_galleries',
-            'delete_photo_galleries'
+            'delete_photo_galleries',
+            'create_video_galleries',
+            'list_video_galleries',
+            'edit_video_galleries',
+            'delete_video_galleries'
+
         ];
 
         // Create the permissions
@@ -76,7 +81,11 @@ class RolePermissionSeeder extends Seeder
             'create_photo_galleries',
             'list_photo_galleries',
             'edit_photo_galleries',
-            'delete_photo_galleries'
+            'delete_photo_galleries',
+            'create_video_galleries',
+            'list_video_galleries',
+            'edit_video_galleries',
+            'delete_video_galleries'
 
         ];
 
