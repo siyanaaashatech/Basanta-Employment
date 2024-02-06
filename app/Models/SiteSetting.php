@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class SiteSetting extends Model
 {
     use HasFactory;
+    protected $fillable = ['office_name', 'office_address', 'office_contact', 'office_email', 'main_logo', 'side_logo', 'company_registered_date', 'facebook_link', 'instagram_link', 'linkedin_link', 'google_maps_link'];
 }

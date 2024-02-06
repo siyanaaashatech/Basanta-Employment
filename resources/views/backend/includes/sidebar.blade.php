@@ -36,6 +36,45 @@
 
                 </li>
 
+                {{-- Beginning of Site Settings --}}
+
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">Site Settings</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button" data-bs-toggle="collapse"
+                            aria-expanded="true" aria-controls="dashboard">
+                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
+                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Site Setting
+                                </span></div>
+                        </a>
+                        <ul class="nav collapse  {{ Request::segment(2) == 'site-settings' ? 'show' : '' }}"
+                            id="dashboard6">
+                            @can('list_site_settings')
+                                <li class="nav-item"><a
+                                        class="nav-link {{ Request::segment(2) == 'site-settings' ? 'active' : '' }}"
+                                        href="{{ route('admin.site-settings.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            Site Setting
+
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                        </ul>
+                    </li>
+                    </li>
+                @endhasanyrole
+
+                {{-- End of Site Settings --}}
+
+
                 {{-- Beginning of Cover Image --}}
 
                 @hasanyrole('superadmin|admin')
@@ -97,9 +136,11 @@
                         </a>
                         <ul class="nav collapse  {{ Request::segment(2) == 'about-us' ? 'show' : '' }}" id="dashboard6">
                             @can('list_about_us')
-                                <li class="nav-item"><a class="nav-link {{ Request::segment(2) == 'about-us' ? 'active' : '' }}"
+                                <li class="nav-item"><a
+                                        class="nav-link {{ Request::segment(2) == 'about-us' ? 'active' : '' }}"
                                         href="{{ route('admin.about-us.index') }}">
-                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i> About Us
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i> About
+                                            Us
 
                                         </div>
                                     </a>
@@ -125,8 +166,8 @@
                             </div>
                         </div>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button" data-bs-toggle="collapse"
-                            aria-expanded="true" aria-controls="dashboard">
+                        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button"
+                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
                             <div class="d-flex align-items-center"><span class="nav-link-icon"><i
                                         class="fas fa-users"></i></span><span class="nav-link-text ps-1">Services
                                 </span></div>

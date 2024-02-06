@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\FavIconSeeder;
+use Database\Seeders\SitesettingSeeder;
 use Database\Seeders\RolePermissionSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolePermissionSeeder::class,
             UserSeeder::class,
+            SitesettingSeeder::class,
             FavIconSeeder::class,
         ]);
     }
