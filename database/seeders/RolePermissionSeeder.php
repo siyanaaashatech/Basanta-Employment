@@ -53,7 +53,11 @@ class RolePermissionSeeder extends Seeder
             'create_universities',
             'list_universities',
             'edit_universities',
-            'delete_universities'
+            'delete_universities',
+            'create_courses',
+            'list_courses',
+            'edit_courses',
+            'delete_courses'
         ];
 
         // Create the permissions
@@ -100,7 +104,11 @@ class RolePermissionSeeder extends Seeder
             'create_universities',
             'list_universities',
             'edit_universities',
-            'delete_universities'
+            'delete_universities',
+            'create_courses',
+            'list_courses',
+            'edit_courses',
+            'delete_courses'
 
         ];
 

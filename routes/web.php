@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UniversityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
@@ -65,5 +66,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     //For University
     Route::resource('universities', UniversityController::class);
+
+    //For Course
+    Route::resource('courses', CourseController::class);
+
 
 });
