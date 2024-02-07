@@ -279,6 +279,83 @@
                 {{-- End of Gallery --}}
 
 
+                {{-- Beginning of Country --}}
+
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">Countries</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button"
+                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
+                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
+                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Countries
+                                </span></div>
+                        </a>
+                        <ul class="nav collapse  {{ Request::segment(2) == 'countries' ? 'show' : '' }}" id="dashboard6">
+                            @can('list_countries')
+                                <li class="nav-item"><a
+                                        class="nav-link {{ Request::segment(2) == 'countries' ? 'active' : '' }}"
+                                        href="{{ route('admin.countries.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            Country
+
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                        </ul>
+                    </li>
+                    </li>
+                @endhasanyrole
+
+                {{-- End of Country --}}
+
+                {{-- Beginning of University --}}
+
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">Universities</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button"
+                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
+                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
+                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Universities
+                                </span></div>
+                        </a>
+                        <ul class="nav collapse  {{ Request::segment(2) == 'universities' ? 'show' : '' }}"
+                            id="dashboard6">
+                            @can('list_universities')
+                                <li class="nav-item"><a
+                                        class="nav-link {{ Request::segment(2) == 'universities' ? 'active' : '' }}"
+                                        href="{{ route('admin.universities.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            University
+
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                        </ul>
+                    </li>
+                    </li>
+                @endhasanyrole
+
+                {{-- End of University --}}
+
+
+
 
 
             </ul>

@@ -45,8 +45,15 @@ class RolePermissionSeeder extends Seeder
             'create_video_galleries',
             'list_video_galleries',
             'edit_video_galleries',
-            'delete_video_galleries'
-
+            'delete_video_galleries',
+            'create_countries',
+            'list_countries',
+            'edit_countries',
+            'delete_countries',
+            'create_universities',
+            'list_universities',
+            'edit_universities',
+            'delete_universities'
         ];
 
         // Create the permissions
@@ -85,7 +92,15 @@ class RolePermissionSeeder extends Seeder
             'create_video_galleries',
             'list_video_galleries',
             'edit_video_galleries',
-            'delete_video_galleries'
+            'delete_video_galleries',
+            'create_countries',
+            'list_countries',
+            'edit_countries',
+            'delete_countries',
+            'create_universities',
+            'list_universities',
+            'edit_universities',
+            'delete_universities'
 
         ];
 

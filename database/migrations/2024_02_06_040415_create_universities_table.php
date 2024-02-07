@@ -16,6 +16,11 @@ return new class extends Migration {
             $table->id();
             $table->string('logo');
             $table->string('title');
+            $table->string('address');
+
+            $table->unsignedBigInteger('country_id');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+
             $table->string('slug')->unique();
             $table->string('phone_no')->nullable();
             $table->string('email')->nullable();

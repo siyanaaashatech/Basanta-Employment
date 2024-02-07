@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\FaviconController;
-use App\Http\Controllers\PhotoGalleryController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\VideoGalleryController;
+use App\Http\Controllers\UniversityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\FaviconController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CoverImageController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\PhotoGalleryController;
+use App\Http\Controllers\VideoGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +59,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     // For Gallery
     Route::resource('photo-galleries', PhotoGalleryController::class);
     Route::resource('video-galleries', VideoGalleryController::class);
+
+    //For Country
+    Route::resource('countries', CountryController::class);
+
+    //For University
+    Route::resource('universities', UniversityController::class);
+
 });
