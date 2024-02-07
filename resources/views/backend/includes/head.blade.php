@@ -6,7 +6,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trademark</title>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('adminassets/assets/bootstrap/dist/css/bootstrap.min.css') }}" />
+
+    <!-- Summernote CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css" rel="stylesheet">
+
+
     <!-- <link rel="stylesheet" href="wwwroot/css/site.css" asp-append-version="true" />
   <link rel="stylesheet" href="~/LifeInsuranceCore.styles.css" asp-append-version="true" />*@ -->
 
@@ -32,6 +39,7 @@
 
 
     <meta name="msapplication-TileImage" content="{{ asset('adminassets/assets/img/favicons/mstile-150x150.png') }}">
+
     <meta name="theme-color" content="#ffffff">
     <script src="{{ asset('adminassets//assets/js/config.js') }}"></script>
     <script src="{{ asset('adminassets/vendors/overlayscrollbars/OverlayScrollbars.min.js') }}"></script>
@@ -60,12 +68,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('adminassets/assets/select2/dist/css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('adminassets/vendors/flatpickr/flatpickr.min.css') }}" />
 
-    <script src="https://cdn.tiny.cloud/1/10yiusqubdnork4w135pu0d7p3gbzjhtvbhycyyy40104bes/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
-
-
     <link rel="stylesheet" href="{{ asset('adminasset/css/custom.css') }}" asp-append-version="true" />
 
+    {{-- for tinyMCE --}}
+    <script src={{ asset('tinymce/tinymce.min.js') }}></script>
+
+    {{-- <script src="tinymce/tinymce.min.js"></script> --}}
+
+
+    {{-- <script src="js/tinymce_editor.js"></script> --}}
 
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
@@ -82,4 +93,11 @@
             userLinkRTL.setAttribute('disabled', true);
         }
     </script>
+
+
+
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>

@@ -15,7 +15,10 @@
             {{ Session::get('error') }}
         </div>
     @endif
-    
+
+
+
+
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
@@ -30,43 +33,53 @@
         </div>
     </div>
 
+
     <form id="quickForm" method="POST" action="{{ route('admin.countries.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
                 <label for="name">Name</label><span style="color:red; font-size:large"> *</span>
                 <input style="width:auto;" type="text" name="name" class="form-control" id="name"
-                    placeholder="name" value="{{ old('name') }}" required>
+                    placeholder="Name" value="{{ old('name') }}" required>
             </div>
+
 
             <div>
+
+
+
+                {{-- <label for="content">Content</label><span style="color:red; font-size:large">
+                    *</span>
+                <textarea style="max-width: 100%;min-height: 250px;" type="text" class="form-control" id="myTextarea"
+                    name="content" placeholder="Add Description">
                 {{ old('content') }}
+                </textarea> --}}
+
                 <label for="">Content:</label>
-                <textarea name="content" id="summernote" cols="30" rows="10"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="address">Tags</label><span style="color:red; font-size:large"> </span>
-                <input type="text" name="tags" class="form-control" id="address" placeholder="Tags"
-                    value="{{ old('tags') }}">
+                <textarea name="content" id="content" cols="30" rows="10"></textarea>
+
             </div>
 
 
             <div class="form-group">
-                <label for="exampleInputEmail1"> Photos <span style="color:red;"></span></label>
+                <label for="exampleInputEmail1"> Images <span style="color:red;"></span></label>
                 <span style="color:red; font-size:large"> *</span>
 
-                <input type="file" name="photo[]" id="" class="form-control" multiple
+                <input type="file" name="image[]" id="" class="form-control" multiple
                     onchange="previewImages(event)" required>
 
             </div>
             <div id="imagePreviews" class="row">
-                @foreach (old('photo', []) as $uploadedImage)
+                @foreach (old('image', []) as $uploadedImage)
                     <div class="col-md-2 mb-3 image-preview">
                         <img src="{{ $uploadedImage }}" alt="Image Preview" class="img-fluid">
                         <span class="remove-image" onclick="removePreview(this)">Remove</span>
                     </div>
                 @endforeach
             </div>
+
+
+
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -101,10 +114,12 @@
 
 
     <script>
-        $('#summernote').summernote({
-            placeholder: 'summernote...',
-            tabsize: 2,
-            height: 300
+        $(document).ready(function() {
+            $('#content').summernote({
+                placeholder: 'Write something amazing...',
+                tabsize: 2,
+                height: 300
+            });
         });
     </script>
 @endsection

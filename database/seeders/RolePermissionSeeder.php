@@ -61,7 +61,11 @@ class RolePermissionSeeder extends Seeder
             'create_testimonials',
             'list_testimonials',
             'edit_testimonials',
-            'delete_testimonials'
+            'delete_testimonials',
+            'create_visitors_book',
+            'list_visitors_book',
+            'edit_visitors_book',
+            'delete_visitors_book'
         ];
 
         // Create the permissions
@@ -116,7 +120,11 @@ class RolePermissionSeeder extends Seeder
             'create_testimonials',
             'list_testimonials',
             'edit_testimonials',
-            'delete_testimonials'
+            'delete_testimonials',
+            'create_visitors_book',
+            'list_visitors_book',
+            'edit_visitors_book',
+            'delete_visitors_book'
 
         ];
 

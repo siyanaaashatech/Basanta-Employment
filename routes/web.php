@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VisitorBookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
@@ -73,6 +74,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     //For Testimonial
     Route::resource('testimonials', TestimonialController::class);
+
+    //For Visitor Books
+    Route::resource('visitors-book', VisitorBookController::class);
+
+
 
 
 });

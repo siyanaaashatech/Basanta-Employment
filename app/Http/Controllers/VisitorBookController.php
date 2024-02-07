@@ -3,83 +3,90 @@
 namespace App\Http\Controllers;
 
 use App\Models\VisitorBook;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class VisitorBookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $visitorBooks = VisitorBook::with('country')->get();
+        return view('backend.visitorbook.index', ['visitorBooks' => $visitorBooks, 'page_title' => 'Visitor Books']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $countries = Country::all();
+        return view('backend.visitorbook.create', ['countries' => $countries, 'page_title' => 'Create Visitor Books']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'phone_no' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'country_id' => 'required|exists:countries,id',
+            'description' => 'nullable|string',
+        ]);
+        try {
+            $visitorBook = new VisitorBook;
+            $visitorBook->name = $request->name;
+            $visitorBook->phone_no = $request->phone_no;
+            $visitorBook->email = $request->email;
+            $visitorBook->country_id = $request->country_id;
+            $visitorBook->description = $request->description;
+
+            if ($visitorBook->save()) {
+                return redirect()->route('admin.visitors-book.index')->with('success', 'Success! visitors book created.');
+            } else {
+                return redirect()->back()->with('error', 'Error! visitors book  not created.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error! Something went wrong.');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\VisitorBook  $visitorBook
-     * @return \Illuminate\Http\Response
-     */
-    public function show(VisitorBook $visitorBook)
+    public function edit($id)
     {
-        //
+        $visitorBook = VisitorBook::findOrFail($id);
+        $countries = Country::all();
+        return view('backend.visitorbook.update', ['visitorBook' => $visitorBook, 'countries' => $countries, 'page_title' => 'Edit Visitor Book']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\VisitorBook  $visitorBook
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(VisitorBook $visitorBook)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'phone_no' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'country_id' => 'required|exists:countries,id',
+            'description' => 'nullable|string',
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\VisitorBook  $visitorBook
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, VisitorBook $visitorBook)
-    {
-        //
-    }
+        try {
+            $visitorBook = VisitorBook::findOrFail($id);
+            $visitorBook->update([
+                'name' => $request->name,
+                'phone_no' => $request->phone_no,
+                'email' => $request->email,
+                'country_id' => $request->country_id,
+                'description' => $request->description,
+            ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\VisitorBook  $visitorBook
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(VisitorBook $visitorBook)
+            return redirect()->route('admin.visitors-book.index')->with('success', 'Success! Visitor book updated.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error! Something went wrong.');
+        }
+    }
+    public function destroy($id)
     {
-        //
+        try {
+            $visitorBook = VisitorBook::findOrFail($id);
+            $visitorBook->delete();
+            return redirect()->route('admin.visitors-book.index')->with('success', 'Success! Visitor book deleted.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error! Something went wrong.');
+        }
     }
 }

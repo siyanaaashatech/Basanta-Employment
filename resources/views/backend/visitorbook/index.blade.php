@@ -22,9 +22,9 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.countries.create') }}"><button class="btn btn-primary btn-sm"><i
+            <a href="{{ route('admin.visitors-book.create') }}"><button class="btn btn-primary btn-sm"><i
                         class="fa fa-plus"></i>Add
-                    Country</button></a>
+                    Visitors Book</button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -33,45 +33,37 @@
                 <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard v1</li>
             </ol>
-        </div>
-    </div>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
 
-
-    <!-- Countries Table -->
 
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>S.N.</th>
                 <th>Name</th>
-                <th>Image</th>
-                <th>Content</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Country</th>
+                <th>Description</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($countries as $country)
+            @foreach ($visitorBooks as $visitorBook)
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
-                    <td>{{ $country->name ?? '' }}</td>
-                    <td>
-                        <div class="image-container">
-                            @if ($country->image)
-                                @foreach (json_decode($country->image) as $image)
-                                    <img src="{{ asset('uploads/country/' . $image) }}" class="actual-image"
-                                        style="width: 50px; height: 50px;">
-                                @endforeach
-                            @endif
-                        </div>
-                        <div id="preview{{ $loop->iteration }}"></div>
-                    </td>
-                    <td>{{ $country->content ?? '' }}</td>
+                    <td>{{ $visitorBook->name ?? '' }}</td>
+                    <td>{{ $visitorBook->phone_no ?? '' }}</td>
+                    <td>{{ $visitorBook->email ?? '' }}</td>
+                    <td>{{ $visitorBook->country->name ?? 'No Country' }}</td>
+                    <td>{{ $visitorBook->description ?? '' }}</td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
-                            <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-warning btn-sm"
-                                style="margin-right: 5px;"><i class="fas fa-edit"></i>
+                            <a href="{{ route('admin.visitors-book.edit', $visitorBook->id) }}"
+                                class="btn btn-warning btn-sm" style="margin-right: 5px;"><i class="fas fa-edit"></i>
                                 Edit</a>
-                            <form action="{{ route('admin.countries.destroy', $country->id) }}" method="POST"
+                            <form action="{{ route('admin.visitors-book.destroy', $visitorBook->id) }}" method="POST"
                                 onsubmit="return confirm('Are you sure you want to delete this item?');">
                                 @csrf
                                 @method('DELETE')
@@ -83,26 +75,16 @@
             @endforeach
         </tbody>
     </table>
-    {{-- <script>
-        const previewImages = (e, index) => {
-            const previewContainer = document.getElementById(`imagePreviews${index}`);
-            previewContainer.innerHTML = '';
 
-            const files = e.target.files;
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const reader = new FileReader();
-                reader.onload = () => {
-                    const img = document.createElement('img');
-                    img.src = reader.result;
-                    img.classList.add('image-preview');
-                    previewContainer.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            }
-        };
-    </script> --}}
-    <script>
+
+
+
+    <!-- Main row -->
+
+
+
+
+    {{-- <script>
         const previewImage = e => {
             const reader = new FileReader();
             reader.readAsDataURL(e.target.files[0]);
@@ -111,5 +93,5 @@
                 preview.src = reader.result;
             };
         };
-    </script>
+    </script> --}}
 @endsection
