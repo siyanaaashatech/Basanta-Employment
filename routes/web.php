@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\UniversityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FaviconController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CoverImageController;
+use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\VideoGalleryController;
 
@@ -69,6 +70,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     //For Course
     Route::resource('courses', CourseController::class);
+
+    //For Testimonial
+    Route::resource('testimonials', TestimonialController::class);
 
 
 });

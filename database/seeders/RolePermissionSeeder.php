@@ -57,7 +57,11 @@ class RolePermissionSeeder extends Seeder
             'create_courses',
             'list_courses',
             'edit_courses',
-            'delete_courses'
+            'delete_courses',
+            'create_testimonials',
+            'list_testimonials',
+            'edit_testimonials',
+            'delete_testimonials'
         ];
 
         // Create the permissions
@@ -108,7 +112,11 @@ class RolePermissionSeeder extends Seeder
             'create_courses',
             'list_courses',
             'edit_courses',
-            'delete_courses'
+            'delete_courses',
+            'create_testimonials',
+            'list_testimonials',
+            'edit_testimonials',
+            'delete_testimonials'
 
         ];
 
