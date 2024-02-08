@@ -1,20 +1,24 @@
 <?php
 
-use App\Http\Controllers\StudentDetailController;
-use App\Http\Controllers\VisitorBookController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SingleController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FaviconController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\CoverImageController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\VisitorBookController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\VideoGalleryController;
+use App\Http\Controllers\StudentDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +34,22 @@ use App\Http\Controllers\VideoGalleryController;
 
 Auth::routes();
 
+// Frontend route for SingleController
+// Route::get('/', [FrontViewController::class, 'index'])->name('index');
+Route::get('/index', [FrontViewController::class, 'index'])->name('index');
+Route::get('contactpage', [SingleController::class, 'render_contact'])->name('Contact');
+
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
+// Route::get('admin/contact/index', [App\Http\Controllers\ContactController::class, 'index'])->name('Contact.index');
+
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
 
+//Backend routes with prefix and middleware
 Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
 
@@ -81,6 +96,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     //For Students Detail
     Route::resource('student-details', StudentDetailController::class);
+
+    //For Contact
+    Route::resource('contacts', ContactController::class);
 
 
 

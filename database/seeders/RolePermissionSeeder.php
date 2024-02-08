@@ -69,9 +69,11 @@ class RolePermissionSeeder extends Seeder
             'create_student_details',
             'list_student_details',
             'edit_student_details',
-            'delete_student_details'
-
-
+            'delete_student_details',
+            'create_contacts',
+            'list_contacts',
+            'edit_contacts',
+            'delete_contacts'
         ];
 
         // Create the permissions
@@ -134,7 +136,11 @@ class RolePermissionSeeder extends Seeder
             'create_student_details',
             'list_student_details',
             'edit_student_details',
-            'delete_student_details'
+            'delete_student_details',
+            'create_contacts',
+            'list_contacts',
+            'edit_contacts',
+            'delete_contacts'
 
         ];
 
