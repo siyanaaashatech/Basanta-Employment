@@ -2,18 +2,20 @@
 
 use App\Http\Controllers\VisitorBookController;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\Facades\Image;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FaviconController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CoverImageController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\SiteSettingController;
-use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\VideoGalleryController;
+use App\Http\Controllers\Backend\UserManagementController;
+
 
 /*
 |--------------------------------------------------------------------------
