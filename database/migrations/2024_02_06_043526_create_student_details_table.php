@@ -26,7 +26,8 @@ return new class extends Migration {
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
 
             $table->date('intake_date');
-            $table->string('photo')->nullable();
+            $table->string('image')->nullable();
+            $table->json('documents')->nullable();
             $table->timestamps();
         });
     }

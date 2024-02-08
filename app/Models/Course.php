@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\StudentDetail;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,5 +19,10 @@ class Course extends Model
                 'source' => 'title'
             ]
         ];
+    }
+
+    public function studentDetails()
+    {
+        return $this->hasMany(StudentDetail::class, 'country_id');
     }
 }

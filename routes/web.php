@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentDetailController;
 use App\Http\Controllers\VisitorBookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
@@ -77,6 +78,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     //For Visitor Books
     Route::resource('visitors-book', VisitorBookController::class);
+
+    //For Students Detail
+    Route::resource('student-details', StudentDetailController::class);
 
 
 

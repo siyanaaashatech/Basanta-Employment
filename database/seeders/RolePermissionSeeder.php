@@ -65,7 +65,13 @@ class RolePermissionSeeder extends Seeder
             'create_visitors_book',
             'list_visitors_book',
             'edit_visitors_book',
-            'delete_visitors_book'
+            'delete_visitors_book',
+            'create_student_details',
+            'list_student_details',
+            'edit_student_details',
+            'delete_student_details'
+
+
         ];
 
         // Create the permissions
@@ -124,7 +130,11 @@ class RolePermissionSeeder extends Seeder
             'create_visitors_book',
             'list_visitors_book',
             'edit_visitors_book',
-            'delete_visitors_book'
+            'delete_visitors_book',
+            'create_student_details',
+            'list_student_details',
+            'edit_student_details',
+            'delete_student_details'
 
         ];
 
