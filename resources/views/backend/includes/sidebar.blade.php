@@ -280,8 +280,123 @@
 
 
 
+                {{-- Beginning of Categories --}}
 
+@hasanyrole('superadmin|admin')
+<li class="nav-item">
+    <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+        <div class="col-auto navbar-vertical-label">Categories</div>
+        <div class="col ps-0">
+            <hr class="mb-0 navbar-vertical-divider">
+        </div>
+    </div>
+    <li class="nav-item">
+        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button" data-bs-toggle="collapse"
+            aria-expanded="true" aria-controls="dashboard">
+            <div class="d-flex align-items-center">
+                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
+                <span class="nav-link-text ps-1">Categories</span>
+            </div>
+        </a>
+        <ul class="nav collapse {{ Request::segment(2) == 'categories' ? 'show' : '' }}" id="dashboard6">
+            {{-- Add Category --}}
+            <li class="nav-item">
+                <a class="nav-link {{ Request::segment(2) == 'categories' && Request::segment(3) == 'create' ? 'active' : '' }}" href="{{ route('admin.categories.create') }}">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-plus"></i>
+                        <span class="nav-link-text ps-1">Add Category</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </li>
+</li>
+@endhasanyrole
+{{-- End of Categories --}}
+
+
+{{-- Beginning of Posts --}}
+@hasanyrole('superadmin|admin')
+    <li class="nav-item">
+        <!-- label-->
+        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+            <div class="col-auto navbar-vertical-label">Posts</div>
+            <div class="col ps-0">
+                <hr class="mb-0 navbar-vertical-divider">
+            </div>
+        </div>
+        <li class="nav-item">
+            <a class="nav-link dropdown-indicator collapsed" href="#dashboard6" role="button" data-bs-toggle="collapse"
+                aria-expanded="false" aria-controls="dashboard">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon"><i class="fas fa-users"></i></span>
+                    <span class="nav-link-text ps-1">Posts</span>
+                </div>
+            </a>
+            <ul class="nav collapse {{ Request::segment(2) == 'posts' ? 'show' : '' }}" id="dashboard6">
+                {{-- Add Post --}}
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::segment(2) == 'posts' && Request::segment(3) == 'create' ? 'active' : '' }}" href="{{ route('admin.posts.create') }}">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-plus"></i>
+                            <span class="nav-link-text ps-1">Add Post</span>
+                        </div>
+                    </a>
+                </li>
             </ul>
+        </li>
+@endhasanyrole
+{{-- End of Posts --}}
+
+
+
+
+{{-- Beginning of User Management --}}
+               {{-- <li class="nav-item">
+    <!-- Label -->
+    <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+        <div class="col-auto navbar-vertical-label">User Management</div>
+        <div class="col ps-0">
+            <hr class="mb-0 navbar-vertical-divider">
+        </div>
+    </div>
+</li>
+<li class="nav-item">
+    <!-- Dropdown Toggle -->
+    <a class="nav-link dropdown-indicator" href="#user-management" role="button" data-bs-toggle="collapse"
+        aria-expanded="true" aria-controls="user-management">
+        <div class="d-flex align-items-center">
+            <span class="nav-link-icon"><i class="fas fa-users"></i></span>
+            <span class="nav-link-text ps-1">User Management</span>
+        </div>
+    </a>
+    <!-- Dropdown Content -->
+    <ul class="nav collapse {{ Request::segment(2) == 'usermanagement' ? 'show' : '' }}" id="user-management">
+        @can('list_users')
+            <li class="nav-item">
+                <a class="nav-link {{ Request::segment(3) == '' ? 'active' : '' }}"
+                    href="{{ route('usermanagement.index') }}">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-angle-double-right"></i> User List
+                    </div>
+                </a>
+            </li>
+        @endcan
+        @can('create_users')
+            <li class="nav-item">
+                <a class="nav-link {{ Request::segment(3) == 'create' ? 'active' : '' }}"
+                    href="{{ route('usermanagement.create') }}">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-angle-double-right"></i> Create User
+                    </div>
+                </a>
+            </li>
+        @endcan
+    </ul>
+</li>  --}}
+{{-- End of User Management --}}
+
+ </ul>
         </div>
     </div>
 </nav>

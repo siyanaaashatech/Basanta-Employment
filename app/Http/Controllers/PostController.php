@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('backend.post.index', compact('posts'));
     }
 
     /**
@@ -24,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all(); // Fetch all categories
+        return view('backend.post.create', compact('categories'));
     }
 
     /**
@@ -35,51 +38,55 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|image|max:2048', 
+            'category_id' => 'required|exists:categories,id'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $post)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
-    {
-        //
-    }
+        $imagePath = $request->file('image')->store('posts', 'public');
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+        $post = new Post();
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->image = $imagePath;
+        $post->category_id = $request->input('category_id');
+        $post->save();
+
+        return redirect()->route('admin.posts.index')->with('success', 'Post created successfully');
+    }
     public function update(Request $request, Post $post)
     {
-        //
-    }
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'image|max:2048', 
+            'category_id' => 'required|exists:categories,id'
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('posts', 'public');
+            $post->image = $imagePath;
+        }
+
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->category_id = $request->input('category_id');
+        $post->save();
+
+        return redirect()->route('admin.posts.index')->with('success', 'Post updated successfully');
+    }
+    public function edit(Post $post)
+    {
+        $categories = Category::all();
+        return view('backend.post.update', compact('post', 'categories'));
+    }
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('success', 'Post deleted successfully');
     }
 }

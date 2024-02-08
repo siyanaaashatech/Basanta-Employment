@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('backend.category.index', compact('categories'));
     }
 
     /**
@@ -24,7 +25,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all(); // Retrieve all categories
+        return view('backend.category.create', compact('categories'));
     }
 
     /**
@@ -35,7 +37,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        Category::create($request->all());
+
+        return redirect()->route('admin.categories.create')->with('success', 'Category created successfully');
     }
 
     /**
@@ -46,7 +54,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('backend.category.index', compact('categories'));
     }
 
     /**
@@ -57,8 +65,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('backend.category.update', compact('category'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +78,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        $category->update($request->all());
+
+        return redirect()->route('admin.categories.create')->with('success', 'Category updated successfully');
     }
 
     /**
@@ -80,6 +95,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('admin.categories.create')->with('success', 'Category deleted successfully');
     }
 }
