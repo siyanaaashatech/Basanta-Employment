@@ -3,19 +3,17 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use Illuminate\Database\Seeder;
 
 class RolePermissionSeeder extends Seeder
 {
     public function run(): void
     {
         // Define the list of roles
-        $listOfRoles = [
-            'superadmin',
-            'admin'
-        ];
+        $listOfRoles = ['superadmin', 'admin'];
+
         // Define the list of permissions
         $arrayOfPermissionNames = [
             'create_site_settings',
@@ -73,18 +71,30 @@ class RolePermissionSeeder extends Seeder
             'create_contacts',
             'list_contacts',
             'edit_contacts',
-            'delete_contacts'
+            'delete_contacts',
+            'create_categories',
+            'list_categories',
+            'edit_categories',
+            'delete_categories',
+            'create_posts',
+            'list_posts',
+            'edit_posts',
+            'delete_posts'
+
+            // 'create_users',
+            // 'list_users',
+            // 'edit_users',
+            // 'delete_users',
         ];
 
         // Create the permissions
         foreach ($arrayOfPermissionNames as $permissionName) {
             Permission::create(['name' => $permissionName, 'guard_name' => 'web']);
         }
-        // define permission for super admin
-        $permissionIdsForSuperAdminRole = Permission::all()->pluck('name');
 
-        //define permission for District Admin
-        $permissionForAdmin = [
+        // Define permissions for each role
+        $permissionsForSuperAdminRole = Permission::pluck('name');
+        $permissionsForAdminRole = [
             'create_site_settings',
             'list_site_settings',
             'edit_site_settings',
@@ -109,6 +119,7 @@ class RolePermissionSeeder extends Seeder
             'list_photo_galleries',
             'edit_photo_galleries',
             'delete_photo_galleries',
+
             'create_video_galleries',
             'list_video_galleries',
             'edit_video_galleries',
@@ -140,11 +151,18 @@ class RolePermissionSeeder extends Seeder
             'create_contacts',
             'list_contacts',
             'edit_contacts',
-            'delete_contacts'
+            'delete_contacts',
+            'create_categories',
+            'list_categories',
+            'edit_categories',
+            'delete_categories',
+            'create_posts',
+            'list_posts',
+            'edit_posts',
+            'delete_posts'
 
         ];
-
-
+        $guardName = 'web';
         // Create roles and assign permissions to each role
         foreach ($listOfRoles as $roleName) {
             $role = Role::create(['name' => $roleName]);
@@ -152,13 +170,12 @@ class RolePermissionSeeder extends Seeder
             // Assign specific permissions based on role
             switch ($roleName) {
                 case 'superadmin':
-                    $role->syncPermissions($permissionIdsForSuperAdminRole);
+                    $role->syncPermissions($permissionsForSuperAdminRole);
                     break;
                 case 'admin':
-                    $role->givePermissionTo($permissionForAdmin);
+                    $role->givePermissionTo($permissionsForAdminRole);
                     break;
             }
-
         }
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category extends Model
 {
     use HasFactory, Sluggable;
+
     protected $fillable = ['title', 'slug'];
 
     public function sluggable(): array
@@ -18,5 +19,10 @@ class Category extends Model
                 'source' => 'title'
             ]
         ];
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

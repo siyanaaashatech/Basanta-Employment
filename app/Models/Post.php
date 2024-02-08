@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Post extends Model
 {
     use HasFactory, Sluggable;
+
     protected $fillable = ['title', 'slug', 'description', 'image', 'category_id'];
 
     public function sluggable(): array
@@ -20,4 +21,8 @@ class Post extends Model
         ];
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
