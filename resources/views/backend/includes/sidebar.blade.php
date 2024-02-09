@@ -604,6 +604,84 @@
 
 
 {{-- Beginning of Categories --}}
+                {{-- Beginning of Student Details --}}
+
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">Student Details</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button"
+                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
+                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
+                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Student Details
+                                </span></div>
+                        </a>
+                        <ul class="nav collapse  {{ Request::segment(2) == 'student-details' ? 'show' : '' }}"
+                            id="dashboard6">
+                            @can('list_student_details')
+                                <li class="nav-item"><a
+                                        class="nav-link {{ Request::segment(2) == 'student-details' ? 'active' : '' }}"
+                                        href="{{ route('admin.student-details.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            Student Detail
+
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                        </ul>
+                    </li>
+                    </li>
+                @endhasanyrole
+
+                {{-- End of Student Details --}}
+
+                {{-- Beginning of Contact --}}
+
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">Contacts</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator" href="#dashboard6" role="button"
+                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
+                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
+                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Contacts
+                                </span></div>
+                        </a>
+                        <ul class="nav collapse  {{ Request::segment(2) == 'contacts' ? 'show' : '' }}" id="dashboard6">
+                            @can('list_contacts')
+                                <li class="nav-item"><a
+                                        class="nav-link {{ Request::segment(2) == 'contacts' ? 'active' : '' }}"
+                                        href="{{ route('admin.contacts.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            Contact
+
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                        </ul>
+                    </li>
+                    </li>
+                @endhasanyrole
+
+                {{-- End of Contact --}}
+
+
+
+                {{-- Beginning of Categories --}}
 
 @hasanyrole('superadmin|admin')
 <li class="nav-item">

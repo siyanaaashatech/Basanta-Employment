@@ -63,7 +63,28 @@ class RolePermissionSeeder extends Seeder
             'create_visitors_book',
             'list_visitors_book',
             'edit_visitors_book',
-            'delete_visitors_book'
+            'delete_visitors_book',
+            'create_student_details',
+            'list_student_details',
+            'edit_student_details',
+            'delete_student_details',
+            'create_contacts',
+            'list_contacts',
+            'edit_contacts',
+            'delete_contacts',
+            'create_categories',
+            'list_categories',
+            'edit_categories',
+            'delete_categories',
+            'create_posts',
+            'list_posts',
+            'edit_posts',
+            'delete_posts'
+
+            // 'create_users',
+            // 'list_users',
+            // 'edit_users',
+            // 'delete_users',
         ];
 
         // Create the permissions
@@ -98,6 +119,7 @@ class RolePermissionSeeder extends Seeder
             'list_photo_galleries',
             'edit_photo_galleries',
             'delete_photo_galleries',
+
             'create_video_galleries',
             'list_video_galleries',
             'edit_video_galleries',
@@ -121,7 +143,23 @@ class RolePermissionSeeder extends Seeder
             'create_visitors_book',
             'list_visitors_book',
             'edit_visitors_book',
-            'delete_visitors_book'
+            'delete_visitors_book',
+            'create_student_details',
+            'list_student_details',
+            'edit_student_details',
+            'delete_student_details',
+            'create_contacts',
+            'list_contacts',
+            'edit_contacts',
+            'delete_contacts',
+            'create_categories',
+            'list_categories',
+            'edit_categories',
+            'delete_categories',
+            'create_posts',
+            'list_posts',
+            'edit_posts',
+            'delete_posts'
 
         ];
         $guardName = 'web';

@@ -34,5 +34,27 @@
         $(document).ready(function() {
             $('.summernote').summernote();
         });
+        function previewImage(event) {
+            var input = event.target;
+            var preview = document.getElementById('imagePreview');
+
+            while (preview.firstChild) {
+                preview.removeChild(preview.firstChild); // Clear previous preview
+            }
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '200px'; // Adjust the maximum width as needed
+                    img.style.maxHeight = '200px'; // Adjust the maximum height as needed
+                    preview.appendChild(img);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endsection

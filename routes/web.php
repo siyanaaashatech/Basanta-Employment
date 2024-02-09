@@ -4,12 +4,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\FaqController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FaviconController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
@@ -21,8 +20,13 @@ use App\Http\Controllers\VisitorBookController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\VideoGalleryController;
 use App\Http\Controllers\BlogPostsCategoryController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SingleController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\Backend\UserManagementController;
-
+use App\Http\Controllers\StudentDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,11 +42,22 @@ use App\Http\Controllers\Backend\UserManagementController;
 
 Auth::routes();
 
+// Frontend route for SingleController
+// Route::get('/', [FrontViewController::class, 'index'])->name('index');
+Route::get('/index', [FrontViewController::class, 'index'])->name('index');
+Route::get('contactpage', [SingleController::class, 'render_contact'])->name('Contact');
+
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
+// Route::get('admin/contact/index', [App\Http\Controllers\ContactController::class, 'index'])->name('Contact.index');
+
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
 
+//Backend routes with prefix and middleware
 Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
 
@@ -71,6 +86,22 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     // For Gallery
     Route::resource('photo-galleries', PhotoGalleryController::class);
     Route::resource('video-galleries', VideoGalleryController::class);
+    // Define User Management routes
+    // Route::prefix('usermanagement')->name('usermanagement.')->group(function () {
+    //     Route::get('/', [UserManagementController::class, 'index'])->name('index'); // User List
+    //     Route::get('/create', [UserManagementController::class, 'create'])->name('create'); // Create User
+    //     Route::post('/store', [UserManagementController::class, 'store'])->name('store'); // Store User
+    //     Route::get('/edit/{id}', [UserManagementController::class, 'edit'])->name('edit'); // Edit User
+    //     Route::put('/update/{id}', [UserManagementController::class, 'update'])->name('update'); // Update User
+    //     Route::delete('/delete/{id}', [UserManagementController::class, 'destroy'])->name('delete'); // Delete User
+    // });
+
+    Route::resource('categories', CategoryController::class);
+    Route::resource('posts', PostController::class);
+
+
+
+
 
     //For Country
     Route::resource('countries', CountryController::class);
@@ -95,12 +126,15 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     //For Team 
     Route::resource('teams', TeamController::class);
-     
+
     //For Faqs
     Route::resource('faqs', FaqController::class);
 
     //For Blog Posts Category
     Route::resource('blog-posts-categories', BlogPostsCategoryController::class);
+    //For Students Detail
+    Route::resource('student-details', StudentDetailController::class);
 
-
+    //For Contact
+    Route::resource('contacts', ContactController::class);
 });
