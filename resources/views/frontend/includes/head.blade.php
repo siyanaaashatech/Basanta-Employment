@@ -29,18 +29,6 @@
 
 
 
-    <!-- Favicon -->
-    {{-- <link rel="icon" type="image/png" href="{{ asset('css/images/favicon.png') }}"> --}}
-    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon/' . $favicon->favicon_ico) }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('uploads/favicon/' . $favicon->apple_touch_icon) }}">
-    <link rel="icon" type="image/png" sizes="32x32"
-        href="{{ asset('uploads/favicon/' . $favicon->favicon_thirtyTwo) }}">
-    <link rel="icon" type="image/png" sizes="16x16"
-        href="{{ asset('uploads/favicon/' . $favicon->favicon_sixteen) }}">
-    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/favicon/' . $favicon->favicon_ico) }}"> --}}
-    <link rel="manifest" href="{{ asset('uploads/favicon/file' . $favicon->file) }}">
-    <link rel="manifest" href="{{ asset('uploads/favicon/file' . $favicon->favicon_ico) }}">
-
     <!-- CSS -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

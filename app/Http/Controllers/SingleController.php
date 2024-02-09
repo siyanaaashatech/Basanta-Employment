@@ -18,7 +18,7 @@ use App\Models\Welcome;
 use App\Models\Category;
 use App\Models\Backimage;
 use App\Models\Legaldocs;
-use App\Models\Sitesetting;
+use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use App\Models\PhotoGallery;
 use Illuminate\Http\Request;
@@ -155,12 +155,12 @@ class SingleController extends Controller
     public function render_contact(Request $request)
     {
         $page_title = 'Contact Us';
-        $sitesetting = Sitesetting::first();
+        $sitesetting = SiteSetting::first();
         // $welcomes = Welcome::latest()->get()->take(4);
         $categories = Category::latest()->get()->take(10);
         $about = About::first();
         $services = Service::latest()->get()->take(3);
-        return view('contactpage', compact('sitesetting', 'page_title', 'categories', 'about', 'services'));
+        return view('frontend/contactpage', compact('sitesetting', 'page_title', 'categories', 'about', 'services'));
     }
 
 
