@@ -1,19 +1,26 @@
 <?php
 
-use App\Http\Controllers\VisitorBookController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FaviconController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CoverImageController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\VisitorBookController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\VideoGalleryController;
+use App\Http\Controllers\BlogPostsCategoryController;
 use App\Http\Controllers\Backend\UserManagementController;
 
 
@@ -80,7 +87,20 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     //For Visitor Books
     Route::resource('visitors-book', VisitorBookController::class);
 
+    //For Categories
+    Route::resource('categories', CategoryController::class);
 
+    //For Post
+    Route::resource('posts', PostController::class);
+
+    //For Team 
+    Route::resource('teams', TeamController::class);
+     
+    //For Faqs
+    Route::resource('faqs', FaqController::class);
+
+    //For Blog Posts Category
+    Route::resource('blog-posts-categories', BlogPostsCategoryController::class);
 
 
 });

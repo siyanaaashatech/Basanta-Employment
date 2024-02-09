@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use DOMDocument;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Country;
-use App\Models\ImageConverter; // Make sure this model exists and contains the necessary methods
-use Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Facades\Session;
-use DOMDocument;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Session;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\ImageConverter; // Make sure this model exists and contains the necessary methods
 
 class CountryController extends Controller
 {
@@ -55,31 +56,31 @@ class CountryController extends Controller
         }
     }
 
-    protected function processSummernoteContent($content)
-    {
-        if (empty($content)) {
-            return '';
-        }
+    // // protected function processSummernoteContent($content)
+    // // {
+    // //     if (empty($content)) {
+    // //         return '';
+    // //     }
 
-        $dom = new DOMDocument;
-        libxml_use_internal_errors(true);
-        $dom->loadHtml(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $images = $dom->getElementsByTagName('img');
+    // //     $dom = new DOMDocument;
+    // //     libxml_use_internal_errors(true);
+    // //     $dom->loadHtml(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    // //     $images = $dom->getElementsByTagName('img');
 
-        foreach ($images as $k => $img) {
-            $src = $img->getAttribute('src');
-            if (strpos($src, 'data:image') === 0) {
-                $image = Image::make($src);
-                $imageName = uniqid() . '.webp';
-                $path = 'uploads/country/content/' . $imageName;
-                $image->save(public_path($path));
-                $newSrc = asset($path);
-                $img->setAttribute('src', $newSrc);
-            }
-        }
+    // //     foreach ($images as $k => $img) {
+    // //         $src = $img->getAttribute('src');
+    // //         if (strpos($src, 'data:image') === 0) {
+    // //             $image = Image::make($src);
+    // //             $imageName = uniqid() . '.webp';
+    // //             $path = 'uploads/country/content/' . $imageName;
+    // //             $image->save(public_path($path));
+    // //             $newSrc = asset($path);
+    // //             $img->setAttribute('src', $newSrc);
+    // //         }
+    // //     }
 
-        libxml_clear_errors();
-        $content = $dom->saveHTML();
-        return $content;
-    }
+    //     libxml_clear_errors();
+    //     $content = $dom->saveHTML();
+    //     return $content;
+    // }
 }

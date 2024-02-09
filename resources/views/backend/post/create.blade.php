@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" id="description" name="description" required></textarea>
+                <textarea class="form-control summernote" id="description" name="description" required></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Image:</label>
@@ -31,27 +31,8 @@
         </form>
     </div>
     <script>
-        function previewImage(event) {
-            var input = event.target;
-            var preview = document.getElementById('imagePreview');
-
-            while (preview.firstChild) {
-                preview.removeChild(preview.firstChild); // Clear previous preview
-            }
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    var img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '200px'; // Adjust the maximum width as needed
-                    img.style.maxHeight = '200px'; // Adjust the maximum height as needed
-                    preview.appendChild(img);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
     </script>
 @endsection

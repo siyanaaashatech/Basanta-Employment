@@ -98,7 +98,6 @@ class RolePermissionSeeder extends Seeder
             'list_photo_galleries',
             'edit_photo_galleries',
             'delete_photo_galleries',
-
             'create_video_galleries',
             'list_video_galleries',
             'edit_video_galleries',

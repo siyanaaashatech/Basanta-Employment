@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('backend.includes.head')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
 
 <body>
 
@@ -41,6 +42,12 @@
     @include('backend.includes.scripts')
 
     @yield('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#description').summernote(); // Replace 'description' with your textarea's ID
+        });
+    </script>
 
 </body>
 
