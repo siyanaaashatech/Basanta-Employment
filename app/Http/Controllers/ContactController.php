@@ -29,11 +29,11 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
-        $contact = new Contact($validated);
-        $contact->save();
+        Contact::create($validated);
 
-        // Redirect or return a response
-        return redirect()->route('index')->with('success', 'Contact saved successfully!');
+        return redirect()->route('Contact')->with('success', 'Contact saved successfully!');
     }
+
+
 
 }

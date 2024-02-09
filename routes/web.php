@@ -40,14 +40,11 @@ use App\Http\Controllers\StudentDetailController;
 
 Auth::routes();
 
-// Frontend route for SingleController
-// Route::get('/', [FrontViewController::class, 'index'])->name('index');
+// Frontend route for Different Controller
 Route::get('/index', [FrontViewController::class, 'index'])->name('index');
-Route::get('contactpage', [SingleController::class, 'render_contact'])->name('Contact');
-
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Display contact form to handle and submission
+Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
-// Route::get('admin/contact/index', [App\Http\Controllers\ContactController::class, 'index'])->name('Contact.index');
 
 
 Route::get('/', function () {

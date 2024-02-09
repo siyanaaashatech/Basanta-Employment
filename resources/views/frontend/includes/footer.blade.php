@@ -223,101 +223,6 @@
 
 {{-- For Footer --}}
 <footer class="footer-section">
-    <div class="container">
-        <div class="footer-cta pt-5 pb-5">
-            <div class="row">
-                <div class="col-xl-4 col-md-4 mb-30">
-                    <div class="single-cta">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <div class="cta-text">
-                            <h4>Find us</h4>
-                            {{-- <span>{{ $sitesetting->office_address }}</span> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4 mb-30">
-                    <div class="single-cta">
-                        <i class="fa fa-mobile" aria-hidden="true"></i>
-                        <div class="cta-text">
-                            <h4>Call us</h4>
-                            {{-- <span>{{ $sitesetting->office_contact }}</span> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4 mb-30">
-                    <div class="single-cta">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                        <div class="cta-text">
-                            <h4>Mail us</h4>
-                            {{-- <span>{{ $sitesetting->office_mail }}</span> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-content pt-5 pb-5">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 mb-50">
-                    <div class="footer-widget">
-                        <div class="footer-logo">
-                            {{-- <a href="{{ route('index') }}">
-                                <img src="{{ asset('uploads/sitesetting/' . $sitesetting->side_logo) }}"
-                                    class="img-fluid" alt="aashatechlogo">
-                            </a> --}}
-                        </div>
-                        <div class="footer-text">
-                            <p>
-                                {{-- {{ Str::substr($about->description, 0, 300) }}... --}}
-
-                            </p>
-                        </div>
-                        <div class="footer-social-icon">
-                            <span>Follow us</span>
-                            {{-- <a href="{{ $sitesetting->face_link }}" target="_blank"><i
-                                    class="fa fa-facebook facebook-bg" aria-hidden="true"></i></a>
-                            <a href="{{ $sitesetting->insta_link }}" target="_blank"><i
-                                    class="fa fa-instagram instagram-bg" aria-hidden="true"></i></a>
-                            <a href="{{ $sitesetting->social_link }}" target="_blank"><i
-                                    class="fa fa-youtube-play youtube-bg" aria-hidden="true"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                    <div class="footer-widget">
-
-                        {{-- <iframe src="{{ $sitesetting->f_page }}" style="border:none;overflow:hidden" scrolling="no"
-                            frameborder="0" allowfullscreen="true"
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe> --}}
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
-                    <div class="footer-widget">
-                        <div class="footer-widget-heading">
-                            <h3>Subscribe</h3>
-                        </div>
-                        <div class="footer-text mb-25">
-                            <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
-                        </div>
-                        <div class="subscribe-form">
-                            {{-- <form action="{{ route('Subscriber.store') }}" method="POST" name="form"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <input type="text" placeholder="Email Address" name="email">
-                                <button>
-                                    <input type="submit" hidden>
-                                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                                </button>
-                                @if (session('success'))
-                                    <div class="alert alert-success">{{ session('success') }}</div>
-                                @endif
-                            </form> --}}
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="copyright-area">
         <div class="container">
             <div class="row">
@@ -329,11 +234,7 @@
                 <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
                     <div class="footer-menu">
                         <ul>
-                            {{-- <li><a href="{{ route('index') }}">Home</a></li>
-                            <li><a href="{{ route('Service') }}">Services</a></li>
-                            <li><a href="{{ route('Allprojects') }}">Projects</a></li> --}}
                             <li><a href="#">Blogs</a></li>
-                            {{-- <li><a href="{{ url('contactpage') }}">Contact</a></li> --}}
                         </ul>
                     </div>
                 </div>
