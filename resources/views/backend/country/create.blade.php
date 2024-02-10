@@ -46,15 +46,6 @@
 
             <div>
 
-
-
-                {{-- <label for="content">Content</label><span style="color:red; font-size:large">
-                    *</span>
-                <textarea style="max-width: 100%;min-height: 250px;" type="text" class="form-control" id="myTextarea"
-                    name="content" placeholder="Add Description">
-                {{ old('content') }}
-                </textarea> --}}
-
                 <label for="">Content:</label>
                 <textarea name="content" id="content" cols="30" rows="10"></textarea>
 
@@ -109,9 +100,6 @@
             }
         };
     </script>
-
-
-
 
     <script>
         $(document).ready(function() {
