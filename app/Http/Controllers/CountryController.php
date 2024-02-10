@@ -10,6 +10,9 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Session;
 use DOMDocument;
 use Intervention\Image\Facades\Image;
+use Exception;
+use Illuminate\Support\Facades\File;
+
 
 class CountryController extends Controller
 {
@@ -57,29 +60,100 @@ class CountryController extends Controller
 
     protected function processSummernoteContent($content)
     {
-        if (empty($content)) {
-            return '';
+        if ($content != '') {
+            $dom = new \DomDocument();
+            $content = preg_replace('/<(\w+):(\w+)>/', '&lt;\1:\2&gt;', $content);
+            $content = preg_replace('/<\/(\w+):(\w+)>/', '&lt;/\1:\2&gt;', $content);
+
+            libxml_use_internal_errors(true);
+            $dom->loadHtml('<meta http-equiv="Content-Type" content="charset=utf-8" />' . $content);
+            libxml_clear_errors();
+            $images = $dom->getElementsByTagName('img');
+            // foreach <img> in the submited message
+            foreach ($images as $img) {
+                $src = $img->getAttribute('src');
+                $src = str_replace('http://127.0.0.1:8000/', 'http://127.0.0.1:8000/', $src);
+                $img->removeAttribute('src');
+                $img->setAttribute('src', $src);
+
+
+                if (preg_match('/data:image/', $src)) {
+
+                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                    $mimetype = $groups['mime'];
+
+                    $filename = uniqid();
+                    $filepath = 'uploads/country/content' . $filename . '.' . $mimetype;
+
+                    $image = Image::make($src)
+
+                        ->encode($mimetype, 100)
+                        ->save(public_path($filepath));
+                    $new_src = asset($filepath);
+                    $img->removeAttribute('src');
+                    $img->setAttribute('src', $new_src);
+                }
+            }
+            $html_cut = preg_replace('~<(?:!DOCTYPE|/?(?:html|body|head|meta))[^>]>\s~i', '', $dom->saveHTML());
+            return $html_cut;
+        } else {
+            return $content;
         }
+    }
 
-        $dom = new DOMDocument;
-        libxml_use_internal_errors(true);
-        $dom->loadHtml(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $images = $dom->getElementsByTagName('img');
+    public function edit($id)
+    {
+        $country = Country::findOrFail($id);
+        return view('backend.country.update', ['country' => $country, 'page_title' => 'Update Country']);
+    }
 
-        foreach ($images as $k => $img) {
-            $src = $img->getAttribute('src');
-            if (strpos($src, 'data:image') === 0) {
-                $image = Image::make($src);
-                $imageName = uniqid() . '.webp';
-                $path = 'uploads/country/content/' . $imageName;
-                $image->save(public_path($path));
-                $newSrc = asset($path);
-                $img->setAttribute('src', $newSrc);
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|string',
+            'image.*' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
+            'content' => 'nullable|string',
+        ]);
+
+        $country = Country::findOrFail($id);
+
+        try {
+            $imagesPaths = $country->image ? json_decode($country->image, true) : [];
+            if ($request->hasFile('image')) {
+                foreach ($request->file('image') as $imageFile) {
+                    $imagePath = ImageConverter::convertSingleImage($imageFile, 'uploads/country/');
+                    $imagesPaths[] = $imagePath;
+                }
+            }
+
+            $processedContent = $this->processSummernoteContent($request->input('content'));
+
+            $country->name = $request->input('name');
+            $country->slug = SlugService::createSlug(Country::class, 'slug', $request->input('name'), ['unique' => false, 'source' => 'name', 'onUpdate' => true], $id);
+            $country->image = json_encode($imagesPaths);
+            $country->content = $processedContent;
+            $country->save();
+
+            return redirect()->route('admin.countries.index')->with('success', 'Country updated successfully.');
+        } catch (Exception $e) {
+            return back()->with('error', "Error updating country: " . $e->getMessage());
+        }
+    }
+
+    public function destroy($id)
+    {
+        $country = Country::findOrFail($id);
+        $images = json_decode($country->image, true);
+        if ($images) {
+            foreach ($images as $imagePath) {
+                File::delete(public_path($imagePath));
             }
         }
 
-        libxml_clear_errors();
-        $content = $dom->saveHTML();
-        return $content;
+        $country->delete();
+        return redirect()->route('admin.countries.index')->with('success', 'Country deleted successfully.');
     }
+
+
+
 }
