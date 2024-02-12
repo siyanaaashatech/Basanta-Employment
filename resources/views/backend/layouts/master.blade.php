@@ -45,7 +45,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#description').summernote(); // Replace 'description' with your textarea's ID
+            // Initialize Summernote for the 'description' textarea
+            $('#description').summernote();
+    
+            // Initialize Summernote for the 'content' textarea
+            $('#content').summernote({
+                callbacks: {
+                    onSubmit: function(content) {
+                        // Remove <p> tags from the content
+                        return $(content).find('p').unwrap().end().html();
+                    }
+                }
+            });
         });
     </script>
 
