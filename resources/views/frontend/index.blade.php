@@ -4,162 +4,428 @@
 
 
 @section('content')
-
-
-    <body class="u-body u-xl-mode" data-lang="en">
-
-
-
-
-        <section class="u-align-left u-clearfix u-section-1" id="carousel_560d">
-            <div class="u-clearfix u-sheet u-sheet-1">
-                <div class="u-shape u-shape-svg u-text-custom-color-2 u-shape-1" data-animation-name="fadeIn"
-                    data-animation-duration="1000" data-animation-direction="Right">
-                    <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 150" style="">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-4d96"></use>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                        xml:space="preserve" class="u-svg-content" viewBox="0 0 160 150" x="0px" y="0px" id="svg-4d96">
-                        <path
-                            d="M43.2,126.9c14.2,1.3,27.6,7,39.1,15.6c8.3,6.1,19.4,10.3,32.7,5.3c11.7-4.4,18.6-17.4,21-30.2c2.6-13.3,8.1-25.9,15.7-37.1
-                                                                                            c8.3-12.1,10.8-27.9,5.3-42.7C150.5,20.3,134.6,9,117,7.6C107.9,6.9,98.8,5,90.1,1.9C83-0.6,75-0.7,67.4,2.1
-                                                                                            c-9.9,3.7-17,11.6-20.1,21c-3.3,10.1-10.9,18-20.6,22.2c-0.1,0-0.1,0.1-0.2,0.1c-20.3,8.9-31,32-24.6,53.2
-                                                                                            C6.9,115.6,25.2,125.2,43.2,126.9z">
-                        </path>
-                    </svg>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="contain row">
+            <div class="box1 col-lg-5 col-md-6 col-sm-12">
+                <div class="text-white">
+                    <h2><b>WANT TO STUDY ABROAD?</b></h2>
+                    <h5><b>Institutions We Represent from</b></h5>
+                    <h3><b>Australia, USA, UK, Ireland and Thailand</b></h3>
+                    <h3 class="lastword">Next Intake- February2020</b></h3>
                 </div>
-                <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
-                    <div class="u-gutter-0 u-layout">
-                        <div class="u-layout-row">
-                            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1">
-                                <div class="u-container-layout u-container-layout-1">
-                                    <img class="u-expanded-width-xs u-image u-image-default u-image-1" {{-- sitesetting_sidelogo --}}
-                                        alt="" data-image-width="1496" data-image-height="728">
-                                    </p>
+            </div>
+            <div class="box2 col-lg-4 col-md-6 col-sm-12">
+                <div class="position-relative">
+                    <div class="image1 position-absolute" style="height: 300px; width: 150px;">
+                        <img src="image/nico-smit-8Rk1DqL_Lkc-unsplash.jpg" alt="Image 1">
+                    </div>
+                    <div class="image2 position-absolute" style="height: 300px; width: 150px;">
+                        <img src="image/atahan-guc-QcMeSaXPIF0-unsplash.jpg" alt="Image 2">
+                    </div>
+                    <div class="image3 position-absolute" style="height: 300px; width: 150px;">
+                        <img src="image/diogo-nunes-2c08m7lce68-unsplash.jpg" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+            <div class="box3 col-lg-3 col-md-6 col-sm-12">
+                <div class="position-relative">
+                    <div class="image4 position-absolute ">
+                        <img src="image/nico-smit-8Rk1DqL_Lkc-unsplash.jpg" style="height: 300px; width: 150px;"
+                            alt="Image 4">
+                    </div>
+                    <div class="image5 position-absolute ">
+                        <img src="image/atahan-guc-QcMeSaXPIF0-unsplash.jpg" style="height: 300px; width: 150px;"
+                            alt="Image 5">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                    <a href="{{ route('Contact.store') }}"
-                                        class="u-active-grey-90 u-border-none u-btn u-btn-round u-button-style u-color-scheme-summer-time u-color-style-multicolor-1 u-custom-color-1 u-hover-custom-color-2 u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-2">Get
-                                        in Touch</a>
-                                </div>
-                            </div>
-                            <div class="u-align-left u-container-style u-layout-cell u-size-30 u-layout-cell-2">
-                                <div class="u-container-layout u-container-layout-2">
-                                    <div class="u-carousel u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1"
-                                        id="carousel-f035" data-interval="5000" data-u-ride="carousel">
-                                        <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
-                                            <li data-u-target="#carousel-f035" data-u-slide-to="0"
-                                                class="u-active u-grey-70 u-shape-circle"
-                                                style="width: 10px; height: 10px;"></li>
-                                            <li data-u-target="#carousel-f035" data-u-slide-to="1"
-                                                class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
-                                        </ol>
-                                        <div class="u-carousel-inner u-gallery-inner" role="listbox">
-                                            <div
-                                                class="u-active u-carousel-item u-effect-fade u-gallery-item u-carousel-item-1">
-                                                <div class="u-back-slide" data-image-width="1280" data-image-height="853">
-                                                    <img class="u-back-image u-expanded"
-                                                        src="images/c26adb597274adf43dffb59a2badab3bbb1f0041532ac3283644b6c3fb831e44359a9ad3e760efe956fccc64838b8e40b10d102244512ce7525212_1280.jpg">
-                                                </div>
-                                                <div
-                                                    class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1">
-                                                    <h3 class="u-gallery-heading">Artificial Intelligence</h3>
-                                                    {{-- <p class="u-gallery-text">Sample Text</p> --}}
-                                                </div>
-                                            </div>
-                                            {{-- use loop here for different things --}}
-                                        </div>
-                                        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1"
-                                            href="#carousel-f035" role="button" data-u-slide="prev">
-                                            <span aria-hidden="true">
-                                                <svg viewBox="0 0 451.847 451.847">
-                                                    <path
-                                                        d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
-                                                                                                                                c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
-                                                                                                                                c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z">
-                                                    </path>
-                                                </svg>
-                                            </span>
-                                            <span class="sr-only">
-                                                <svg viewBox="0 0 451.847 451.847">
-                                                    <path
-                                                        d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
-                                                                                                                        c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
-                                                                                                                        c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z">
-                                                    </path>
-                                                </svg>
-                                            </span>
-                                        </a>
-                                        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2"
-                                            href="#carousel-f035" role="button" data-u-slide="next">
-                                            <span aria-hidden="true">
-                                                <svg viewBox="0 0 451.846 451.847">
-                                                    <path
-                                                        d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
-                                                                                                                        L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
-                                                                                                                        c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z">
-                                                    </path>
-                                                </svg>
-                                            </span>
-                                            <span class="sr-only">
-                                                <svg viewBox="0 0 451.846 451.847">
-                                                    <path
-                                                        d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
-                                                                                                                            L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
-                                                                                                                            c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z">
-                                                    </path>
-                                                </svg>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
+
+
+    {{-- For Services --}}
+    <div class="services bg-primary">
+        <div class="container ">
+            <div class="flexbox d-flex ">
+                <div class="flexcard row mx-5">
+                    <div class="fleximage col p-0">
+                        <img src="/image/card3.avif" class="img-fluid" alt="">
+                    </div>
+                    <div class="flextext col">
+                        <p>How Did van Gogh's Turbulrnt Mind Depict One of the Most Comple</p>
+                    </div>
+                </div>
+                <div class="flexcard row">
+                    <div class="fleximage col p-0">
+                        <img src="/image/card3.avif" class="img-fluid" alt="">
+                    </div>
+                    <div class="flextext col">
+                        <p>How Did van Gogh's Turbulrnt Mind Depict One of the Most Comple</p>
+                    </div>
+                </div>
+                <div class="flexcard row mx-5">
+                    <div class="fleximage col p-0">
+                        <img src="/image/card3.avif" class="img-fluid" alt="">
+                    </div>
+                    <div class="flextext col">
+                        <p>How Did van Gogh's Turbulrnt Mind Depict One of the Most Comple</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="text-white text-center">Services Hightlight</h2>
+        <div class="container text-center">
+            <div class="row justify-content-center text-center">
+                <div class="box col-lg-4 col-md-4 col-sm-12">
+                    <div class="circle-3 text-white fs-5">
+                        <b>
+                            <p class="my-2">01</p>
+                        </b>
+                    </div>
+                    <div class="circle-1">
+                        <div class="circle-2">
+                            <div class="text">
+                                <h4> Preparation Classes</h4>
+                                <h5>Preparation classes for ILETS & PTE. Free mock up text preparation classes are
+                                    conducted every Friday</h5>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="box col-lg-4 col-md-4 col-sm-12">
+                    <div class="circle-3 text-white fs-5">
+                        <b>
+                            <p class="my-2">02</p>
+                        </b>
+                    </div>
+                    <div class="circle-1">
+                        <div class="circle-2">
+                            <div class="text">
+                                <h4>Career Counselling</h4>
+                                <h5>We provide one-on-one counselling to students who are seeking directions and
+                                    applying for studying abroad</h5>
+                            </div>
 
-
-
-
-
-                {{-- @include('includes/homeback') --}}
-            </div>
-        </section>
-
-
-
-
-        <section class="u-align-center u-clearfix u-grey-10 u-section-2" id="carousel_987a">
-            <div class="u-clearfix u-sheet u-sheet-1">
-
-
-                <div class="u-custom-color-1 u-shape u-shape-circle u-shape-1" data-animation-name="fadeIn"
-                    data-animation-duration="1000" data-animation-direction="Right" data-animation-delay="0"></div>
-                <div class="u-custom-color-2 u-shape u-shape-circle u-shape-2" data-animation-name="fadeIn"
-                    data-animation-duration="1000" data-animation-direction="Right" data-animation-delay="0"></div>
-                {{-- <img class="u-image u-image-1" src="{{ asset('uploads/about/' . $about->image) }}" data-image-width="800" --}}
-                data-image-height="533" data-animation-name="fadeIn" data-animation-duration="1000"
-                data-animation-direction="Up" data-animation-delay="250">
-                <div class="u-align-left u-container-style u-group u-white u-group-1" data-animation-name="fadeIn"
-                    data-animation-duration="1000" data-animation-direction="Left" data-animation-delay="250">
-                    <div class="u-container-layout u-container-layout-1">
-                        {{-- <h2
-                            class="u-text u-text-custom-color-1 u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-1">
-                            {{ $about->title }}</h2> --}}
-                        {{-- <p class="u-text u-text-2">{{ Str::substr($about->description, 0, 180) }}...
-                        </p> --}}
-                        {{-- <a href="{{ route('About') }}"
-                            class="u-active-custom-color-2 u-border-none u-btn u-btn-round u-button-style u-color-scheme-summer-time u-color-style-multicolor-1 u-custom-color-1 u-hover-custom-color-2 u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-1">Learn
-                            more</a> --}}
+                        </div>
                     </div>
                 </div>
-
+                <div class="box col-lg-4 col-md-4 col-sm-12">
+                    <div class="circle-3 text-white fs-5">
+                        <b>
+                            <p class="my-2">03</p>
+                        </b>
+                    </div>
+                    <div class="circle-1">
+                        <div class="circle-2 ">
+                            <div class="text">
+                                <h4>Admission Assistance</h4>
+                                <h5>We offer guidance for student application and admition process for the best
+                                    college and <br> universities</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+        <div class="text-center"><button class="btn bg-primary text-white  m-5">View all Services</button></div>
+    </div>
 
 
 
-        @include('frontend/includes/contact')
+       <!-- Slider -->
+       <div class="container my-5">
+        <div class="slider row">
+            <div class="word col-md-6">
+                <div class="text">
+                    <h2>
+                        <p>Your Choice- Your Destination</p>
+                    </h2>
+                    <p class="text-primary"> Most preferred destinations in the world</p>
+                    <p>We represent colleges in Australia,UK, USA, Thailand, India, Switzerland & Japan. However
+                        sucessfully
+                        enrolling a syudent at the college of his/her choice is not as simple as we made out at the vey
+                        outset.
+                    </p>
+                </div>
+                <button class="btn bg-primary text-white ">SEE ALL COUNTRIES</button>
+            </div>
+            <div class="container-fluid col-md-6 col-sm-12">
+                <div id="carouselExampleCaptions" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="image">
+                                <img src="image/slide1.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>First slide label</h5>
+                                <p>Some representative placeholder content for the first slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="image">
+                                <img src="image/slide2.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Second slide label</h5>
+                                <p>Some representative placeholder content for the second slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="image">
+                                <img src="image/slide3.jpg" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Third slide label</h5>
+                                <p>Some representative placeholder content for the third slide.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="back">
+                    <img src="/image/back.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+      <!-- Enroll -->
+
+      <div class="enroll" row
+      style="background-image: url('/image/convo.avif'); background-size: cover; background-position: center;">
+      <div class="col-md-5 mx-5">
+          <div class="empty">.</div>
+          <div class="text mx-5 text-white">
+              <h2>A leading university for international students</h2>
+              <b> Calling All Artists K-12. Use your creativity to help sustain our world!</b>
+              <h5>We are committed to helping international students make the most of their time in Australia by
+                  providing quality education, guidance and support.</h5>
+          </div>
+
+          <div class="butt d-flex">
+              <div class="text-center my-5 mx-3"><button class="btn bg-primary text-white ">Enroll Now</button>
+              </div>
+              <div class="text-center my-5 mx-1"><button class="btn bg-primary text-white ">Learn More</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Logo -->
+  <div class="container ">
+      <div class="text-center my-5">
+          <h2>Institue we Represent</h2>
+          <h5 class="text-primary">We work with some of the best educational institutions around the globe</h5>
+      </div>
+
+      <div class="logos row row-cols-lg-4  g-lg-3 ">
+          <div class="logo col">
+              <div class="image">
+                  <img src="image/rmit.png" alt="">
+              </div>
+          </div>
+          <div class="logo col">
+              <div class="image">
+                  <img src="image/boxhill.png" alt="">
+              </div>
+          </div>
+          <div class="logo col">
+              <div class="image">
+                  <img src="image/victorian.png" alt="">
+              </div>
+          </div>
+          <div class="logo col">
+              <div class="image">
+                  <img src="image/western.png" alt="">
+              </div>
+          </div>
+          <div class="logo col">
+              <div class="image">
+                  <img src="image/australia.png" alt="">
+              </div>
+          </div>
+          <div class="logo col">
+              <div class="image">
+                  <img src="image/icms.png" alt="">
+              </div>
+          </div>
+          <div class="logo col">
+              <div class="image">
+                  <img src="image/educo.png" alt="">
+              </div>
+          </div>
+      </div>
+      <div class="text-center my-4"><button class="btn bg-primary text-white ">View all Universities</button></div>
+
+  </div>
+
+  <!-- Cources -->
+  <div class="container">
+      <div class="cources my-5">
+          <h2 class="text-center"> Popular courses for students like you</h2>
+          <div class="subjects row">
+              <div class="subject1 col-md-4 col-sm-6">
+                  <div
+                      style="background-image: url('image/book.avif'); background-size: cover; background-position: center; height: 200px; ">
+                      <div class="text-center "><button class="btn bg-primary text-white">BACHELOR IN
+                              ARTS</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="subject2 col-md-4 col-sm-6">
+                  <div
+                      style="background-image: url('image/arts.avif'); background-size: cover; background-position: center; ">
+                      <div class="text-center "><button class="btn bg-primary text-white ">BUSINESS
+                              MANAGEMENT</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="subject3 col-md-4 col-sm-6">
+                  <div
+                      style="background-image: url('image/maths.avif'); background-size: cover; background-position: center;  ">
+                      <div class="text-center "><button class="btn bg-primary text-white ">MATHEMATICS</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="subject4 col-md-4 col-sm-6">
+
+                  <div
+                      style="background-image: url('image/book.avif'); background-size: cover; background-position: center; ">
+                      <div class="text-center "><button class="btn bg-primary text-white ">BACHELOR IN
+                              ARTS</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="subject5 col-md-4 col-sm-6">
+
+                  <div
+                      style="background-image: url('image/arts.avif'); background-size: cover; background-position: center; ">
+                      <div class="text-center "><button class="btn bg-primary text-white ">BUSINESS
+                              MANAGEMENT</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="subject6 col-md-4 col-sm-6">
+                  <div
+                      style="background-image: url('image/maths.avif'); background-size: cover; background-position: center; ">
+                      <div class="text-center "><button class="btn bg-primary text-white ">MATHEMATICS</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Join -->
+  <div class="join">
+      <div class="text mt-5">
+          <h2 class="text-center">Join students over 1000+ like you</h2>
+      </div>
+      <div class="container">
+          <div class="students">
+              <div id="carouselExampleDark" class="carousel slide">
+                  <div class="carousel-inner">
+                      <div class="carousel-item active" data-bs-interval="10000">
+                          <div class="image">
+                              <img src="/image/female1.avif" class="d-block w-100" alt="">
+                          </div>
+                          <div class="carousel-caption">
+                              <div class="container">
+                                  <p class="text-start text-dark">"My journey at the University of Soouth
+                                      Australia has been an
+                                      exciting and beautiful roller coaster ride.As an international student,your
+                                      studies under a whole new system is a real challenge but I received all the
+                                      support I needed to begin my studies confidently. The facilitators have
+                                      always
+                                      been generous-so much that they've frequently made huge photocopies of study
+                                      materials to help me with clarification and understanding."</p>
+                                  <div class="text-start text-dark">
+                                      <h2>SALINA SHRESTHA</h2>
+                                      <P>University of South Australia(Master of Social Work)</P>
+                                      <button class="bg-primary text-white text-center"> VIEW ALL -</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="carousel-item" data-bs-interval="2000">
+                          <div class="image">
+                              <img src="/image/female2.avif" class="d-block w-100" alt="...">
+                          </div>
+
+                          <div class="carousel-caption d-none d-md-block">
+                              <div class="container text-dark">
+                                  <p class="text-start">"My journey at the University of Soouth Australia has been
+                                      an
+                                      exciting and beautiful roller coaster ride.As an international student,your
+                                      studies under a whole new system is a real challenge but I received all the
+                                      support I needed to begin my studies confidently. The facilitators have
+                                      always
+                                      been generous-so much that they've frequently made huge photocopies of study
+                                      materials to help me with clarification and understanding."</p>
+                                  <div class="text-start">
+                                      <h2>SALINA SHRESTHA</h2>
+                                      <P>University of South Australia(Master of Social Work)</P>
+                                      <button class="bg-primary text-white text-center"> VIEW ALL -</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <div class="image">
+                              <img src="/image/female3.avif" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-caption d-none d-md-block">
+                              <div class="container text-dark m-3">
+                                  <p class="text-start">"My journey at the University of Soouth Australia has been
+                                      an
+                                      exciting and beautiful roller coaster ride.As an international student,your
+                                      studies under a whole new system is a real challenge but I received all the
+                                      support I needed to begin my studies confidently. The facilitators have
+                                      always
+                                      been generous-so much that they've frequently made huge photocopies of study
+                                      materials to help me with clarification and understanding."</p>
+                                  <div class="text-start">
+                                      <h2>SALINA SHRESTHA</h2>
+                                      <P>University of South Australia(Master of Social Work)</P>
+                                      <button class="bg-primary text-white text-center"> VIEW ALL -</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                      data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                      data-bs-slide="next">
+                      <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
 
 
 
-    @stop
+@stop

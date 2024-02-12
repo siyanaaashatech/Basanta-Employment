@@ -12,6 +12,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SingleController;
+
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FrontViewController;
@@ -20,7 +21,7 @@ use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\VideoGalleryController;
-use App\Http\Controllers\Backend\UserManagementController;
+use App\Http\Controllers\UserManagementController;
 
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VisitorBookController;
@@ -43,7 +44,7 @@ Auth::routes();
 // Frontend route for Different Controller
 Route::get('/index', [FrontViewController::class, 'index'])->name('index');
 // Display contact form to handle and submission
-Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
+// Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
 
 
@@ -95,9 +96,6 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     Route::resource('posts', PostController::class);
 
 
-
-
-
     //For Country
     Route::resource('countries', CountryController::class);
 
@@ -121,5 +119,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
 
 
-
 });
+
+
+
+
+Route::get('/services', 'SingleController@render_services')->name('services');
+
+// Route::get('/services', SingleController::class, 'render_services' )->name('Services');
