@@ -8,8 +8,6 @@ use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
-
-use Exception;
 use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\Facades\Session;
