@@ -12,6 +12,14 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FaviconController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
+
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SingleController;
+
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\FrontViewController;
+
 use App\Http\Controllers\CoverImageController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\SiteSettingController;
@@ -19,6 +27,12 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VisitorBookController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\VideoGalleryController;
+
+use App\Http\Controllers\UserManagementController;
+
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\VisitorBookController;
+
 use App\Http\Controllers\BlogPostsCategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SingleController;
@@ -26,6 +40,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\Backend\UserManagementController;
+
 use App\Http\Controllers\StudentDetailController;
 
 /*
@@ -42,14 +57,11 @@ use App\Http\Controllers\StudentDetailController;
 
 Auth::routes();
 
-// Frontend route for SingleController
-// Route::get('/', [FrontViewController::class, 'index'])->name('index');
+// Frontend route for Different Controller
 Route::get('/index', [FrontViewController::class, 'index'])->name('index');
-Route::get('contactpage', [SingleController::class, 'render_contact'])->name('Contact');
-
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Display contact form to handle and submission
+// Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
-// Route::get('admin/contact/index', [App\Http\Controllers\ContactController::class, 'index'])->name('Contact.index');
 
 
 Route::get('/', function () {
@@ -100,9 +112,6 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     Route::resource('posts', PostController::class);
 
 
-
-
-
     //For Country
     Route::resource('countries', CountryController::class);
 
@@ -130,6 +139,16 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     //For Faqs
     Route::resource('faqs', FaqController::class);
 
+
+});
+
+
+
+
+Route::get('/services', 'SingleController@render_services')->name('services');
+
+// Route::get('/services', SingleController::class, 'render_services' )->name('Services');
+
     //For Blog Posts Category
     Route::resource('blog-posts-categories', BlogPostsCategoryController::class);
     //For Students Detail
@@ -138,3 +157,4 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     //For Contact
     Route::resource('contacts', ContactController::class);
 });
+
