@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" id="description" name="description" required></textarea>
+                <textarea class="form-control summernote" id="description" name="description" required></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Image:</label>
@@ -31,6 +31,9 @@
         </form>
     </div>
     <script>
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
         function previewImage(event) {
             var input = event.target;
             var preview = document.getElementById('imagePreview');

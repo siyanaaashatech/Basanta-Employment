@@ -101,9 +101,6 @@
         };
     </script>
 
-
-
-
     <script>
         $('#content').summernote({
             placeholder: 'content...',
