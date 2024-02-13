@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
@@ -10,21 +12,35 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FaviconController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
+
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SingleController;
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FrontViewController;
+
 use App\Http\Controllers\CoverImageController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\VisitorBookController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\VideoGalleryController;
+
 use App\Http\Controllers\UserManagementController;
 
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VisitorBookController;
+
+use App\Http\Controllers\BlogPostsCategoryController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SingleController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\FrontViewController;
+use App\Http\Controllers\Backend\UserManagementController;
+
 use App\Http\Controllers\StudentDetailController;
 
 /*
@@ -111,12 +127,17 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     //For Visitor Books
     Route::resource('visitors-book', VisitorBookController::class);
 
-    //For Students Detail
-    Route::resource('student-details', StudentDetailController::class);
+    //For Categories
+    Route::resource('categories', CategoryController::class);
 
-    //For Contact
-    Route::resource('contacts', ContactController::class);
+    //For Post
+    Route::resource('posts', PostController::class);
 
+    //For Team 
+    Route::resource('teams', TeamController::class);
+
+    //For Faqs
+    Route::resource('faqs', FaqController::class);
 
 
 });
@@ -127,3 +148,13 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 Route::get('/services', 'SingleController@render_services')->name('services');
 
 // Route::get('/services', SingleController::class, 'render_services' )->name('Services');
+
+    //For Blog Posts Category
+    Route::resource('blog-posts-categories', BlogPostsCategoryController::class);
+    //For Students Detail
+    Route::resource('student-details', StudentDetailController::class);
+
+    //For Contact
+    Route::resource('contacts', ContactController::class);
+});
+

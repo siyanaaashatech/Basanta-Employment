@@ -14,7 +14,8 @@ class FaqController extends Controller
      */
     public function index()
     {
-        //
+        $faqs = Faq::all();
+        return view('backend.faq.index', compact('faqs'));
     }
 
     /**
@@ -24,7 +25,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.faq.create');
     }
 
     /**
@@ -35,18 +36,14 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'question' => 'required',
+            'answer' => 'required',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Faq  $faq
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Faq $faq)
-    {
-        //
+        Faq::create($request->all());
+
+        return redirect()->route('admin.faqs.index')->with('success', 'FAQ created successfully.');
     }
 
     /**
@@ -57,7 +54,7 @@ class FaqController extends Controller
      */
     public function edit(Faq $faq)
     {
-        //
+        return view('backend.faq.update', compact('faq'));
     }
 
     /**
@@ -69,7 +66,14 @@ class FaqController extends Controller
      */
     public function update(Request $request, Faq $faq)
     {
-        //
+        $request->validate([
+            'question' => 'required',
+            'answer' => 'required',
+        ]);
+
+        $faq->update($request->all());
+
+        return redirect()->route('admin.faqs.index')->with('success', 'FAQ updated successfully.');
     }
 
     /**
@@ -80,6 +84,8 @@ class FaqController extends Controller
      */
     public function destroy(Faq $faq)
     {
-        //
+        $faq->delete();
+
+        return redirect()->route('admin.faqs.index')->with('success', 'FAQ deleted successfully.');
     }
 }
