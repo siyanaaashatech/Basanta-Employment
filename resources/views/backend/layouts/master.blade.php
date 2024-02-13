@@ -1,65 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('backend.includes.head')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+<head>
+    <?php
+use App\Models\Favicon;
+    $favicon = Favicon::first();
+?>
+    @include('backend.includes.head')
 
+</head>
 <body>
 
-    <!-- ===============================================-->
-    <!--    Main Content-->
-    <!-- ===============================================-->
-    <main class="main" id="top">
-        <div class="container-fluid" data-layout="container">
-            <script>
-                var isFluid = JSON.parse(localStorage.getItem('isFluid'));
-                if (isFluid) {
-                    var container = document.querySelector('[data-layout]');
-                    container.classList.remove('container');
-                    container.classList.add('container-fluid');
-                }
-            </script>
+   <main class="main" id="top">
+        <div class="container" data-layout="container">
+          <script>
+            var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+            if (isFluid) {
+              var container = document.querySelector('[data-layout]');
+              container.classList.remove('container');
+              container.classList.add('container-fluid');
+            }
+          </script>
 
-            @include('backend.includes.sidebar')
-
-            {{-- navbar --}}
-            <div class="content">
-
-                @include('backend.includes.navbar')
-
-                @include('sweetalert::alert')
+     @include('backend.includes.sidebar')
 
 
-                @yield('content')
+
+          <div class="content">
+            @include('backend.includes.navbar')
+            @yield('content')
 
 
-                @include('backend.includes.footer')
-            </div>
+
+           @include('backend.includes.footer')
+          </div>
 
         </div>
-    </main>
+      </main>
 
-    {{-- @include('backend.includes.customsidebar') --}}
-    @include('backend.includes.scripts')
+   @include('backend.includes.customsidebar')
 
-    @yield('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Initialize Summernote for the 'description' textarea
-            $('#description').summernote();
-    
-            // Initialize Summernote for the 'content' textarea
-            $('#content').summernote({
-                callbacks: {
-                    onSubmit: function(content) {
-                        // Remove <p> tags from the content
-                        return $(content).find('p').unwrap().end().html();
-                    }
-                }
-            });
-        });
-    </script>
-
+   @include('backend.includes.scripts')
 </body>
-
 </html>

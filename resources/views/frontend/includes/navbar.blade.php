@@ -1,10 +1,10 @@
     <!-- Header -->
-    <div class="header">
+    <div class="header container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <div class="image">
-                        <img src="image/header-image.png" alt="">
+                        <img src="{{asset('image/header-image.png')}}" alt="" height="50">
                     </div>
                 </a>
 
