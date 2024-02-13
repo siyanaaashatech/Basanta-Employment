@@ -8,6 +8,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SingleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FaviconController;
@@ -43,7 +44,12 @@ Route::get('/', function () {
 
 Route::get('/index', [FrontViewController::class, 'index'])->name('index');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
-Route::get('/services', [FrontViewController::class, 'render_services'])->name('services');
+
+//Routes for SingleController
+Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
+Route::get('/aboutus', [SingleController::class, 'render_about'])->name('About');
+Route::get('/team', [SingleController::class, 'render_team'])->name('Team');
+
 
 // Authentication routes
 Auth::routes();

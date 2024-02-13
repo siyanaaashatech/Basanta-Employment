@@ -1,11 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    @include('frontend/includes/page_header')
 
     <section class="u-align-center u-clearfix u-grey-5 u-section-11" id="sec-be4d">
         <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">

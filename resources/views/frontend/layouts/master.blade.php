@@ -22,7 +22,7 @@
 
     @include('frontend.includes.footer')
 
-   
+
 
 </body>
 
