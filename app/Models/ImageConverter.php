@@ -3,8 +3,8 @@
 namespace App\Models;
 
 
+use Intervention\Image\Image;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\Facades\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

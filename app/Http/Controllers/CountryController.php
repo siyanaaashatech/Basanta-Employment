@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use DOMDocument;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Country;
-use App\Models\ImageConverter; // Make sure this model exists and contains the necessary methods
-use Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Facades\Session;
-use DOMDocument;
 use Intervention\Image\Facades\Image;
+
 use Exception;
 use Illuminate\Support\Facades\File;
+
+use Illuminate\Support\Facades\Session;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\ImageConverter; // Make sure this model exists and contains the necessary methods
 
 
 class CountryController extends Controller
@@ -57,6 +60,7 @@ class CountryController extends Controller
             return back()->with('error', "Error creating country: " . $e->getMessage());
         }
     }
+
 
     protected function processSummernoteContent($content)
     {
@@ -153,6 +157,7 @@ class CountryController extends Controller
         $country->delete();
         return redirect()->route('admin.countries.index')->with('success', 'Country deleted successfully.');
     }
+
 
 
 

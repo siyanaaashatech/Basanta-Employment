@@ -13,7 +13,7 @@
 
     {{-- @include('frontend.includes.topnav') --}}
 
-    @include('frontend.includes.topnav')
+    {{-- @include('frontend.includes.topnav') --}}
     @include('frontend.includes.navbar')
 
 
@@ -22,8 +22,7 @@
 
     @include('frontend.includes.footer')
 
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
+   
 
 </body>
 

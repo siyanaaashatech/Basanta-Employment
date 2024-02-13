@@ -1,0 +1,417 @@
+
+
+
+
+
+/* For the Title page */
+
+.background {
+background-image: url('../img/heli.jpg');
+height: 200px;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+overflow: hidden;
+display: grid;
+place-items: center;
+position: relative;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(1, 90, 245, 0.4);
+}
+
+
+.page_title{
+  font-size:40px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+   width:fit-content;
+  padding-top: 10px;
+   white-space:nowrap;
+   padding-bottom:13px;
+   position: relative;
+   font-family: var(--firstfont);
+   margin: 20px auto;
+   color: var(--white);
+}
+.page_title:before{
+  background-color: var(--fourth);
+  content: '';
+  display: block;
+  height: 3px;
+  width: 75px;
+  margin-bottom: 5px;
+}
+.page_title:after{
+  background-color: var(--fourth);
+  content: '';
+  display: block;
+  position:absolute;
+  right:0;
+  bottom:0;
+  height: 3px;
+  width: 75px;
+  margin-bottom: 0.25em;
+}
+
+
+
+
+
+
+.header .navbar .collapse ul li:hover {
+    background: #d4d0d0;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .lastword {
+      display: none;
+    }
+  }
+  .banner {
+    background-image: linear-gradient(to right, rgb(255, 174, 0), red);
+  }
+  .banner .contain {
+    width: 100%;
+  }
+  .banner .contain .box1 .text-white {
+    margin-top: 130px;
+    margin-left: 100px;
+  }
+  .banner .contain .box1 .text-white .lastword {
+    position: absolute;
+    margin-top: 100px;
+    /* margin-left: 180px; */
+  }
+  .banner .contain .box2 {
+    height: 520px;
+  }
+  .banner .contain .box2 .position-relative {
+    margin-top: 50px;
+  }
+  .banner .contain .box2 .position-relative .image1 img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .banner .contain .box2 .position-relative .image2 {
+    margin-left: 100px;
+    margin-top: 170px;
+  }
+  .banner .contain .box2 .position-relative .image2 img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .banner .contain .box2 .position-relative .image3 {
+    margin-left: 220px;
+  }
+  .banner .contain .box2 .position-relative .image3 img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .banner .contain .box3 {
+    height: 470px;
+  }
+  .banner .contain .box3 .position-relative {
+    margin-left: 50px;
+  }
+  .banner .contain .box3 .position-relative .image4 {
+    margin-left: 113px;
+  }
+  .banner .contain .box3 .position-relative .image4 img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .banner .contain .box3 .position-relative .image5 {
+    margin-top: 170px;
+    margin-left: 50px;
+  }
+  .banner .contain .box3 .position-relative .image5 img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  
+  .flexbox .flexcard .flextext {
+    background-color: white;
+    height: 95px;
+    width: 250px;
+  }
+  
+  .services .container .row .box {
+    margin-top: 100px;
+  }
+  .services .container .row .box .circle-3 {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 200px;
+    background-color: rgb(0, 17, 255);
+  }
+  .services .container .row .box .circle-1 {
+    background-color: white;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .services .container .row .box .circle-1 .circle-2 {
+    background-color: white;
+    height: 260px;
+    width: 260px;
+    border-radius: 50%;
+    border: 5px solid rgba(184, 181, 181, 0.74);
+  }
+  .services .container .row .box .circle-1 .circle-2 .text {
+    margin-top: 50px;
+  }
+  .services button {
+    border: 1px solid black;
+    margin-top: 40px;
+    border: 1px solid white;
+  }
+  
+  .slider .container-fluid .carousel .carousel-inner .carousel-item .image {
+    height: 300px;
+  }
+  .slider .container-fluid .carousel .carousel-inner .carousel-item .image img {
+    width: 100%;
+    height: 100%;
+  }
+  .slider .container-fluid .back {
+    margin-top: -290px;
+    margin-left: 15px;
+  }
+  .slider .container-fluid .back img {
+    width: 103%;
+    height: 100%;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .back {
+      height: 300px;
+    }
+    .back img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .enroll .col-md-5 {
+    background-image: linear-gradient(to bottom, rgb(9, 28, 72), rgb(72, 109, 233));
+  }
+  .enroll .col-md-5 .empty {
+    color: rgb(44, 9, 240);
+  }
+  
+  .logos .logo .image {
+    width: 200px;
+  }
+  .logos .logo .image img {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .cources .subjects .subject1 {
+    margin: 0px;
+    padding: 0px;
+  }
+  .cources .subjects .subject1 button {
+    margin-top: 150px;
+    margin-right: 40px;
+  }
+  .cources .subjects .subject2 {
+    margin: 0px;
+    padding: 0px;
+  }
+  .cources .subjects .subject2 button {
+    margin-top: 150px;
+    margin-right: 0px;
+  }
+  .cources .subjects .subject3 {
+    margin: 0px;
+    padding: 0px;
+  }
+  .cources .subjects .subject3 button {
+    margin-top: 150px;
+    margin-right: 80px;
+  }
+  .cources .subjects .subject4 {
+    margin: 0px;
+    padding: 0px;
+  }
+  .cources .subjects .subject4 button {
+    margin-top: 150px;
+    margin-right: 40px;
+  }
+  .cources .subjects .subject5 {
+    margin: 0px;
+    padding: 0px;
+  }
+  .cources .subjects .subject5 button {
+    margin-top: 150px;
+  }
+  .cources .subjects .subject6 {
+    margin: 0px;
+    padding: 0px;
+  }
+  .cources .subjects .subject6 button {
+    margin-top: 150px;
+    margin-right: 80px;
+  }
+  
+  .join {
+    margin: 40px 0px;
+  }
+  .join .students .carousel .carousel-inner .carousel-item .carousel-caption {
+    margin-left: 300px;
+    width: 500px;
+    background-color: white;
+    border: 1px solid wheat;
+  }
+  .join .students .carousel .carousel-inner .carousel-item .carousel-caption button {
+    border-style: none;
+    padding: 10px 30px;
+  }
+  .join .students .carousel .carousel-inner .carousel-item .image {
+    height: 400px;
+    width: 500px;
+  }
+  .join .students .carousel .carousel-inner .carousel-item .image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: fill;
+       object-fit: fill;
+  }
+  
+  .footer {
+    background-image: linear-gradient(rgb(9, 28, 72), rgb(58, 73, 121));
+  }
+  .footer .box ul li {
+    list-style: none;
+  }
+  .footer .box ul li a {
+    text-decoration: none;
+    color: white;
+    line-height: 35px;
+  }
+  
+  .boko {
+    background-color: rgb(9, 28, 72);
+  }
+  
+  .foot .box2 .col {
+    max-width: 50px;
+  }
+  .foot .box2 .fb i {
+    background-color: blue;
+  }
+  .foot .box2 .tw i {
+    background-color: #00ACEE;
+  }
+  .foot .box2 .li i {
+    background-color: #0E76A8;
+  }
+  .foot .box2 .in i {
+    background-image: linear-gradient(to bottom, rgb(248, 7, 7), rgba(233, 96, 72, 0.747));
+  }
+  .foot .box2 .yo i {
+    background-color: rgb(255, 0, 21);
+  }
+  .foot .box2 a {
+    color: white;
+  }
+  .foot .box2 i {
+    padding: 7px;
+    border-radius: 50%;
+  }/*# sourceMappingURL=main.css.map */
+
+
+/* For Services Page */
+
+/* For ANother single page */
+
+h1.single_title { 
+  font-size: 32px;
+   margin: 50px auto;
+   text-align: center;
+   color: var(--first);
+  }
+/* ----------------- */
+/* Third */
+
+h1.single_title span {
+display: inline;
+/* background-image: 
+  linear-gradient(to right, firebrick, darkorange); */
+  background-image: linear-gradient(to right, navy, dodgerblue);
+background-size: 100% 15%;
+background-repeat: no-repeat;
+background-position: center bottom;
+}
+
+.single_page {
+width: 100%;
+margin: 1em;
+}
+
+.singleImage {
+width: auto;
+max-width: 500px;
+height: 400px;
+float: left;
+padding: 0 1.25em 1.25em 0;
+border-radius: 10px 10px 10px 10px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+.single_page{
+  width: 100%;
+}
+.singleImage{
+  width: 100%;
+  float: none;
+  height:auto;
+  max-height: 500px;
+  object-position: center;
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
