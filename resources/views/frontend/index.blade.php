@@ -18,24 +18,24 @@
             <div class="box2 col-lg-4 col-md-6 col-sm-12">
                 <div class="position-relative">
                     <div class="image1 position-absolute" style="height: 300px; width: 150px;">
-                        <img src="image/nico-smit-8Rk1DqL_Lkc-unsplash.jpg" alt="Image 1">
+                        <img src="{{ asset('image/nico-smit-8Rk1DqL_Lkc-unsplash.jpg') }}" alt="Image 1">
                     </div>
                     <div class="image2 position-absolute" style="height: 300px; width: 150px;">
-                        <img src="image/atahan-guc-QcMeSaXPIF0-unsplash.jpg" alt="Image 2">
+                        <img src="{{ asset('image/atahan-guc-QcMeSaXPIF0-unsplash.jpg') }}" alt="Image 2">
                     </div>
                     <div class="image3 position-absolute" style="height: 300px; width: 150px;">
-                        <img src="image/diogo-nunes-2c08m7lce68-unsplash.jpg" alt="Image 3">
+                        <img src="{{ asset('image/diogo-nunes-2c08m7lce68-unsplash.jpg') }}" alt="Image 3">
                     </div>
                 </div>
             </div>
             <div class="box3 col-lg-3 col-md-6 col-sm-12">
                 <div class="position-relative">
                     <div class="image4 position-absolute ">
-                        <img src="image/nico-smit-8Rk1DqL_Lkc-unsplash.jpg" style="height: 300px; width: 150px;"
+                        <img src="{{ asset('image/nico-smit-8Rk1DqL_Lkc-unsplash.jpg') }}" style="height: 300px; width: 150px;"
                             alt="Image 4">
                     </div>
                     <div class="image5 position-absolute ">
-                        <img src="image/atahan-guc-QcMeSaXPIF0-unsplash.jpg" style="height: 300px; width: 150px;"
+                        <img src="{{ asset('image/atahan-guc-QcMeSaXPIF0-unsplash.jpg') }}" style="height: 300px; width: 150px;"
                             alt="Image 5">
                     </div>
                 </div>
@@ -48,26 +48,26 @@
     {{-- For Services --}}
     <div class="services bg-primary">
         <div class="container ">
-            <div class="flexbox d-flex ">
-                <div class="flexcard row mx-5">
+            <div class="flexbox row ">
+                <div class="flexcard col-xl-4 row mt-xs-3">
                     <div class="fleximage col p-0">
-                        <img src="/image/card3.avif" class="img-fluid" alt="">
+                        <img src="{{ asset('image/card3.avif') }}" class="img-fluid" alt="">
                     </div>
                     <div class="flextext col">
                         <p>How Did van Gogh's Turbulrnt Mind Depict One of the Most Comple</p>
                     </div>
                 </div>
-                <div class="flexcard row">
+                <div class="flexcard col-xl-4 row">
                     <div class="fleximage col p-0">
-                        <img src="/image/card3.avif" class="img-fluid" alt="">
+                        <img src="{{ asset('image/card3.avif') }}" class="img-fluid" alt="">
                     </div>
                     <div class="flextext col">
                         <p>How Did van Gogh's Turbulrnt Mind Depict One of the Most Comple</p>
                     </div>
                 </div>
-                <div class="flexcard row mx-5">
+                <div class="flexcard col-xl-4 row mt-xs-3">
                     <div class="fleximage col p-0">
-                        <img src="/image/card3.avif" class="img-fluid" alt="">
+                        <img src="{{ asset('image/card3.avif') }}" class="img-fluid" alt="">
                     </div>
                     <div class="flextext col">
                         <p>How Did van Gogh's Turbulrnt Mind Depict One of the Most Comple</p>
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <h2 class="text-white text-center">Services Hightlight</h2>
+        <h1 class="mt-5 text-white text-center">Services Hightlight</h1>
         <div class="container text-center">
             <div class="row justify-content-center text-center">
                 <div class="box col-lg-4 col-md-4 col-sm-12">
@@ -164,7 +164,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="image">
-                                <img src="image/slide1.jpg" class="d-block w-100" alt="">
+                                <img src="{{ asset('image/slide1.jpg') }}" class="d-block w-100" alt="">
                             </div>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>First slide label</h5>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="carousel-item">
                             <div class="image">
-                                <img src="image/slide2.jpg" class="d-block w-100" alt="">
+                                <img src="{{ asset('image/slide2.jpg') }}" class="d-block w-100" alt="">
                             </div>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Second slide label</h5>
@@ -182,7 +182,7 @@
                         </div>
                         <div class="carousel-item">
                             <div class="image">
-                                <img src="image/slide3.jpg" class="d-block w-100" alt="">
+                                <img src="{{ asset('image/slide3.jpg') }}" class="d-block w-100" alt="">
                             </div>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Third slide label</h5>
@@ -202,7 +202,7 @@
                     </button>
                 </div>
                 <div class="back">
-                    <img src="/image/back.png" alt="">
+                    <img src="{{ asset('image/back.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -231,7 +231,7 @@
       </div>
   </div>
   <!-- Logo -->
-  <div class="container ">
+  {{-- <div class="container ">
       <div class="text-center my-5">
           <h2>Institue we Represent</h2>
           <h5 class="text-primary">We work with some of the best educational institutions around the globe</h5>
@@ -276,7 +276,7 @@
       </div>
       <div class="text-center my-4"><button class="btn bg-primary text-white ">View all Universities</button></div>
 
-  </div>
+  </div> --}}
 
   <!-- Cources -->
   <div class="container">
@@ -345,7 +345,7 @@
                   <div class="carousel-inner">
                       <div class="carousel-item active" data-bs-interval="10000">
                           <div class="image">
-                              <img src="/image/female1.avif" class="d-block w-100" alt="">
+                              <img src="{{ asset('image/female1.avif') }}" class="d-block w-100" alt="">
                           </div>
                           <div class="carousel-caption">
                               <div class="container">
@@ -367,8 +367,8 @@
                       </div>
                       <div class="carousel-item" data-bs-interval="2000">
                           <div class="image">
-                              <img src="/image/female2.avif" class="d-block w-100" alt="...">
-                          </div>
+                            <img src="{{ asset('image/female1.avif') }}" class="d-block w-100" alt="">
+                        </div>
 
                           <div class="carousel-caption d-none d-md-block">
                               <div class="container text-dark">
@@ -390,8 +390,8 @@
                       </div>
                       <div class="carousel-item">
                           <div class="image">
-                              <img src="/image/female3.avif" class="d-block w-100" alt="...">
-                          </div>
+                            <img src="{{ asset('image/female1.avif') }}" class="d-block w-100" alt="">
+                        </div>
                           <div class="carousel-caption d-none d-md-block">
                               <div class="container text-dark m-3">
                                   <p class="text-start">"My journey at the University of Soouth Australia has been
