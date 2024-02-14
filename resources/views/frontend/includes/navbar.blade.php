@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <div class="image">
-                        <img src="image/header-image.png" alt="">
+                        <img src="{{ asset('uploads/sitesetting/ . $sitesetting->image') }}" alt="Logo Image">
                     </div>
                 </a>
 
@@ -12,7 +12,7 @@
                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav m-auto navbar-nav-scroll" style="--bs-scroll-height: 500px;">
                         <li class="nav-item dropdown">
@@ -72,7 +72,8 @@
                             </ul>
                         </li>
                     </ul>
-                    <a class="nav-link text-primary m-3 fs-5" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a class="nav-link text-primary m-3 fs-5" href="#"><i
+                            class="fa-solid fa-magnifying-glass"></i></a>
                     <button class="btn bg-primary text-white">Apply Now</button>
                     <a class="nav-link m-3 fs-5" href="">9876543210</a>
                 </div>

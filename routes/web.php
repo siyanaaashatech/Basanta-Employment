@@ -111,3 +111,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
 });
 
+    Route::get('/blogs', [FrontViewController::class, 'blogs'])->name('blogs.index');
+
+    Route::get('/news', [FrontViewController::class, 'news'])->name('news.index');
+
+
+
+
+
