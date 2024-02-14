@@ -118,17 +118,6 @@ class SingleController extends Controller
         return view('frontend.video', compact('videos', 'services', 'categories', 'sitesetting', 'about'));
     }
 
-    public function render_galleryImage($id)
-    {
-        $image = PhotoGallery::findorfail($id);
-        $categories = Category::all();
-        $services = Service::latest()->get();
-        $sitesetting = SiteSetting::first();
-        $about = About::first();
-
-        return view('frontend.image', compact('image', 'services', 'categories', 'sitesetting', 'about'));
-    }
-
     public function teams()
     {
         $teams = Team::latest()->get();
