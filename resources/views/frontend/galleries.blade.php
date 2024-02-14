@@ -1,23 +1,20 @@
-@extends('portal.layouts.master')
+@extends('frontend.layouts.master')
 
 @section('content')
-  
+    <div class="background">
+        <h1 class="page_title">{{ 'Gallery' }}</h1>
+    </div>
 
 
-<div class="background">
-    <h1 class="page_title">{{ 'Gallery' }}</h1>
-</div>
+    <section class="gallery_section">
+        <div class="container">
 
 
-<section class="gallery_section">
-    <div class="container">
-     
-    
-     <div class="row">
+            <div class="row">
 
                 @foreach ($images as $image)
                     <div class="col-md-6 mt-3 mb-3">
-                        <a style="color: var(--first)" href="{{ route('single_image',['id' => $image->id]) }}">
+                        <a style="color: var(--first)" href="{{ route('single_image', ['id' => $image->id]) }}">
                             <div class="accordion">
                                 <h4 class="text-center">{{ $image->img_desc }}</h4>
                                 <ul>
@@ -39,9 +36,6 @@
 
 
 
-    </div>
-</section>
-
-
-
+        </div>
+    </section>
 @endsection

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\Facades\Session;
 use Cviebrock\EloquentSluggable\Services\SlugService;
-use App\Models\ImageConverter; // Make sure this model exists and contains the necessary methods
+use App\Models\ImageConverter;
 
 
 class CountryController extends Controller

@@ -47,10 +47,22 @@ Route::get('/index', [FrontViewController::class, 'index'])->name('index');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
 
 //Routes for SingleController
-Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
-Route::get('/aboutus', [SingleController::class, 'about'])->name('About');
-Route::get('/team', [SingleController::class, 'render_team'])->name('Team');
+Route::prefix('/')->group(function () {
+    Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
+    Route::get('/aboutus', [SingleController::class, 'render_about'])->name('About');
+    Route::get('/team', [SingleController::class, 'render_team'])->name('Team');
+    Route::get('/services', [SingleController::class, 'render_service'])->name('Service');
+    Route::get('/singleservice/{slug}', [SingleController::class, 'render_singleService'])->name('SingleService');
+    Route::get('/gallery', [SingleController::class, 'render_gallery'])->name('Gallery');
+    Route::get('/video', [SingleController::class, 'render_videos'])->name('Video');
+    Route::get('/singlecountry/{slug}', [SingleController::class, 'render_singleCountry'])->name('singleCountry');
+    Route::get('/singleuniversity/{slug}', [SingleController::class, 'render_singleUniversity'])->name('singleUniversity');
+    Route::get('/singlecourse/{slug}', [SingleController::class, 'render_singleCourse'])->name('singleCourse');
 
+
+
+
+});
 
 // Authentication routes
 Auth::routes();
@@ -116,36 +128,4 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     // Favicon controller
     Route::resource('favicons', FaviconController::class);
 
-});
-
-
-
-
-Route::prefix('/')->group(function () {
-
-    
-//     Route::get('category/{slug}/{id}', 'SingleController@renderCategory')->name('category.render');
-//     Route::get('post/{slug}/{id}', 'SingleController@renderPost')->name('post.render');
-//     Route::get('/post/load-more', 'SingleController@loadMore')->name('post.loadMore');
-//     Route::get('/about', 'SingleController@about')->name('render_about');
-//     Route::get('/services', 'SingleController@service')->name('render_services');
-// Route::get('services/{id}', 'SingleController@singleService')->name('single_service');
-
-//     Route::get('/gallery', 'SingleController@gallery')->name('render_images');
-// Route::get('gallery/{id}', 'SingleController@galleryImage')->name('single_image');
-
-//     Route::get('/videos', 'SingleController@videos')->name('render_videos');
-//     Route::get('/team', 'SingleController@teams')->name('render_team');
-
-//     Route::get('category/{slug}/{id}', 'SingleController@renderCategory')->name('category.render');
-//     Route::get('post/{id}', 'SingleController@singlePost')->name('post.render');
-
-
-//     Route::get('/contact_page', 'SingleController@contact_page')->name('render_contact');
-
-//     // Route::post('/contactpage', [ContactController::class, 'store'])->name('contact.store');
-//     // Route::post('/contactpage', [ContactUsController::class, 'store_subscription'])->name('contact.store_subscription');
-
-//     Route::get('photofeature/{id}', 'SingleController@photofeature')->name('photofeature');
-//     Route::get('post/increment/share/{id}', 'SingleController@incrementShare')->name('post.incrementShare');
 });

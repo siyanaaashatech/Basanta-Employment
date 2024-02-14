@@ -1,4 +1,4 @@
-@extends('portal.layouts.master')
+@extends('frontend.layouts.master')
 
 @section('content')
 
@@ -15,7 +15,7 @@
     <h1 class="single_title"><span>{{ $service->title }}</span></h1>
   <article class="single_page">
     {{-- <img src="https://placehold.it/200x200"> --}}
-    <img src="{{ asset('uploads/services/' . $service->image) }}" alt="Post Image" class="singleImage">
+    <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Post Image" class="singleImage">
     
     <div>{!! $service->content !!}
 

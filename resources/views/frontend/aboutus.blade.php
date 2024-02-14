@@ -1,11 +1,13 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    @include('frontend/includes/page_header')
-
+    <div class="background">
+        <h1 class="page_title">{{ __('About Us') }}</h1>
+    </div>
+    </section>
     <section class="about_page">
         <div class="container">
-
+            <h1 class="single_title"><span>{{ $about->title }}</span></h1>
             <div class="row">
                 <div class="col-md-5 p-0 col-lg-5 col-sm-12">
                     @if ($about)
@@ -25,6 +27,6 @@
 
 
     {{-- Include any related file --}}
-    @include('frontend/includes/teams');
-    @include('frontend/includes/contact');
+    {{-- @include('frontend/includes/teams'); --}}
+    {{-- @include('frontend/includes/contact'); --}}
 @endsection

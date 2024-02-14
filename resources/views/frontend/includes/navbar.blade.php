@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <div class="image">
-                        <img src="{{asset('image/header-image.png')}}" alt="" height="50">
+                        <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
                     </div>
                 </a>
 
@@ -18,11 +18,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                About
+                                Introduction
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('About') }}">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="{{ route('About') }}">About us</a></li>
+                                <li><a class="dropdown-item" href="{{ route('Team') }}">Our Teams</a></li>
+                                <li><a class="dropdown-item" href="{{ route('Service') }}">Services</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -34,14 +35,15 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Study Abroad
                             </a>
+
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                @foreach ($countries as $country)
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('singleCountry', ['slug' => $country->slug]) }}">Study in
+                                            {{ $country->name }}</a></li>
+                                @endforeach
                             </ul>
+
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
@@ -49,12 +51,11 @@
                                 Universities
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                @foreach ($universities as $university)
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('singleUniversity', ['slug' => $university->slug]) }}">
+                                            {{ $university->title }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -63,12 +64,11 @@
                                 Courses
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                @foreach ($courses as $course)
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('singleCourse', ['slug' => $course->slug]) }}">
+                                            {{ $course->title }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>
