@@ -20,7 +20,9 @@
 
                 <div class="col-md-7 col-lg-7 col-sm-12">
                     <!-- About Us Content -->
-                    {!! $about->content !!}
+                    <div style="text-align: justify;">
+                        {!! $about->content !!}
+                    </div>
                 </div>
             </div>
     </section>
