@@ -50,37 +50,43 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($countries as $country)
-                <tr data-widget="expandable-table" aria-expanded="false">
-                    <td width="5%">{{ $loop->iteration }}</td>
-                    <td>{{ $country->name ?? '' }}</td>
-                    <td>
-                        <div class="image-container">
-                            @if ($country->image)
-                                @foreach (json_decode($country->image) as $image)
-                                    <img src="{{ asset('uploads/country/' . $image) }}" class="actual-image"
-                                        style="width: 50px; height: 50px;">
-                                @endforeach
-                            @endif
-                        </div>
-                        <div id="preview{{ $loop->iteration }}"></div>
-                    </td>
-                    <td>{{ $country->content ?? '' }}</td>
-                    <td>
-                        <div style="display: flex; flex-direction:row;">
-                            <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-warning btn-sm"
-                                style="margin-right: 5px;"><i class="fas fa-edit"></i>
-                                Edit</a>
-                            <form action="{{ route('admin.countries.destroy', $country->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
-                        </div>
-                    </td>
+            @if ($countries)
+                @foreach ($countries as $country)
+                    <tr data-widget="expandable-table" aria-expanded="false">
+                        <td width="5%">{{ $loop->iteration }}</td>
+                        <td>{{ $country->name ?? '' }}</td>
+                        <td>
+                            <div class="image-container">
+                                @if ($country->image)
+                                    @foreach (json_decode($country->image) as $image)
+                                        <img src="{{ asset('uploads/country/' . $image) }}" class="actual-image"
+                                            style="width: 50px; height: 50px;">
+                                    @endforeach
+                                @endif
+                            </div>
+                            <div id="preview{{ $loop->iteration }}"></div>
+                        </td>
+                        <td>{{ $country->content ?? '' }}</td>
+                        <td>
+                            <div style="display: flex; flex-direction:row;">
+                                <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-warning btn-sm"
+                                    style="margin-right: 5px;"><i class="fas fa-edit"></i>
+                                    Edit</a>
+                                <form action="{{ route('admin.countries.destroy', $country->id) }}" method="POST"
+                                    onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            @else
+                <tr>
+                    <td colspan="5">No countries found.</td>
                 </tr>
-            @endforeach
+            @endif
         </tbody>
     </table>
     {{-- <script>
