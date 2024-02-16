@@ -389,16 +389,14 @@
         <div class="students">
             <div id="carouselExampleDark" class="carousel slide">
                 <div class="carousel-inner">
-                    <div class="carousel-item active row" data-bs-interval="10000">
-                        <div class="col-lg-6 col-md-6">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        
                             <div class="image">
-                                <img src="/image/female1.avif" class="d-block w-100" alt="">
+                                <img src="/image/female1.avif" class="d-block w-100 img-fluid" alt="">
                             </div>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6"></div>
+                       
                         <div class="carousel-caption">
-
+                        <div class="container text-dark m-3">
                             <div class="text-start text-dark">
                                 "My journey at the University of Soouth
                                 Australia has been an
@@ -414,19 +412,19 @@
                                 <P>University of South Australia(Master of Social Work)</P>
                                 <button class="bg-primary text-white text-center"> VIEW ALL -</button>
                             </div>
-
+                            </div>
                         </div>
                     </div>
 
                 
 
-                <div class="carousel-item row" data-bs-interval="2000">
-                    <div class="image col-md-6">
-                        <img src="/image/female2.avif" class="d-block w-100" alt="...">
+                <div class="carousel-item" data-bs-interval="2000">
+                    <div class="image">
+                        <img src="/image/female2.avif" class="d-block w-100 img-fluid" alt="...">
                     </div>
 
-                    <div class="carousel-caption d-none d-md-block col-md-6">
-                        <div class="container text-dark">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="container text-dark m-3">
                             <p class="text-start">"My journey at the University of Soouth Australia has been
                                 an
                                 exciting and beautiful roller coaster ride.As an international student,your
@@ -443,11 +441,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item row">
-                    <div class="image col-lg-6">
-                        <img src="/image/female3.avif" class="d-block w-100" alt="...">
+                <div class="carousel-item">
+                    <div class="image">
+                        <img src="/image/female3.avif" class="d-block w-100 img-fluid" alt="...">
                     </div>
-                    <div class="carousel-caption d-none d-md-block col-lg-6">
+                    <div class="carousel-caption d-none d-md-block">
                         <div class="container text-dark m-3">
                             <p class="text-start">"My journey at the University of Soouth Australia has been
                                 an
