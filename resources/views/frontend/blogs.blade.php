@@ -1,7 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<<<<<<< HEAD
     <div class="background">
         <h1 class="page_title">
             Our Blogs
@@ -53,13 +52,4 @@
             }
         );
     </script>
-=======
-    <h1>Blog Post</h1>
-
-    @foreach ($blogs as $blog)
-        <h3 class="blog-title">{{ $blog->title }}</h3>
-        <p class="blog-description">{{ $blog->description }}</p>
-        {{-- <img src="{{ $blog->img }}" alt=""> --}}
-    @endforeach
->>>>>>> origin/al_devs
 @endsection

@@ -55,8 +55,7 @@ Route::prefix('/')->group(function () {
     Route::get('/singlecountry/{slug}', [SingleController::class, 'render_singleCountry'])->name('singleCountry');
     Route::get('/singleuniversity/{slug}', [SingleController::class, 'render_singleUniversity'])->name('singleUniversity');
     Route::get('/singlecourse/{slug}', [SingleController::class, 'render_singleCourse'])->name('singleCourse');
-
-
+    Route::get('/gallerys/{slug}', [SingleController::class, 'render_singleImage'])->name('singleImage');
 
 
 });
