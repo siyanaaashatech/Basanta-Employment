@@ -8,6 +8,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SingleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FaviconController;
@@ -37,16 +38,38 @@ use App\Http\Controllers\BlogPostsCategoryController;
 */
 
 // Frontend routes
+Route::get('/admin', function () {
+    return redirect()->route('login');
+});
+
+Route::get('/', [FrontViewController::class, 'index'])->name('index');
 Route::get('/index', [FrontViewController::class, 'index'])->name('index');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
-Route::get('/services', [FrontViewController::class, 'render_services'])->name('services');
+
+//Routes for SingleController
+Route::prefix('/')->group(function () {
+    Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
+    Route::get('/aboutus', [SingleController::class, 'render_about'])->name('About');
+    Route::get('/team', [SingleController::class, 'render_team'])->name('Team');
+    Route::get('/services', [SingleController::class, 'render_service'])->name('Service');
+    Route::get('/singleservice/{slug}', [SingleController::class, 'render_singleService'])->name('SingleService');
+    Route::get('/gallery', [SingleController::class, 'render_gallery'])->name('Gallery');
+    Route::get('/video', [SingleController::class, 'render_videos'])->name('Video');
+    Route::get('/singlecountry/{slug}', [SingleController::class, 'render_singleCountry'])->name('singleCountry');
+    Route::get('/singleuniversity/{slug}', [SingleController::class, 'render_singleUniversity'])->name('singleUniversity');
+    Route::get('/singlecourse/{slug}', [SingleController::class, 'render_singleCourse'])->name('singleCourse');
+
+
+
+
+});
 
 // Authentication routes
 Auth::routes();
 
 // Backend routes with prefix and middleware
 Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('/admin', [AdminController::class, 'index'])->name('index');
 
     // Site settings
     Route::resource('site-settings', SiteSettingController::class);
@@ -107,11 +130,6 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
 });
 
-    Route::get('/blogs', [FrontViewController::class, 'blogs'])->name('blogs.index');
+Route::get('/blogs', [FrontViewController::class, 'blogs'])->name('blogs.index');
 
-    Route::get('/news', [FrontViewController::class, 'news'])->name('news.index');
-
-
-
-
-
+Route::get('/news', [FrontViewController::class, 'news'])->name('news.index');

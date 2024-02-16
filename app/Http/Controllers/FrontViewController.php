@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+// use App\Models\Service;
+
+use App\Models\Team;
 use App\Models\About;
 use App\Models\Contact;
+use App\Models\Country;
 use App\Models\Service;
-use App\Models\University;
+use App\Models\Category;
 use App\Models\SiteSetting;
-use App\Models\BlogPostsCategory;
+use App\Models\PhotoGallery;
+use Illuminate\Http\Request;
 
 class FrontViewController extends Controller
 {
@@ -18,27 +24,33 @@ class FrontViewController extends Controller
         $sitesetting = SiteSetting::first();
         $services = Service::latest()->get()->take(5);
         $contacts = Contact::latest()->get();
-        $universities = University::latest()->get()->take(5);
+        $countries = Country::all();
+        $countryImages = [];
+
+        foreach ($countries as $country) {
+            $images = json_decode($country->image, true);
+            $countryImages = array_merge($countryImages, $images);
+        }
         return view('frontend.index', compact([
-            'services','sitesetting', 'contacts', 'universities'
+            'services',
+            'contacts',
+            'countries',
+            'countryImages'
         ]));
     }
 
-    public function blogs()
+
+
+    public function about()
     {
-        $blogs = BlogPostsCategory::latest()->get();
+        $serviceList = Service::latest()->get()->take(6);
+        $categories = Category::all();
+        $services = Service::latest()->get();
+        $sitesetting = SiteSetting::first();
+        $about = About::first();
+        $images = PhotoGallery::latest()->get();
+        $strippedContent = preg_replace('/<p>(\s*<iframe[^>]*><\/iframe>\s*)<\/p>/', '$1', $about->content);
 
-        return view('frontend.blogs', compact([
-            'blogs',
-        ]));
-
-    }
-
-    public function news()
-    {
-        $about = About::latest()->get()->take(1); 
-
-    return view('frontend.news', compact('about'));
-
+        return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about', 'strippedContent', 'services', 'images'));
     }
 }

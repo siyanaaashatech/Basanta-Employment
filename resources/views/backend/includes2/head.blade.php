@@ -1,7 +1,11 @@
 <head>
+    <?php
+    use App\Models\Favicon;
+    $favicon = Favicon::first();
+    ?>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Panel</title>
+    <title>Trademark</title>
 
     {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     --}}
@@ -30,13 +34,16 @@
 
 
 
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon/' . $favicon->favicon_ico) }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('uploads/favicon/' . $favicon->apple_touch_icon) }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('uploads/favicon/' .$favicon->favicon_thirtyTwo) }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('uploads/favicon/' .$favicon->favicon_sixteen) }}">
-    {{--
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('adminassets/assets/img/favicons/favicon.ico') }}">
-    --}}
-    <link rel="manifest" href="{{ asset('uploads/favicon/file'.$favicon->file) }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ asset('uploads/favicon/' . $favicon->favicon_thirtyTwo) }}">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ asset('uploads/favicon/' . $favicon->favicon_sixteen) }}">
+    <link rel="manifest" href="{{ asset('uploads/favicon/' . $favicon->file) }}">
+
+    <meta name="msapplication-TileImage" content="{{ asset('adminassets/assets/img/favicons/mstile-150x150.png') }}">
 
     <meta name="theme-color" content="#ffffff">
     <script src="{{ asset('adminassets//assets/js/config.js') }}"></script>
@@ -78,24 +85,29 @@
 
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
-      if (isRTL) {
-        var linkDefault = document.getElementById('style-default');
-        var userLinkDefault = document.getElementById('user-style-default');
-        linkDefault.setAttribute('disabled', true);
-        userLinkDefault.setAttribute('disabled', true);
-        document.querySelector('html').setAttribute('dir', 'rtl');
-      } else {
-        var linkRTL = document.getElementById('style-rtl');
-        var userLinkRTL = document.getElementById('user-style-rtl');
-        linkRTL.setAttribute('disabled', true);
-        userLinkRTL.setAttribute('disabled', true);
-      }
+        if (isRTL) {
+            var linkDefault = document.getElementById('style-default');
+            var userLinkDefault = document.getElementById('user-style-default');
+            linkDefault.setAttribute('disabled', true);
+            userLinkDefault.setAttribute('disabled', true);
+            document.querySelector('html').setAttribute('dir', 'rtl');
+        } else {
+            var linkRTL = document.getElementById('style-rtl');
+            var userLinkRTL = document.getElementById('user-style-rtl');
+            linkRTL.setAttribute('disabled', true);
+            userLinkRTL.setAttribute('disabled', true);
+        }
     </script>
 
 
 
 
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
