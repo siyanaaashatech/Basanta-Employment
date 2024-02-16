@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\About;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -9,6 +8,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Log;
+
 
 class AboutController extends Controller
 {
@@ -102,7 +103,7 @@ class AboutController extends Controller
             return redirect()->route('admin.about-us.index')->with('success', 'Success !! About Updated');
         } catch (\Exception $e) {
             // Optionally log the error
-            \Log::error('About update failed: ' . $e->getMessage());
+            Log::error('About update failed: ' . $e->getMessage());
 
             return redirect()->back()->withInput()->with('error', 'Error !! Something went wrong. ' . $e->getMessage());
         }
