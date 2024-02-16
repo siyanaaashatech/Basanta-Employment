@@ -37,10 +37,6 @@ use App\Http\Controllers\BlogPostsCategoryController;
 */
 
 // Frontend routes
-Route::get('/', function () {
-    return redirect()->route('login');
-});
-
 Route::get('/index', [FrontViewController::class, 'index'])->name('index');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
 Route::get('/services', [FrontViewController::class, 'render_services'])->name('services');
