@@ -78,110 +78,50 @@
     <section class="secondSection">
         <div class="contain container">
             <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4">
-                <div class="card col-lg-4" style="max-width: 325px;">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="/image/card3.avif" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                <p class="card-text">How Did van Gogh's Turbulrnt Mind Depict.</p>
+                @foreach ($blogs as $blog)
+                    <div class="card col-lg-4" style="max-width: 325px;">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="/image/card3.avif" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-text">{{ $blog->content }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card col-lg-4" style="max-width: 325px;">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="/image/card3.avif" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                <p class="card-text">How Did van Gogh's Turbulrnt Mind Depict.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card  col-lg-4" style="max-width: 325px;">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="/image/card3.avif" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                <p class="card-text">How Did van Gogh's Turbulrnt Mind Depict.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+
         <!-- Services -->
         <div class="contain container">
 
             <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4 container">
                 <h1 class="text-white heading_title">Our Services</h1>
-                <div class="col-lg-4 " style="max-width: 325px;">
-                    <div class="box text-center">
-                        <div class="circle-3 text-white">
-                            <b>
-                                <p class="my-2">01</p>
-                            </b>
-                        </div>
-                        <div class="circle-1">
-                            <div class="circle-2">
-                                <div class="text">
-                                    <h2> Preparation Classes</h2>
-                                    <h4>Preparation classes for ILETS & PTE. Free mock up text preparation classes are
-                                        conducted every Friday</h4>
-                                </div>
+                @foreach ($services as $service)
+                    <div class="col-lg-4 " style="max-width: 325px;">
+                        <div class="box text-center">
+                            <div class="circle-3 text-white">
+                                <b>
+                                    <p class="my-2">{{ $loop->iteration }}</p>
+                                </b>
                             </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center" style="max-width: 325px;">
-                    <div class="box">
-
-                        <div class="circle-3 text-white">
-                            <b>
-                                <p class="my-2">02</p>
-                            </b>
-                        </div>
-                        <div class="circle-1">
-                            <div class="circle-2">
-                                <div class="text">
-                                    <h2>Career Counselling</h2>
-                                    <h4>We provide one-on-one counselling to students who are seeking directions and
-                                        applying for studying abroad</h4>
+                            <div class="circle-1">
+                                <div class="circle-2">
+                                    <div class="text">
+                                        <h2>{{ $service->title }}</h2>
+                                        <h4>{!! nl2br(e($service->description)) !!}</h4>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 text-center" style="max-width: 325px;">
-                    <div class="box">
-
-                        <div class="circle-3 text-white">
-                            <b>
-                                <p class="my-2">03</p>
-                            </b>
-                        </div>
-                        <div class="circle-1">
-                            <div class="circle-2 ">
-                                <div class="text">
-                                    <h2>Admission Assistance</h2>
-                                    <h4>We offer guidance for student application and admition process for the best
-                                        college and <br> universities</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                <div class="text-center"><button class="btn bg-primary text-white  m-5">View all Services</button></div>
             </div>
-            <div class="text-center"><button class="btn bg-primary text-white  m-5">View all Services</button></div>
-        </div>
     </section>
     <!-- Slider -->
     <div class="container my-5">
@@ -203,41 +143,27 @@
             <div class="container-fluid col-md-6 col-sm-12">
                 <div id="carouselExampleCaptions" class="carousel slide">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="image">
-                                <img src="image/slide1.jpg" class="d-block w-100" alt="">
+                        @foreach ($countries as $key => $country)
+                            <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                <div class="image">
+                                    @foreach (json_decode($country->image) as $image)
+                                        <img src="{{ asset($image) }}" class="d-block w-100" alt="">
+                                    @endforeach
+                                </div>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ $country->name }}</h5>
+                                    <p>{{ $country->content }}</p>
+                                </div>
                             </div>
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
-                                <p>Some representative placeholder content for the first slide.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="image">
-                                <img src="image/slide2.jpg" class="d-block w-100" alt="">
-                            </div>
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Some representative placeholder content for the second slide.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="image">
-                                <img src="image/slide3.jpg" class="d-block w-100" alt="">
-                            </div>
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
-                                <p>Some representative placeholder content for the third slide.</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="prev">
@@ -279,7 +205,7 @@
     </div>
     <!-- Logo -->
 
-    <div class="text-center my-5">
+    {{-- <div class="text-center my-5">
         <h2>Institue we Represent</h2>
         <h5 class="text-primary">We work with some of the best educational institutions around the globe</h5>
     </div>
@@ -323,61 +249,23 @@
         </div>
         <div class="text-center my-4"><button class="btn bg-primary text-white ">View all Universities</button></div>
 
-    </div>
+    </div> --}}
 
     <!-- Cources -->
     <div class="container">
         <div class="cources my-5">
             <h2 class="text-center"> Popular courses for students like you</h2>
             <div class="subjects row">
-                <div class="subject1 col-md-4 col-sm-6">
-                    <div
-                        style="background-image: url('image/book.avif'); background-size: cover; background-position: center; height: 200px; ">
-                        <div class="text-center "><button class="btn bg-primary text-white">BACHELOR IN
-                                ARTS</button>
+                @foreach ($courses as $course)
+                    <div class="subject1 col-md-4 col-sm-6">
+                        <div
+                            style="background-image: url('{{ asset($course->image) }}'); background-size: cover; background-position: center; height: 200px;">
+                            <div class="text-center">
+                                <button class="btn bg-primary text-white">{{ $course->title }}</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="subject2 col-md-4 col-sm-6">
-                    <div
-                        style="background-image: url('image/arts.avif'); background-size: cover; background-position: center; ">
-                        <div class="text-center "><button class="btn bg-primary text-white ">BUSINESS
-                                MANAGEMENT</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="subject3 col-md-4 col-sm-6">
-                    <div
-                        style="background-image: url('image/maths.avif'); background-size: cover; background-position: center;  ">
-                        <div class="text-center "><button class="btn bg-primary text-white ">MATHEMATICS</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="subject4 col-md-4 col-sm-6">
-
-                    <div
-                        style="background-image: url('image/book.avif'); background-size: cover; background-position: center; ">
-                        <div class="text-center "><button class="btn bg-primary text-white ">BACHELOR IN
-                                ARTS</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="subject5 col-md-4 col-sm-6">
-
-                    <div
-                        style="background-image: url('image/arts.avif'); background-size: cover; background-position: center; ">
-                        <div class="text-center "><button class="btn bg-primary text-white ">BUSINESS
-                                MANAGEMENT</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="subject6 col-md-4 col-sm-6">
-                    <div
-                        style="background-image: url('image/maths.avif'); background-size: cover; background-position: center; ">
-                        <div class="text-center "><button class="btn bg-primary text-white ">MATHEMATICS</button>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -389,98 +277,43 @@
         <div class="students">
             <div id="carouselExampleDark" class="carousel slide">
                 <div class="carousel-inner">
-                    <div class="carousel-item active row" data-bs-interval="10000">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="image">
-                                <img src="/image/female1.avif" class="d-block w-100" alt="">
+                    @foreach ($testimonials as $testimonial)
+                        <div class="carousel-item row {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="image">
+                                    <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6"></div>
+                            <div class="carousel-caption">
+
+                                <div class="text-start text-dark">
+                                    {{ $testimonial->description }}
+                                </div>
+                                <div class="text-start text-dark">
+                                    <h2>{{ $testimonial->name }}</h2>
+                                    <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})</p>
+                                    <button class="bg-primary text-white text-center"> VIEW ALL -</button>
+                                </div>
+
                             </div>
                         </div>
-
-                        <div class="col-lg-6 col-md-6"></div>
-                        <div class="carousel-caption">
-
-                            <div class="text-start text-dark">
-                                "My journey at the University of Soouth
-                                Australia has been an
-                                exciting and beautiful roller coaster ride.As an international student,your
-                                studies under a whole new system is a real challenge but I received all the
-                                support I needed to begin my studies confidently. The facilitators have
-                                always
-                                been generous-so much that they've frequently made huge photocopies of study
-                                materials to help me with clarification and understanding."
-                            </div>
-                            <div class="text-start text-dark">
-                                <h2>SALINA SHRESTHA</h2>
-                                <P>University of South Australia(Master of Social Work)</P>
-                                <button class="bg-primary text-white text-center"> VIEW ALL -</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                
-
-                <div class="carousel-item row" data-bs-interval="2000">
-                    <div class="image col-md-6">
-                        <img src="/image/female2.avif" class="d-block w-100" alt="...">
-                    </div>
-
-                    <div class="carousel-caption d-none d-md-block col-md-6">
-                        <div class="container text-dark">
-                            <p class="text-start">"My journey at the University of Soouth Australia has been
-                                an
-                                exciting and beautiful roller coaster ride.As an international student,your
-                                studies under a whole new system is a real challenge but I received all the
-                                support I needed to begin my studies confidently. The facilitators have
-                                always
-                                been generous-so much that they've frequently made huge photocopies of study
-                                materials to help me with clarification and understanding."</p>
-                            <div class="text-start">
-                                <h2>SALINA SHRESTHA</h2>
-                                <P>University of South Australia(Master of Social Work)</P>
-                                <button class="bg-primary text-white text-center"> VIEW ALL -</button>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="carousel-item row">
-                    <div class="image col-lg-6">
-                        <img src="/image/female3.avif" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block col-lg-6">
-                        <div class="container text-dark m-3">
-                            <p class="text-start">"My journey at the University of Soouth Australia has been
-                                an
-                                exciting and beautiful roller coaster ride.As an international student,your
-                                studies under a whole new system is a real challenge but I received all the
-                                support I needed to begin my studies confidently. The facilitators have
-                                always
-                                been generous-so much that they've frequently made huge photocopies of study
-                                materials to help me with clarification and understanding."</p>
-                            <div class="text-start">
-                                <h2>SALINA SHRESTHA</h2>
-                                <P>University of South Australia(Master of Social Work)</P>
-                                <button class="bg-primary text-white text-center"> VIEW ALL -</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
-    </div>
-
-    </div>
-  
 
 
-@stop
+
+    @stop

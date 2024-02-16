@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogPostsCategory;
+use App\Models\Course;
 use App\Models\Post;
 // use App\Models\Service;
 
@@ -13,6 +15,7 @@ use App\Models\Service;
 use App\Models\Category;
 use App\Models\SiteSetting;
 use App\Models\PhotoGallery;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class FrontViewController extends Controller
@@ -24,6 +27,10 @@ class FrontViewController extends Controller
         $sitesetting = SiteSetting::first();
         $services = Service::latest()->get()->take(5);
         $contacts = Contact::latest()->get();
+        $blogs = BlogPostsCategory::latest()->get()->take(5);
+        $courses = Course::latest()->get()->take(6);
+        $testimonials = Testimonial::latest()->get()->take(10);
+
         $countries = Country::all();
         $countryImages = [];
 
@@ -31,9 +38,14 @@ class FrontViewController extends Controller
             $images = json_decode($country->image, true);
             $countryImages = array_merge($countryImages, $images);
         }
+
+
         return view('frontend.index', compact([
             'services',
             'contacts',
+            'blogs',
+            'courses',
+            'testimonials',
             'countries',
             'countryImages'
         ]));
