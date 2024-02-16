@@ -2,63 +2,38 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __($category->title) }}</h1>
+        <h1 class="page_title">
+            Our Blogs
+        </h1>
     </div>
 
-    <section class="single_page">
+
+
+    <section class="sample_page">
         <div class="container">
-            <h1 class="cat_title">{{ __($post->title) }}</h1>
-            <img class="single_page_image col-md-12 my-3" src="{{ $post->firstImagePath }}" alt="Post Image">
+            <div class="row">
 
-            <div style="font-size:20px;">
+                <div class="col-lg-8 col-md-7 col-sm-12 order-1 order-md-1 sample_page_image">
+                    <img src="" class="img-responsive image" alt="">
+                </div>
 
+                <div class="col-lg-12 col-md-12 col-sm-12 order-3 order-md-2 sample_page_content">
 
+                </div>
 
+                <div class="col-lg-4 col-md-5 col-sm-12 order-2 order-md-3 sample_page_list">
+                    <h3 class="">Others</h3>
+                    <ul>
 
-                {{-- {{ $strippedContent }} --}}
+                        <li><span>Example text</span></li>
 
-                @php
-                    $strippedContent = strip_tags($post->content);
-                    // $wordChunks = array_chunk(str_word_count($strippedContent, 1), 100);
-                    $wordChunks = array_chunk(mb_split('\s+', $strippedContent), 200);
-                    $images = json_decode($post->image);
-                    $remainingImages = array_slice($images, 1);
-                    $imageDisplayed = false;
-
-                @endphp
-
-
-
-
-                @foreach ($wordChunks as $index => $wordChunk)
-                    {!! implode(' ', $wordChunk) !!}
-
-                    @if (!$imageDisplayed && $index < count($remainingImages))
-                        <div class="post-images my-3">
-                            <img class="whole_image" src="{{ asset('uploads/posts/' . $remainingImages[$index]) }}"
-                                alt="Post Image">
-                        </div>
-                        @php $imageDisplayed = true; @endphp
-                    @endif
-                @endforeach
-
-                @foreach (array_slice($remainingImages, $imageDisplayed ? 1 : 0) as $image)
-                    <div class="post-images my-3">
-                        <img class="whole_image" src="{{ asset('uploads/posts/' . $image) }}" alt="Post Image">
-                    </div>
-                @endforeach
-
-
-
-
-
+                    </ul>
+                </div>
 
 
             </div>
 
-
-
-
         </div>
+
     </section>
 @endsection

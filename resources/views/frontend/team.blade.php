@@ -2,37 +2,33 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __('Our Team') }}</h1>
+        <h1 class="page_title">Our Team</h1>
     </div>
-
-
-
 
     <section class="single_page">
         <div class="container">
-            {{-- <h3 class="cat_title">{{ __("Employee Details") }}</h3> --}}
+
             <div class="row mt-3">
 
 
-                @foreach ($teams as $team)
-                    <div class="col-md-3">
-                        <div class="card team_card mt-2 mb-2">
-                            @if (isset($team->image))
-                                <img src="{{ asset('uploads/team/' . $team->image) }}" class="card-img-top image">
-                            @else
-                                <img src="{{ url('img/logo.png') }}" class="card-img-top image">
-                            @endif
-                            <div class="card-body">
+                <!-- use  foreach loop from here -->
+                <div class="col-md-3">
+                    <div class="card team_card mt-2 mb-2">
 
-                                <span class="team_name">{{ __($team->name) }}</span><br>
-                                <span class="team_position">{{ __($team->position) }}</span><br>
-                                <span class="team_email">{{ $team->email }}</span><br>
-                                <span class="team_contact">{{ $team->contact_number }}</span>
+                        <img src="Imageofateam" class="card-img-top image" alt="">
 
-                            </div>
+                        <div class="card-body">
+
+                            <span class="team_name">Name</span><br>
+                            <span class="team_position">Position</span><br>
+                            <span class="team_email">Email</span><br>
+                            <span class="team_contact">Contact</span>
+
                         </div>
                     </div>
-                @endforeach
+                </div>
+
+                <!-- to here @endforeach -->
 
             </div>
 

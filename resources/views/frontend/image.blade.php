@@ -2,22 +2,43 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __($image->img_desc) }}</h1>
+        <h1 class="page_title">About Us</h1>
     </div>
+
+
 
     <section class="single_page">
         <div class="container">
 
-            <div class="row mt-3">
-                @foreach ($image->img as $imgUrl)
-                    <div class="col-md-4 mb-3">
-                        <a class="venobox" data-gall="gallery01" href="{{ asset($imgUrl) }}" data-vbtype="image">
-                            <img src="{{ asset($imgUrl) }}" class="gallery_image">
-                        </a>
-                    </div>
-                @endforeach
+
+            <h1 class="cat_title">Photo Gallery</h1>
 
 
+
+            <div class="row">
+
+                <!--Use @foreach here -->
+
+                <div class="col-md-6 mb-3">
+                    <a href="{{ route('single_image') }}">
+                        <div class="accordion">
+                            <ul>
+
+                                <!-- @foreach ($image->img as $imgUrl)
+    -->
+                                <li tabindex="{{ $loop->iteration }}"
+                                    style=" background-image: url('{{ asset($imgUrl) }}');">
+
+                                </li>
+                                <!--
+    @endforeach -->
+
+                            </ul>
+
+                        </div>
+                    </a>
+                </div>
+                <!-- end here @endforeach -->
             </div>
 
 
