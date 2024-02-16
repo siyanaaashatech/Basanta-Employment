@@ -24,6 +24,7 @@
 
 
             <p class="text-center mt-3">{{ $trimmedContent }}</p>
+            
         @endforeach
         <div class="projcard-container">
             @foreach ($services as $service)

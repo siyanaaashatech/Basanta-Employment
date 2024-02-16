@@ -11,24 +11,31 @@
             <div class="row mt-3">
 
 
-                <!-- use  foreach loop from here -->
-                <div class="col-md-3">
-                    <div class="card team_card mt-2 mb-2">
+                @foreach ($teams as $team)
+                    <div class="col-md-3">
+                        <div class="card team_card mt-2 mb-2">
 
-                        <img src="Imageofateam" class="card-img-top image" alt="">
+                            @if ($team->image)
+                                <img src="{{ asset('uploads/team/' . $team->image) }}" class="card-img-top image"
+                                    alt="">
+                            @else
+                                <!-- Default image or placeholder -->
+                                <img src="{{ asset('images/girl.jpg') }}" class="card-img-top image"
+                                    alt="Default Image">
+                            @endif
 
-                        <div class="card-body">
+                            
+                            <div class="card-body">
 
-                            <span class="team_name">Name</span><br>
-                            <span class="team_position">Position</span><br>
-                            <span class="team_email">Email</span><br>
-                            <span class="team_contact">Contact</span>
+                                <span class="team_name">{{ $team->name }}</span><br>
+                                <span class="team_position">{{ $team->postion }}</span><br>
+                                <span class="team_email">{{ $team->email }}</span><br>
+                                <span class="team_contact">{{ $team->phone_no }}</span>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- to here @endforeach -->
+                @endforeach
 
             </div>
 

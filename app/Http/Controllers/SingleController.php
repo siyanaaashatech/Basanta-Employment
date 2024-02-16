@@ -46,7 +46,7 @@ class SingleController extends Controller
         $about = About::first();
         $posts = Post::with('getCategories')->latest()->get()->take(3);
 
-        return view('frontend.includes.teams', compact('teams', 'sitesetting', 'categories', 'about', 'page_title', 'services', 'posts'));
+        return view('frontend.team', compact('teams', 'sitesetting', 'categories', 'about', 'page_title', 'services', 'posts'));
 
     }
 
@@ -108,6 +108,19 @@ class SingleController extends Controller
 
         return view('frontend.galleries', compact('images', 'services', 'categories', 'sitesetting', 'about'));
     }
+
+    public function render_singleImage($id){
+        $image = PhotoGallery::find($id);
+        $categories = Category::all();
+        $services = Service::latest()->get();
+        $sitesetting = SiteSetting::first();
+        $about = About::first();
+
+        return view('frontend.singleImage', compact('image', 'services', 'categories', 'sitesetting', 'about'));
+
+    }
+
+
     public function render_videos()
     {
         $videos = VideoGallery::latest()->get();
