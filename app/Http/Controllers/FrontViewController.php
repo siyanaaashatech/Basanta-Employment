@@ -21,7 +21,7 @@ class FrontViewController extends Controller
     public function index()
     {
         // dd('fav');
-
+        $sitesetting = SiteSetting::first();
         $services = Service::latest()->get()->take(5);
         $contacts = Contact::latest()->get();
         $countries = Country::all();
