@@ -74,95 +74,115 @@
 
 
 
-    {{-- For Services --}}
-    <div class="services bg-primary">
-        <div class="container ">
-            <div class="flexbox row ">
-                <div class="flexcard col-xl-4 row mt-xs-3">
-                    <div class="fleximage col p-0">
-                        <img src="{{ asset('image/card3.avif') }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="flextext col">
-                        <p>How Did van Gogh's Turbulrnt Mind Depict One of the Most Comple</p>
-                    </div>
-                </div>
-                <div class="flexcard col-xl-4 row">
-                    <div class="fleximage col p-0">
-                        <img src="{{ asset('image/card3.avif') }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="flextext col">
-                        <p>How Did van Gogh's Turbulrnt Mind Depict One of the Most Comple</p>
-                    </div>
-                </div>
-                <div class="flexcard col-xl-4 row mt-xs-3">
-                    <div class="fleximage col p-0">
-                        <img src="{{ asset('image/card3.avif') }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="flextext col">
-                        <p>How Did van Gogh's Turbulrnt Mind Depict One of the Most Comple</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <h1 class="mt-5 text-white text-center">Services Hightlight</h1>
-        <div class="container text-center">
-            <div class="row justify-content-center text-center">
-                <div class="box col-lg-4 col-md-4 col-sm-12">
-                    <div class="circle-3 text-white fs-5">
-                        <b>
-                            <p class="my-2">01</p>
-                        </b>
-                    </div>
-                    <div class="circle-1">
-                        <div class="circle-2">
-                            <div class="text">
-                                <h4> Preparation Classes</h4>
-                                <h5>Preparation classes for ILETS & PTE. Free mock up text preparation classes are
-                                    conducted every Friday</h5>
+    <!-- flotbox -->
+    <section class="secondSection">
+        <div class="contain container">
+            <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4">
+                <div class="card col-lg-4" style="max-width: 325px;">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="/image/card3.avif" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <p class="card-text">How Did van Gogh's Turbulrnt Mind Depict.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="box col-lg-4 col-md-4 col-sm-12">
-                    <div class="circle-3 text-white fs-5">
-                        <b>
-                            <p class="my-2">02</p>
-                        </b>
-                    </div>
-                    <div class="circle-1">
-                        <div class="circle-2">
-                            <div class="text">
-                                <h4>Career Counselling</h4>
-                                <h5>We provide one-on-one counselling to students who are seeking directions and
-                                    applying for studying abroad</h5>
+                <div class="card col-lg-4" style="max-width: 325px;">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="/image/card3.avif" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <p class="card-text">How Did van Gogh's Turbulrnt Mind Depict.</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="box col-lg-4 col-md-4 col-sm-12">
-                    <div class="circle-3 text-white fs-5">
-                        <b>
-                            <p class="my-2">03</p>
-                        </b>
-                    </div>
-                    <div class="circle-1">
-                        <div class="circle-2 ">
-                            <div class="text">
-                                <h4>Admission Assistance</h4>
-                                <h5>We offer guidance for student application and admition process for the best
-                                    college and <br> universities</h5>
+                <div class="card  col-lg-4" style="max-width: 325px;">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="/image/card3.avif" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <p class="card-text">How Did van Gogh's Turbulrnt Mind Depict.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="text-center"><button class="btn bg-primary text-white  m-5">View all Services</button></div>
-    </div>
+        <!-- Services -->
+        <div class="contain container">
 
+            <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4 container">
+                <h1 class="text-white heading_title">Our Services</h1>
+                <div class="col-lg-4 " style="max-width: 325px;">
+                    <div class="box text-center">
+                        <div class="circle-3 text-white">
+                            <b>
+                                <p class="my-2">01</p>
+                            </b>
+                        </div>
+                        <div class="circle-1">
+                            <div class="circle-2">
+                                <div class="text">
+                                    <h2> Preparation Classes</h2>
+                                    <h4>Preparation classes for ILETS & PTE. Free mock up text preparation classes are
+                                        conducted every Friday</h4>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center" style="max-width: 325px;">
+                    <div class="box">
 
+                        <div class="circle-3 text-white">
+                            <b>
+                                <p class="my-2">02</p>
+                            </b>
+                        </div>
+                        <div class="circle-1">
+                            <div class="circle-2">
+                                <div class="text">
+                                    <h2>Career Counselling</h2>
+                                    <h4>We provide one-on-one counselling to students who are seeking directions and
+                                        applying for studying abroad</h4>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center" style="max-width: 325px;">
+                    <div class="box">
+
+                        <div class="circle-3 text-white">
+                            <b>
+                                <p class="my-2">03</p>
+                            </b>
+                        </div>
+                        <div class="circle-1">
+                            <div class="circle-2 ">
+                                <div class="text">
+                                    <h2>Admission Assistance</h2>
+                                    <h4>We offer guidance for student application and admition process for the best
+                                        college and <br> universities</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center"><button class="btn bg-primary text-white  m-5">View all Services</button></div>
+        </div>
+    </section>
     <!-- Slider -->
     <div class="container my-5">
         <div class="slider row">
@@ -183,8 +203,8 @@
             <div class="container-fluid col-md-6 col-sm-12">
                 <div id="carouselExampleCaptions" class="carousel slide">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
@@ -193,7 +213,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="image">
-                                <img src="{{ asset('image/slide1.jpg') }}" class="d-block w-100" alt="">
+                                <img src="image/slide1.jpg" class="d-block w-100" alt="">
                             </div>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>First slide label</h5>
@@ -202,7 +222,7 @@
                         </div>
                         <div class="carousel-item">
                             <div class="image">
-                                <img src="{{ asset('image/slide2.jpg') }}" class="d-block w-100" alt="">
+                                <img src="image/slide2.jpg" class="d-block w-100" alt="">
                             </div>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Second slide label</h5>
@@ -211,7 +231,7 @@
                         </div>
                         <div class="carousel-item">
                             <div class="image">
-                                <img src="{{ asset('image/slide3.jpg') }}" class="d-block w-100" alt="">
+                                <img src="image/slide3.jpg" class="d-block w-100" alt="">
                             </div>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Third slide label</h5>
@@ -231,13 +251,11 @@
                     </button>
                 </div>
                 <div class="back">
-                    <img src="{{ asset('image/back.png') }}" alt="">
+                    <img src="/image/back.png" alt="">
                 </div>
             </div>
         </div>
     </div>
-
-
     <!-- Enroll -->
 
     <div class="enroll" row
@@ -260,52 +278,52 @@
         </div>
     </div>
     <!-- Logo -->
-    {{-- <div class="container ">
-      <div class="text-center my-5">
-          <h2>Institue we Represent</h2>
-          <h5 class="text-primary">We work with some of the best educational institutions around the globe</h5>
-      </div>
 
-      <div class="logos row row-cols-lg-4  g-lg-3 ">
-          <div class="logo col">
-              <div class="image">
-                  <img src="image/rmit.png" alt="">
-              </div>
-          </div>
-          <div class="logo col">
-              <div class="image">
-                  <img src="image/boxhill.png" alt="">
-              </div>
-          </div>
-          <div class="logo col">
-              <div class="image">
-                  <img src="image/victorian.png" alt="">
-              </div>
-          </div>
-          <div class="logo col">
-              <div class="image">
-                  <img src="image/western.png" alt="">
-              </div>
-          </div>
-          <div class="logo col">
-              <div class="image">
-                  <img src="image/australia.png" alt="">
-              </div>
-          </div>
-          <div class="logo col">
-              <div class="image">
-                  <img src="image/icms.png" alt="">
-              </div>
-          </div>
-          <div class="logo col">
-              <div class="image">
-                  <img src="image/educo.png" alt="">
-              </div>
-          </div>
-      </div>
-      <div class="text-center my-4"><button class="btn bg-primary text-white ">View all Universities</button></div>
+    <div class="text-center my-5">
+        <h2>Institue we Represent</h2>
+        <h5 class="text-primary">We work with some of the best educational institutions around the globe</h5>
+    </div>
+    <div class="container">
+        <div class="logos row">
+            <div class="logo col-lg-3 col-md-3 col-sm-6">
+                <div class="image">
+                    <img src="image/rmit.png" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="logo col-lg-3 col-md-3 col-sm-6">
+                <div class="image">
+                    <img src="image/boxhill.png" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="logo col-lg-3  col-md-3 col-sm-6">
+                <div class="image">
+                    <img src="image/victorian.png" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="logo col-lg-3 col-md-3 col-sm-6">
+                <div class="image">
+                    <img src="image/western.png" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="logo col-lg-3  col-md-3 col-sm-6">
+                <div class="image">
+                    <img src="image/australia.png" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="logo col-lg-3  col-md-3 col-sm-6">
+                <div class="image">
+                    <img src="image/icms.png" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="logo col-lg-3  col-md-3 col-sm-6">
+                <div class="image">
+                    <img src="image/educo.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="text-center my-4"><button class="btn bg-primary text-white ">View all Universities</button></div>
 
-  </div> --}}
+    </div>
 
     <!-- Cources -->
     <div class="container">
@@ -368,92 +386,167 @@
         <div class="text mt-5">
             <h2 class="text-center">Join students over 1000+ like you</h2>
         </div>
-        <div class="container">
-            <div class="students">
-                <div id="carouselExampleDark" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="10000">
+
+        <div class="students">
+            <div id="carouselExampleDark" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active row" data-bs-interval="10000">
+                        <div class="col-lg-6 col-md-6">
                             <div class="image">
-                                <img src="{{ asset('image/female1.avif') }}" class="d-block w-100" alt="">
-                            </div>
-                            <div class="carousel-caption">
-                                <div class="container">
-                                    <p class="text-start text-dark">"My journey at the University of Soouth
-                                        Australia has been an
-                                        exciting and beautiful roller coaster ride.As an international student,your
-                                        studies under a whole new system is a real challenge but I received all the
-                                        support I needed to begin my studies confidently. The facilitators have
-                                        always
-                                        been generous-so much that they've frequently made huge photocopies of study
-                                        materials to help me with clarification and understanding."</p>
-                                    <div class="text-start text-dark">
-                                        <h2>SALINA SHRESTHA</h2>
-                                        <P>University of South Australia(Master of Social Work)</P>
-                                        <button class="bg-primary text-white text-center"> VIEW ALL -</button>
-                                    </div>
-                                </div>
+                                <img src="/image/female1.avif" class="d-block w-100" alt="">
                             </div>
                         </div>
-                        <div class="carousel-item" data-bs-interval="2000">
-                            <div class="image">
-                                <img src="{{ asset('image/female1.avif') }}" class="d-block w-100" alt="">
+
+                        <div class="col-lg-6 col-md-6"></div>
+                        <div class="carousel-caption">
+
+                            <div class="text-start text-dark">
+                                "My journey at the University of Soouth
+                                Australia has been an
+                                exciting and beautiful roller coaster ride.As an international student,your
+                                studies under a whole new system is a real challenge but I received all the
+                                support I needed to begin my studies confidently. The facilitators have
+                                always
+                                been generous-so much that they've frequently made huge photocopies of study
+                                materials to help me with clarification and understanding."
+                            </div>
+                            <div class="text-start text-dark">
+                                <h2>SALINA SHRESTHA</h2>
+                                <P>University of South Australia(Master of Social Work)</P>
+                                <button class="bg-primary text-white text-center"> VIEW ALL -</button>
                             </div>
 
-                            <div class="carousel-caption d-none d-md-block">
-                                <div class="container text-dark">
-                                    <p class="text-start">"My journey at the University of Soouth Australia has been
-                                        an
-                                        exciting and beautiful roller coaster ride.As an international student,your
-                                        studies under a whole new system is a real challenge but I received all the
-                                        support I needed to begin my studies confidently. The facilitators have
-                                        always
-                                        been generous-so much that they've frequently made huge photocopies of study
-                                        materials to help me with clarification and understanding."</p>
-                                    <div class="text-start">
-                                        <h2>SALINA SHRESTHA</h2>
-                                        <P>University of South Australia(Master of Social Work)</P>
-                                        <button class="bg-primary text-white text-center"> VIEW ALL -</button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="carousel-item">
-                            <div class="image">
-                                <img src="{{ asset('image/female1.avif') }}" class="d-block w-100" alt="">
-                            </div>
-                            <div class="carousel-caption d-none d-md-block">
-                                <div class="container text-dark m-3">
-                                    <p class="text-start">"My journey at the University of Soouth Australia has been
-                                        an
-                                        exciting and beautiful roller coaster ride.As an international student,your
-                                        studies under a whole new system is a real challenge but I received all the
-                                        support I needed to begin my studies confidently. The facilitators have
-                                        always
-                                        been generous-so much that they've frequently made huge photocopies of study
-                                        materials to help me with clarification and understanding."</p>
-                                    <div class="text-start">
-                                        <h2>SALINA SHRESTHA</h2>
-                                        <P>University of South Australia(Master of Social Work)</P>
-                                        <button class="bg-primary text-white text-center"> VIEW ALL -</button>
-                                    </div>
-                                </div>
+                    </div>
+
+                </div>
+
+
+                <div class="carousel-item row" data-bs-interval="2000">
+                    <div class="image col-md-6">
+                        <img src="/image/female2.avif" class="d-block w-100" alt="...">
+                    </div>
+
+                    <div class="carousel-caption d-none d-md-block col-md-6">
+                        <div class="container text-dark">
+                            <p class="text-start">"My journey at the University of Soouth Australia has been
+                                an
+                                exciting and beautiful roller coaster ride.As an international student,your
+                                studies under a whole new system is a real challenge but I received all the
+                                support I needed to begin my studies confidently. The facilitators have
+                                always
+                                been generous-so much that they've frequently made huge photocopies of study
+                                materials to help me with clarification and understanding."</p>
+                            <div class="text-start">
+                                <h2>SALINA SHRESTHA</h2>
+                                <P>University of South Australia(Master of Social Work)</P>
+                                <button class="bg-primary text-white text-center"> VIEW ALL -</button>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                </div>
+                <div class="carousel-item row">
+                    <div class="image col-lg-6">
+                        <img src="/image/female3.avif" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block col-lg-6">
+                        <div class="container text-dark m-3">
+                            <p class="text-start">"My journey at the University of Soouth Australia has been
+                                an
+                                exciting and beautiful roller coaster ride.As an international student,your
+                                studies under a whole new system is a real challenge but I received all the
+                                support I needed to begin my studies confidently. The facilitators have
+                                always
+                                been generous-so much that they've frequently made huge photocopies of study
+                                materials to help me with clarification and understanding."</p>
+                            <div class="text-start">
+                                <h2>SALINA SHRESTHA</h2>
+                                <P>University of South Australia(Master of Social Work)</P>
+                                <button class="bg-primary text-white text-center"> VIEW ALL -</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container py-5">
+            <div class="elements row text-white">
+                <div class="box col">
+                    <ul>
+                        <h4>Quick Links</h4>
+                        <li><a href="">Career Counselling</a></li>
+                        <li><a href="">Why Professionals?</a></li>
+                        <li><a href="">News</a></li>
+                        <li><a href="">Blogs</a></li>
+                    </ul>
+                </div>
+                <div class="box col">
+                    <ul>
+                        <h4>Living Abroad</h4>
+                        <li><a href="">Choose your destination</a></li>
+                        <li><a href="">Guide for students</a></li>
+                        <li><a href="">Students intake</a></li>
+                        <li><a href="">Our Experties</a></li>
+                        <li><a href="">Cost of studing abroad</a></li>
+                    </ul>
+                </div>
+                <div class="box col">
+                    <ul>
+                        <h4>Trending Universities</h4>
+                        <li><a href="">University of Sydney</a></li>
+                        <li><a href="">Griffith University</a></li>
+                        <li><a href="">Macquarie University</a></li>
+                        <li><a href="">Curtin University</a></li>
+                        <li><a href="">RMIT</a></li>
+                    </ul>
+                </div>
+                <div class="box col">
+                    <ul>
+                        <h4>Trending Cources</h4>
+                        <li><a href="">Data Science</a></li>
+                        <li><a href="">Architecture</a></li>
+                        <li><a href="">Computer Science</a></li>
+                        <li><a href="">Art and Design</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Foot -->
+    <div class="boko text-white p-3">
+        <div class="container text-center">
+            <div class="foot row justify-content-between">
+                <div class="box1 col-sm-6 col-md-6">
+                    <p class="ftext">Professional Education Consultancy. All rights reserved</p>
+                </div>
+                <div class="box2 col-md-6 col-sm-12">
+                    <div class="footlogo row justify-content-center">
+                        <div class="fb col"><a href=""><i class="fa-brands fa-facebook"></i></a></div>
+                        <div class="tw col"><a href=""><i class="fa-brands fa-twitter"></i></a></div>
+                        <div class="li col"><a href=""><i class="fa-brands fa-linkedin"></i></a></div>
+                        <div class="in col"><a href=""><i class="fa-brands fa-instagram"></i></a></div>
+                        <div class="yo col"><a href=""><i class="fa-brands fa-youtube"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
 
 
 
