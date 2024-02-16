@@ -38,9 +38,6 @@ use App\Http\Controllers\BlogPostsCategoryController;
 */
 
 // Frontend routes
-Route::get('/admin', function () {
-    return redirect()->route('login');
-});
 
 Route::get('/', [FrontViewController::class, 'index'])->name('index');
 Route::get('/index', [FrontViewController::class, 'index'])->name('index');
@@ -132,4 +129,4 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
 Route::get('/blogs', [FrontViewController::class, 'blogs'])->name('blogs.index');
 
-Route::get('/news', [FrontViewController::class, 'news'])->name('news.index');
+// Route::get('/news', [FrontViewController::class, 'news'])->name('news.index');

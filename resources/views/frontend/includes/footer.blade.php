@@ -10,7 +10,7 @@
                     <h4>Quick Links</h4>
                     <li><a href="">Career Counselling</a></li>
                     <li><a href="">Why Professionals?</a></li>
-                    <li><a href="{{ route('news.index') }}">News</a></li>
+                    <li><a href="">News</a></li>
                     <li><a href="">Blogs</a></li>
                 </ul>
             </div>
