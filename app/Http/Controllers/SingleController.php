@@ -79,6 +79,7 @@ class SingleController extends Controller
     public function render_singleCountry($slug)
     {
         $country = Country::where('slug', $slug)->firstOrFail();
+        // $countries = Country::all();
         return view('frontend.country', compact('country'));
     }
 

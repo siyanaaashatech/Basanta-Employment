@@ -1,4 +1,3 @@
-{{-- <h1>Country: {{ $country->name }}</h1> --}}
 @extends('frontend.layouts.master')
 
 @section('content')
@@ -15,9 +14,8 @@
 
                 <div class="projcard projcard-blue">
                     <div class="projcard-innerbox">
-                        {{-- <img class="projcard-img" src="{{ asset('uploads/country/' . $country->image) }}" /> --}}
                         @foreach (json_decode($country->image) as $image)
-                            <img class="projcard-img" src="{{ asset('uploads/country/' . $image) }}" />
+                            <img class="projcard-img" src="{{ $image }}" alt="Country Image 1">
                         @endforeach
                         <div class="projcard-textbox">
                             <div class="projcard-title">{{ $country->name }}</div>
