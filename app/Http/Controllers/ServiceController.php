@@ -31,7 +31,7 @@ class ServiceController extends Controller
             $this->validate($request, [
                 'title' => 'required|string',
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
-                'description' => 'required|string'
+                'description' => 'required|string|max:500'
 
             ]);
 

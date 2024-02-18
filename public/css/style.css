@@ -2,6 +2,15 @@
   background: #d4d0d0;
 }
 
+
+
+
+.navbar-nav .nav-link{
+  color: #191714 !important;
+  font-size: 18px;
+}
+
+
 .banner {
   background-image: linear-gradient(to right, rgb(255, 174, 0), red);
 }
@@ -237,6 +246,7 @@
 
 .footer {
   background-image: linear-gradient(rgb(9, 28, 72), rgb(58, 73, 121));
+  width: 100%;
 }
 .footer .box ul li {
   list-style: none;
@@ -281,11 +291,12 @@
 
 /* For service background */
 .secondSection{
-  background-image: linear-gradient(rgb(9, 28, 72), rgb(58, 73, 121));
+  background-image: linear-gradient(rgb(9, 28, 72), rgb(25, 37, 78));
 }
 
 .bg-primary{
-  background-color: linear-gradient(rgb(9, 28, 72), rgb(58, 73, 121));
+  background-color: rgb(9, 28, 72) !important;
+  color: #fff;
 }
 
 .heading_title{
@@ -341,7 +352,9 @@
   /* background-image: url('{{ asset('img/heli.jpg') }}'); */
 
 
-    background-image: url('../img/heli.jpg');
+    /* background-image: url('../img/heli.jpg'); */
+    background-image: linear-gradient(rgb(3, 18, 51), rgb(25, 37, 78));
+
 
 
 height: 200px;
@@ -383,7 +396,7 @@ position: relative;
    position: relative;
    font-family: var(--firstfont);
    margin: 20px auto;
-   color: var(--white);
+   color: #fff;
 }
 .page_title:before{
   background-color: var(--fourth);

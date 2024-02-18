@@ -19,7 +19,7 @@ class SingleController extends Controller
 {
 
 
-    public function render_about(Request $request)
+    public function render_about()
     {
         // $page_title = "About Us";
         $categories = Category::latest()->get()->take(10);
@@ -29,8 +29,8 @@ class SingleController extends Controller
         $services = Service::latest()->get()->take(6);
         $posts = Post::with('category')->latest()->get()->take(3);
         $images = PhotoGallery::latest()->get();
-        $strippedContent = preg_replace('/<p>(\s*<iframe[^>]*><\/iframe>\s*)<\/p>/', '$1', $about->content);
-        return view('frontend.aboutus', compact('categories', 'sitesetting', 'about', 'teams', 'services', 'posts', 'images', 'strippedContent'));
+     
+        return view('frontend.aboutus', compact('categories', 'sitesetting', 'about', 'teams', 'services', 'posts', 'images'));
 
     }
 

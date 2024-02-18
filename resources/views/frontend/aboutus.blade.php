@@ -7,10 +7,10 @@
     </section>
     <section class="about_page">
         <div class="container">
-            <h1 class="single_title"><span>{{ $about->title }}</span></h1>
+            {{-- <h1 class="single_title"><span>{{ $about->title }}</span></h1> --}}
             <div class="row">
                 <div class="col-md-5 p-0 col-lg-5 col-sm-12">
-                    @if ($about)
+                    @if ($about->image)
                         <img class="about_page_img img-fluid" src="{{ asset('uploads/about/' . $about->image) }}"
                             alt="About Us">
                     @else
@@ -21,7 +21,7 @@
                 <div class="col-md-7 col-lg-7 col-sm-12">
                     <!-- About Us Content -->
                     <div style="text-align: justify;">
-                        {!! $about->content !!}
+                        {{ $about->content }}
                     </div>
                 </div>
             </div>
