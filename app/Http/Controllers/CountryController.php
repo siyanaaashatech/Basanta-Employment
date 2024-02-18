@@ -22,6 +22,7 @@ class CountryController extends Controller
         $countries = Country::paginate(10);
         return view('backend.country.index', ['countries' => $countries, 'page_title' => 'Country']);
     }
+
     public function create()
     {
         return view('backend.country.create', ['page_title' => 'Create Country']);
@@ -40,7 +41,9 @@ class CountryController extends Controller
             if ($request->hasFile('image')) {
                 foreach ($request->file('image') as $imageFile) {
                     $imagePath = ImageConverter::convertSingleImage($imageFile, 'uploads/country/');
+                     if ($imagePath) {
                     $imagesPaths[] = $imagePath;
+                }
                 }
             }
 

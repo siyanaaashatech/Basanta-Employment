@@ -65,7 +65,7 @@ Auth::routes();
 
 // Backend routes with prefix and middleware
 Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('index');
+    Route::get('/', [AdminController::class, 'index'])->name('index');
 
     // Site settings
     Route::resource('site-settings', SiteSettingController::class);

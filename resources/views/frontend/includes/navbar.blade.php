@@ -2,7 +2,7 @@
     <div class="header container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('index') }}">
                     <div class="image">
                         <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
                     </div>
@@ -24,10 +24,10 @@
                                 <li><a class="dropdown-item" href="{{ route('About') }}">About us</a></li>
                                 <li><a class="dropdown-item" href="{{ route('Team') }}">Our Teams</a></li>
                                 <li><a class="dropdown-item" href="{{ route('Service') }}">Services</a></li>
-                                <li>
+                                {{-- <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

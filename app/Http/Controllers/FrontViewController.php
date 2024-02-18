@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogPostsCategory;
+use App\Models\Course;
 use App\Models\Post;
 // use App\Models\Service;
 
@@ -13,6 +15,7 @@ use App\Models\Service;
 use App\Models\Category;
 use App\Models\SiteSetting;
 use App\Models\PhotoGallery;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class FrontViewController extends Controller
@@ -24,16 +27,34 @@ class FrontViewController extends Controller
         $sitesetting = SiteSetting::first();
         $services = Service::latest()->get()->take(5);
         $contacts = Contact::latest()->get();
-        $countries = Country::all();
+        $blogs = BlogPostsCategory::latest()->get()->take(5);
+        $courses = Course::latest()->get()->take(6);
+        $testimonials = Testimonial::latest()->get()->take(10);
+
+        $countries = Country::latest()->get()->take(5);
         $countryImages = [];
 
         foreach ($countries as $country) {
+
             $images = json_decode($country->image, true);
-            $countryImages = array_merge($countryImages, $images);
+            // Check if $images is not null and is an array before merging
+            if ($images !== null && is_array($images)) {
+                $countryImages = array_merge($countryImages, $images);
+            } elseif ($images !== null) {
+                // If $images is not an array, convert it to an array with a single element
+                $countryImages[] = $images;
+            }
         }
+
+        // RIGHT SIDE -----------------------------------------------------------------------------------------
+
+
         return view('frontend.index', compact([
             'services',
             'contacts',
+            'blogs',
+            'courses',
+            'testimonials',
             'countries',
             'countryImages'
         ]));
@@ -49,8 +70,7 @@ class FrontViewController extends Controller
         $sitesetting = SiteSetting::first();
         $about = About::first();
         $images = PhotoGallery::latest()->get();
-        $strippedContent = preg_replace('/<p>(\s*<iframe[^>]*><\/iframe>\s*)<\/p>/', '$1', $about->content);
 
-        return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about', 'strippedContent', 'services', 'images'));
+        return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about',  'services', 'images'));
     }
 }

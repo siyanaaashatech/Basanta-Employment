@@ -77,7 +77,7 @@ class ImageConverter extends Model
         $imageConvert->save($destinationFilePath, 70);
 
         // Get the complete URL or file path of the converted image
-        $completePath = asset($path . $new_name);
+        $completePath = $path .'/' . $new_name;
 
         return $completePath;
     }

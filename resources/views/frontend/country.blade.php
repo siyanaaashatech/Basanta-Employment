@@ -21,11 +21,29 @@
                             <div class="projcard-title">{{ $country->name }}</div>
                             <!-- {{-- <div class="projcard-subtitle">This explains the card in more detail</div> --}} -->
                             <div class="projcard-bar"></div>
-                            <div class="projcard-description">{{ $country->content }}</div>
+
+
+                            <?php
+                            $maxLength = 300; // Set your desired maximum length
+                            
+                            // Get the raw content and strip all tags
+                            $strippedContent = strip_tags($country->content);
+                            
+                            // Decode HTML entities to handle double encoding
+                            $decodedContent = htmlspecialchars_decode($strippedContent);
+                            
+                            // Escape HTML entities
+                            $escapedContent = htmlspecialchars($decodedContent);
+                            
+                            // Take a substring of the escaped content
+                            $trimmedContent = substr($escapedContent, 0, $maxLength);
+                            ?>
+
+                            <div class="projcard-description">{{ $trimmedContent }}</div>
 
 
                             <a href="#">
-                                <button class="button third m-auto">Read More &nbsp;&nbsp;<i
+                                <button class="button bg-primary third m-auto">Read More &nbsp;&nbsp;<i
                                         class="fa-solid fa-arrow-right"></i></button>
                             </a>
 

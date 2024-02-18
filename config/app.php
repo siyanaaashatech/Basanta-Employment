@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 use Spatie\Permission\PermissionServiceProvider;
 use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageServiceProvider;
 
 
 
@@ -163,6 +164,7 @@ return [
         /*
              * Laravel Framework Service Providers...
              */
+
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -186,8 +188,10 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        // Intervention\Image\ImageServiceProvider::class,
+        
 
+  
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
              * Package Service Providers...
@@ -201,9 +205,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+    
     ],
 
+
+
+    
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
@@ -217,7 +224,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        //     'Image' => Intervention\Image\Facades\Image::class,
+            'Image' => Intervention\Image\Facades\Image::class,
+
+            
     ])->toArray(),
 
 ];

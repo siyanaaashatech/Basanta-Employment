@@ -24,15 +24,18 @@
 
 
             <p class="text-center mt-3">{{ $trimmedContent }}</p>
-            
+
         @endforeach
+
+
+        
         <div class="projcard-container">
             @foreach ($services as $service)
                 <?php
-                $maxLength = 400; // Set your desired maximum length
+                $maxLength = 600; // Set your desired maximum length
                 
                 // Get the raw content and strip all tags
-                $strippedContent = strip_tags($service->content);
+                $strippedContent = strip_tags($service->description);
                 
                 // Decode HTML entities to handle double encoding
                 $decodedContent = htmlspecialchars_decode($strippedContent);
@@ -45,8 +48,20 @@
                 ?>
 
 
+
+
+
                 <div class="projcard projcard-blue">
                     <div class="projcard-innerbox">
+
+                    @if ($service->image)
+                                        
+                        <img src="{{ asset($service->image) }}" class="projcard-img" alt="">
+                    @else
+                    <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
+                    @endif
+
+
                         <img class="projcard-img" src="{{ asset('uploads/service/' . $service->image) }}" />
                         <div class="projcard-textbox">
                             <div class="projcard-title">{{ $service->title }}</div>
@@ -56,7 +71,7 @@
                             {{-- <div class="projcard-tagbox"> --}}
 
                             <a href="{{ route('SingleService', $service->id) }}">
-                                <button class="button third m-auto">Read More &nbsp;&nbsp;<i
+                                <button class="button bg-primary third m-auto">Read More &nbsp;&nbsp;<i
                                         class="fa-solid fa-arrow-right"></i></button>
                             </a>
 
