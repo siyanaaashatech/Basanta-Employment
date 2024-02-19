@@ -219,8 +219,33 @@
   margin-top: 150px;
   margin-right: 80px;
 }
-
-.join {
+.join .students .carousel-inner{
+  margin-left: 20%;
+  width: 60%;
+}
+.join .students .carousel-control-prev, .join .students .carousel-control-next{
+  width: 50px;
+}
+.join .students .image img{
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (min-width: 992px) {
+  .join .students .carousel-control-prev{
+      margin-left: 150px;
+      width: 50px;
+  }
+  .join .students .carousel-control-next{
+      margin-right: 200px;
+      width: 50px;
+  }
+  .join .students .text{
+      border: 2px solid red;
+      margin: 20px 0px 20px -50px;
+      background-color: white;
+  }
+}
+/* .join {
   margin: 40px 0px 40px 10%;
 }
 .join .students .carousel .carousel-inner .carousel-item .carousel-caption {
@@ -233,6 +258,14 @@
   border-style: none;
   padding: 10px 30px;
 }
+.join .students .carousel .carousel-control-prev{
+    position: absolute;
+    margin-left: -10%;
+  }
+  .join .students .carousel .carousel-control-next{
+    position: absolute;
+   margin-right: 6%;
+  }
 .join .students .carousel .carousel-inner .carousel-item .image {
   height: 400px;
   width: 100%;
@@ -296,7 +329,7 @@
 
 .bg-primary{
   background-color: rgb(9, 28, 72) !important;
-  color: #fff;
+ 
 }
 
 .heading_title{
