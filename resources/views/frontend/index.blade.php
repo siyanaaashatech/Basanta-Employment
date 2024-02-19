@@ -335,7 +335,7 @@
                                     <img src="{{ asset('image/girl.jpg') }}" class="d-block w-100" alt="">
                                     @endif
                                 </div>
-                            </div>
+                            
 
                             <div class="text col-lg-6 justify-content-center">
                                 <div class="text-start text-dark">
@@ -348,6 +348,7 @@
                                 </div>
 
                             </div>
+                        </div>
                         </div>
                     @endforeach
                 </div>
