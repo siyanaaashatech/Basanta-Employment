@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -31,7 +32,7 @@ class ServiceController extends Controller
             $this->validate($request, [
                 'title' => 'required|string',
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
-                'description' => 'required|string|max:500'
+                'description' => 'required|string|'
 
             ]);
 
@@ -100,7 +101,7 @@ class ServiceController extends Controller
             return redirect()->route('admin.services.index')->with('success', 'Success !! Services Updated');
         } catch (\Exception $e) {
             // Optionally log the error
-            \Log::error('Services update failed: ' . $e->getMessage());
+            Log::error('Services update failed: ' . $e->getMessage());
 
             return redirect()->back()->withInput()->with('error', 'Error !! Something went wrong. ' . $e->getMessage());
         }

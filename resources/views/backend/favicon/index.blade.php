@@ -20,8 +20,7 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.favicons.create') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                    Favicon</button></a>
+
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -78,12 +77,7 @@
                             <a href="{{ route('admin.favicons.edit', $icon->id) }}" class="btn btn-warning btn-sm"
                                 style="margin-right: 5px;"><i class="fas fa-edit"></i>
                                 Edit</a>
-                            <form action="{{ route('admin.favicons.destroy', $icon->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+
                         </div>
                     </td>
                 </tr>
