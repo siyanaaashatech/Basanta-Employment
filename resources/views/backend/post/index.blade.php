@@ -24,9 +24,9 @@
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->description }}</td>
                             <td>
-                                @if($post->image)
-                                <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" style="max-width: 100px;">
-
+                                @if ($post->image)
+                                    <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image"
+                                        style="max-width: 100px;">
                                 @else
                                     No image available
                                 @endif
@@ -36,10 +36,12 @@
                                 <!-- Add action buttons here -->
                                 <!-- Example: Edit and Delete buttons -->
                                 <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
-                                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" style="display: inline;">
+                                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
+                                    style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
                                 </form>
                             </td>
                         </tr>

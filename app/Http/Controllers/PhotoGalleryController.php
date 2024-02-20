@@ -28,7 +28,7 @@ class PhotoGalleryController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string',
-            'img_desc' => 'required|string|max:255',
+            'img_desc' => 'nullable|string',
             'img' => 'required|array',
             'img.*' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048' // maximum file size of 2 MB
         ]);
@@ -61,7 +61,7 @@ class PhotoGalleryController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string',
-            'img_desc' => 'required|string|max:255',
+            'img_desc' => 'nullable|string',
             'img' => 'required|array',
             'img.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048' // maximum file size of 2 MB
         ]);

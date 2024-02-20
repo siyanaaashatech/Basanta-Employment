@@ -55,8 +55,8 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Description</label>
 
-                    <textarea style="max-width: 30%;" type="text" class="form-control" name="description" id="description"
-                        placeholder="Add Description" value="{{ old('description') }}">
+                    <textarea style="width: 100%; min-height: 150px;;" type="text" class="form-control" name="description"
+                        id="description" placeholder="Add Description" value="{{ old('description') }}">
                   {{ $courses->description ?? '' }}
                 </textarea>
 
@@ -86,5 +86,12 @@
                 preview.src = reader.result;
             };
         };
+        $(document).ready(function() {
+            $('#description').summernote({
+                placeholder: 'Add Description', // Placeholder text
+                tabsize: 2, // Tab size
+                height: 300 // Height of the editor
+            });
+        });
     </script>
 @endsection
