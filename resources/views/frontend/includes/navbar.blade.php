@@ -74,7 +74,8 @@
                     </ul>
                     <a class="nav-link text-primary m-3 fs-5" href="#"><i
                             class="fa-solid fa-magnifying-glass"></i></a>
-                    <button class="btn bg-primary text-white">Apply Now</button>
+                    <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Apply Now</a>
+
                     <a class="nav-link m-3 fs-5" href="">9876543210</a>
                 </div>
             </div>

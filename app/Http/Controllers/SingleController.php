@@ -29,7 +29,7 @@ class SingleController extends Controller
         $services = Service::latest()->get()->take(6);
         $posts = Post::with('category')->latest()->get()->take(3);
         $images = PhotoGallery::latest()->get();
-     
+
         return view('frontend.aboutus', compact('categories', 'sitesetting', 'about', 'teams', 'services', 'posts', 'images'));
 
     }
@@ -109,7 +109,8 @@ class SingleController extends Controller
         return view('frontend.galleries', compact('images', 'services', 'categories', 'sitesetting', 'about'));
     }
 
-    public function render_singleImage($id){
+    public function render_singleImage($id)
+    {
         $image = PhotoGallery::find($id);
         $categories = Category::all();
         $services = Service::latest()->get();
@@ -141,6 +142,13 @@ class SingleController extends Controller
         $about = About::first();
 
         return view('portal.team', compact('teams', 'services', 'categories', 'sitesetting', 'about'));
+    }
+
+    public function render_contact()
+    {
+        $page_title = 'Contact Us';
+        $googleMapsLink = SiteSetting::first()->google_maps_link;
+        return view('frontend.contactpage', compact('page_title', 'googleMapsLink'));
     }
 
 }
