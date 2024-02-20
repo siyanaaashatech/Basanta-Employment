@@ -80,35 +80,11 @@
                             </a>
 
                             <ul class="dropdown-menu">
-                                {{-- @foreach ($countries as $country) --}}
+                                @foreach ($categories as $category)
                                     <li><a class="dropdown-item"
-                                            href="#">Choose Your Destination
-                                            </a></li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Guide for Students
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Students Intake
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Our Expertise
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Cost of Studying Abroad
-                                        </a>
-                                    </li>
-                                {{-- @endforeach --}}
+                                            href="{{ route('singleCategory', ['slug' => $category->slug]) }}">
+                                            {{ $category->title }}</a></li>
+                                @endforeach
                             </ul>
 
                         </li>

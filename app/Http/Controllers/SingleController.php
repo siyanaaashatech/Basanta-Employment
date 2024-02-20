@@ -79,8 +79,9 @@ class SingleController extends Controller
     public function render_singleCountry($slug)
     {
         $country = Country::where('slug', $slug)->firstOrFail();
+        $recommendedCountries = Country::where('slug', '!=', $slug)->get();
         // $countries = Country::all();
-        return view('frontend.country', compact('country'));
+        return view('frontend.single', compact('country', 'recommendedCountries'));
     }
 
     public function render_singleUniversity($slug)
@@ -95,6 +96,13 @@ class SingleController extends Controller
         return view('frontend.course', compact('course'));
     }
 
+
+
+    public function render_singleCategory($slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        return view('frontend.category', compact('category'));
+    }
 
 
 
