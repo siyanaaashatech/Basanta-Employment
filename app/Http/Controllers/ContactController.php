@@ -22,18 +22,35 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
+        $this->validate($request, [
+            'name' => 'required|string',
+            'email' => 'required|string',
             'phone_no' => 'required|string',
             'message' => 'required|string',
+            'g-recaptcha-response' => 'required',
+            function ($attribute, $value, $fail) {
+
+                $g_response = Http::asForm()->post("https://www.google.com/recaptcha/api/siteverify", [
+                    'secret' => config('services.recaptcha.secret_key'),
+                    'response' => $value,
+                    'remoteip' => \request()->ip()
+                ]);
+
+                if (!$g_response->json('successMessage')) {
+                    $fail('The ' . $attribute . ' is invalid.');
+                }
+            },
         ]);
 
-        Contact::create($validated);
+        $contact = new Contact;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone_no = $request->phone_no;
+        $contact->message = $request->message;
+        $contact->save();
 
-        return redirect()->route('Contact')->with('success', 'Contact saved successfully!');
+        return response()->json(['successMessage' => true]);
     }
-
 
 
 }

@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use App\Models\Country;
 use App\Models\Course;
+use App\Models\Country;
 use App\Models\Favicon;
+use App\Models\Category;
 use App\Models\University;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -46,6 +47,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer('frontend.includes.navbar', function ($view) {
             $courses = Course::all();
             $view->with('courses', $courses);
+        });
+
+        View::composer('frontend.includes.navbar', function ($view) {
+            $categories = Category::all();
+            $view->with('categories', $categories);
         });
     }
 
