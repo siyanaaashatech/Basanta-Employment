@@ -44,11 +44,9 @@
             </div>
 
 
-            <div>
-
-                <label for="">Content:</label>
-                <textarea name="content" id="content" cols="30" rows="10"></textarea>
-
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea name="content" id="content" class="form-control" rows="8"></textarea>
             </div>
 
 
@@ -92,20 +90,15 @@
                 reader.readAsDataURL(file);
 
                 reader.onload = () => {
-                    const preview = document.createElement('div');
-                    preview.className = 'col-md-2 mb-3';
-                    preview.innerHTML = `<img src="${reader.result}" alt="Image Preview" class="img-fluid">`;
-                    imagePreviews.appendChild(preview);
+                    // Create img element for preview
+                    const img = document.createElement('img');
+                    img.className = 'col-md-2 mb-3';
+                    img.src = reader.result; // Set image source
+                    img.alt = 'Image Preview';
+                    img.classList.add('img-fluid');
+                    imagePreviews.appendChild(img); // Append image to imagePreviews
                 };
             }
         };
-    </script>
-
-    <script>
-        $('#content').summernote({
-            placeholder: 'content...',
-            tabsize: 2,
-            height: 300
-        });
     </script>
 @endsection

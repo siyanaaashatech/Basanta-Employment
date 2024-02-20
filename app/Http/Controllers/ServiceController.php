@@ -26,38 +26,34 @@ class ServiceController extends Controller
 
 
     public function store(Request $request)
-    {
-        // dd($request);
-        try {
-            $this->validate($request, [
-                'title' => 'required|string',
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
-                'description' => 'required|string|'
+{
+    try {
+        $this->validate($request, [
+            'title' => 'required|string',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2536',
+            'description' => 'required|string'
+        ]);
 
-            ]);
+        $newImageName = time() . '-' . $request->image->getClientOriginalName();
+        $request->image->move(public_path('uploads/service'), $newImageName);
 
-            $newImageName = time() . '-' . $request->image->getClientOriginalName();
-            $request->image->move(public_path('uploads/service'), $newImageName);
-            // $iconPath = time() . '-' . $request->icon->extension();
-            // $request->icon->move(public_path('uploads/service'), $iconPath);
+        $service = new Service;
+        $service->title = $request->title;
+        $service->slug = SlugService::createSlug(Service::class, 'slug', $request->title);
+        $service->image = $newImageName;
+        $service->description = $request->description;
 
-
-            $service = new Service;
-            $service->title = $request->title;
-            $service->slug = SlugService::createSlug(Service::class, 'slug', $request->title);
-            $service->image = $newImageName;
-            $service->description = $request->description;
-
-
-            if ($service->save()) {
-                return redirect()->route('admin.services.index')->with('success', 'Success! Service created.');
-            } else {
-                return redirect()->back()->with('error', 'Error! Service not created.');
-            }
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error! Something went wrong.');
+        if ($service->save()) {
+            return redirect()->route('admin.services.index')->with('success', 'Success! Service created.');
+        } else {
+            return redirect()->back()->with('error', 'Error! Service not created.');
         }
+    } catch (\Exception $e) {
+        Log::error('Error storing service: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'Error! Something went wrong.');
     }
+}
+
 
     public function edit($id)
     {

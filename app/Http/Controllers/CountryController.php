@@ -113,37 +113,45 @@ class CountryController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'name' => 'required|string',
-            'image.*' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
-            'content' => 'nullable|string',
-        ]);
+{
+    $this->validate($request, [
+        'name' => 'required|string',
+        'image.*' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
+        'content' => 'nullable|string',
+    ]);
 
-        $country = Country::findOrFail($id);
+    $country = Country::findOrFail($id);
 
-        try {
-            $imagesPaths = $country->image ? json_decode($country->image, true) : [];
-            if ($request->hasFile('image')) {
-                foreach ($request->file('image') as $imageFile) {
-                    $imagePath = ImageConverter::convertSingleImage($imageFile, 'uploads/country/');
-                    $imagesPaths[] = $imagePath;
-                }
+    try {
+        // Initialize empty array to store new image paths
+        $imagesPaths = [];
+
+        // Check if new images are provided
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imageFile) {
+                // Convert and store new images
+                $imagePath = ImageConverter::convertSingleImage($imageFile, 'uploads/country/');
+                $imagesPaths[] = $imagePath;
             }
-
-            $processedContent = $this->processSummernoteContent($request->input('content'));
-
-            $country->name = $request->input('name');
-            $country->slug = SlugService::createSlug(Country::class, 'slug', $request->input('name'), ['unique' => false, 'source' => 'name', 'onUpdate' => true], $id);
-            $country->image = json_encode($imagesPaths);
-            $country->content = $processedContent;
-            $country->save();
-
-            return redirect()->route('admin.countries.index')->with('success', 'Country updated successfully.');
-        } catch (Exception $e) {
-            return back()->with('error', "Error updating country: " . $e->getMessage());
         }
+
+        // Process Summernote content
+        $processedContent = $this->processSummernoteContent($request->input('content'));
+
+        // Update country details
+        $country->name = $request->input('name');
+        $country->slug = SlugService::createSlug(Country::class, 'slug', $request->input('name'), ['unique' => false, 'source' => 'name', 'onUpdate' => true], $id);
+        $country->image = json_encode($imagesPaths); // Only store new image paths, replacing existing ones
+        $country->content = $processedContent;
+        $country->save();
+
+        return redirect()->route('admin.countries.index')->with('success', 'Country updated successfully.');
+    } catch (Exception $e) {
+        return back()->with('error', "Error updating country: " . $e->getMessage());
     }
+}
+
+
 
     public function destroy($id)
     {

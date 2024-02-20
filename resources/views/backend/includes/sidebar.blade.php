@@ -462,6 +462,8 @@
 
                 {{-- End of Visitors Books --}}
 
+
+
                 {{-- Beginning of Blog Posts Category --}}
                 @hasanyrole('superadmin|admin')
                     <li class="nav-item">
@@ -500,7 +502,7 @@
                             @endcan
                         </ul>
                     </li>
-                    </li>
+                    </li> <!-- Close the parent list item -->
                 @endhasanyrole
                 {{-- End of Blog Posts Category --}}
 
@@ -514,8 +516,8 @@
                             </div>
                         </div>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#team" role="button" data-bs-toggle="collapse"
-                            aria-expanded="true" aria-controls="team">
+                        <a class="nav-link dropdown-indicator" href="#dashboard18" role="button"
+                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
                             <div class="d-flex align-items-center">
                                 <span class="nav-link-icon"><i class="fas fa-users"></i></span>
                                 <span class="nav-link-text ps-1">Teams</span>
@@ -546,9 +548,13 @@
                             @endcan
                         </ul>
                     </li>
-                    </li>
+                    </li> <!-- Close the parent list item -->
                 @endhasanyrole
                 {{-- End of Team --}}
+
+
+
+
 
 
                 {{-- Beginning of FAQs --}}
@@ -596,6 +602,9 @@
                 @endhasanyrole
                 {{-- End of FAQs --}}
 
+
+
+
                 {{-- Beginning of Student Details --}}
                 @hasanyrole('superadmin|admin')
                     <li class="nav-item">
@@ -631,6 +640,9 @@
                     </li>
                 @endhasanyrole
                 {{-- End of Student Details --}}
+
+
+
 
                 {{-- Beginning of Contacts --}}
                 @hasanyrole('superadmin|admin')
@@ -705,6 +717,8 @@
                     </li>
                 @endhasanyrole
                 {{-- End of Categories --}}
+
+
 
 
                 {{-- Beginning of Posts --}}

@@ -55,9 +55,10 @@
 
             <div>
                 <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
-                <textarea style="max-width: 100%; min-height: 200px;" class="form-control summernote" name="description"
-                    id="description" placeholder="Add Description">{{ old('description') }}</textarea>
+                <textarea style="max-width: 100%; min-height: 200px;" class="form-control summernote" name="description" id="summernote"
+                    placeholder="Add Description">{{ old('description') }}</textarea>
             </div>
+
 
         </div>
         <!-- /.card-body -->
@@ -75,7 +76,7 @@
     <script>
         $(document).ready(function() {
             $('.summernote').summernote({
-                height: 200, // Set the height of the editor
+                height: 600, // Set the height of the editor
                 minHeight: null, // Set the minimum height of the editor
                 maxHeight: null, // Set the maximum height of the editor
                 focus: true // Set focus to editable area after initializing Summernote
