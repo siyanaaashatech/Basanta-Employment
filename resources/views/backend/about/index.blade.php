@@ -1,9 +1,7 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
-
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -16,14 +14,9 @@
         </div>
     @endif
 
-
-
-
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.about-us.create') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                    About</button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -32,9 +25,8 @@
                 <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard v1</li>
             </ol>
-        </div><!-- /.col -->
-    </div><!-- /.row -->
-
+        </div>
+    </div>
 
     <table class="table table-bordered table-hover">
         <thead>
@@ -44,6 +36,7 @@
                 <th>Subtitle</th>
                 <th>Image</th>
                 <th>Description</th>
+                <th>Content</th> <!-- Add this column -->
                 <th>Action</th>
             </tr>
         </thead>
@@ -53,20 +46,15 @@
                     <td width="5%">{{ $loop->iteration }}</td>
                     <td>{{ $about->title ?? '' }}</td>
                     <td>{{ $about->subtitle ?? '' }}</td>
-                    <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/about/' . $about->image) }}"
+                    <td><img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/about/' . $about->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>{{ $about->description ?? '' }}</td>
+                    <td>{!! $about->description ?? '' !!}</td>
+                    <td>{!! $about->content ?? '' !!}</td>
+
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <a href="{{ route('admin.about-us.edit', $about->id) }}" class="btn btn-warning btn-sm"
-                                style="margin-right: 5px;"><i class="fas fa-edit"></i>
-                                Edit</a>
-                            <form action="{{ route('admin.about-us.destroy', $about->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+                                style="margin-right: 5px;"><i class="fas fa-edit"></i> Edit</a>
                         </div>
                     </td>
                 </tr>
@@ -74,13 +62,7 @@
         </tbody>
     </table>
 
-
-
-
     <!-- Main row -->
-
-
-
 
     <script>
         const previewImage = e => {

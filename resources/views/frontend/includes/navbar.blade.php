@@ -71,6 +71,48 @@
                                 @endforeach
                             </ul>
                         </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Living Abroad
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                {{-- @foreach ($countries as $country) --}}
+                                    <li><a class="dropdown-item"
+                                            href="#">Choose Your Destination
+                                            </a></li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Guide for Students
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Students Intake
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Our Expertise
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Cost of Studying Abroad
+                                        </a>
+                                    </li>
+                                {{-- @endforeach --}}
+                            </ul>
+
+                        </li>
+
                     </ul>
                     <a class="nav-link text-primary m-3 fs-5" href="#"><i
                             class="fa-solid fa-magnifying-glass"></i></a>

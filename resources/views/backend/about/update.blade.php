@@ -1,10 +1,7 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
-
-
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -16,8 +13,6 @@
             {{ Session::get('error') }}
         </div>
     @endif
-
-
 
     <div class="row mb-2">
         <div class="col-sm-6">
@@ -59,19 +54,15 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Description</label>
-
-                    <textarea style="max-width: 30%;" type="text" class="form-control" name="description" id="description"
-                        placeholder="Add Description" value="{{ old('description') }}">
-                  {{ $about->description ?? '' }}
-                </textarea>
-
+                    <textarea style="width: 100%; min-height: 150px;" type="text" class="form-control" name="description"
+                        id="description" placeholder="Add Description">{{ $about->description ?? '' }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea id="summernote" name="content" value="">
-                {{ $about->content }}
-                         </textarea>
+                    <textarea id="summernote" name="content" style="width: 100%; min-height: 150px;">
+                        {{ $about->content }}
+                    </textarea>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -81,13 +72,7 @@
         </div>
     </section>
 
-
-
     <!-- Main row -->
-
-
-
-
     <script>
         const previewImage = e => {
             const reader = new FileReader();
@@ -97,5 +82,14 @@
                 preview.src = reader.result;
             };
         };
+
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 150, // set editor height
+                minHeight: null, // set minimum height of editor
+                maxHeight: null, // set maximum height of editor
+                focus: true // set focus to editable area after initializing summernote
+            });
+        });
     </script>
 @endsection

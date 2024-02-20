@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogPostsCategory;
-use App\Models\Course;
 use App\Models\Post;
 // use App\Models\Service;
 
 use App\Models\Team;
 use App\Models\About;
+use App\Models\Course;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Service;
@@ -20,12 +20,10 @@ use Illuminate\Http\Request;
 
 class FrontViewController extends Controller
 {
-
     public function index()
     {
-        // dd('fav');
         $sitesetting = SiteSetting::first();
-        $services = Service::latest()->get()->take(5);
+        $services = Service::latest()->get();
         $contacts = Contact::latest()->get();
         $blogs = BlogPostsCategory::latest()->get()->take(5);
         $courses = Course::latest()->get()->take(6);
@@ -59,8 +57,6 @@ class FrontViewController extends Controller
             'countryImages'
         ]));
     }
-
-
 
     public function about()
     {

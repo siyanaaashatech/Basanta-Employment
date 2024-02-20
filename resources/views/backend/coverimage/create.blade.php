@@ -60,7 +60,21 @@
     </form>
 
 
-    <!-- Main row -->
+
+    <script>
+        function validateForm() {
+            var input = document.getElementById('image');
+            if (input.files.length > 0) {
+                var fileSizeInMB = input.files[0].size / (1024 * 1024); // Convert bytes to MB
+                if (fileSizeInMB > 2) {
+                    alert('The image must be less than 2MB in size.');
+                    return false; // Prevent form submission
+                }
+            }
+            return true; // Allow form submission
+        }
+    </script>
+
 
 
 

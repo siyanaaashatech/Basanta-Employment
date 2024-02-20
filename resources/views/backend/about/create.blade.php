@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
 
@@ -16,9 +15,6 @@
         </div>
     @endif
 
-
-
-
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
@@ -32,8 +28,6 @@
             </ol>
         </div>
     </div>
-
-
 
     <form id="quickForm" method="POST" action="{{ route('admin.about-us.store') }}" enctype="multipart/form-data">
         @csrf
@@ -56,17 +50,13 @@
 
             <div class="form-group">
                 <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
-
-                <textarea style="max-width: 30%;" type="text" class="form-control" name="description" id="description"
-                    placeholder="Add Description" value="{{ old('description') }}"></textarea>
+                <textarea style="width: 100%; min-height: 150px;" type="text" class="form-control" name="description"
+                    id="description" placeholder="Add Description">{{ old('description') }}</textarea>
             </div>
 
             <div class="form-group">
                 <label for="summernote">Content</label><span style="color:red; font-size:large"> *</span>
-                <textarea id="summernote" name="content">
-            {{ old('content') }}
-        </textarea>
-
+                <textarea style="width: 100%; min-height: 300px;" id="summernote" name="content">{{ old('content') }}</textarea>
             </div>
 
         </div>
@@ -76,17 +66,16 @@
         </div>
     </form>
 
-
-
     <!-- Main row -->
     <script>
-        const previewImage = e => {
-            const reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onload = () => {
-                const preview = document.getElementById('preview');
-                preview.src = reader.result;
-            };
-        };
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 300, // set editor height
+                minHeight: null, // set minimum height of editor
+                maxHeight: null, // set maximum height of editor
+                focus: true // set focus to editable area after initializing summernote
+            });
+        });
     </script>
+
 @stop

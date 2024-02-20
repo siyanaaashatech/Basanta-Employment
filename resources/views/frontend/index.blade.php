@@ -322,9 +322,10 @@
             <div id="carouselExampleDark" class="carousel slide">
                 <div class="carousel-inner">
                     @foreach ($testimonials as $testimonial)
-                        <div class="carousel-item row {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="image">
+                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
+                            <div class="box row">
+                           
+                                <div class="image col-lg-6">
 
                                     @if ($testimonial->image)
                                         
@@ -334,10 +335,9 @@
                                     <img src="{{ asset('image/girl.jpg') }}" class="d-block w-100" alt="">
                                     @endif
                                 </div>
-                            </div>
+                            
 
-                            <div class="col-lg-6 col-md-6"></div>
-                            <div class="carousel-caption">
+                            <div class="text col-lg-6 justify-content-center">
                                 <div class="text-start text-dark">
                                     {{ $testimonial->description }}
                                 </div>
@@ -348,6 +348,7 @@
                                 </div>
 
                             </div>
+                        </div>
                         </div>
                     @endforeach
                 </div>
@@ -364,6 +365,7 @@
             </div>
         </div>
     </div>
+
 
 
 
