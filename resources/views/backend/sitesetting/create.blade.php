@@ -57,13 +57,19 @@
                 </div>
                 <div class="form-group">
                     <label for="main_logo">Main Logo</label>
-                    <input type="file" name="main_logo" class="form-control" placeholder="Main Logo" id="main_logo">
+                    <input type="file" name="main_logo" class="form-control" placeholder="Main Logo" id="main_logo"
+                        onchange="previewImage(this, 'main_logo_preview')">
+                    <img id="main_logo_preview" src="#" alt="Main Logo Preview"
+                        style="display: none; max-width: 200px; margin-top: 10px;">
                 </div>
 
 
                 <div class="form-group">
                     <label for="side_logo">Side Logo</label>
-                    <input type="file" name="side_logo" class="form-control" placeholder="Side Logo" id="side_logo">
+                    <input type="file" name="side_logo" class="form-control" placeholder="Side Logo" id="side_logo"
+                        onchange="previewImage(this, 'side_logo_preview')">
+                    <img id="side_logo_preview" src="#" alt="Side Logo Preview"
+                        style="display: none; max-width: 200px; margin-top: 10px;">
                 </div>
                 <div class="form-group">
                     <label for="company_registered_date">Company Registered Date</label>
@@ -98,4 +104,22 @@
             <button type="submit" class="btn btn-primary">Apply</button>
         </div>
     </form>
+
+    <!-- JavaScript for Image Preview -->
+    <script>
+        function previewImage(input, imgId) {
+            var imgElement = document.getElementById(imgId);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    imgElement.src = e.target.result;
+                    imgElement.style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                imgElement.src = '#';
+                imgElement.style.display = 'none';
+            }
+        }
+    </script>
 @stop
