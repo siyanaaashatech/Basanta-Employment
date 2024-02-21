@@ -18,7 +18,7 @@
                                     @if ($loop->remaining == 1)
                                         and
                                     @else
-                                    ,
+                                        ,
                                     @endif
                                 @endif
                             @endforeach
@@ -30,21 +30,24 @@
                 <div class="position-relative">
 
                     @foreach ($countries as $country)
-                    @if ($loop->index < 3) <!-- Loop for the first three countries -->
-                        <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-                            @php
-                                $images = json_decode($country->image);
-                                $firstImage = isset($images[0]) ? $images[0] : null;
-                            @endphp
-            
-                            @if ($firstImage)
-                                <img src="{{ $firstImage }}" alt="Country Image" style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @else
-                                <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image" style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @endif
-                        </div>
-                    @endif
-                @endforeach
+                        @if ($loop->index < 3)
+                            <!-- Loop for the first three countries -->
+                            <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
+                                @php
+                                    $images = json_decode($country->image);
+                                    $firstImage = isset($images[0]) ? $images[0] : null;
+                                @endphp
+
+                                @if ($firstImage)
+                                    <img src="{{ $firstImage }}" alt="Country Image"
+                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                @else
+                                    <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image"
+                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                @endif
+                            </div>
+                        @endif
+                    @endforeach
 
                 </div>
             </div>
@@ -69,24 +72,27 @@
 
 
 
-                    
+
 
                     @foreach ($countries as $country)
-                    @if ($loop->index >= 3 && $loop->index < 5) <!-- Loop for the next two countries -->
-                        <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-                            @php
-                                $images = json_decode($country->image);
-                                $firstImage = isset($images[0]) ? $images[0] : null;
-                            @endphp
-            
-                            @if ($firstImage)
-                                <img src="{{ asset($firstImage) }}" alt="Country Image" style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @else
-                                <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image" style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @endif
-                        </div>
-                    @endif
-                @endforeach
+                        @if ($loop->index >= 3 && $loop->index < 5)
+                            <!-- Loop for the next two countries -->
+                            <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
+                                @php
+                                    $images = json_decode($country->image);
+                                    $firstImage = isset($images[0]) ? $images[0] : null;
+                                @endphp
+
+                                @if ($firstImage)
+                                    <img src="{{ asset($firstImage) }}" alt="Country Image"
+                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                @else
+                                    <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image"
+                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                @endif
+                            </div>
+                        @endif
+                    @endforeach
 
 
                 </div>
@@ -220,7 +226,7 @@
                     </button>
                 </div>
                 <div class="back">
-                    <img src="{{asset('image/back.png')}}" alt="">
+                    <img src="{{ asset('image/back.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -324,31 +330,32 @@
                     @foreach ($testimonials as $testimonial)
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
                             <div class="box row">
-                           
+
                                 <div class="image col-lg-6">
 
                                     @if ($testimonial->image)
-                                        
-                                            <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt="">
-
+                                        <img src="{{ asset($testimonial->image) }}" class="d-block w-100"
+                                            alt="">
                                     @else
-                                    <img src="{{ asset('image/girl.jpg') }}" class="d-block w-100" alt="">
+                                        <img src="{{ asset('image/girl.jpg') }}" class="d-block w-100" alt="">
                                     @endif
                                 </div>
-                            
 
-                            <div class="text col-lg-6 justify-content-center">
-                                <div class="text-start text-dark">
-                                    {{ $testimonial->description }}
-                                </div>
-                                <div class="text-start text-dark">
-                                    <h2>{{ $testimonial->name }}</h2>
-                                    <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})</p>
-                                    <button class="bg-primary text-white text-center"> VIEW ALL -</button>
-                                </div>
 
+                                <div class="text col-lg-6 justify-content-center">
+                                    <div class="text-start text-dark">
+                                        {{ $testimonial->description }}
+                                    </div>
+                                    <div class="text-start text-dark">
+                                        <h2>{{ $testimonial->name }}</h2>
+                                        <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})</p>
+                                        <a href="{{ route('Testimonial') }}">
+                                            <button class="bg-primary text-white text-center"> VIEW ALL -</button>
+                                        </a>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
                         </div>
                     @endforeach
                 </div>
@@ -369,4 +376,4 @@
 
 
 
-    @stop
+@stop

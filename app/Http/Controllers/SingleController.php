@@ -73,18 +73,20 @@ class SingleController extends Controller
         return view('frontend.testimonials', compact('testimonials'));
     }
 
-    public function render_singleTestimonial($id)
-    {
-        $testimonial = Testimonial::findOrFail($id);
 
-        return view('frontend.testimonial', compact('testimonial'));
-    }
 
     public function render_blogpostcategory()
     {
         $blogpostcategories = BlogPostsCategory::all();
 
-        return view('frontend.blogpostcategory', compact('blogpostcategories'));
+        return view('frontend.blogpostcategories', compact('blogpostcategories'));
+    }
+
+    public function render_singleBlogpostcategory($id)
+    {
+        $blogpostcategory = BlogPostsCategory::findOrFail($id);
+
+        return view('frontend.blogpostcategory', compact('blogpostcategory'));
     }
 
     public function render_singleService($id)
