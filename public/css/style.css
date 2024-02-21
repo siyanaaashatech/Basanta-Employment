@@ -462,7 +462,13 @@ position: relative;
 
 /* FOr About Page */
 
-
+/* about_page */
+.about_page_img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  /* border: 2px solid red; */
+}
 .about-section{
 	position:relative;
 	padding:30px 0px;
