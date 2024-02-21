@@ -479,32 +479,22 @@
                             </div>
                         </div>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#faq" role="button" data-bs-toggle="collapse"
-                            aria-expanded="true" aria-controls="faq">
+                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'faqs' ? 'active' : '' }}"
+                            href="#faq" role="button" data-bs-toggle="collapse" aria-expanded="true"
+                            aria-controls="faq">
                             <div class="d-flex align-items-center">
                                 <span class="nav-link-icon"><i class="fas fa-question-circle"></i></span>
                                 <span class="nav-link-text ps-1">FAQs</span>
                             </div>
                         </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'faqs' ? 'show' : '' }}" id="faq"
-                            id="dashboard19">
-                            {{-- Add FAQ --}}
+                        <ul class="nav collapse {{ Request::segment(2) == 'faqs' ? 'show' : '' }}" id="faq">
+                            {{-- FAQs --}}
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) == 'faqs' && Request::segment(3) == 'create' ? 'active' : '' }}"
-                                    href="{{ route('admin.faqs.create') }}">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fa fa-plus"></i>
-                                        <span class="nav-link-text ps-1">Add FAQ</span>
-                                    </div>
-                                </a>
-                            </li>
-                            {{-- List FAQs --}}
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) == 'faqs' && Request::segment(3) != 'create' ? 'active' : '' }}"
+                                <a class="nav-link {{ Request::segment(2) == 'faqs' ? 'active' : '' }}"
                                     href="{{ route('admin.faqs.index') }}">
                                     <div class="d-flex align-items-center">
                                         <i class="fa fa-list"></i>
-                                        <span class="nav-link-text ps-1">List FAQs</span>
+                                        <span class="nav-link-text ps-1">FAQ</span>
                                     </div>
                                 </a>
                             </li>
@@ -513,6 +503,7 @@
                     </li>
                 @endhasanyrole
                 {{-- End of FAQs --}}
+
 
             </ul>
         </div>

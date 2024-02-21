@@ -76,7 +76,7 @@
     <script>
         $(document).ready(function() {
             $('.summernote').summernote({
-                height: 600, // Set the height of the editor
+                height: 150, // Set the height of the editor
                 minHeight: null, // Set the minimum height of the editor
                 maxHeight: null, // Set the maximum height of the editor
                 focus: true // Set focus to editable area after initializing Summernote
