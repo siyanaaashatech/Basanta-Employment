@@ -334,9 +334,9 @@
   background-image: linear-gradient(rgb(9, 28, 72), rgb(25, 37, 78));
 }
 
-.bg-primary{
+.btn{
   background-color: rgb(9, 28, 72) !important;
- 
+ border-style: none;
 }
 
 .heading_title{

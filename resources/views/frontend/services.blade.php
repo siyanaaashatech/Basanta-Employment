@@ -71,7 +71,7 @@
                             {{-- <div class="projcard-tagbox"> --}}
 
                             <a href="{{ route('SingleService', $service->id) }}">
-                                <button class="button bg-primary third m-auto">Read More &nbsp;&nbsp;<i
+                                <button class="btn text-white mt-4 p-2">Read More &nbsp;&nbsp;<i
                                         class="fa-solid fa-arrow-right"></i></button>
                             </a>
 
