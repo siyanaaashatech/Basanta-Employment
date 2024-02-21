@@ -89,9 +89,9 @@ class SingleController extends Controller
         return view('frontend.blogpostcategory', compact('blogpostcategory'));
     }
 
-    public function render_singleService($id)
+    public function render_singleService($slug)
     {
-        $service = Service::find($id);
+        $service = Service::where('slug', $slug)->firstOrFail();
         $images = PhotoGallery::latest()->get();
         $categories = Category::all();
         $services = Service::latest()->get();
@@ -126,7 +126,8 @@ class SingleController extends Controller
     public function render_singleCategory($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        return view('frontend.category', compact('category'));
+        $relatedCategories = Category::where('id', '!=', $category->id)->get();
+        return view('frontend.category', compact('category', 'relatedCategories'));
     }
 
     public function render_singlePost($slug)

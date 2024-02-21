@@ -2,13 +2,14 @@
 
 namespace App\Providers;
 
-use App\Models\BlogPostsCategory;
 use App\Models\Course;
 use App\Models\Country;
 use App\Models\Favicon;
+use App\Models\Service;
 use App\Models\Category;
-use App\Models\Testimonial;
 use App\Models\University;
+use App\Models\Testimonial;
+use App\Models\BlogPostsCategory;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -36,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
         // $favicon = Favicon::latest()->get()->take(1);
         // // dd($favicon);
         // View::share('favicon', $favicon);
+
+        //Global variable for Navbar
         View::composer('frontend.includes.navbar', function ($view) {
             $countries = Country::all();
             $testimonials = Testimonial::all();
@@ -54,9 +57,20 @@ class AppServiceProvider extends ServiceProvider
             $view->with('livingAbroadPosts', $livingAbroadPosts);
         });
 
+        ////Global variable for Footer
         view()->composer('frontend.includes.footer', function ($view) {
-            $categories = Category::all();
-            $view->with('categories', $categories);
+            $counsellingCategory = Category::where('title', 'Counselling')->first();
+            $counsellingPosts = $counsellingCategory->posts()->take(2)->get();
+            $newsCategory = Category::where('title', 'News')->first();
+            $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
+            $services = Service::all();
+            $courses = Course::all();
+
+            $view->with('counsellingPosts', $counsellingPosts);
+            $view->with('newsCategory', $newsCategory);
+            $view->with('livingAbroadPosts', $livingAbroadPosts);
+            $view->with('services', $services);
+            $view->with('courses', $courses);
         });
     }
 
