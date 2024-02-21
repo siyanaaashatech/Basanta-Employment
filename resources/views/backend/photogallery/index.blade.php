@@ -2,7 +2,6 @@
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
-
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -59,7 +58,7 @@
                                 @foreach ($image->img as $index => $imagePath)
                                     <img class="album-image" id="preview{{ $loop->parent->iteration }}{{ $index }}"
                                         src="{{ asset('uploads/photogallery/' . $imagePath) }}"
-                                        style="width: 50px; height:50px" />
+                                        style="width: 50px; height:50px; margin-right: 5px;" />
                                 @endforeach
                             </div>
                         @else
@@ -85,32 +84,4 @@
             @endforeach
         </tbody>
     </table>
-
-    <!-- Main row -->
-
-    <script>
-        // Function to preview images
-        const previewImage = e => {
-            const files = e.target.files;
-            const albumContainer = e.target.parentElement.previousElementSibling;
-            albumContainer.innerHTML = '';
-            for (let i = 0; i < files.length; i++) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    const img = document.createElement('img');
-                    img.src = reader.result;
-                    img.style.width = '50px';
-                    img.style.height = '50px';
-                    albumContainer.appendChild(img);
-                };
-                reader.readAsDataURL(files[i]);
-            }
-        };
-
-        // Find all file inputs and attach event listener for previewing images
-        const fileInputs = document.querySelectorAll('input[type="file"]');
-        fileInputs.forEach(input => {
-            input.addEventListener('change', previewImage);
-        });
-    </script>
 @endsection
