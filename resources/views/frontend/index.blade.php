@@ -188,28 +188,7 @@
                                 </div>
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>{{ $country->name }}</h5>
-
-
-
-
-
-                                    <?php
-                                    $maxLength = 200; // Set your desired maximum length
-                                    
-                                    // Get the raw content and strip all tags
-                                    $strippedContent = strip_tags($country->content);
-                                    
-                                    // Decode HTML entities to handle double encoding
-                                    $decodedContent = htmlspecialchars_decode($strippedContent);
-                                    
-                                    // Escape HTML entities
-                                    $escapedContent = htmlspecialchars($decodedContent);
-                                    
-                                    // Take a substring of the escaped content
-                                    $trimmedContent = substr($escapedContent, 0, $maxLength);
-                                    ?>
-
-                                    <p>{{ $trimmedContent }}</p>
+                                    <p>{{ $country->content }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -309,7 +288,7 @@
                 @foreach ($courses as $course)
                     <div class="subject1 col-md-4 col-sm-6">
                         <div
-                            style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
+                            style="background-image: url('{{ asset($course->image) }}'); background-size: cover; background-position: center; height: 200px;">
                             <div class="text-center">
                                 <button class="btn bg-primary text-white">{{ $course->title }}</button>
                             </div>
@@ -328,33 +307,25 @@
             <div id="carouselExampleDark" class="carousel slide">
                 <div class="carousel-inner">
                     @foreach ($testimonials as $testimonial)
-                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
-                            <div class="box row">
+                        <div class="carousel-item row {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="image">
+                                    <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt="">
+                                </div>
+                            </div>
 
-                                <div class="image col-lg-6">
+                            <div class="col-lg-6 col-md-6"></div>
+                            <div class="carousel-caption">
 
-                                    @if ($testimonial->image)
-                                        <img src="{{ asset($testimonial->image) }}" class="d-block w-100"
-                                            alt="">
-                                    @else
-                                        <img src="{{ asset('image/girl.jpg') }}" class="d-block w-100" alt="">
-                                    @endif
+                                <div class="text-start text-dark">
+                                    {{ $testimonial->description }}
+                                </div>
+                                <div class="text-start text-dark">
+                                    <h2>{{ $testimonial->name }}</h2>
+                                    <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})</p>
+                                    <button class="bg-primary text-white text-center"> VIEW ALL -</button>
                                 </div>
 
-
-                                <div class="text col-lg-6 justify-content-center">
-                                    <div class="text-start text-dark">
-                                        {{ $testimonial->description }}
-                                    </div>
-                                    <div class="text-start text-dark">
-                                        <h2>{{ $testimonial->name }}</h2>
-                                        <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})</p>
-                                        <a href="{{ route('Testimonial') }}">
-                                            <button class="bg-primary text-white text-center"> VIEW ALL -</button>
-                                        </a>
-                                    </div>
-
-                                </div>
                             </div>
                         </div>
                     @endforeach
@@ -371,9 +342,7 @@
                 </button>
             </div>
         </div>
-    </div>
 
 
 
-
-@stop
+    @stop

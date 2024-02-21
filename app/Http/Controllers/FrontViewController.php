@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogPostsCategory;
+use App\Models\Course;
 use App\Models\Post;
 // use App\Models\Service;
 
 use App\Models\Team;
 use App\Models\About;
-use App\Models\Course;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Service;
@@ -43,8 +43,6 @@ class FrontViewController extends Controller
                 $countryImages[] = $images;
             }
         }
-
-        // RIGHT SIDE -----------------------------------------------------------------------------------------
 
 
         return view('frontend.index', compact([
