@@ -15,7 +15,8 @@ class BlogPostsCategoryController extends Controller
     public function index()
     {
         $categories = BlogPostsCategory::all();
-        return view('backend.blog_posts_category.index', compact('categories'));
+        $page_title = "Blog Post Categories";
+        return view('backend.blog_posts_category.index', compact('categories','page_title'));
     }
 
     /**
