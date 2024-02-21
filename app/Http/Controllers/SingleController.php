@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
 use App\Models\Post;
 use App\Models\Team;
 use App\Models\About;
+use App\Models\Course;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Category;
-use App\Models\SiteSetting;
-use App\Models\PhotoGallery;
 use App\Models\University;
+use App\Models\SiteSetting;
+use App\Models\Testimonial;
+use App\Models\PhotoGallery;
 use App\Models\VideoGallery;
 use Illuminate\Http\Request;
+use App\Models\BlogPostsCategory;
 
 class SingleController extends Controller
 {
@@ -62,6 +64,27 @@ class SingleController extends Controller
         $serviceHead = Service::latest()->get()->take(1);
 
         return view('frontend.services', compact('images', 'services', 'categories', 'sitesetting', 'about', 'serviceHead'));
+    }
+
+    public function render_testimonial()
+    {
+        $testimonials = Testimonial::all();
+
+        return view('frontend.testimonials', compact('testimonials'));
+    }
+
+    public function render_singleTestimonial($id)
+    {
+        $testimonial = Testimonial::findOrFail($id);
+
+        return view('frontend.testimonial', compact('testimonial'));
+    }
+
+    public function render_blogpostcategory()
+    {
+        $blogpostcategories = BlogPostsCategory::all();
+
+        return view('frontend.blogpostcategory', compact('blogpostcategories'));
     }
 
     public function render_singleService($id)
