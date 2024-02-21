@@ -1,7 +1,6 @@
 @extends('backend.layouts.master')
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -13,12 +12,12 @@
             {{ Session::get('error') }}
         </div>
     @endif
-
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.blog-posts-categories.create') }}"><button class="btn btn-primary btn-sm"><i
-                        class="fa fa-plus"></i> Add Blog Posts Category</button></a>
+                        class="fa fa-plus"></i>Add
+                    Blog Post Category</button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -29,11 +28,10 @@
             </ol>
         </div>
     </div>
-
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>#</th>
+                <th>S.N</th>
                 <th>Title</th>
                 <th>Image</th>
                 <th>Content</th>
@@ -42,10 +40,12 @@
         </thead>
         <tbody>
             @foreach ($categories as $category)
-                <tr>
-                    <td>{{ $category->id }}</td>
+                <tr data-widget="expandable-table" aria-expanded="false">
+                    <td width="5%">{{ $loop->iteration }}</td>
                     <td>{{ $category->title }}</td>
-                    <td><img src="{{ asset($category->image) }}" alt="Category Image" style="max-width: 100px;"></td>
+                    <td><img id="preview{{ $loop->iteration }}"
+                            src="{{ asset('uploads/blogpostcategory/' . $category->image) }}" alt="Category Image"
+                            style="width: 150px; height:150px" /></td>
                     <td>{{ $category->content }}</td>
                     <td>
                         <a href="{{ route('admin.blog-posts-categories.edit', $category->id) }}"
@@ -61,4 +61,15 @@
             @endforeach
         </tbody>
     </table>
+    <script>
+        const previewImage = e => {
+            const reader = new FileReader();
+            reader.readAsDataURL(e.target.files[0]);
+            reader.onload = () => {
+                const preview = document.getElementById('preview');
+                preview.src = reader.result;
+            };
+        };
+    </script>
+    </div>
 @endsection

@@ -45,7 +45,7 @@
                             </ul>
 
                         </li>
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Universities
@@ -57,7 +57,9 @@
                                             {{ $university->title }}</a></li>
                                 @endforeach
                             </ul>
-                        </li>
+                        </li> --}}
+
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -88,6 +90,14 @@
                             </ul>
 
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="{{ route('Testimonial') }}">Testimonials</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">Blogs</a>
+                        </li>
+
 
                     </ul>
                     <a class="nav-link text-primary m-3 fs-5" href="#"><i
