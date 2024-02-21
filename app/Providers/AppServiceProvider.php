@@ -38,27 +38,25 @@ class AppServiceProvider extends ServiceProvider
         // View::share('favicon', $favicon);
         View::composer('frontend.includes.navbar', function ($view) {
             $countries = Country::all();
-            $view->with('countries', $countries);
-        });
-
-        View::composer('frontend.includes.navbar', function ($view) {
             $testimonials = Testimonial::all();
-            $view->with('testimonials', $testimonials);
-        });
-
-        View::composer('frontend.includes.navbar', function ($view) {
             $courses = Course::all();
+            $categories = Category::all();
+            $blogpostcategories = BlogPostsCategory::all();
+            $testPreparationPosts = Category::where('title', 'Test Prepration')->first()->posts;
+            $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
+
+            $view->with('countries', $countries);
+            $view->with('testimonials', $testimonials);
             $view->with('courses', $courses);
+            $view->with('categories', $categories);
+            $view->with('blogpostcategories', $blogpostcategories);
+            $view->with('testPreparationPosts', $testPreparationPosts);
+            $view->with('livingAbroadPosts', $livingAbroadPosts);
         });
 
-        View::composer('frontend.includes.navbar', function ($view) {
+        view()->composer('frontend.includes.footer', function ($view) {
             $categories = Category::all();
             $view->with('categories', $categories);
-        });
-
-        View::composer('frontend.includes.navbar', function ($view) {
-            $blogpostcategories = BlogPostsCategory::all();
-            $view->with('blogpostcategories', $blogpostcategories);
         });
     }
 

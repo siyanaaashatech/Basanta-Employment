@@ -59,6 +59,7 @@ Route::prefix('/')->group(function () {
     Route::get('/singleuniversity/{slug}', [SingleController::class, 'render_singleUniversity'])->name('singleUniversity');
     Route::get('/singlecourse/{slug}', [SingleController::class, 'render_singleCourse'])->name('singleCourse');
     Route::get('/singlecategory/{slug}', [SingleController::class, 'render_singleCategory'])->name('singleCategory');
+    Route::get('/singlepost/{slug}', [SingleController::class, 'render_singlePost'])->name('singlePost');
     Route::get('/gallerys/{slug}', [SingleController::class, 'render_singleImage'])->name('singleImage');
 
 

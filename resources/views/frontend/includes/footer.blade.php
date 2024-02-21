@@ -8,10 +8,22 @@
             <div class="box col">
                 <ul>
                     <h4>Quick Links</h4>
-                    <li><a href="">Career Counselling</a></li>
-                    <li><a href="">Why Professionals?</a></li>
-                    <li><a href="">News</a></li>
-                    <li><a href="">Blogs</a></li>
+                    @foreach ($categories as $category)
+                        @if ($category->title == 'Counselling')
+                            @foreach ($category->posts as $post)
+                                <li><a href="{{ route('singlePost', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                                </li>
+                            @endforeach
+                        @elseif ($category->title == 'News')
+                            @foreach ($category->posts as $post)
+                                <li><a href="{{ route('singlePost', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                                </li>
+                            @endforeach
+                        @else
+                            <li><a href="{{ route('singlePost', ['slug' => $category->slug]) }}">{{ $category->title }}</a>
+                            </li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
             <div class="box col">
@@ -72,5 +84,3 @@
         </div>
     </div>
 </div>
-
-

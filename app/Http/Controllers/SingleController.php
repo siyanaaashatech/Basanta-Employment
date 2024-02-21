@@ -129,6 +129,16 @@ class SingleController extends Controller
         return view('frontend.category', compact('category'));
     }
 
+    public function render_singlePost($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+        // Get the category associated with the post
+        $category = $post->category;
+
+        // Get all posts related to the same category
+        $relatedPosts = $category->posts()->where('id', '!=', $post->id)->get();
+        return view('frontend.post', compact('post', 'relatedPosts'));
+    }
 
 
     public function render_gallery()
