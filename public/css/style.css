@@ -334,9 +334,9 @@
   background-image: linear-gradient(rgb(9, 28, 72), rgb(25, 37, 78));
 }
 
-.bg-primary{
+.btn{
   background-color: rgb(9, 28, 72) !important;
- 
+ border-style: none;
 }
 
 .heading_title{
@@ -462,7 +462,13 @@ position: relative;
 
 /* FOr About Page */
 
-
+/* about_page */
+.about_page_img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  /* border: 2px solid red; */
+}
 .about-section{
 	position:relative;
 	padding:30px 0px;

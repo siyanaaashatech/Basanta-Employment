@@ -18,9 +18,8 @@
                 <label for="image">Image:</label>
                 <input type="file" class="form-control" id="image" name="image" onchange="previewImage(event)">
                 <div id="imagePreview" class="mt-2">
-                    @if($post->image)
+                    @if ($post->image)
                         <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" style="max-width: 100px;">
-                        
                     @else
                         No image available
                     @endif
@@ -31,7 +30,8 @@
                 <select class="form-control" id="category_id" name="category_id" required>
                     <option value="">Select Category</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ $post->category_id == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                        <option value="{{ $category->id }}" {{ $post->category_id == $category->id ? 'selected' : '' }}>
+                            {{ $category->title }}</option>
                     @endforeach
                 </select>
             </div>
@@ -46,7 +46,7 @@
             var preview = document.getElementById('imagePreview');
 
             while (preview.firstChild) {
-                preview.removeChild(preview.firstChild); 
+                preview.removeChild(preview.firstChild);
             }
 
             if (input.files && input.files[0]) {
@@ -55,7 +55,7 @@
                 reader.onload = function(e) {
                     var img = document.createElement('img');
                     img.src = e.target.result;
-                    img.style.maxWidth = '100px'; 
+                    img.style.maxWidth = '100px';
                     preview.appendChild(img);
                 }
 

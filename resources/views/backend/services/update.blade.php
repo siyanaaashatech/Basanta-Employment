@@ -55,10 +55,9 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Description</label>
 
-                    <textarea style="max-width: 30%;" type="text" class="form-control" name="description" id="description"
-                        placeholder="Add Description" value="{{ old('description') }}">
-                  {{ $service->description ?? '' }}
-                </textarea>
+                    <textarea style="width: 100%; min-height: 200px;" class="form-control summernote" name="description" id="summernote"
+                        placeholder="Add Description">{{ $service->description }}
+                    </textarea>
 
                 </div>
                 <!-- /.card-body -->
@@ -71,7 +70,16 @@
 
 
 
-    <!-- Main row -->
+    <script>
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 200, // Set the height of the editor
+                minHeight: null, // Set the minimum height of the editor
+                maxHeight: null, // Set the maximum height of the editor
+                focus: true // Set focus to editable area after initializing Summernote
+            });
+        });
+    </script>
 
 
 
