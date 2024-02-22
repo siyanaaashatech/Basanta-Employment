@@ -71,155 +71,274 @@
                                     </a>
                                 </li>
                             @endcan
-                            {{-- Add more menu items here --}}
+                            {{-- Insert Favicon Menu Item here --}}
+                            @can('list_favicons')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'favicons' ? 'active' : '' }}"
+                                        href="{{ route('admin.favicons.index') }}">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa fa-angle-double-right"></i> Favicon
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                     </li>
                 @endhasanyrole
                 {{-- End of Site Settings --}}
 
-                {{-- Beginning of Cover Image --}}
+
+
+
+                {{-- Beginning of Contact Details --}}
                 @hasanyrole('superadmin|admin')
                     <li class="nav-item">
-                        <!-- label-->
                         <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Cover Image</div>
+                            <div class="col-auto navbar-vertical-label">Contact Details</div>
                             <div class="col ps-0">
                                 <hr class="mb-0 navbar-vertical-divider">
                             </div>
                         </div>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-indicator collapsed" href="#dashboard7" role="button"
-                            data-bs-toggle="collapse" aria-expanded="false" aria-controls="dashboard7">
-                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
-                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Cover Image
-                                </span></div>
-                        </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'cover-images' ? 'show' : '' }}" id="dashboard7">
-                            @can('list_cover_images')
-                                <li class="nav-item"><a
-                                        class="nav-link {{ Request::segment(2) == 'cover-images' ? 'active' : '' }}"
-                                        href="{{ route('admin.cover-images.index') }}">
-                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i> Cover
-                                            Image
-                                        </div>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                    </li>
-                @endhasanyrole
-                {{-- End of Cover Image --}}
-
-                {{-- Beginning of About --}}
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <!-- label-->
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">About</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
+                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'contact-details' ? '' : 'collapsed' }}"
+                            href="#dashboard18" role="button" data-bs-toggle="collapse"
+                            aria-expanded="{{ Request::segment(2) == 'contact-details' ? 'true' : 'false' }}"
+                            aria-controls="dashboard18">
+                            <div class="d-flex align-items-center">
+                                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
+                                <span class="nav-link-text ps-1">Contact Details</span>
                             </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator collapsed" href="#dashboard8" role="button"
-                            data-bs-toggle="collapse" aria-expanded="false" aria-controls="dashboard8">
-                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
-                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">About us
-                                </span></div>
                         </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'about-us' ? 'show' : '' }}" id="dashboard8">
-                            @can('list_about_us')
-                                <li class="nav-item"><a
-                                        class="nav-link {{ Request::segment(2) == 'about-us' ? 'active' : '' }}"
-                                        href="{{ route('admin.about-us.index') }}">
-                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i> About
-                                            Us
-                                        </div>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                    </li>
-                @endhasanyrole
-                {{-- End of About --}}
-
-
-                {{-- Beginning of Services --}}
-
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Services</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard9" role="button"
-                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
-                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
-                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Services
-                                </span></div>
-                        </a>
-                        <ul class="nav collapse  {{ Request::segment(2) == 'services' ? 'show' : '' }}" id="dashboard9">
-                            @can('list_services')
-                                <li class="nav-item"><a
-                                        class="nav-link {{ Request::segment(2) == 'services' ? 'active' : '' }}"
-                                        href="{{ route('admin.services.index') }}">
+                        <ul class="nav collapse {{ Request::segment(2) == 'contact-details' ? 'show' : '' }}"
+                            id="dashboard18">
+                            {{-- Visitors Book --}}
+                            @can('list_visitors_book')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'contact-details' && Request::segment(3) == 'visitors-book' ? 'active' : '' }}"
+                                        href="{{ route('admin.visitors-book.index') }}">
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            service
-
+                                            Visitors Book
                                         </div>
                                     </a>
                                 </li>
                             @endcan
 
+                            {{-- Student Details --}}
+                            @can('list_student_details')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'contact-details' && Request::segment(3) == 'student-details' ? 'active' : '' }}"
+                                        href="{{ route('admin.student-details.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            Student Details
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                            {{-- Contacts --}}
+                            @can('list_contacts')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'contact-details' && Request::segment(3) == 'contacts' ? 'active' : '' }}"
+                                        href="{{ route('admin.contacts.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            Contacts
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                     </li>
                 @endhasanyrole
+                {{-- End of Contact Details --}}
 
-                {{-- End of Services --}}
 
-                {{-- Beginning of Favicon --}}
 
+                {{-- Beginning of Informations --}}
                 @hasanyrole('superadmin|admin')
                     <li class="nav-item">
                         <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Favicons</div>
+                            <div class="col-auto navbar-vertical-label">Informations</div>
                             <div class="col ps-0">
                                 <hr class="mb-0 navbar-vertical-divider">
                             </div>
                         </div>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard10" role="button"
-                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
-                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
-                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Favicons
-                                </span></div>
+                        <a class="nav-link dropdown-indicator" href="#dashboard15" role="button"
+                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard15">
+                            <div class="d-flex align-items-center">
+                                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
+                                <span class="nav-link-text ps-1">Informations</span>
+                            </div>
                         </a>
-                        <ul class="nav collapse  {{ Request::segment(2) == 'favicons' ? 'show' : '' }}" id="dashboard10">
-                            @can('list_favicons')
-                                <li class="nav-item"><a
-                                        class="nav-link {{ Request::segment(2) == 'favicons' ? 'active' : '' }}"
-                                        href="{{ route('admin.favicons.index') }}">
+                        <ul class="nav collapse {{ Request::segment(2) == 'informations' ? 'show' : '' }}"
+                            id="dashboard15">
+                            {{-- Country --}}
+                            @can('list_countries')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'countries' ? 'active' : '' }}"
+                                        href="{{ route('admin.countries.index') }}">
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            Favicon
-
+                                            Country
                                         </div>
                                     </a>
                                 </li>
                             @endcan
 
+                            {{-- University --}}
+                            @can('list_universities')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'universities' ? 'active' : '' }}"
+                                        href="{{ route('admin.universities.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            University
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
+                            {{-- Course --}}
+                            @can('list_courses')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'courses' ? 'active' : '' }}"
+                                        href="{{ route('admin.courses.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            Course
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                     </li>
                 @endhasanyrole
+                {{-- End of Informations --}}
 
-                {{-- End of Favicon --}}
+
+                {{-- Beginning of Introduction --}}
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        <!-- Navbar vertical label -->
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">Introduction</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                        <!-- Dropdown item -->
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'about-us' || Request::segment(2) == 'cover-images' || Request::segment(2) == 'services' || Request::segment(2) == 'team' ? '' : 'collapsed' }}"
+                            href="#dashboardIntro" role="button" data-bs-toggle="collapse"
+                            aria-expanded="{{ Request::segment(2) == 'about-us' || Request::segment(2) == 'cover-images' || Request::segment(2) == 'services' || Request::segment(2) == 'team' ? 'true' : 'false' }}"
+                            aria-controls="dashboardIntro">
+                            <div class="d-flex align-items-center">
+                                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
+                                <span class="nav-link-text ps-1">Introduction</span>
+                            </div>
+                        </a>
+                        <!-- Collapse content -->
+                        <ul class="nav collapse {{ Request::segment(2) == 'about-us' || Request::segment(2) == 'cover-images' || Request::segment(2) == 'services' || Request::segment(2) == 'team' ? 'show' : '' }}"
+                            id="dashboardIntro">
+                            {{-- About Us --}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(2) == 'about-us' ? 'active' : '' }}"
+                                    href="{{ route('admin.about-us.index') }}">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        <span class="nav-link-text ps-1">About Us</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {{-- Cover Image --}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(2) == 'cover-images' ? 'active' : '' }}"
+                                    href="{{ route('admin.cover-images.index') }}">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        <span class="nav-link-text ps-1">Cover Image</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {{-- Services --}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(2) == 'services' ? 'active' : '' }}"
+                                    href="{{ route('admin.services.index') }}">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        <span class="nav-link-text ps-1">Services</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {{-- Teams --}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(2) == 'team' ? 'active' : '' }}"
+                                    href="{{ route('admin.teams.index') }}">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        <span class="nav-link-text ps-1">Teams</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> <!-- Corrected closing tag -->
+                    </li>
+                @endhasanyrole
+                {{-- End of Introduction --}}
+
+
+
+                {{-- Beginning of Posts --}}
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        <!-- Navbar vertical label -->
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">Posts</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                        <!-- Dropdown item -->
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'posts' ? '' : 'collapsed' }}"
+                            href="#dashboard23" role="button" data-bs-toggle="collapse"
+                            aria-expanded="{{ Request::segment(2) == 'posts' ? 'true' : 'false' }}"
+                            aria-controls="dashboard23">
+                            <div class="d-flex align-items-center">
+                                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
+                                <span class="nav-link-text ps-1">Posts</span>
+                            </div>
+                        </a>
+                        <!-- Collapse content -->
+                        <ul class="nav collapse {{ Request::segment(2) == 'posts' ? 'show' : '' }}" id="dashboard23">
+                            {{-- Categories --}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(2) == 'categories' ? 'active' : '' }}"
+                                    href="{{ route('admin.categories.index') }}">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        <span class="nav-link-text ps-1">Categories</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {{-- Post (Add & List) --}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(3) == 'create' || (Request::segment(2) == 'posts' && Request::segment(3) != 'categories') ? 'active' : '' }}"
+                                    href="{{ route('admin.posts.index') }}">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        <span class="nav-link-text ps-1">Post</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> <!-- Corrected closing tag -->
+                    </li>
+                @endhasanyrole
+                {{-- End of Posts --}}
+
+
+
 
 
                 {{-- Beginning of Gallery --}}
@@ -272,121 +391,11 @@
                 {{-- End of Gallery --}}
 
 
-                {{-- Beginning of Country --}}
 
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Countries</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard12" role="button"
-                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
-                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
-                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Countries
-                                </span></div>
-                        </a>
-                        <ul class="nav collapse  {{ Request::segment(2) == 'countries' ? 'show' : '' }}"
-                            id="dashboard12">
-                            @can('list_countries')
-                                <li class="nav-item"><a
-                                        class="nav-link {{ Request::segment(2) == 'countries' ? 'active' : '' }}"
-                                        href="{{ route('admin.countries.index') }}">
-                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            Country
 
-                                        </div>
-                                    </a>
-                                </li>
-                            @endcan
 
-                        </ul>
-                    </li>
-                    </li>
-                @endhasanyrole
-
-                {{-- End of Country --}}
-
-                {{-- Beginning of University --}}
-
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Universities</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard13" role="button"
-                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
-                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
-                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Universities
-                                </span></div>
-                        </a>
-                        <ul class="nav collapse  {{ Request::segment(2) == 'universities' ? 'show' : '' }}"
-                            id="dashboard13">
-                            @can('list_universities')
-                                <li class="nav-item"><a
-                                        class="nav-link {{ Request::segment(2) == 'universities' ? 'active' : '' }}"
-                                        href="{{ route('admin.universities.index') }}">
-                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            University
-
-                                        </div>
-                                    </a>
-                                </li>
-                            @endcan
-
-                        </ul>
-                    </li>
-                    </li>
-                @endhasanyrole
-
-                {{-- End of University --}}
-
-                {{-- Beginning of Course --}}
-
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Courses</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard14" role="button"
-                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
-                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
-                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Courses
-                                </span></div>
-                        </a>
-                        <ul class="nav collapse  {{ Request::segment(2) == 'courses' ? 'show' : '' }}" id="dashboard14">
-                            @can('list_courses')
-                                <li class="nav-item"><a
-                                        class="nav-link {{ Request::segment(2) == 'courses' ? 'active' : '' }}"
-                                        href="{{ route('admin.courses.index') }}">
-                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            Course
-
-                                        </div>
-                                    </a>
-                                </li>
-                            @endcan
-
-                        </ul>
-                    </li>
-                    </li>
-                @endhasanyrole
-
-                {{-- End of Course --}}
 
                 {{-- Beginning of Testimonials --}}
-
                 @hasanyrole('superadmin|admin')
                     <li class="nav-item">
                         <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
@@ -396,14 +405,14 @@
                             </div>
                         </div>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard15" role="button"
-                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
+                        <a class="nav-link dropdown-indicator" href="#dashboard16" role="button"
+                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard16">
                             <div class="d-flex align-items-center"><span class="nav-link-icon"><i
                                         class="fas fa-users"></i></span><span class="nav-link-text ps-1">Testimonials
                                 </span></div>
                         </a>
                         <ul class="nav collapse  {{ Request::segment(2) == 'testimonials' ? 'show' : '' }}"
-                            id="dashboard15">
+                            id="dashboard16">
                             @can('list_testimonials')
                                 <li class="nav-item"><a
                                         class="nav-link {{ Request::segment(2) == 'testimonials' ? 'active' : '' }}"
@@ -420,49 +429,7 @@
                     </li>
                     </li>
                 @endhasanyrole
-
                 {{-- End of Testimonials --}}
-
-
-                {{-- Beginning of Visitors Books --}}
-
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Visitors Books</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard16" role="button"
-                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
-                            <div class="d-flex align-items-center"><span class="nav-link-icon"><i
-                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Visitors Books
-                                </span></div>
-                        </a>
-                        <ul class="nav collapse  {{ Request::segment(2) == 'visitors-book' ? 'show' : '' }}"
-                            id="dashboard16">
-                            @can('list_visitors_book')
-                                <li class="nav-item"><a
-                                        class="nav-link {{ Request::segment(2) == 'visitors-book' ? 'active' : '' }}"
-                                        href="{{ route('admin.visitors-book.index') }}">
-                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            Visitors Book
-
-                                        </div>
-                                    </a>
-                                </li>
-                            @endcan
-
-                        </ul>
-                    </li>
-                    </li>
-                @endhasanyrole
-
-                {{-- End of Visitors Books --}}
-
-
 
                 {{-- Beginning of Blog Posts Category --}}
                 @hasanyrole('superadmin|admin')
@@ -474,85 +441,30 @@
                             </div>
                         </div>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard17" role="button"
-                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
+                        <a class="nav-link dropdown-indicator" href="#blog-post-category" role="button"
+                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="blog-post-category">
                             <div class="d-flex align-items-center">
                                 <span class="nav-link-icon"><i class="fas fa-users"></i></span>
                                 <span class="nav-link-text ps-1">Blog Posts Category</span>
                             </div>
                         </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'blog-posts-categories' ? 'show' : '' }}"
-                            id="dashboard17">
-                            @can('list_blog_posts_categories')
-                                <li class="nav-item">
-                                    <a class="nav-link {{ Request::segment(2) == 'blog-posts-categories' ? 'active' : '' }}"
-                                        href="{{ route('admin.blog-posts-categories.index') }}">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fa fa-angle-double-right"></i> Blog Posts Category
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.blog-posts-categories.create') }}">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fa fa-plus"></i> Create Blog Post Category
-                                        </div>
-                                    </a>
-                                </li>
-                            @endcan
+                        <ul class="nav collapse {{ Request::segment(2) == 'faqs' ? 'show' : '' }}"
+                            id="blog-post-category" id="dashboard19">
+                            {{-- Add Blog Post Category --}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(2) == 'faqs' && Request::segment(3) == 'create' ? 'active' : '' }}"
+                                    href="{{ route('admin.blog-posts-categories.index') }}">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        <span class="nav-link-text ps-1">Blog Post Category</span>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
-                    </li> <!-- Close the parent list item -->
+                    </li>
                 @endhasanyrole
                 {{-- End of Blog Posts Category --}}
-
-                {{-- Beginning of Team --}}
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Teams</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard18" role="button"
-                            data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
-                            <div class="d-flex align-items-center">
-                                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
-                                <span class="nav-link-text ps-1">Teams</span>
-                            </div>
-                        </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'team' ? 'show' : '' }}" id="team"
-                            id="dashboard18">
-                            @can('list_teams')
-                                <li class="nav-item">
-                                    <a class="nav-link {{ Request::segment(2) == 'team' && Request::segment(3) == 'create' ? 'active' : '' }}"
-                                        href="{{ route('admin.teams.create') }}">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fa fa-plus"></i>
-                                            <span class="nav-link-text ps-1">Add Team Member</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                {{-- List Team Members --}}
-                                <li class="nav-item">
-                                    <a class="nav-link {{ Request::segment(2) == 'team' && Request::segment(3) != 'create' ? 'active' : '' }}"
-                                        href="{{ route('admin.teams.index') }}">
-                                        <div class="d-flex align-items-center">
-                                            <i class="fa fa-list"></i>
-                                            <span class="nav-link-text ps-1">List Team Members</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                    </li> <!-- Close the parent list item -->
-                @endhasanyrole
-                {{-- End of Team --}}
-
-
 
 
 
@@ -567,32 +479,22 @@
                             </div>
                         </div>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#faq" role="button" data-bs-toggle="collapse"
-                            aria-expanded="true" aria-controls="faq">
+                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'faqs' ? 'active' : '' }}"
+                            href="#faq" role="button" data-bs-toggle="collapse" aria-expanded="true"
+                            aria-controls="faq">
                             <div class="d-flex align-items-center">
                                 <span class="nav-link-icon"><i class="fas fa-question-circle"></i></span>
                                 <span class="nav-link-text ps-1">FAQs</span>
                             </div>
                         </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'faqs' ? 'show' : '' }}" id="faq"
-                            id="dashboard19">
-                            {{-- Add FAQ --}}
+                        <ul class="nav collapse {{ Request::segment(2) == 'faqs' ? 'show' : '' }}" id="faq">
+                            {{-- FAQs --}}
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) == 'faqs' && Request::segment(3) == 'create' ? 'active' : '' }}"
-                                    href="{{ route('admin.faqs.create') }}">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fa fa-plus"></i>
-                                        <span class="nav-link-text ps-1">Add FAQ</span>
-                                    </div>
-                                </a>
-                            </li>
-                            {{-- List FAQs --}}
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) == 'faqs' && Request::segment(3) != 'create' ? 'active' : '' }}"
+                                <a class="nav-link {{ Request::segment(2) == 'faqs' ? 'active' : '' }}"
                                     href="{{ route('admin.faqs.index') }}">
                                     <div class="d-flex align-items-center">
                                         <i class="fa fa-list"></i>
-                                        <span class="nav-link-text ps-1">List FAQs</span>
+                                        <span class="nav-link-text ps-1">FAQ</span>
                                     </div>
                                 </a>
                             </li>
@@ -601,177 +503,6 @@
                     </li>
                 @endhasanyrole
                 {{-- End of FAQs --}}
-
-
-
-
-                {{-- Beginning of Student Details --}}
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Student Details</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard20" role="button"
-                            data-bs-toggle="collapse"
-                            aria-expanded="{{ Request::segment(2) == 'student-details' ? 'true' : 'false' }}"
-                            aria-controls="dashboard20">
-                            <div class="d-flex align-items-center">
-                                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
-                                <span class="nav-link-text ps-1">Student Details</span>
-                            </div>
-                        </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'student-details' ? 'show' : '' }}"
-                            id="dashboard20">
-                            @can('list_student_details')
-                                <li class="nav-item">
-                                    <a class="nav-link {{ Request::segment(2) == 'student-details' ? 'active' : '' }}"
-                                        href="{{ route('admin.student-details.index') }}">
-                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            Student Detail</div>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                    </li>
-                @endhasanyrole
-                {{-- End of Student Details --}}
-
-
-
-
-                {{-- Beginning of Contacts --}}
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Contacts</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator" href="#dashboard21" role="button"
-                            data-bs-toggle="collapse"
-                            aria-expanded="{{ Request::segment(2) == 'contacts' ? 'true' : 'false' }}"
-                            aria-controls="dashboard21">
-                            <div class="d-flex align-items-center">
-                                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
-                                <span class="nav-link-text ps-1">Contacts</span>
-                            </div>
-                        </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'contacts' ? 'show' : '' }}" id="dashboard21">
-                            @can('list_contacts')
-                                <li class="nav-item">
-                                    <a class="nav-link {{ Request::segment(2) == 'contacts' ? 'active' : '' }}"
-                                        href="{{ route('admin.contacts.index') }}">
-                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            Contact</div>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                    </li>
-                @endhasanyrole
-                {{-- End of Contacts --}}
-
-
-
-                {{-- Beginning of Categories --}}
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Categories</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'categories' ? 'collapsed' : '' }}"
-                            href="#dashboard22" role="button" data-bs-toggle="collapse"
-                            aria-expanded="{{ Request::segment(2) == 'categories' ? 'true' : 'false' }}"
-                            aria-controls="dashboard22">
-                            <div class="d-flex align-items-center">
-                                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
-                                <span class="nav-link-text ps-1">Categories</span>
-                            </div>
-                        </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'categories' ? 'show' : '' }}"
-                            id="dashboard22">
-                            {{-- Add Category --}}
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) == 'categories' && Request::segment(3) == 'create' ? 'active' : '' }}"
-                                    href="{{ route('admin.categories.create') }}">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fa fa-plus"></i>
-                                        <span class="nav-link-text ps-1">Add Category</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    </li>
-                @endhasanyrole
-                {{-- End of Categories --}}
-
-
-
-
-                {{-- Beginning of Posts --}}
-                @hasanyrole('superadmin|admin')
-                    <li class="nav-item">
-                        <!-- Navbar vertical label -->
-                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Posts</div>
-                            <div class="col ps-0">
-                                <hr class="mb-0 navbar-vertical-divider">
-                            </div>
-                        </div>
-                        <!-- Dropdown item -->
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'posts' ? '' : 'collapsed' }}"
-                            href="#dashboard23" role="button" data-bs-toggle="collapse"
-                            aria-expanded="{{ Request::segment(2) == 'posts' ? 'true' : 'false' }}"
-                            aria-controls="dashboard23">
-                            <div class="d-flex align-items-center">
-                                <span class="nav-link-icon"><i class="fas fa-users"></i></span>
-                                <span class="nav-link-text ps-1">Posts</span>
-                            </div>
-                        </a>
-                        <!-- Collapse content -->
-                        <ul class="nav collapse {{ Request::segment(2) == 'posts' ? 'show' : '' }}" id="dashboard23">
-                            {{-- Add Post --}}
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(3) == 'create' ? 'active' : '' }}"
-                                    href="{{ route('admin.posts.create') }}">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fa fa-plus"></i>
-                                        <span class="nav-link-text ps-1">Add Post</span>
-                                    </div>
-                                </a>
-                            </li>
-                            {{-- List Posts --}}
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(3) != 'create' ? 'active' : '' }}"
-                                    href="{{ route('admin.posts.index') }}">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fa fa-list"></i>
-                                        <span class="nav-link-text ps-1">List Posts</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> <!-- Corrected closing tag -->
-                    </li>
-                @endhasanyrole
-                {{-- End of Posts --}}
-
-
-
 
 
             </ul>

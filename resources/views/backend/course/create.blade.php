@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
 
-                <textarea style="max-width: 100%; min-height: 500px;" type="text" class="form-control" name="description"
+                <textarea style="max-width: 100%; min-height: 100px;" type="text" class="form-control" name="description"
                     id="description" placeholder="Add Description" value="{{ old('description') }}"></textarea>
             </div>
 

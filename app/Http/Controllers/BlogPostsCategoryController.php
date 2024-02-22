@@ -15,7 +15,7 @@ class BlogPostsCategoryController extends Controller
     public function index()
     {
         $categories = BlogPostsCategory::all();
-        return view('backend.blog_posts_category.index', compact('categories'));
+        return view('backend.blog_posts_category.index', ['categories' => $categories, 'page_title' => 'Blog Post Category']);
     }
 
     /**
@@ -41,19 +41,23 @@ class BlogPostsCategoryController extends Controller
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // adjust max file size as needed
         ]);
+        try {
+            $newImageName = time() . '-' . $request->image->getClientOriginalName();
+            $request->image->move(public_path('uploads/blogpostcategory'), $newImageName);
 
-        $category = new BlogPostsCategory();
-        $category->title = $request->input('title');
-        $category->content = $request->input('content');
+            $category = new BlogPostsCategory();
+            $category->title = $request->title;
+            $category->content = $request->content;
+            $category->image = $newImageName;
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images/blog-posts-categories');
-            $category->image = $imagePath;
+            if ($category->save()) {
+                return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category created successfully.');
+            } else {
+                return redirect()->back()->with('error', 'Error! Blog Post Category not created.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error! Something went wrong.');
         }
-
-        $category->save();
-
-        return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category created successfully.');
     }
 
     /**
@@ -62,7 +66,7 @@ class BlogPostsCategoryController extends Controller
      * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
      * @return \Illuminate\Http\Response
      */
-    
+
     /**
      * Show the form for editing the specified resource.
      *
