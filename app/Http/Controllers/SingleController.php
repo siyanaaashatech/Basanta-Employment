@@ -101,11 +101,19 @@ class SingleController extends Controller
 
         return view('frontend.service', compact('service', 'images', 'services', 'categories', 'sitesetting', 'about', 'serviceHead'));
     }
+
+    public function render_Countries()
+    {
+        $countries = Country::all();
+
+        return view('frontend.countries', compact('countries'));
+    }
     public function render_singleCountry($slug)
     {
         $country = Country::where('slug', $slug)->firstOrFail();
         $recommendedCountries = Country::where('slug', '!=', $slug)->get();
         // $countries = Country::all();
+
         return view('frontend.single', compact('country', 'recommendedCountries'));
     }
 

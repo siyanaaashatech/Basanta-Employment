@@ -15,6 +15,7 @@ class CategorySeeder extends Seeder
             ['title' => 'Living Abroad'],
             ['title' => 'Counselling'],
             ['title' => 'News'],
+            ['title' => 'Country University']
         ];
         foreach ($categories as $category) {
             Category::create($category);
