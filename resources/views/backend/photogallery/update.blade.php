@@ -47,7 +47,7 @@
 
                     <div>
                         <label for="content">Description</label><span style="color:red; font-size:large">*</span>
-                        <textarea style="max-width: 100%;min-height: 250px;" type="text" class="form-control" id="img_desc" name="img_desc"
+                        <textarea style="max-width: 100%;min-height: 60px;" type="text" class="form-control" id="img_desc" name="img_desc"
                             placeholder="Add Description">{{ $gallery->img_desc }}</textarea>
                     </div>
 
