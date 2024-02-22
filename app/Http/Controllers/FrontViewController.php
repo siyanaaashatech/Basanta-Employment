@@ -43,6 +43,9 @@ class FrontViewController extends Controller
                 $countryImages[] = $images;
             }
         }
+        $countryUniversityCategory = Category::where('title', 'Country University')->first();
+        $sliderPost = $countryUniversityCategory->posts()->latest()->first();
+        $enrollPost = $countryUniversityCategory->posts()->orderBy('id', 'desc')->skip(1)->first();
 
 
         return view('frontend.index', compact([
@@ -52,7 +55,9 @@ class FrontViewController extends Controller
             'courses',
             'testimonials',
             'countries',
-            'countryImages'
+            'countryImages',
+            'sliderPost',
+            'enrollPost'
         ]));
     }
 
@@ -65,6 +70,6 @@ class FrontViewController extends Controller
         $about = About::first();
         $images = PhotoGallery::latest()->get();
 
-        return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about',  'services', 'images'));
+        return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about', 'services', 'images'));
     }
 }

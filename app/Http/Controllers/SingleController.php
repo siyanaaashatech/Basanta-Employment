@@ -89,9 +89,9 @@ class SingleController extends Controller
         return view('frontend.blogpostcategory', compact('blogpostcategory'));
     }
 
-    public function render_singleService($id)
+    public function render_singleService($slug)
     {
-        $service = Service::find($id);
+        $service = Service::where('slug', $slug)->firstOrFail();
         $images = PhotoGallery::latest()->get();
         $categories = Category::all();
         $services = Service::latest()->get();
@@ -101,11 +101,19 @@ class SingleController extends Controller
 
         return view('frontend.service', compact('service', 'images', 'services', 'categories', 'sitesetting', 'about', 'serviceHead'));
     }
+
+    public function render_Countries()
+    {
+        $countries = Country::all();
+
+        return view('frontend.countries', compact('countries'));
+    }
     public function render_singleCountry($slug)
     {
         $country = Country::where('slug', $slug)->firstOrFail();
         $recommendedCountries = Country::where('slug', '!=', $slug)->get();
         // $countries = Country::all();
+
         return view('frontend.single', compact('country', 'recommendedCountries'));
     }
 
@@ -126,9 +134,20 @@ class SingleController extends Controller
     public function render_singleCategory($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        return view('frontend.category', compact('category'));
+        $relatedCategories = Category::where('id', '!=', $category->id)->get();
+        return view('frontend.category', compact('category', 'relatedCategories'));
     }
 
+    public function render_singlePost($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+        // Get the category associated with the post
+        $category = $post->category;
+
+        // Get all posts related to the same category
+        $relatedPosts = $category->posts()->where('id', '!=', $post->id)->get();
+        return view('frontend.post', compact('post', 'relatedPosts'));
+    }
 
 
     public function render_gallery()
