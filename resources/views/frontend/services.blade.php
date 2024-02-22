@@ -52,18 +52,18 @@
 
 
                 <div class="projcard projcard-blue">
-                    <div class="projcard-innerbox">
+                    <div class="projcard-innerbox row">
 
-                    @if ($service->image)
+                        @if ($service->image)
                                         
                         <img src="{{ asset($service->image) }}" class="projcard-img" alt="">
-                    @else
-                    <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
-                    @endif
+                      @else
+                       <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
+                      @endif
 
 
-                        <img class="projcard-img" src="{{ asset('uploads/service/' . $service->image) }}" />
-                        <div class="projcard-textbox">
+                        <img class="projcard-img col-lg-6 col-sm-12" src="{{ asset('uploads/service/' . $service->image) }}" />
+                        <div class="projcard-textbox col-lg-6 col-sm-12">
                             <div class="projcard-title">{{ $service->title }}</div>
                             {{-- <div class="projcard-subtitle">This explains the card in more detail</div> --}}
                             <div class="projcard-bar"></div>
