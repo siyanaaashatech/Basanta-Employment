@@ -14,6 +14,7 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::paginate(10);
+        // $processedServices = $this->processServices($services);
         return view('backend.services.index', ['services' => $services, 'page_title' => 'Services']);
     }
 
@@ -82,7 +83,7 @@ class ServiceController extends Controller
 
                 // Upload the new image
                 $newImageName = time() . '-' . $request->image->getClientOriginalName();
-                $request->image->move(public_path('uploads/about'), $newImageName);
+                $request->image->move(public_path('uploads/service'), $newImageName);
                 $service->image = $newImageName;
             }
 
@@ -114,4 +115,12 @@ class ServiceController extends Controller
             return redirect()->route('admin.service.index')->with('error', 'Service not found.');
         }
     }
+    private function processServices($services)
+    {
+        foreach ($services as $service) {
+            $service->processedContent = preg_replace('/<p>(.*?)<iframe\b[^>]*>.*?<\/iframe>(.*?)<\/p>/is', '$1$2', $service->summernoteContent);
+        }
+        return $services;
+    
+}
 }

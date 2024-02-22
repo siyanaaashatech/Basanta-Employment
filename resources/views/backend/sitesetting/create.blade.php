@@ -55,6 +55,7 @@
                     <input type="email" name="office_email" class="form-control" placeholder="office_email"
                         id="office_email">
                 </div>
+                <!-- Office Name, Address, Contact, Email fields... -->
                 <div class="form-group">
                     <label for="main_logo">Main Logo</label>
                     <input type="file" name="main_logo" class="form-control" placeholder="Main Logo" id="main_logo"
@@ -62,7 +63,6 @@
                     <img id="main_logo_preview" src="#" alt="Main Logo Preview"
                         style="display: none; max-width: 200px; margin-top: 10px;">
                 </div>
-
 
                 <div class="form-group">
                     <label for="side_logo">Side Logo</label>

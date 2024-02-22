@@ -29,38 +29,39 @@ class CountryController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required|string',
-            'image.*' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
-            'content' => 'nullable|string',
-        ]);
+{
+    $this->validate($request, [
+        'name' => 'required|string',
+        'image.*' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
+        'content' => 'nullable|string',
+    ]);
 
-        try {
-            $imagesPaths = [];
-            if ($request->hasFile('image')) {
-                foreach ($request->file('image') as $imageFile) {
-                    $imagePath = ImageConverter::convertSingleImage($imageFile, 'uploads/country/');
-                     if ($imagePath) {
-                    $imagesPaths[] = $imagePath;
-                }
-                }
+    try {
+        $imagesPaths = [];
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $imageFile) {
+                // Convert and store new images
+                $imagePath = ImageConverter::convertSingleImage($imageFile, 'uploads/country/');
+                $imagesPaths[] = $imagePath;
             }
-
-            $processedContent = $this->processSummernoteContent($request->input('content'));
-
-            $country = new Country();
-            $country->name = $request->input('name');
-            $country->slug = SlugService::createSlug(Country::class, 'slug', $request->input('name'));
-            $country->image = json_encode($imagesPaths);
-            $country->content = $processedContent;
-            $country->save();
-
-            return redirect()->route('admin.countries.index')->with('success', 'Country created successfully.');
-        } catch (Exception $e) {
-            return back()->with('error', "Error creating country: " . $e->getMessage());
         }
+
+        $processedContent = $this->processSummernoteContent($request->input('content'));
+
+        $country = new Country();
+        $country->name = $request->input('name');
+        $country->slug = SlugService::createSlug(Country::class, 'slug', $request->input('name'));
+        $country->image = json_encode($imagesPaths);
+        $country->content = $processedContent;
+        $country->save();
+
+        return redirect()->route('admin.countries.index')->with('success', 'Country created successfully.');
+    } catch (Exception $e) {
+        return back()->with('error', "Error creating country: " . $e->getMessage());
     }
+}
+
+
 
 
     protected function processSummernoteContent($content)

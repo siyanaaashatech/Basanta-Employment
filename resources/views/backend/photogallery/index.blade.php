@@ -48,8 +48,8 @@
         </thead>
         <tbody>
             @foreach ($gallery as $image)
-                <tr data-widget="expandable-table" aria-expanded="false">
-                    <td width="5%">{{ $loop->iteration }}</td>
+                <tr>
+                    <td>{{ $image->id }}</td>
                     <td>{{ $image->title }}</td>
                     <td>{{ $image->img_desc ?? '' }}</td>
                     <td>
@@ -57,13 +57,12 @@
                             <div class="album-container">
                                 @foreach ($image->img as $index => $imagePath)
                                     <img class="album-image" id="preview{{ $loop->parent->iteration }}{{ $index }}"
-                                        src="{{ asset('uploads/photogallery/' . $imagePath) }}"
-                                        style="width: 50px; height:50px; margin-right: 5px;" />
+                                        src="{{ asset($imagePath) }}"
+                                        style="width: 100px; height:100px; margin-right: 5px;" />
                                 @endforeach
                             </div>
                         @else
-                            <img id="preview{{ $loop->iteration }}"
-                                src="{{ asset('uploads/photogallery/' . $image->img) }}"
+                            <img id="preview{{ $loop->iteration }}" src="{{ asset($image->img) }}"
                                 style="width: 150px; height:150px" />
                         @endif
                     </td>

@@ -61,7 +61,7 @@
             <div id="imagePreviews" class="row">
                 @foreach (old('image', []) as $uploadedImage)
                     <div class="col-md-2 mb-3 image-preview">
-                        <img src="{{ $uploadedImage }}" alt="Image Preview" class="img-fluid">
+                        <img src="{{ asset($uploadedImage) }}" alt="Image Preview" class="img-fluid">
                         <span class="remove-image" onclick="removePreview(this)">Remove</span>
                     </div>
                 @endforeach

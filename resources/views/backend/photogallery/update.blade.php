@@ -59,8 +59,10 @@
                     </div>
                     <div id="imagePreview" class="mt-2">
                         @foreach ($gallery->img as $imagePath)
-                            <img src="{{ asset('uploads/photogallery/' . $imagePath) }}"
-                                style="width: 100px; height: 100px; margin-right: 5px;">
+                            <div class="existing-image">
+                                <img src="{{ asset($imagePath) }}" style="width: 100px; height: 100px; margin-right: 5px;">
+                                <input type="hidden" name="existing_images[]" value="{{ $imagePath }}">
+                            </div>
                         @endforeach
                     </div>
 
