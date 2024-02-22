@@ -2,13 +2,14 @@
 
 namespace App\Providers;
 
-use App\Models\BlogPostsCategory;
 use App\Models\Course;
 use App\Models\Country;
 use App\Models\Favicon;
+use App\Models\Service;
 use App\Models\Category;
-use App\Models\Testimonial;
 use App\Models\University;
+use App\Models\Testimonial;
+use App\Models\BlogPostsCategory;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -36,29 +37,40 @@ class AppServiceProvider extends ServiceProvider
         // $favicon = Favicon::latest()->get()->take(1);
         // // dd($favicon);
         // View::share('favicon', $favicon);
+
+        //Global variable for Navbar
         View::composer('frontend.includes.navbar', function ($view) {
             $countries = Country::all();
-            $view->with('countries', $countries);
-        });
-
-        View::composer('frontend.includes.navbar', function ($view) {
             $testimonials = Testimonial::all();
-            $view->with('testimonials', $testimonials);
-        });
-
-        View::composer('frontend.includes.navbar', function ($view) {
             $courses = Course::all();
-            $view->with('courses', $courses);
-        });
-
-        View::composer('frontend.includes.navbar', function ($view) {
             $categories = Category::all();
+            $blogpostcategories = BlogPostsCategory::all();
+            $testPreparationPosts = Category::where('title', 'Test Prepration')->first()->posts;
+            $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
+
+            $view->with('countries', $countries);
+            $view->with('testimonials', $testimonials);
+            $view->with('courses', $courses);
             $view->with('categories', $categories);
+            $view->with('blogpostcategories', $blogpostcategories);
+            $view->with('testPreparationPosts', $testPreparationPosts);
+            $view->with('livingAbroadPosts', $livingAbroadPosts);
         });
 
-        View::composer('frontend.includes.navbar', function ($view) {
-            $blogpostcategories = BlogPostsCategory::all();
-            $view->with('blogpostcategories', $blogpostcategories);
+        ////Global variable for Footer
+        view()->composer('frontend.includes.footer', function ($view) {
+            $counsellingCategory = Category::where('title', 'Counselling')->first();
+            $counsellingPosts = $counsellingCategory->posts()->take(2)->get();
+            $newsCategory = Category::where('title', 'News')->first();
+            $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
+            $services = Service::all();
+            $courses = Course::all();
+
+            $view->with('counsellingPosts', $counsellingPosts);
+            $view->with('newsCategory', $newsCategory);
+            $view->with('livingAbroadPosts', $livingAbroadPosts);
+            $view->with('services', $services);
+            $view->with('courses', $courses);
         });
     }
 

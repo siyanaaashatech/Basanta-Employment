@@ -157,16 +157,37 @@
             <div class="word col-md-6">
                 <div class="text">
                     <h2>
-                        <p>Your Choice- Your Destination</p>
+                        <p>
+                            @if ($sliderPost)
+                                {{ $sliderPost->title }}
+                            @else
+                                No post available
+                            @endif
+                        </p>
                     </h2>
-                    <p class="text-primary"> Most preferred destinations in the world</p>
-                    <p>We represent colleges in Australia,UK, USA, Thailand, India, Switzerland & Japan. However
-                        sucessfully
-                        enrolling a syudent at the college of his/her choice is not as simple as we made out at the vey
-                        outset.
+                    {{-- <p class="text-primary"> Most preferred destinations in the world</p> --}}
+                    <?php
+                    $maxLength = 600; // Set your desired maximum length
+                    // Get the raw content and strip all tags
+                    $strippedContent = strip_tags($sliderPost->description);
+                    // Decode HTML entities to handle double encoding
+                    $decodedContent = htmlspecialchars_decode($strippedContent);
+                    // Escape HTML entities
+                    $escapedContent = htmlspecialchars($decodedContent);
+                    // Take a substring of the escaped content
+                    $trimmedContent = substr($escapedContent, 0, $maxLength);
+                    ?>
+                    <p>
+                        @if ($sliderPost)
+                            {!! $sliderPost->description !!}
+                        @else
+                            No description available
+                        @endif
                     </p>
                 </div>
-                <button class="btn bg-primary text-white ">SEE ALL COUNTRIES</button>
+                <a href="{{ route('Countries') }}">
+                    <button class="btn bg-primary text-white">SEE ALL COUNTRIES</button>
+                </a>
             </div>
             <div class="container-fluid col-md-6 col-sm-12">
                 <div id="carouselExampleCaptions" class="carousel slide">
@@ -217,16 +238,41 @@
         <div class="col-md-5 mx-5">
             <div class="empty">.</div>
             <div class="text mx-5 text-white">
-                <h2>A leading university for international students</h2>
-                <b> Calling All Artists K-12. Use your creativity to help sustain our world!</b>
-                <h5>We are committed to helping international students make the most of their time in Australia by
-                    providing quality education, guidance and support.</h5>
+                <p>
+                    @if ($enrollPost)
+                        {{ $enrollPost->title }}
+                    @else
+                        No post available
+                    @endif
+                </p>
+                {{-- <b> Calling All Artists K-12. Use your creativity to help sustain our world!</b> --}}
+                <?php
+                $maxLength = 600; // Set your desired maximum length
+                // Get the raw content and strip all tags
+                $strippedContent = strip_tags($enrollPost->description);
+                // Decode HTML entities to handle double encoding
+                $decodedContent = htmlspecialchars_decode($strippedContent);
+                // Escape HTML entities
+                $escapedContent = htmlspecialchars($decodedContent);
+                // Take a substring of the escaped content
+                $trimmedContent = substr($escapedContent, 0, $maxLength);
+                ?>
+                <p>
+
+                    @if ($enrollPost)
+                        {!! $enrollPost->description !!}
+                    @else
+                        No description available
+                    @endif
+                </p>
             </div>
 
             <div class="butt d-flex">
-                <div class="text-center my-5 mx-3"><button class="btn bg-primary text-white ">Enroll Now</button>
+                <div class="text-center my-5 mx-3">
+                    <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Enroll Now</a>
                 </div>
-                <div class="text-center my-5 mx-1"><button class="btn bg-primary text-white ">Learn More</button>
+                <div class="text-center my-5 mx-1">
+                    <a href="{{ route('About') }}" class="btn bg-primary text-white">Read More</a>
                 </div>
             </div>
         </div>

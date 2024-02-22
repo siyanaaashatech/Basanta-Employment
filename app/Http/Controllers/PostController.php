@@ -41,17 +41,18 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required|image|max:2048', 
+            'image' => 'required|image|max:2048',
             'category_id' => 'required|exists:categories,id'
         ]);
 
 
-        $imagePath = $request->file('image')->store('posts', 'public');
+        $newImageName = time() . '-' . $request->image->getClientOriginalName();
+        $request->image->move(public_path('uploads/post'), $newImageName);
 
         $post = new Post();
         $post->title = $request->input('title');
         $post->description = $request->input('description');
-        $post->image = $imagePath;
+        $post->image = $newImageName;
         $post->category_id = $request->input('category_id');
         $post->save();
 
@@ -62,7 +63,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|max:2048', 
+            'image' => 'image|max:2048',
             'category_id' => 'required|exists:categories,id'
         ]);
 
