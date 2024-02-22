@@ -45,7 +45,7 @@
                             </ul>
 
                         </li>
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Universities
@@ -57,7 +57,9 @@
                                             {{ $university->title }}</a></li>
                                 @endforeach
                             </ul>
-                        </li>
+                        </li> --}}
+
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,10 +73,37 @@
                                 @endforeach
                             </ul>
                         </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Living Abroad
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                @foreach ($categories as $category)
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('singleCategory', ['slug' => $category->slug]) }}">
+                                            {{ $category->title }}</a></li>
+                                @endforeach
+                            </ul>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="{{ route('Testimonial') }}">Testimonials</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">Blogs</a>
+                        </li>
+
+
                     </ul>
                     <a class="nav-link text-primary m-3 fs-5" href="#"><i
                             class="fa-solid fa-magnifying-glass"></i></a>
-                    <button class="btn bg-primary text-white">Apply Now</button>
+                    <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Apply Now</a>
+
                     <a class="nav-link m-3 fs-5" href="">9876543210</a>
                 </div>
             </div>

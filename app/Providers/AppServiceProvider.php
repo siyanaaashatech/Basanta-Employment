@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
-use App\Models\Country;
+use App\Models\BlogPostsCategory;
 use App\Models\Course;
+use App\Models\Country;
 use App\Models\Favicon;
+use App\Models\Category;
+use App\Models\Testimonial;
 use App\Models\University;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -39,13 +42,23 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('frontend.includes.navbar', function ($view) {
-            $universities = University::all();
-            $view->with('universities', $universities);
+            $testimonials = Testimonial::all();
+            $view->with('testimonials', $testimonials);
         });
 
         View::composer('frontend.includes.navbar', function ($view) {
             $courses = Course::all();
             $view->with('courses', $courses);
+        });
+
+        View::composer('frontend.includes.navbar', function ($view) {
+            $categories = Category::all();
+            $view->with('categories', $categories);
+        });
+
+        View::composer('frontend.includes.navbar', function ($view) {
+            $blogpostcategories = BlogPostsCategory::all();
+            $view->with('blogpostcategories', $blogpostcategories);
         });
     }
 

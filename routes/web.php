@@ -47,6 +47,9 @@ Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.
 Route::prefix('/')->group(function () {
     Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
     Route::get('/aboutus', [SingleController::class, 'render_about'])->name('About');
+    Route::get('/testimonials', [SingleController::class, 'render_testimonial'])->name('Testimonial');
+    Route::get('/blogpostcategories', [SingleController::class, 'render_blogpostcategory'])->name('Blogpostcategory');
+    Route::get('/blogpostcategory/{id}', [SingleController::class, 'render_singleBlogpostcategory'])->name('SingleBlogpostcategory');
     Route::get('/team', [SingleController::class, 'render_team'])->name('Team');
     Route::get('/services', [SingleController::class, 'render_service'])->name('Service');
     Route::get('/singleservice/{slug}', [SingleController::class, 'render_singleService'])->name('SingleService');
@@ -55,6 +58,7 @@ Route::prefix('/')->group(function () {
     Route::get('/singlecountry/{slug}', [SingleController::class, 'render_singleCountry'])->name('singleCountry');
     Route::get('/singleuniversity/{slug}', [SingleController::class, 'render_singleUniversity'])->name('singleUniversity');
     Route::get('/singlecourse/{slug}', [SingleController::class, 'render_singleCourse'])->name('singleCourse');
+    Route::get('/singlecategory/{slug}', [SingleController::class, 'render_singleCategory'])->name('singleCategory');
     Route::get('/gallerys/{slug}', [SingleController::class, 'render_singleImage'])->name('singleImage');
 
 

@@ -12,18 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
 
-    
+
     <meta name="author" content="BibekGuragain">
     <meta name="generator" content="Trademark Education Consultancy">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
 
 
 
+    <!-- Google reCAPTCHA -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
 
 
     {{-- {!! htmlScriptTagJsApi([
@@ -41,10 +43,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 
-    
+
 
 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
 </head>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __('Our Services') }}</h1>
+        <h1 class="page_title">{{ __('Countries') }}</h1>
     </div>
 
     <div class="container">
@@ -24,11 +24,10 @@
 
 
             <p class="text-center mt-3">{{ $trimmedContent }}</p>
-
         @endforeach
 
 
-        
+
         <div class="projcard-container">
             @foreach ($services as $service)
                 <?php
@@ -54,12 +53,11 @@
                 <div class="projcard projcard-blue">
                     <div class="projcard-innerbox">
 
-                    @if ($service->image)
-                                        
-                        <img src="{{ asset($service->image) }}" class="projcard-img" alt="">
-                    @else
-                    <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
-                    @endif
+                        @if ($service->image)
+                            <img src="{{ asset($service->image) }}" class="projcard-img" alt="">
+                        @else
+                            <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
+                        @endif
 
 
                         <img class="projcard-img" src="{{ asset('uploads/service/' . $service->image) }}" />
@@ -71,7 +69,7 @@
                             {{-- <div class="projcard-tagbox"> --}}
 
                             <a href="{{ route('SingleService', $service->id) }}">
-                                <button class="btn text-white mt-4 p-2">Read More &nbsp;&nbsp;<i
+                                <button class="button bg-primary third m-auto">Read More &nbsp;&nbsp;<i
                                         class="fa-solid fa-arrow-right"></i></button>
                             </a>
 
