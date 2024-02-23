@@ -179,7 +179,7 @@
                     ?>
                     <p>
                         @if ($sliderPost)
-                            {!! $sliderPost->description !!}
+                            {{ $trimmedContent }}
                         @else
                             No description available
                         @endif
@@ -260,7 +260,7 @@
                 <p>
 
                     @if ($enrollPost)
-                        {!! $enrollPost->description !!}
+                        {{ $trimmedContent }}
                     @else
                         No description available
                     @endif
