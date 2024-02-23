@@ -1,9 +1,7 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
-
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -15,9 +13,6 @@
             {{ Session::get('error') }}
         </div>
     @endif
-
-
-
 
     <div class="row mb-2">
         <div class="col-sm-6">
@@ -67,8 +62,14 @@
                 @endforeach
             </div>
 
-
-
+            <!-- Summernote editor initialization -->
+            <script>
+                $('#content').summernote({
+                    placeholder: 'Enter content here...',
+                    tabsize: 2,
+                    height: 100
+                });
+            </script>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
