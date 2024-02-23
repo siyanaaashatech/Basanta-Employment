@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\SummernoteContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Gate;
@@ -14,8 +15,8 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::paginate(10);
-        // $processedServices = $this->processServices($services);
-        return view('backend.services.index', ['services' => $services, 'page_title' => 'Services']);
+        $summernoteContent = new SummernoteContent();
+        return view('backend.services.index', ['services' => $services, 'summernoteContent' => $summernoteContent, 'page_title' => 'Services']);
     }
 
 
@@ -38,11 +39,15 @@ class ServiceController extends Controller
         $newImageName = time() . '-' . $request->image->getClientOriginalName();
         $request->image->move(public_path('uploads/service'), $newImageName);
 
+        // Process the Summernote content
+        $summernoteContent = new SummernoteContent();
+        $processedDescription = $summernoteContent->processContent($request->description);
+
         $service = new Service;
         $service->title = $request->title;
         $service->slug = SlugService::createSlug(Service::class, 'slug', $request->title);
         $service->image = $newImageName;
-        $service->description = $request->description;
+        $service->description = $processedDescription;
 
         if ($service->save()) {
             return redirect()->route('admin.services.index')->with('success', 'Success! Service created.');

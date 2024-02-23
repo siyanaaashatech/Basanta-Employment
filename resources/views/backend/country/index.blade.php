@@ -48,7 +48,7 @@
                 @foreach ($countries as $country)
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td width="5%">{{ $loop->iteration }}</td>
-                        <td>{!! $country->content ?? '' !!}</td>
+                        <td>{{ $country->name }}</td>
 
                         <td>
                             @if ($country->image)
@@ -60,7 +60,10 @@
                                 No image available
                             @endif
                         </td>
-                        <td>{{ $country->content ?? '' }}</td>
+                        <td>
+                            <!-- Displaying Summernote content -->
+                            {!! $summernoteContent->processContent($country->content) !!}
+                        </td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
                                 <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-warning btn-sm"

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
-
+use App\Models\SummernoteContent;
 use Illuminate\Support\Facades\Session;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Models\ImageConverter;
@@ -20,7 +20,8 @@ class CountryController extends Controller
     public function index()
     {
         $countries = Country::paginate(10);
-        return view('backend.country.index', ['countries' => $countries, 'page_title' => 'Country']);
+        $summernoteContent = new SummernoteContent(); // Instantiate SummernoteContent model
+        return view('backend.country.index', ['countries' => $countries, 'summernoteContent' => $summernoteContent, 'page_title' => 'Country']);
     }
 
     public function create()
@@ -46,7 +47,9 @@ class CountryController extends Controller
             }
         }
 
-        $processedContent = $this->processSummernoteContent($request->input('content'));
+        // Process Summernote content using the SummernoteContent model
+        $summernoteContent = new SummernoteContent();
+        $processedContent = $summernoteContent->processContent($request->input('content'));
 
         $country = new Country();
         $country->name = $request->input('name');
@@ -60,60 +63,14 @@ class CountryController extends Controller
         return back()->with('error', "Error creating country: " . $e->getMessage());
     }
 }
+public function edit($id)
+{
+    $country = Country::findOrFail($id);
+    return view('backend.country.update', compact('country'))->with('page_title', 'Edit Country');
+}
 
 
-
-
-    protected function processSummernoteContent($content)
-    {
-        if ($content != '') {
-            $dom = new \DomDocument();
-            $content = preg_replace('/<(\w+):(\w+)>/', '&lt;\1:\2&gt;', $content);
-            $content = preg_replace('/<\/(\w+):(\w+)>/', '&lt;/\1:\2&gt;', $content);
-
-            libxml_use_internal_errors(true);
-            $dom->loadHtml('<meta http-equiv="Content-Type" content="charset=utf-8" />' . $content);
-            libxml_clear_errors();
-            $images = $dom->getElementsByTagName('img');
-            // foreach <img> in the submited message
-            foreach ($images as $img) {
-                $src = $img->getAttribute('src');
-                $src = str_replace('http://127.0.0.1:8000/', 'http://127.0.0.1:8000/', $src);
-                $img->removeAttribute('src');
-                $img->setAttribute('src', $src);
-
-
-                if (preg_match('/data:image/', $src)) {
-
-                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                    $mimetype = $groups['mime'];
-
-                    $filename = uniqid();
-                    $filepath = 'uploads/country/content' . $filename . '.' . $mimetype;
-
-                    $image = Image::make($src)
-
-                        ->encode($mimetype, 100)
-                        ->save(public_path($filepath));
-                    $new_src = asset($filepath);
-                    $img->removeAttribute('src');
-                    $img->setAttribute('src', $new_src);
-                }
-            }
-            $html_cut = preg_replace('~<(?:!DOCTYPE|/?(?:html|body|head|meta))[^>]>\s~i', '', $dom->saveHTML());
-            return $html_cut;
-        } else {
-            return $content;
-        }
-    }
-
-    public function edit($id)
-    {
-        $country = Country::findOrFail($id);
-        return view('backend.country.update', ['country' => $country, 'page_title' => 'Update Country']);
-    }
-
-    public function update(Request $request, $id)
+public function update(Request $request, $id)
 {
     $this->validate($request, [
         'name' => 'required|string',
@@ -136,8 +93,9 @@ class CountryController extends Controller
             }
         }
 
-        // Process Summernote content
-        $processedContent = $this->processSummernoteContent($request->input('content'));
+        // Process Summernote content using the SummernoteContent model
+        $summernoteContent = new SummernoteContent();
+        $processedContent = $summernoteContent->processContent($request->input('content'));
 
         // Update country details
         $country->name = $request->input('name');
@@ -151,6 +109,7 @@ class CountryController extends Controller
         return back()->with('error', "Error updating country: " . $e->getMessage());
     }
 }
+
 
 
 

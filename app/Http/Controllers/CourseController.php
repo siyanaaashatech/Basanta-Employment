@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\SummernoteContent;
 
 class CourseController extends Controller
 {
     public function index()
     {
         $courses = Course::paginate(10);
-        return view('backend.course.index', ['courses' => $courses, 'page_title' => 'Course']);
+        $summernoteContent = new SummernoteContent();
+        return view('backend.course.index', ['courses' => $courses,'summernoteContent' => $summernoteContent, 'page_title' => 'Course']);
 
 
     }
@@ -25,8 +27,7 @@ class CourseController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request);
-
+        
         try {
             $this->validate($request, [
                 'title' => 'required|string',
@@ -34,12 +35,17 @@ class CourseController extends Controller
                 'description' => 'required|string',
 
             ]);
+            // Process Summernote content using the SummernoteContent model
+            $summernoteContent = new SummernoteContent();
+            $processedDescription = $summernoteContent->processContent($request->description);
+
+
             $newImageName = time() . '-' . $request->image->getClientOriginalName();
             $request->image->move(public_path('uploads/course'), $newImageName);
 
             $about = new Course;
             $about->title = $request->title;
-            $about->description = $request->description;
+            $about->description = $processedDescription;
             $about->slug = SlugService::createSlug(Course::class, 'slug', $request->title);
             $about->image = $newImageName;
 
@@ -77,6 +83,11 @@ class CourseController extends Controller
                 $request->image->move(public_path('uploads/course'), $newImageName);
                 $course->image = $newImageName;
             }
+
+            // Process Summernote content using the SummernoteContent model
+            $summernoteContent = new SummernoteContent();
+            $processedDescription = $summernoteContent->processContent($request->description);
+            $course->description = $processedDescription; 
 
             $course->title = $request->title;
             $course->description = $request->description;

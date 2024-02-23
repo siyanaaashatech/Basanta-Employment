@@ -18,8 +18,8 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0">Posts</h1>
-                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary btn-sm"><i
-                        class="fa fa-plus"></i>Add Post</a>
+                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
+                    Post</a>
                 <a href="{{ url('admin') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
             </div>
             <div class="col-sm-6">
@@ -35,6 +35,7 @@
                 <tr>
                     <th>S.N.</th>
                     <th>Title</th>
+                    <th>Description</th> <!-- Added description column -->
                     <th>Image</th>
                     <th>Action</th>
                 </tr>
@@ -44,16 +45,17 @@
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td width="5%">{{ $loop->iteration }}</td>
                         <td>{{ $post->title ?? '' }}</td>
-                        <td><img id="preview{{ $loop->iteration }}"
-                                src="{{ asset('uploads/coverimage/' . $post->image) }}"
-                                style="width: 150px; height:150px" /></td>
+                        <td> {!! $summernoteContent->processContent($post->description) !!} </td><!-- Display description -->
+                        <td>
+                            <img src="{{ url('uploads/post/' . $post->image) }}" alt="Post Image" style="max-width: 100px;">
+                        </td>
+
                         <td>
                             <div style="display: flex; flex-direction:row;">
-                                <a href="{{ route('admin.posts.edit', $post->id) }}"
-                                    class="btn btn-warning btn-sm" style="margin-right: 5px;"><i
-                                        class="fas fa-edit"></i> Edit</a>
-                                <form action="{{ route('admin.posts.destroy', $post->id) }}"
-                                    method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-warning btn-sm"
+                                    style="margin-right: 5px;"><i class="fas fa-edit"></i> Edit</a>
+                                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
+                                    onsubmit="return confirm('Are you sure you want to delete this item?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
