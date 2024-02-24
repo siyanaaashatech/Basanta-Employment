@@ -50,7 +50,7 @@
                 <input type="file" name="image" class="form-control" onchange="previewImage(event)" placeholder="Image"
                     required>
             </div>
-            <img id="preview1" style="max-width: 500px; max-height:500px" />
+            <img id="preview1" style="max-width: 200px; max-height:500px" />
 
 
             <div>
@@ -95,4 +95,15 @@
             };
         };
     </script>
+    <script>
+        $(document).ready(function() {
+            function extractPlainTextFromSummernote() {
+                var plainText = $('.note-editable')
+                    .text(); // Assuming '.note-editable' is the class used by Summernote
+                console.log(plainText); // For demonstration purposes, you can log the plainText to the console
+                // Now, you can do something with the plainText, such as saving it to your database
+            }
+        });
+    </script>
+
 @stop

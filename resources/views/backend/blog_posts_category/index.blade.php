@@ -46,7 +46,10 @@
                     <td><img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/blogpostcategory/' . $category->image) }}" alt="Category Image"
                             style="width: 150px; height:150px" /></td>
-                    <td>{{ $category->content }}</td>
+                    <td>
+
+                        {!! $summernoteContent->processContent($category->content) !!}
+                    </td>
                     <td>
                         <a href="{{ route('admin.blog-posts-categories.edit', $category->id) }}"
                             class="btn btn-primary">Edit</a>

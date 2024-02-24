@@ -1,10 +1,7 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
-
-
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -16,9 +13,6 @@
             {{ Session::get('error') }}
         </div>
     @endif
-
-
-
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
@@ -54,14 +48,9 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Description</label>
-
                     <textarea style="width: 100%; min-height: 150px;;" type="text" class="form-control" name="description"
-                        id="description" placeholder="Add Description" value="{{ old('description') }}">
-                  {{ $courses->description ?? '' }}
-                </textarea>
-
+                        id="description" placeholder="Add Description" value="{{ old('description') }}">{{ $courses->description ?? '' }}</textarea>
                 </div>
-
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Update Course</button>
@@ -70,12 +59,7 @@
         </div>
     </section>
 
-
-
     <!-- Main row -->
-
-
-
 
     <script>
         const previewImage = e => {

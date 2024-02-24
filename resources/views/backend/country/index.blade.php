@@ -48,16 +48,22 @@
                 @foreach ($countries as $country)
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td width="5%">{{ $loop->iteration }}</td>
-                        <td>{{ $country->name ?? '' }}</td>
+                        <td>{{ $country->name }}</td>
+
                         <td>
                             @if ($country->image)
                                 @foreach (json_decode($country->image) as $image)
-                                    <img src="{{ asset('uploads/country/' . $image) }}" class="preview-image"
+                                    <img src="{{ asset($image) }}" class="preview-image"
                                         style="width: 150px; height: 150px" />
                                 @endforeach
+                            @else
+                                No image available
                             @endif
                         </td>
-                        <td>{{ $country->content ?? '' }}</td>
+                        <td>
+                            <!-- Displaying Summernote content -->
+                            {!! $summernoteContent->processContent($country->content) !!}
+                        </td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
                                 <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-warning btn-sm"
@@ -81,16 +87,4 @@
         </tbody>
     </table>
 
-    {{-- JavaScript for image preview --}}
-    <script>
-        // Add image preview functionality
-        window.addEventListener('DOMContentLoaded', () => {
-            const previewImages = document.querySelectorAll('.preview-image');
-            previewImages.forEach(image => {
-                image.addEventListener('click', () => {
-                    window.open(image.src, '_blank');
-                });
-            });
-        });
-    </script>
 @endsection

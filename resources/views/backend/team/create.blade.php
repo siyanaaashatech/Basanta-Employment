@@ -33,7 +33,10 @@
 
                                 <div class="col-md-6">
                                     <input id="image" type="file"
-                                        class="form-control @error('image') is-invalid @enderror" name="image">
+                                        class="form-control @error('image') is-invalid @enderror" name="image"
+                                        onchange="previewImage(event)">
+                                    <img id="preview" src="#" alt="Image Preview"
+                                        style="display: none; width: 150px; height: auto; margin-top: 10px;">
 
                                     @error('image')
                                         <span class="invalid-feedback" role="alert">
@@ -121,4 +124,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const previewImage = event => {
+            const reader = new FileReader();
+            const output = document.getElementById('preview');
+            output.style.display = 'block';
+            reader.onload = function() {
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        };
+    </script>
 @endsection

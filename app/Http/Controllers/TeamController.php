@@ -52,7 +52,7 @@ class TeamController extends Controller
         // Handle image upload
         if ($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();  
-            $request->image->move(public_path('images'), $imageName);
+            $request->image->move(public_path('uploads/team'), $imageName); // Store image in public/uploads/team directory
         } else {
             $imageName = null; // If no image is uploaded
         }
@@ -76,6 +76,47 @@ class TeamController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Team  $team
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Team $team)
+    {
+        // Validate the request data
+        $request->validate([
+            'name' => 'required',
+            'position' => 'required',
+            'phone_no' => 'required',
+            'role' => 'nullable',
+            'email' => 'nullable|email',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Added image validation
+        ]);
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();  
+            $request->image->move(public_path('uploads/team'), $imageName); // Store image in public/uploads/team directory
+        } else {
+            $imageName = $team->image; // Maintain the existing image if no new image is uploaded
+        }
+
+        // Update the team member with the new data
+        $team->update([
+            'name' => $request->input('name'),
+            'position' => $request->input('position'),
+            'phone_no' => $request->input('phone_no'),
+            'role' => $request->input('role'),
+            'email' => $request->input('email'),
+            'image' => $imageName, // Set the image name
+        ]);
+
+        // Redirect to the team index page with a success message
+        return redirect()->route('admin.teams.index')->with('success', 'Team member updated successfully.');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Team  $team
@@ -89,4 +130,20 @@ class TeamController extends Controller
         // Redirect to the team index page with a success message
         return redirect()->route('admin.teams.index')->with('success', 'Team member deleted successfully.');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Team  $team
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Team $team)
+{
+    // Find the team member by ID
+    $teamMember = Team::find($team->id);
+    
+    // Return the view for editing the team member with the team member data
+    return view('backend.team.update', compact('teamMember'));
 }
+}
+

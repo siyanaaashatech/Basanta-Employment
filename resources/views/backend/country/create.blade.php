@@ -1,9 +1,7 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
-
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -15,9 +13,6 @@
             {{ Session::get('error') }}
         </div>
     @endif
-
-
-
 
     <div class="row mb-2">
         <div class="col-sm-6">
@@ -61,14 +56,20 @@
             <div id="imagePreviews" class="row">
                 @foreach (old('image', []) as $uploadedImage)
                     <div class="col-md-2 mb-3 image-preview">
-                        <img src="{{ $uploadedImage }}" alt="Image Preview" class="img-fluid">
+                        <img src="{{ asset($uploadedImage) }}" alt="Image Preview" class="img-fluid">
                         <span class="remove-image" onclick="removePreview(this)">Remove</span>
                     </div>
                 @endforeach
             </div>
 
-
-
+            <!-- Summernote editor initialization -->
+            <script>
+                $('#content').summernote({
+                    placeholder: 'Enter content here...',
+                    tabsize: 2,
+                    height: 100
+                });
+            </script>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
