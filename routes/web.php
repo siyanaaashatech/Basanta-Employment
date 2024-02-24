@@ -8,6 +8,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
@@ -45,6 +46,7 @@ Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.
 
 //Routes for SingleController
 Route::prefix('/')->group(function () {
+    Route::get('/search', [SearchController::class, 'search'])->name('search');
     Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
     Route::get('/aboutus', [SingleController::class, 'render_about'])->name('About');
     Route::get('/testimonials', [SingleController::class, 'render_testimonial'])->name('Testimonial');

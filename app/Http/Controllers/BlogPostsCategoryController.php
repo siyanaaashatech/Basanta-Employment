@@ -81,9 +81,10 @@ class BlogPostsCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(BlogPostsCategory $blogPostsCategory)
+    public function edit($id)
     {
-        return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
+        $category = BlogPostsCategory::find($id);
+        return view('backend.blog_posts_category.update', compact('category'));
     }
 
 
