@@ -42,6 +42,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
 {
     $request->validate([
         'title' => 'required',
@@ -50,9 +51,11 @@ class PostController extends Controller
         'category_id' => 'required|exists:categories,id'
     ]);
 
+
     // Move the uploaded image to the desired directory
     $imageName = $request->image->getClientOriginalName();
     $imageDestinationPath = $request->image->move(public_path('uploads/post'), $imageName);
+
 
     $summernoteContent = new SummernoteContent();
     $processedDescription = $summernoteContent->processContent($request->description);
@@ -87,18 +90,19 @@ public function update(Request $request, Post $post)
         $imagePath = $request->image->move(public_path('uploads/post'), $imageName);
         
         // Update the image attribute of the post with the new image path
+      
+        $post = new Post();
         $post->image = $imageName;
+      
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->image = $newImageName;
+        $post->category_id = $request->input('category_id');
+        $post->save();
+
+        return redirect()->route('admin.posts.index')->with('success', 'Post created successfully');
     }
-
-    // Update other attributes of the post
-    $post->title = $request->input('title');
-    $post->description = $request->input('description');
-    $post->category_id = $request->input('category_id');
-    $post->save();
-
-    // Redirect back to the index page with a success message
-    return redirect()->route('admin.posts.index')->with('success', 'Post updated successfully');
-}
+   
 
 
     public function edit(Post $post)

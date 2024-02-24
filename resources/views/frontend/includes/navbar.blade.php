@@ -78,14 +78,35 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                Test Prepration
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                @foreach ($testPreparationPosts as $post)
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('singlePost', ['slug' => $post->slug]) }}">
+                                            {{ $post->title }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Living Abroad
                             </a>
 
                             <ul class="dropdown-menu">
-                                @foreach ($categories as $category)
-                                    <li><a class="dropdown-item"
-                                            href="{{ route('singleCategory', ['slug' => $category->slug]) }}">
-                                            {{ $category->title }}</a></li>
+                                @foreach ($livingAbroadPosts as $post)
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('singlePost', ['slug' => $post->slug]) }}">
+                                            {{ $post->title }}
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
 

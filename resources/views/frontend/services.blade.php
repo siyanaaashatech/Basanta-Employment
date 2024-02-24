@@ -24,11 +24,10 @@
 
 
             <p class="text-center mt-3">{{ $trimmedContent }}</p>
-
         @endforeach
 
 
-        
+
         <div class="projcard-container">
             @foreach ($services as $service)
                 <?php
@@ -54,12 +53,11 @@
                 <div class="projcard projcard-blue">
                     <div class="projcard-innerbox">
 
-                    @if ($service->image)
-                                        
-                        <img src="{{ asset($service->image) }}" class="projcard-img" alt="">
-                    @else
-                    <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
-                    @endif
+                        @if ($service->image)
+                            <img src="{{ asset($service->image) }}" class="projcard-img" alt="">
+                        @else
+                            <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
+                        @endif
 
 
                         <img class="projcard-img" src="{{ asset('uploads/service/' . $service->image) }}" />
@@ -70,7 +68,7 @@
                             <div class="projcard-description">{{ $trimmedContent }}...</div>
                             {{-- <div class="projcard-tagbox"> --}}
 
-                            <a href="{{ route('SingleService', $service->id) }}">
+                            <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
                                 <button class="btn text-white mt-4 p-2">Read More &nbsp;&nbsp;<i
                                         class="fa-solid fa-arrow-right"></i></button>
                             </a>

@@ -11,11 +11,7 @@ use App\Models\SummernoteContent;
 
 class BlogPostsCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
 {
     $categories = BlogPostsCategory::all();
@@ -24,23 +20,13 @@ class BlogPostsCategoryController extends Controller
 }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         
         return view('backend.blog_posts_category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -72,6 +58,7 @@ class BlogPostsCategoryController extends Controller
     }
     
 
+
     /**
      * Display the specified resource.
      *
@@ -93,6 +80,13 @@ class BlogPostsCategoryController extends Controller
      * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
      * @return \Illuminate\Http\Response
      */
+
+    public function edit(BlogPostsCategory $blogPostsCategory)
+    {
+        return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
+    }
+
+
     public function update(Request $request, BlogPostsCategory $blogPostsCategory)
     {
         $request->validate([
@@ -114,6 +108,7 @@ class BlogPostsCategoryController extends Controller
         return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category updated successfully.');
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -124,6 +119,7 @@ class BlogPostsCategoryController extends Controller
 {
     return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
 }
+
     public function destroy(BlogPostsCategory $blogPostsCategory)
     {
         $blogPostsCategory->delete();
