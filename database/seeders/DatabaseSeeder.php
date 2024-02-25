@@ -9,6 +9,8 @@ use Database\Seeders\FavIconSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\SitesettingSeeder;
 use Database\Seeders\RolePermissionSeeder;
+use Database\Seeders\CountrySeeder;
+use Database\Seeders\AboutSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,7 +21,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             SitesettingSeeder::class,
             FavIconSeeder::class,
-            CategorySeeder::class
+            CategorySeeder::class,
+            AboutSeeder::class,
+            CountrySeeder::class
 
         ]);
     }

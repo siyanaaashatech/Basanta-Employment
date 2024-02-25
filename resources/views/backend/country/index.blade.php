@@ -44,7 +44,7 @@
             </tr>
         </thead>
         <tbody>
-            @if ($countries)
+            @if ($countries && count($countries) > 0)
                 @foreach ($countries as $country)
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td width="5%">{{ $loop->iteration }}</td>

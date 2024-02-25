@@ -356,7 +356,14 @@
                         <div class="carousel-item row {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
                             <div class="col-lg-6 col-md-6">
                                 <div class="image">
-                                    <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt="">
+
+
+                                @if ($testimonial->image)
+                                    <img src="{{ asset($testimonial->image) }}" class="projcard-img" alt="">
+                                @else
+                                    <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
+                                @endif
+                                    {{-- <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt=""> --}}
                                 </div>
                             </div>
 
