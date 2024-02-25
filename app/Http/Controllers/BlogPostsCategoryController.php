@@ -2,59 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BlogPostsCategory;
+
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use App\Models\BlogPostsCategory;
+use App\Models\SummernoteContent;
+
 
 class BlogPostsCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $categories = BlogPostsCategory::all();
-        return view('backend.blog_posts_category.index', compact('categories'));
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+{
+    $categories = BlogPostsCategory::all();
+    $summernoteContent = new SummernoteContent(); 
+    return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
+}
+
+
+
     public function create()
     {
+        
         return view('backend.blog_posts_category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // adjust max file size as needed
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // adjust max file size as needed
         ]);
 
-        $category = new BlogPostsCategory();
-        $category->title = $request->input('title');
-        $category->content = $request->input('content');
+        try {
+            $newImageName = time() . '-' . $request->image->getClientOriginalName();
+            $request->image->move(public_path('uploads/blogpostcategory'), $newImageName);
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images/blog-posts-categories');
-            $category->image = $imagePath;
+            $summernoteContent = new SummernoteContent();
+        $processedContent = $summernoteContent->processContent($request->content);
+
+            $category = new BlogPostsCategory();
+            $category->title = $request->title;
+            $category->content = $processedContent;
+            $category->image = $newImageName;
+
+            if ($category->save()) {
+                return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category created successfully.');
+            } else {
+                return redirect()->back()->with('error', 'Error! Blog Post Category not created.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error! ' . $e->getMessage());
         }
-
-        $category->save();
-
-        return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category created successfully.');
     }
+    
+
 
     /**
      * Display the specified resource.
@@ -62,18 +65,14 @@ class BlogPostsCategoryController extends Controller
      * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
      * @return \Illuminate\Http\Response
      */
-    
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(BlogPostsCategory $blogPostsCategory)
-    {
-        return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -81,6 +80,14 @@ class BlogPostsCategoryController extends Controller
      * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
      * @return \Illuminate\Http\Response
      */
+
+    public function edit($id)
+    {
+        $category = BlogPostsCategory::find($id);
+        return view('backend.blog_posts_category.update', compact('category'));
+    }
+
+
     public function update(Request $request, BlogPostsCategory $blogPostsCategory)
     {
         $request->validate([
@@ -102,12 +109,18 @@ class BlogPostsCategoryController extends Controller
         return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category updated successfully.');
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
      * @return \Illuminate\Http\Response
      */
+    public function edit(BlogPostsCategory $blogPostsCategory)
+{
+    return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
+}
+
     public function destroy(BlogPostsCategory $blogPostsCategory)
     {
         $blogPostsCategory->delete();

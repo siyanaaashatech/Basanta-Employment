@@ -334,9 +334,9 @@
   background-image: linear-gradient(rgb(9, 28, 72), rgb(25, 37, 78));
 }
 
-.bg-primary{
+.btn{
   background-color: rgb(9, 28, 72) !important;
- 
+ border-style: none;
 }
 
 .heading_title{
@@ -461,8 +461,12 @@ position: relative;
 
 
 /* FOr About Page */
-
-
+.about_page_img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  
+}
 .about-section{
 	position:relative;
 	padding:30px 0px;
@@ -837,19 +841,22 @@ position: relative;
 
   
 .single_page {
-  width: 100%;
+  /* width: 100%; */
   margin: 1em;
   }
-  
   .singleImage {
-  width: auto;
-  max-width: 500px;
-  height: 400px;
+    height: 100%;
+    width: 100%;
+  /* width: auto;
+  max-width: 699px; */
+  /* height: 400px; */
   float: left;
-  padding: 0 1.25em 1.25em 0;
+  /* padding: 0 1.25em 1.25em 0; */
   border-radius: 10px 10px 10px 10px;
   }
-  
+  .service_about{
+    height: 40%;
+  }
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
   .single_page{

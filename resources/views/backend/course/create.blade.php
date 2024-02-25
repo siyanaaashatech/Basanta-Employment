@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
 
@@ -16,9 +15,6 @@
         </div>
     @endif
 
-
-
-
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
@@ -33,8 +29,6 @@
         </div>
     </div>
 
-
-
     <form id="quickForm" method="POST" action="{{ route('admin.courses.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
@@ -47,14 +41,14 @@
                 <label for="exampleInputEmail1">Image</label>
                 <input type="file" name="image" class="form-control" onchange="previewImage(event)" placeholder="Image"
                     required>
+                <img id="preview" style="max-width: 200px; max-height:500px; display:none" />
             </div>
-            <img id="preview" style="max-width: 500px; max-height:500px" />
 
             <div class="form-group">
                 <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
 
-                <textarea style="max-width: 30%;" type="text" class="form-control" name="description" id="description"
-                    placeholder="Add Description" value="{{ old('description') }}"></textarea>
+                <textarea style="max-width: 100%; min-height: 100px;" type="text" class="form-control summernote" name="description"
+                    id="description" placeholder="Add Description" value="{{ old('description') }}"></textarea>
             </div>
 
         </div>
@@ -64,17 +58,30 @@
         </div>
     </form>
 
-
-
-    <!-- Main row -->
     <script>
+        // Function to preview the selected image
         const previewImage = e => {
+            const file = e.target.files[0];
             const reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
+            const preview = document.getElementById('preview');
+
             reader.onload = () => {
-                const preview = document.getElementById('preview');
                 preview.src = reader.result;
+                preview.style.display = 'block';
             };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
         };
+
+        // Initialize Summernote on the description textarea
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                placeholder: 'Add Description...',
+                tabsize: 2,
+                height: 100
+            });
+        });
     </script>
 @stop

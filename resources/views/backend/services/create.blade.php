@@ -50,15 +50,16 @@
                 <input type="file" name="image" class="form-control" onchange="previewImage(event)" placeholder="Image"
                     required>
             </div>
-            <img id="preview1" style="max-width: 500px; max-height:500px" />
+            <img id="preview1" style="max-width: 200px; max-height:500px" />
 
 
             <div>
-                <label for="description">Description</label><span style="color:red; font-size:large">
-                    *</span>
-                <textarea style="max-width: 30%;" type="text" class="form-control" name="description" id="description"
-                    placeholder="Add Description" value="{{ old('description') }}"></textarea>
+                <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
+                <textarea style="max-width: 100%; min-height: 200px;" class="form-control summernote" name="description" id="summernote"
+                    placeholder="Add Description">{{ old('description') }}</textarea>
             </div>
+
+
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -70,6 +71,18 @@
     <!-- Main row -->
 
 
+    <!-- Include Summernote JS -->
+
+    <script>
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 150, // Set the height of the editor
+                minHeight: null, // Set the minimum height of the editor
+                maxHeight: null, // Set the maximum height of the editor
+                focus: true // Set focus to editable area after initializing Summernote
+            });
+        });
+    </script>
 
 
     <script>
@@ -82,4 +95,15 @@
             };
         };
     </script>
+    <script>
+        $(document).ready(function() {
+            function extractPlainTextFromSummernote() {
+                var plainText = $('.note-editable')
+                    .text(); // Assuming '.note-editable' is the class used by Summernote
+                console.log(plainText); // For demonstration purposes, you can log the plainText to the console
+                // Now, you can do something with the plainText, such as saving it to your database
+            }
+        });
+    </script>
+
 @stop

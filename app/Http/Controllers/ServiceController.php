@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\SummernoteContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -13,7 +15,8 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::paginate(10);
-        return view('backend.services.index', ['services' => $services, 'page_title' => 'Services']);
+        $summernoteContent = new SummernoteContent();
+        return view('backend.services.index', ['services' => $services, 'summernoteContent' => $summernoteContent, 'page_title' => 'Services']);
     }
 
 
@@ -25,38 +28,38 @@ class ServiceController extends Controller
 
 
     public function store(Request $request)
-    {
-        // dd($request);
-        try {
-            $this->validate($request, [
-                'title' => 'required|string',
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
-                'description' => 'required|string|max:500'
+{
+    try {
+        $this->validate($request, [
+            'title' => 'required|string',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2536',
+            'description' => 'required|string'
+        ]);
 
-            ]);
+        $newImageName = time() . '-' . $request->image->getClientOriginalName();
+        $request->image->move(public_path('uploads/service'), $newImageName);
 
-            $newImageName = time() . '-' . $request->image->getClientOriginalName();
-            $request->image->move(public_path('uploads/service'), $newImageName);
-            // $iconPath = time() . '-' . $request->icon->extension();
-            // $request->icon->move(public_path('uploads/service'), $iconPath);
+        // Process the Summernote content
+        $summernoteContent = new SummernoteContent();
+        $processedDescription = $summernoteContent->processContent($request->description);
 
+        $service = new Service;
+        $service->title = $request->title;
+        $service->slug = SlugService::createSlug(Service::class, 'slug', $request->title);
+        $service->image = $newImageName;
+        $service->description = $processedDescription;
 
-            $service = new Service;
-            $service->title = $request->title;
-            $service->slug = SlugService::createSlug(Service::class, 'slug', $request->title);
-            $service->image = $newImageName;
-            $service->description = $request->description;
-
-
-            if ($service->save()) {
-                return redirect()->route('admin.services.index')->with('success', 'Success! Service created.');
-            } else {
-                return redirect()->back()->with('error', 'Error! Service not created.');
-            }
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error! Something went wrong.');
+        if ($service->save()) {
+            return redirect()->route('admin.services.index')->with('success', 'Success! Service created.');
+        } else {
+            return redirect()->back()->with('error', 'Error! Service not created.');
         }
+    } catch (\Exception $e) {
+        Log::error('Error storing service: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'Error! Something went wrong.');
     }
+}
+
 
     public function edit($id)
     {
@@ -85,7 +88,7 @@ class ServiceController extends Controller
 
                 // Upload the new image
                 $newImageName = time() . '-' . $request->image->getClientOriginalName();
-                $request->image->move(public_path('uploads/about'), $newImageName);
+                $request->image->move(public_path('uploads/service'), $newImageName);
                 $service->image = $newImageName;
             }
 
@@ -100,7 +103,7 @@ class ServiceController extends Controller
             return redirect()->route('admin.services.index')->with('success', 'Success !! Services Updated');
         } catch (\Exception $e) {
             // Optionally log the error
-            \Log::error('Services update failed: ' . $e->getMessage());
+            Log::error('Services update failed: ' . $e->getMessage());
 
             return redirect()->back()->withInput()->with('error', 'Error !! Something went wrong. ' . $e->getMessage());
         }
@@ -117,4 +120,12 @@ class ServiceController extends Controller
             return redirect()->route('admin.service.index')->with('error', 'Service not found.');
         }
     }
+    private function processServices($services)
+    {
+        foreach ($services as $service) {
+            $service->processedContent = preg_replace('/<p>(.*?)<iframe\b[^>]*>.*?<\/iframe>(.*?)<\/p>/is', '$1$2', $service->summernoteContent);
+        }
+        return $services;
+    
+}
 }

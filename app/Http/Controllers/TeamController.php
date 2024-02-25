@@ -15,8 +15,7 @@ class TeamController extends Controller
     public function index()
     {
         $teamMembers = Team::all();
-        $teams = Team::all();
-
+        
         // Return the teams to a view for display
         return view('backend.team.index', compact('teamMembers'));
     }
@@ -47,7 +46,16 @@ class TeamController extends Controller
             'phone_no' => 'required',
             'role' => 'nullable',
             'email' => 'nullable|email',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Added image validation
         ]);
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();  
+            $request->image->move(public_path('uploads/team'), $imageName); // Store image in public/uploads/team directory
+        } else {
+            $imageName = null; // If no image is uploaded
+        }
 
         // Create a new team instance
         $team = new Team();
@@ -58,6 +66,7 @@ class TeamController extends Controller
         $team->phone_no = $request->input('phone_no');
         $team->role = $request->input('role');
         $team->email = $request->input('email');
+        $team->image = $imageName; // Set the image name
 
         // Save the team to the database
         $team->save();
@@ -67,25 +76,13 @@ class TeamController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Team  $team
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Team $teamMember)
-    {
-        // Return the view for editing the team member
-        return view('backend.team.update', compact('teamMember'));
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Team $team)
     {
         // Validate the request data
         $request->validate([
@@ -94,16 +91,25 @@ class TeamController extends Controller
             'phone_no' => 'required',
             'role' => 'nullable',
             'email' => 'nullable|email',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Added image validation
         ]);
-        $teamMember = Team::findOrFail($id);
 
-        // Update the team member with request data
-        $teamMember->update([
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();  
+            $request->image->move(public_path('uploads/team'), $imageName); // Store image in public/uploads/team directory
+        } else {
+            $imageName = $team->image; // Maintain the existing image if no new image is uploaded
+        }
+
+        // Update the team member with the new data
+        $team->update([
             'name' => $request->input('name'),
             'position' => $request->input('position'),
             'phone_no' => $request->input('phone_no'),
             'role' => $request->input('role'),
             'email' => $request->input('email'),
+            'image' => $imageName, // Set the image name
         ]);
 
         // Redirect to the team index page with a success message
@@ -124,4 +130,20 @@ class TeamController extends Controller
         // Redirect to the team index page with a success message
         return redirect()->route('admin.teams.index')->with('success', 'Team member deleted successfully.');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Team  $team
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Team $team)
+{
+    // Find the team member by ID
+    $teamMember = Team::find($team->id);
+    
+    // Return the view for editing the team member with the team member data
+    return view('backend.team.update', compact('teamMember'));
 }
+}
+

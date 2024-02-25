@@ -62,8 +62,9 @@
 
             <div class="form-group">
                 <label for="description">Description</label>
-                <input type="text" name="description" class="form-control" id="description" placeholder="description">
+                <textarea name="description" class="form-control" id="description" rows="4" placeholder="Description"></textarea>
             </div>
+
 
 
 

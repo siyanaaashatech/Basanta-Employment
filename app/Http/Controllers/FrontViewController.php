@@ -20,12 +20,10 @@ use Illuminate\Http\Request;
 
 class FrontViewController extends Controller
 {
-
     public function index()
     {
-        // dd('fav');
         $sitesetting = SiteSetting::first();
-        $services = Service::latest()->get()->take(5);
+        $services = Service::latest()->get();
         $contacts = Contact::latest()->get();
         $blogs = BlogPostsCategory::latest()->get()->take(5);
         $courses = Course::latest()->get()->take(6);
@@ -45,8 +43,9 @@ class FrontViewController extends Controller
                 $countryImages[] = $images;
             }
         }
-
-        // RIGHT SIDE -----------------------------------------------------------------------------------------
+        $countryUniversityCategory = Category::where('title', 'Country University')->first();
+        $sliderPost = $countryUniversityCategory->posts()->latest()->first();
+        $enrollPost = $countryUniversityCategory->posts()->orderBy('id', 'desc')->skip(1)->first();
 
 
         return view('frontend.index', compact([
@@ -56,11 +55,11 @@ class FrontViewController extends Controller
             'courses',
             'testimonials',
             'countries',
-            'countryImages'
+            'countryImages',
+            'sliderPost',
+            'enrollPost'
         ]));
     }
-
-
 
     public function about()
     {
@@ -71,6 +70,6 @@ class FrontViewController extends Controller
         $about = About::first();
         $images = PhotoGallery::latest()->get();
 
-        return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about',  'services', 'images'));
+        return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about', 'services', 'images'));
     }
 }

@@ -45,7 +45,7 @@
                             </ul>
 
                         </li>
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Universities
@@ -57,7 +57,9 @@
                                             {{ $university->title }}</a></li>
                                 @endforeach
                             </ul>
-                        </li>
+                        </li> --}}
+
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,47 +78,56 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                Test Prepration
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                @foreach ($testPreparationPosts as $post)
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('singlePost', ['slug' => $post->slug]) }}">
+                                            {{ $post->title }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Living Abroad
                             </a>
 
                             <ul class="dropdown-menu">
-                                {{-- @foreach ($countries as $country) --}}
-                                    <li><a class="dropdown-item"
-                                            href="#">Choose Your Destination
-                                            </a></li>
-
+                                @foreach ($livingAbroadPosts as $post)
                                     <li>
-                                        <a class="dropdown-item" href="#">
-                                            Guide for Students
+                                        <a class="dropdown-item"
+                                            href="{{ route('singlePost', ['slug' => $post->slug]) }}">
+                                            {{ $post->title }}
                                         </a>
                                     </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Students Intake
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Our Expertise
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Cost of Studying Abroad
-                                        </a>
-                                    </li>
-                                {{-- @endforeach --}}
+                                @endforeach
                             </ul>
 
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="{{ route('Testimonial') }}">Testimonials</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">Blogs</a>
+                        </li>
+
 
                     </ul>
-                    <a class="nav-link text-primary m-3 fs-5" href="#"><i
-                            class="fa-solid fa-magnifying-glass"></i></a>
-                    <button class="btn bg-primary text-white">Apply Now</button>
+                    <form action="{{ route('search') }}" method="GET" class="search-form">
+                        <input type="text" name="search" placeholder="Search..." required />
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+
+                    <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Apply Now</a>
+
                     <a class="nav-link m-3 fs-5" href="">9876543210</a>
                 </div>
             </div>

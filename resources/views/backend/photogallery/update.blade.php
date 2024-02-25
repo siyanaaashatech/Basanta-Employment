@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
 
@@ -17,8 +16,6 @@
             {{ Session::get('error') }}
         </div>
     @endif
-
-
 
     <div class="row mb-2">
         <div class="col-sm-6">
@@ -48,28 +45,26 @@
                             value="{{ $gallery->title }}" required>
                     </div>
 
-
                     <div>
-
-                        <label for="content">Description</label><span style="color:red; font-size:large">
-                            *</span>
-                        <textarea style="max-width: 100%;min-height: 250px;" type="text" class="form-control" id="img_desc" name="img_desc"
+                        <label for="content">Description</label><span style="color:red; font-size:large">*</span>
+                        <textarea style="max-width: 100%;min-height: 60px;" type="text" class="form-control" id="img_desc" name="img_desc"
                             placeholder="Add Description">{{ $gallery->img_desc }}</textarea>
-
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1"> Image <span style="color:red;"></span></label>
                         <span style="color:red; font-size:large"> *</span>
-
-                        <input type="file" name="img[]" id="" class="form-control" multiple
-                            onchange="previewImage1(event)" required>
-
-
-
+                        <input type="file" name="img[]" id="img" class="form-control" multiple
+                            onchange="previewImage(event)">
                     </div>
-                    <img id="preview1" style="max-width: 200px; max-height:200px" />
-
+                    <div id="imagePreview" class="mt-2">
+                        @foreach ($gallery->img as $imagePath)
+                            <div class="existing-image">
+                                <img src="{{ asset($imagePath) }}" style="width: 100px; height: 100px; margin-right: 5px;">
+                                <input type="hidden" name="existing_images[]" value="{{ $imagePath }}">
+                            </div>
+                        @endforeach
+                    </div>
 
                 </div>
                 <!-- /.card-body -->
@@ -82,7 +77,6 @@
 
     @if (isset($links) && is_array($links))
         <div class="p-4">
-
             @foreach ($links as $link)
                 <a href="{{ $link[1] }}">
                     <button class="btn-primary">{{ $link[0] }}</button>
@@ -90,14 +84,31 @@
             @endforeach
         </div>
     @endif
+    <style>
+        .preview_image {
+            max-width: calc(100% / 2);
+            height: auto;
+            margin: 5px;
+        }
+    </style>
+
     <script>
         const previewImage = e => {
-            const reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onload = () => {
-                const preview = document.getElementById('preview1');
-                preview.src = reader.result;
-            };
+            const files = e.target.files;
+            const preview = document.getElementById('imagePreview');
+            preview.innerHTML = '';
+            for (let i = 0; i < files.length; i++) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const img = document.createElement('img');
+                    img.src = reader.result;
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    img.style.marginRight = '5px';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(files[i]);
+            }
         };
     </script>
 @endsection

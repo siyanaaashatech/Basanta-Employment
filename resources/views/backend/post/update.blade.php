@@ -12,15 +12,17 @@
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" id="description" name="description" required>{{ $post->description }}</textarea>
+                <!-- Replace the textarea with a div for Summernote -->
+                <div id="description">{!! $post->description !!}</div>
+                <!-- Hidden textarea to hold Summernote content for form submission -->
+                <textarea class="form-control d-none" id="descriptionInput" name="description"></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Image:</label>
                 <input type="file" class="form-control" id="image" name="image" onchange="previewImage(event)">
                 <div id="imagePreview" class="mt-2">
-                    @if($post->image)
-                        <img src="{{ asset('storage/' . $post->image) }}" alt="Post Image" style="max-width: 100px;">
-                        
+                    @if ($post->image)
+                        <img src="{{ url('uploads/post/' . $post->image) }}" alt="Post Image" style="max-width: 100px;">
                     @else
                         No image available
                     @endif
@@ -31,7 +33,8 @@
                 <select class="form-control" id="category_id" name="category_id" required>
                     <option value="">Select Category</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ $post->category_id == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                        <option value="{{ $category->id }}" {{ $post->category_id == $category->id ? 'selected' : '' }}>
+                            {{ $category->title }}</option>
                     @endforeach
                 </select>
             </div>
@@ -40,13 +43,26 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            // Initialize Summernote
+            $('#description').summernote({
+                height: 300,
+                callbacks: {
+                    onChange: function(contents) {
+                        // Update the hidden textarea with Summernote content
+                        $('#descriptionInput').val(contents);
+                    }
+                }
+            });
+        });
+
         // Function to preview image
         function previewImage(event) {
             var input = event.target;
             var preview = document.getElementById('imagePreview');
 
             while (preview.firstChild) {
-                preview.removeChild(preview.firstChild); 
+                preview.removeChild(preview.firstChild);
             }
 
             if (input.files && input.files[0]) {
@@ -55,7 +71,7 @@
                 reader.onload = function(e) {
                     var img = document.createElement('img');
                     img.src = e.target.result;
-                    img.style.maxWidth = '100px'; 
+                    img.style.maxWidth = '100px';
                     preview.appendChild(img);
                 }
 

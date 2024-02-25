@@ -53,7 +53,10 @@
                     <td>{{ $course->title ?? '' }}</td>
                     <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/course/' . $course->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>{{ $course->description ?? '' }}</td>
+                    <td>
+                        <!-- Displaying Summernote content -->
+                        {!! $summernoteContent->processContent($course->description) !!}
+                    </td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning btn-sm"

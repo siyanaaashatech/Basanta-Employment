@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
 use App\Models\Post;
 use App\Models\Team;
 use App\Models\About;
+use App\Models\Course;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Category;
-use App\Models\SiteSetting;
-use App\Models\PhotoGallery;
 use App\Models\University;
+use App\Models\SiteSetting;
+use App\Models\Testimonial;
+use App\Models\PhotoGallery;
 use App\Models\VideoGallery;
 use Illuminate\Http\Request;
+use App\Models\BlogPostsCategory;
 
 class SingleController extends Controller
 {
@@ -29,7 +31,7 @@ class SingleController extends Controller
         $services = Service::latest()->get()->take(6);
         $posts = Post::with('category')->latest()->get()->take(3);
         $images = PhotoGallery::latest()->get();
-     
+
         return view('frontend.aboutus', compact('categories', 'sitesetting', 'about', 'teams', 'services', 'posts', 'images'));
 
     }
@@ -64,9 +66,32 @@ class SingleController extends Controller
         return view('frontend.services', compact('images', 'services', 'categories', 'sitesetting', 'about', 'serviceHead'));
     }
 
-    public function render_singleService($id)
+    public function render_testimonial()
     {
-        $service = Service::find($id);
+        $testimonials = Testimonial::all();
+
+        return view('frontend.testimonials', compact('testimonials'));
+    }
+
+
+
+    public function render_blogpostcategory()
+    {
+        $blogpostcategories = BlogPostsCategory::all();
+
+        return view('frontend.blogpostcategories', compact('blogpostcategories'));
+    }
+
+    public function render_singleBlogpostcategory($id)
+    {
+        $blogpostcategory = BlogPostsCategory::findOrFail($id);
+
+        return view('frontend.blogpostcategory', compact('blogpostcategory'));
+    }
+
+    public function render_singleService($slug)
+    {
+        $service = Service::where('slug', $slug)->firstOrFail();
         $images = PhotoGallery::latest()->get();
         $categories = Category::all();
         $services = Service::latest()->get();
@@ -76,11 +101,20 @@ class SingleController extends Controller
 
         return view('frontend.service', compact('service', 'images', 'services', 'categories', 'sitesetting', 'about', 'serviceHead'));
     }
+
+    public function render_Countries()
+    {
+        $countries = Country::all();
+
+        return view('frontend.countries', compact('countries'));
+    }
     public function render_singleCountry($slug)
     {
         $country = Country::where('slug', $slug)->firstOrFail();
+        $recommendedCountries = Country::where('slug', '!=', $slug)->get();
         // $countries = Country::all();
-        return view('frontend.country', compact('country'));
+
+        return view('frontend.single', compact('country', 'recommendedCountries'));
     }
 
     public function render_singleUniversity($slug)
@@ -97,6 +131,24 @@ class SingleController extends Controller
 
 
 
+    public function render_singleCategory($slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $relatedCategories = Category::where('id', '!=', $category->id)->get();
+        return view('frontend.category', compact('category', 'relatedCategories'));
+    }
+
+    public function render_singlePost($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+        // Get the category associated with the post
+        $category = $post->category;
+
+        // Get all posts related to the same category
+        $relatedPosts = $category->posts()->where('id', '!=', $post->id)->get();
+        return view('frontend.post', compact('post', 'relatedPosts'));
+    }
+
 
     public function render_gallery()
     {
@@ -109,7 +161,8 @@ class SingleController extends Controller
         return view('frontend.galleries', compact('images', 'services', 'categories', 'sitesetting', 'about'));
     }
 
-    public function render_singleImage($id){
+    public function render_singleImage($id)
+    {
         $image = PhotoGallery::find($id);
         $categories = Category::all();
         $services = Service::latest()->get();
@@ -141,6 +194,13 @@ class SingleController extends Controller
         $about = About::first();
 
         return view('portal.team', compact('teams', 'services', 'categories', 'sitesetting', 'about'));
+    }
+
+    public function render_contact()
+    {
+        $page_title = 'Contact Us';
+        $googleMapsLink = SiteSetting::first()->google_maps_link;
+        return view('frontend.contactpage', compact('page_title', 'googleMapsLink'));
     }
 
 }

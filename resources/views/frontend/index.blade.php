@@ -18,7 +18,7 @@
                                     @if ($loop->remaining == 1)
                                         and
                                     @else
-                                    ,
+                                        ,
                                     @endif
                                 @endif
                             @endforeach
@@ -30,21 +30,24 @@
                 <div class="position-relative">
 
                     @foreach ($countries as $country)
-                    @if ($loop->index < 3) <!-- Loop for the first three countries -->
-                        <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-                            @php
-                                $images = json_decode($country->image);
-                                $firstImage = isset($images[0]) ? $images[0] : null;
-                            @endphp
-            
-                            @if ($firstImage)
-                                <img src="{{ $firstImage }}" alt="Country Image" style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @else
-                                <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image" style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @endif
-                        </div>
-                    @endif
-                @endforeach
+                        @if ($loop->index < 3)
+                            <!-- Loop for the first three countries -->
+                            <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
+                                @php
+                                    $images = json_decode($country->image);
+                                    $firstImage = isset($images[0]) ? $images[0] : null;
+                                @endphp
+
+                                @if ($firstImage)
+                                    <img src="{{ $firstImage }}" alt="Country Image"
+                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                @else
+                                    <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image"
+                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                @endif
+                            </div>
+                        @endif
+                    @endforeach
 
                 </div>
             </div>
@@ -69,24 +72,27 @@
 
 
 
-                    
+
 
                     @foreach ($countries as $country)
-                    @if ($loop->index >= 3 && $loop->index < 5) <!-- Loop for the next two countries -->
-                        <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-                            @php
-                                $images = json_decode($country->image);
-                                $firstImage = isset($images[0]) ? $images[0] : null;
-                            @endphp
-            
-                            @if ($firstImage)
-                                <img src="{{ asset($firstImage) }}" alt="Country Image" style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @else
-                                <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image" style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @endif
-                        </div>
-                    @endif
-                @endforeach
+                        @if ($loop->index >= 3 && $loop->index < 5)
+                            <!-- Loop for the next two countries -->
+                            <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
+                                @php
+                                    $images = json_decode($country->image);
+                                    $firstImage = isset($images[0]) ? $images[0] : null;
+                                @endphp
+
+                                @if ($firstImage)
+                                    <img src="{{ asset($firstImage) }}" alt="Country Image"
+                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                @else
+                                    <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image"
+                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                @endif
+                            </div>
+                        @endif
+                    @endforeach
 
 
                 </div>
@@ -151,16 +157,37 @@
             <div class="word col-md-6">
                 <div class="text">
                     <h2>
-                        <p>Your Choice- Your Destination</p>
+                        <p>
+                            @if ($sliderPost)
+                                {{ $sliderPost->title }}
+                            @else
+                                No post available
+                            @endif
+                        </p>
                     </h2>
-                    <p class="text-primary"> Most preferred destinations in the world</p>
-                    <p>We represent colleges in Australia,UK, USA, Thailand, India, Switzerland & Japan. However
-                        sucessfully
-                        enrolling a syudent at the college of his/her choice is not as simple as we made out at the vey
-                        outset.
+                    {{-- <p class="text-primary"> Most preferred destinations in the world</p> --}}
+                    <?php
+                    $maxLength = 600; // Set your desired maximum length
+                    // Get the raw content and strip all tags
+                    $strippedContent = strip_tags($sliderPost->description);
+                    // Decode HTML entities to handle double encoding
+                    $decodedContent = htmlspecialchars_decode($strippedContent);
+                    // Escape HTML entities
+                    $escapedContent = htmlspecialchars($decodedContent);
+                    // Take a substring of the escaped content
+                    $trimmedContent = substr($escapedContent, 0, $maxLength);
+                    ?>
+                    <p>
+                        @if ($sliderPost)
+                            {{ $trimmedContent }}
+                        @else
+                            No description available
+                        @endif
                     </p>
                 </div>
-                <button class="btn bg-primary text-white ">SEE ALL COUNTRIES</button>
+                <a href="{{ route('Countries') }}">
+                    <button class="btn bg-primary text-white">SEE ALL COUNTRIES</button>
+                </a>
             </div>
             <div class="container-fluid col-md-6 col-sm-12">
                 <div id="carouselExampleCaptions" class="carousel slide">
@@ -182,28 +209,7 @@
                                 </div>
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>{{ $country->name }}</h5>
-
-
-
-
-
-                                    <?php
-                                    $maxLength = 200; // Set your desired maximum length
-                                    
-                                    // Get the raw content and strip all tags
-                                    $strippedContent = strip_tags($country->content);
-                                    
-                                    // Decode HTML entities to handle double encoding
-                                    $decodedContent = htmlspecialchars_decode($strippedContent);
-                                    
-                                    // Escape HTML entities
-                                    $escapedContent = htmlspecialchars($decodedContent);
-                                    
-                                    // Take a substring of the escaped content
-                                    $trimmedContent = substr($escapedContent, 0, $maxLength);
-                                    ?>
-
-                                    <p>{{ $trimmedContent }}</p>
+                                    <p>{{ $country->content }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -220,7 +226,7 @@
                     </button>
                 </div>
                 <div class="back">
-                    <img src="{{asset('image/back.png')}}" alt="">
+                    <img src="{{ asset('image/back.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -232,16 +238,41 @@
         <div class="col-md-5 mx-5">
             <div class="empty">.</div>
             <div class="text mx-5 text-white">
-                <h2>A leading university for international students</h2>
-                <b> Calling All Artists K-12. Use your creativity to help sustain our world!</b>
-                <h5>We are committed to helping international students make the most of their time in Australia by
-                    providing quality education, guidance and support.</h5>
+                <p>
+                    @if ($enrollPost)
+                        {{ $enrollPost->title }}
+                    @else
+                        No post available
+                    @endif
+                </p>
+                {{-- <b> Calling All Artists K-12. Use your creativity to help sustain our world!</b> --}}
+                <?php
+                $maxLength = 600; // Set your desired maximum length
+                // Get the raw content and strip all tags
+                $strippedContent = strip_tags($enrollPost->description);
+                // Decode HTML entities to handle double encoding
+                $decodedContent = htmlspecialchars_decode($strippedContent);
+                // Escape HTML entities
+                $escapedContent = htmlspecialchars($decodedContent);
+                // Take a substring of the escaped content
+                $trimmedContent = substr($escapedContent, 0, $maxLength);
+                ?>
+                <p>
+
+                    @if ($enrollPost)
+                        {{ $trimmedContent }}
+                    @else
+                        No description available
+                    @endif
+                </p>
             </div>
 
             <div class="butt d-flex">
-                <div class="text-center my-5 mx-3"><button class="btn bg-primary text-white ">Enroll Now</button>
+                <div class="text-center my-5 mx-3">
+                    <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Enroll Now</a>
                 </div>
-                <div class="text-center my-5 mx-1"><button class="btn bg-primary text-white ">Learn More</button>
+                <div class="text-center my-5 mx-1">
+                    <a href="{{ route('About') }}" class="btn bg-primary text-white">Read More</a>
                 </div>
             </div>
         </div>
@@ -303,7 +334,7 @@
                 @foreach ($courses as $course)
                     <div class="subject1 col-md-4 col-sm-6">
                         <div
-                            style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
+                            style="background-image: url('{{ asset($course->image) }}'); background-size: cover; background-position: center; height: 200px;">
                             <div class="text-center">
                                 <button class="btn bg-primary text-white">{{ $course->title }}</button>
                             </div>
@@ -322,22 +353,16 @@
             <div id="carouselExampleDark" class="carousel slide">
                 <div class="carousel-inner">
                     @foreach ($testimonials as $testimonial)
-                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
-                            <div class="box row">
-                           
-                                <div class="image col-lg-6">
-
-                                    @if ($testimonial->image)
-                                        
-                                            <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt="">
-
-                                    @else
-                                    <img src="{{ asset('image/girl.jpg') }}" class="d-block w-100" alt="">
-                                    @endif
+                        <div class="carousel-item row {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="image">
+                                    <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt="">
                                 </div>
-                            
+                            </div>
 
-                            <div class="text col-lg-6 justify-content-center">
+                            <div class="col-lg-6 col-md-6"></div>
+                            <div class="carousel-caption">
+
                                 <div class="text-start text-dark">
                                     {{ $testimonial->description }}
                                 </div>
@@ -348,7 +373,6 @@
                                 </div>
 
                             </div>
-                        </div>
                         </div>
                     @endforeach
                 </div>
@@ -364,9 +388,7 @@
                 </button>
             </div>
         </div>
+
     </div>
 
-
-
-
-    @stop
+@stop

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\FavIconSeeder;
+use Database\Seeders\CategorySeeder;
 use Database\Seeders\SitesettingSeeder;
 use Database\Seeders\RolePermissionSeeder;
 
@@ -18,6 +19,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             SitesettingSeeder::class,
             FavIconSeeder::class,
+            CategorySeeder::class
+
         ]);
     }
 }

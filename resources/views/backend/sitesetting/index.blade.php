@@ -17,9 +17,6 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.site-settings.create') }}"><button class="btn btn-primary btn-sm"><i
-                        class="fa fa-plus"></i>Add
-                    Site Setting</button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -50,15 +47,19 @@
                     <td>{{ $sitesetting->office_name ?? '' }}</td>
                     <td>{{ $sitesetting->office_email ?? '' }}</td>
                     <td>{{ $sitesetting->office_contact ?? '' }}</td>
-                    <td> <img id="preview{{ $loop->iteration }}"
-                            src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}"
-                            style="width: 150px; height:150px" /></td>
+                    <td>
 
+                        <img src="{{ asset('uploads/sitesetting/1707819265.jpg') }}" style="width: 150px; height: 150px;">
+
+
+
+                    </td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <a href="{{ route('admin.site-settings.edit', $sitesetting->id) }}"
-                                class="btn btn-warning btn-sm" style="margin-right: 5px;"><i class="fas fa-edit"></i>
-                                Edit</a>
+                                class="btn btn-warning btn-sm" style="margin-right: 5px;">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
                             <form action="{{ route('admin.site-settings.destroy', $sitesetting->id) }}" method="POST"
                                 onsubmit="return confirm('Are you sure you want to delete this item?');">
                                 @csrf
@@ -71,12 +72,6 @@
             @endforeach
         </tbody>
     </table>
-
-
-
-
-    <!-- Main row -->
-
 
 
 

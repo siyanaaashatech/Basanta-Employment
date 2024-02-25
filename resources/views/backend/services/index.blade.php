@@ -50,7 +50,12 @@
                     <td>{{ $service->title ?? '' }}</td>
                     <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/service/' . $service->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>{{ $service->description ?? '' }}</td>
+                            <td> 
+                                <!-- Displaying Summernote content -->
+                                {!! $summernoteContent->processContent($service->description) !!}
+                            </td>
+
+
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <a href="{{ route('admin.services.edit', $service->id) }}" class="btn btn-warning btn-sm"
@@ -68,17 +73,14 @@
             @endforeach
         </tbody>
     </table>
-
-
-
     <script>
-        const previewImage1 = e => {
-            const reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onload = () => {
-                const preview = document.getElementById('preview1');
-                preview.src = reader.result;
-            };
-        };
+        $(document).ready(function() {
+            function extractPlainTextFromSummernote() {
+                var plainText = $('.note-editable')
+                    .text(); // Assuming '.note-editable' is the class used by Summernote
+                console.log(plainText); // For demonstration purposes, you can log the plainText to the console
+                // Now, you can do something with the plainText, such as saving it to your database
+            }
+        });
     </script>
 @endsection

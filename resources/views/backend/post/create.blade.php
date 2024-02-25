@@ -15,7 +15,8 @@
             </div>
             <div class="form-group">
                 <label for="image">Image:</label>
-                <input type="file" class="form-control" id="image" name="image" required onchange="previewImage(event)">
+                <input type="file" class="form-control" id="image" name="image" required
+                    onchange="previewImage(event)">
                 <div id="imagePreview" class="mt-2"></div> <!-- Image preview container -->
             </div>
             <div class="form-group">
@@ -29,32 +30,33 @@
             </div>
             <button type="submit" class="btn btn-primary">Create Post</button>
         </form>
-    </div>
-    <script>
-        $(document).ready(function() {
-            $('.summernote').summernote();
-        });
-        function previewImage(event) {
-            var input = event.target;
-            var preview = document.getElementById('imagePreview');
+        <script>
+            $(document).ready(function() {
+                $('.summernote').summernote(); // Initialize Summernote
+            });
 
-            while (preview.firstChild) {
-                preview.removeChild(preview.firstChild); // Clear previous preview
-            }
+            function previewImage(event) {
+                var input = event.target;
+                var preview = document.getElementById('imagePreview');
 
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    var img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '200px'; // Adjust the maximum width as needed
-                    img.style.maxHeight = '200px'; // Adjust the maximum height as needed
-                    preview.appendChild(img);
+                while (preview.firstChild) {
+                    preview.removeChild(preview.firstChild); // Clear previous preview
                 }
 
-                reader.readAsDataURL(input.files[0]);
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        var img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.maxWidth = '200px'; // Adjust the maximum width as needed
+                        img.style.maxHeight = '200px'; // Adjust the maximum height as needed
+                        preview.appendChild(img);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
             }
-        }
-    </script>
+        </script>
+    </div>
 @endsection

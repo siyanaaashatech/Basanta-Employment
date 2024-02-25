@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
 
@@ -15,9 +14,6 @@
             {{ Session::get('error') }}
         </div>
     @endif
-
-
-
 
     <div class="row mb-2">
         <div class="col-sm-6">
@@ -36,9 +32,7 @@
         </div>
     </div>
 
-
     <!-- Countries Table -->
-
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -54,19 +48,22 @@
                 @foreach ($countries as $country)
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td width="5%">{{ $loop->iteration }}</td>
-                        <td>{{ $country->name ?? '' }}</td>
+                        <td>{{ $country->name }}</td>
+
                         <td>
-                            <div class="image-container">
-                                @if ($country->image)
-                                    @foreach (json_decode($country->image) as $image)
-                                        <img src="{{ asset('uploads/country/' . $image) }}" class="actual-image"
-                                            style="width: 50px; height: 50px;">
-                                    @endforeach
-                                @endif
-                            </div>
-                            <div id="preview{{ $loop->iteration }}"></div>
+                            @if ($country->image)
+                                @foreach (json_decode($country->image) as $image)
+                                    <img src="{{ asset($image) }}" class="preview-image"
+                                        style="width: 150px; height: 150px" />
+                                @endforeach
+                            @else
+                                No image available
+                            @endif
                         </td>
-                        <td>{{ $country->content ?? '' }}</td>
+                        <td>
+                            <!-- Displaying Summernote content -->
+                            {!! $summernoteContent->processContent($country->content) !!}
+                        </td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
                                 <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-warning btn-sm"
@@ -89,33 +86,5 @@
             @endif
         </tbody>
     </table>
-    {{-- <script>
-        const previewImages = (e, index) => {
-            const previewContainer = document.getElementById(`imagePreviews${index}`);
-            previewContainer.innerHTML = '';
 
-            const files = e.target.files;
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const reader = new FileReader();
-                reader.onload = () => {
-                    const img = document.createElement('img');
-                    img.src = reader.result;
-                    img.classList.add('image-preview');
-                    previewContainer.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            }
-        };
-    </script> --}}
-    <script>
-        const previewImage = e => {
-            const reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onload = () => {
-                const preview = document.getElementById('preview');
-                preview.src = reader.result;
-            };
-        };
-    </script>
 @endsection

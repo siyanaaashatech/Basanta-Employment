@@ -78,10 +78,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="intake_date">Intake Date</label>
-                <input type="date" name="intake_date" class="form-control" id="intake_date" placeholder="Intake Date"
-                    required>
+                <label for="intake_month_year">Intake Date</label>
+                <input type="text" name="intake_month_year" class="form-control" id="intake_month_year"
+                    placeholder="MM/YYYY" required>
             </div>
+
 
             <div class="form-group">
                 <label for="image">Image</label>
@@ -112,4 +113,21 @@
             reader.readAsDataURL(e.target.files[0]);
         };
     </script>
+    <script>
+        // Get the input element
+        const intakeMonthYearInput = document.getElementById('intake_month_year');
+
+        // Listen for input event and format the value to MM/YYYY
+        intakeMonthYearInput.addEventListener('input', function() {
+            let inputValue = intakeMonthYearInput.value.replace(/\D/g, '').substring(0,
+                6); // Allow only digits and limit to 6 characters
+            const month = inputValue.substring(0, 2);
+            const year = inputValue.substring(2, 6);
+            if (inputValue.length > 2) {
+                inputValue = month + '/' + year;
+            }
+            intakeMonthYearInput.value = inputValue;
+        });
+    </script>
+
 @stop
