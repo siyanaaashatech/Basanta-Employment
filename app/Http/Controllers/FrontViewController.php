@@ -43,7 +43,9 @@ class FrontViewController extends Controller
                 $countryImages[] = $images;
             }
         }
-        $countryUniversityCategory = Category::where('title', 'Country University')->first();
+        $lastCategory = Category::latest()->first();
+        $categoryId = $lastCategory->id;
+        $countryUniversityCategory = Category::findOrFail($categoryId);
         $sliderPost = $countryUniversityCategory->posts()->latest()->first();
         $enrollPost = $countryUniversityCategory->posts()->orderBy('id', 'desc')->skip(1)->first();
 

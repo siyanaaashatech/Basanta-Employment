@@ -53,27 +53,6 @@
             </div>
             <div class="box3 col-lg-3 col-md-6 col-sm-12">
                 <div class="position-relative">
-                    {{-- @foreach ($countries as $country)
-                        <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-                            @foreach (json_decode($country->image) as $image)
-                                <img src="{{ $image }}" alt="Country Image 4"
-                                    style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @endforeach
-                        </div>
-                    @endforeach
-                    @foreach ($countries as $country)
-                        <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-                            @foreach (json_decode($country->image) as $image)
-                                <img src="{{ $image }}" alt="Country Image 5"
-                                    style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                            @endforeach
-                        </div>
-                    @endforeach --}}
-
-
-
-
-
                     @foreach ($countries as $country)
                         @if ($loop->index >= 3 && $loop->index < 5)
                             <!-- Loop for the next two countries -->
@@ -159,31 +138,13 @@
                     <h2>
                         <p>
                             @if ($sliderPost)
-                                {{ $sliderPost->title }}
+                                <h2>{{ $sliderPost->title }}</h2>
+                                <p>{{ Str::limit(strip_tags($sliderPost->description), 600) }}</p>
                             @else
-                                No post available
+                                <p>No slider post available</p>
                             @endif
                         </p>
                     </h2>
-                    {{-- <p class="text-primary"> Most preferred destinations in the world</p> --}}
-                    <?php
-                    $maxLength = 600; // Set your desired maximum length
-                    // Get the raw content and strip all tags
-                    $strippedContent = strip_tags($sliderPost->description);
-                    // Decode HTML entities to handle double encoding
-                    $decodedContent = htmlspecialchars_decode($strippedContent);
-                    // Escape HTML entities
-                    $escapedContent = htmlspecialchars($decodedContent);
-                    // Take a substring of the escaped content
-                    $trimmedContent = substr($escapedContent, 0, $maxLength);
-                    ?>
-                    <p>
-                        @if ($sliderPost)
-                            {{ $trimmedContent }}
-                        @else
-                            No description available
-                        @endif
-                    </p>
                 </div>
                 <a href="{{ route('Countries') }}">
                     <button class="btn bg-primary text-white">SEE ALL COUNTRIES</button>
@@ -240,31 +201,13 @@
             <div class="text mx-5 text-white">
                 <p>
                     @if ($enrollPost)
-                        {{ $enrollPost->title }}
-                    @else
-                        No post available
+                        <h2>{{ $enrollPost->title }}</h2>
+                        <p>{{ Str::limit(strip_tags($enrollPost->description), 600) }}</p>
+                        <!-- Add any other content or styling you need -->
                     @endif
                 </p>
                 {{-- <b> Calling All Artists K-12. Use your creativity to help sustain our world!</b> --}}
-                <?php
-                $maxLength = 600; // Set your desired maximum length
-                // Get the raw content and strip all tags
-                $strippedContent = strip_tags($enrollPost->description);
-                // Decode HTML entities to handle double encoding
-                $decodedContent = htmlspecialchars_decode($strippedContent);
-                // Escape HTML entities
-                $escapedContent = htmlspecialchars($decodedContent);
-                // Take a substring of the escaped content
-                $trimmedContent = substr($escapedContent, 0, $maxLength);
-                ?>
-                <p>
 
-                    @if ($enrollPost)
-                        {{ $trimmedContent }}
-                    @else
-                        No description available
-                    @endif
-                </p>
             </div>
 
             <div class="butt d-flex">
@@ -334,7 +277,7 @@
                 @foreach ($courses as $course)
                     <div class="subject1 col-md-4 col-sm-6">
                         <div
-                            style="background-image: url('{{ asset('uploads/course/' .$course->image) }}'); background-size: cover; background-position: center; height: 200px;">
+                            style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
                             <div class="text-center">
                                 <button class="btn bg-primary text-white">{{ $course->title }}</button>
                             </div>
@@ -357,7 +300,8 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
                                     @if ($testimonial->image)
-                                        <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt="">
+                                        <img src="{{ asset($testimonial->image) }}" class="d-block w-100"
+                                            alt="">
                                     @else
                                         <img src="{{ asset('image/girl.jpg') }}" class=" d-block w-100" alt="">
                                     @endif
@@ -367,7 +311,8 @@
                                         <div class="text-start text-dark">
                                             <p>{{ $testimonial->description }}</p>
                                             <h2>{{ $testimonial->name }}</h2>
-                                            <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})</p>
+                                            <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})
+                                            </p>
                                             <button class="bg-primary text-white text-center"> VIEW ALL -</button>
                                         </div>
                                     </div>
@@ -389,6 +334,6 @@
             </div>
         </div>
     </div>
-    
+
 
 @stop
