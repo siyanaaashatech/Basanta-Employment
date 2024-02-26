@@ -140,7 +140,7 @@
                                 <div class="circle-2">
                                     <div class="text">
                                         <h2>{{ $service->title }}</h2>
-                                        <h4>{!! nl2br(e($service->description)) !!}</h4>
+                                        <h4>{{ Str::limit(strip_tags($service->description), 105) }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                     <button class="btn bg-primary text-white">SEE ALL COUNTRIES</button>
                 </a>
             </div>
-            <div class="container-fluid col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-12">
                 <div id="carouselExampleCaptions" class="carousel slide">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -209,7 +209,7 @@
                                 </div>
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>{{ $country->name }}</h5>
-                                    <p>{{ $country->content }}</p>
+                                    <p> {{ Str::limit(strip_tags($country->content), 200) }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -225,9 +225,9 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-                <div class="back">
+                {{-- <div class="back">
                     <img src="{{ asset('image/back.png') }}" alt="">
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -334,7 +334,7 @@
                 @foreach ($courses as $course)
                     <div class="subject1 col-md-4 col-sm-6">
                         <div
-                            style="background-image: url('{{ asset($course->image) }}'); background-size: cover; background-position: center; height: 200px;">
+                            style="background-image: url('{{ asset('uploads/course/' .$course->image) }}'); background-size: cover; background-position: center; height: 200px;">
                             <div class="text-center">
                                 <button class="btn bg-primary text-white">{{ $course->title }}</button>
                             </div>
@@ -353,32 +353,25 @@
             <div id="carouselExampleDark" class="carousel slide">
                 <div class="carousel-inner">
                     @foreach ($testimonials as $testimonial)
-                        <div class="carousel-item row {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="image">
-
-
-                                @if ($testimonial->image)
-                                    <img src="{{ asset($testimonial->image) }}" class="projcard-img" alt="">
-                                @else
-                                    <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
-                                @endif
-                                    {{-- <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt=""> --}}
+                        <div class="carousel-item{{ $loop->first ? ' active' : '' }}" data-bs-interval="10000">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    @if ($testimonial->image)
+                                        <img src="{{ asset($testimonial->image) }}" class="d-block w-100" alt="">
+                                    @else
+                                        <img src="{{ asset('image/girl.jpg') }}" class=" d-block w-100" alt="">
+                                    @endif
                                 </div>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6"></div>
-                            <div class="carousel-caption">
-
-                                <div class="text-start text-dark">
-                                    {{ $testimonial->description }}
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="carousel-caption">
+                                        <div class="text-start text-dark">
+                                            <p>{{ $testimonial->description }}</p>
+                                            <h2>{{ $testimonial->name }}</h2>
+                                            <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})</p>
+                                            <button class="bg-primary text-white text-center"> VIEW ALL -</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-start text-dark">
-                                    <h2>{{ $testimonial->name }}</h2>
-                                    <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})</p>
-                                    <button class="bg-primary text-white text-center"> VIEW ALL -</button>
-                                </div>
-
                             </div>
                         </div>
                     @endforeach
@@ -395,7 +388,7 @@
                 </button>
             </div>
         </div>
-
     </div>
+    
 
 @stop
