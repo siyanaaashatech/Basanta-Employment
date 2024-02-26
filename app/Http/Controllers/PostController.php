@@ -74,6 +74,13 @@ class PostController extends Controller
     return redirect()->route('admin.posts.index')->with('success', 'Post created successfully');
 }
 
+public function edit(Post $post)
+{
+    $categories = Category::all();
+    return view('backend.post.update', compact('post', 'categories'));
+}
+
+
 public function update(Request $request, Post $post)
 {
     $request->validate([
@@ -88,6 +95,7 @@ public function update(Request $request, Post $post)
         // Move the uploaded image to the desired directory
         $imageName = $request->image->getClientOriginalName();
         $imagePath = $request->image->move(public_path('uploads/post'), $imageName);
+    }
         
         // Update the image attribute of the post with the new image path
       
@@ -96,7 +104,7 @@ public function update(Request $request, Post $post)
       
         $post->title = $request->input('title');
         $post->description = $request->input('description');
-        $post->image = $newImageName;
+     
         $post->category_id = $request->input('category_id');
         $post->save();
 
@@ -105,11 +113,7 @@ public function update(Request $request, Post $post)
    
 
 
-    public function edit(Post $post)
-    {
-        $categories = Category::all();
-        return view('backend.post.update', compact('post', 'categories'));
-    }
+   
     public function destroy(Post $post)
     {
         $post->delete();

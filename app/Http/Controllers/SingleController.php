@@ -126,7 +126,8 @@ class SingleController extends Controller
     public function render_singleCourse($slug)
     {
         $course = Course::where('slug', $slug)->firstOrFail();
-        return view('frontend.course', compact('course'));
+        $listcourse = Course::latest()->get()->take(4);
+        return view('frontend.course', compact('course', 'listcourse'));
     }
 
 
