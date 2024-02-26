@@ -28,7 +28,7 @@
                             <div class="card-body">
 
                                 <span class="team_name">{{ $team->name }}</span><br>
-                                <span class="team_position">{{ $team->postion }}</span><br>
+                                <span class="team_position">{{ $team->position }}</span><br>
                                 <span class="team_email">{{ $team->email }}</span><br>
                                 <span class="team_contact">{{ $team->phone_no }}</span>
 
