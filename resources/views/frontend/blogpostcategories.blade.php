@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __('Blog Post Categories') }}</h1>
+        <h1 class="page_title">{{ __('Blogs') }}</h1>
     </div>
 
     <div class="container">

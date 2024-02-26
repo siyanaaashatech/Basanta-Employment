@@ -40,10 +40,14 @@
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                         {{-- {{ $sitesetting->office_mail ?? '' }} --}}
                     </span>
-                    {{-- <span class="top_nav_loc">
-                       <i class="fa fa-phone" aria-hidden="true"></i>
-                           {{-- {{ $sitesetting->office_mail ?? '' }} --}}
-                   </span>  --}}
+                    <form action="{{ route('search') }}" method="GET" class="search-form">
+                        <input type="text" name="search" placeholder="Search..." required />
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+
+                    <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Apply Now</a>
+
+                    <a class="nav-link m-3 fs-5" href="">9876543210</a>
 
                 </p>
             </div>

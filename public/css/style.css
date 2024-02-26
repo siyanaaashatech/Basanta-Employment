@@ -1,3 +1,5 @@
+
+
 .header .navbar .collapse ul li:hover {
   background: #d4d0d0;
 }
@@ -250,6 +252,10 @@
   height: 100%;
   -o-object-fit: fill;
      object-fit: fill;
+}
+
+.join .carousel-caption {
+  position: static !important
 }
 /* .join {
   margin: 40px 0px 40px 10%;
@@ -1223,9 +1229,15 @@ position: relative;
 }
 
 
-
+.sample_page_image{
+width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 .sample_page_list{
   background-image: linear-gradient(rgb(9, 28, 72), rgb(58, 73, 121));
+  height: fit-content;
+
 }
 
 .sample_page_list h3{
@@ -1233,6 +1245,8 @@ position: relative;
   text-align: center;
   text-transform: capitalize;
 }
+
+
 
 .sample_page_list ul {
   list-style: none;
@@ -1246,7 +1260,7 @@ position: relative;
 
 .sample_page_list ul li::before {
   content: "\2022";
-  color: #6CAC38;
+  color: #ffffff;
   position: absolute;
   font-size: 25px;
   left: -19px;
@@ -1259,4 +1273,9 @@ position: relative;
   font-size: 30px;
   left: -18px;
   top:-12px;
+ }
+
+ .sample_page_list ul li a{
+  text-decoration: none;
+  color: #d7d6de;
  }
