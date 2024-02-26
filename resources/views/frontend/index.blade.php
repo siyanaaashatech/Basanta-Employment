@@ -28,52 +28,54 @@
             </div>
             <div class="box2 col-lg-4 col-md-6 col-sm-12">
                 <div class="position-relative">
-
+                    @php
+                        $displayedImages = 0;
+                    @endphp
                     @foreach ($countries as $country)
-                        @if ($loop->index < 3)
-                            <!-- Loop for the first three countries -->
+                        @if ($displayedImages < 3 && $country->image)
                             <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-                                @php
-                                    $images = json_decode($country->image);
-                                    $firstImage = isset($images[0]) ? $images[0] : null;
-                                @endphp
-
-                                @if ($firstImage)
-                                    <img src="{{ $firstImage }}" alt="Country Image"
-                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                                @else
-                                    <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image"
-                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                                @endif
+                                <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
+                                    style="width: 100%; object-fit:cover; object-position:center; height:100%">
                             </div>
+                            @php
+                                $displayedImages++;
+                            @endphp
                         @endif
                     @endforeach
+                    @if ($displayedImages == 0)
+                        <!-- Display a default image or message if there are no images -->
+                        <div class="default-image position-absolute" style="height: 300px; width: 150px;">
+                            <img src="{{ asset('image/default.jpg') }}" alt="Default Image"
+                                style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                        </div>
+                    @endif
 
                 </div>
             </div>
             <div class="box3 col-lg-3 col-md-6 col-sm-12">
                 <div class="position-relative">
-                    @foreach ($countries as $country)
-                        @if ($loop->index >= 3 && $loop->index < 5)
-                            <!-- Loop for the next two countries -->
-                            <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-                                @php
-                                    $images = json_decode($country->image);
-                                    $firstImage = isset($images[0]) ? $images[0] : null;
-                                @endphp
 
-                                @if ($firstImage)
-                                    <img src="{{ asset($firstImage) }}" alt="Country Image"
-                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                                @else
-                                    <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image"
-                                        style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                                @endif
+                    @php
+                        $displayedImages = 0;
+                    @endphp
+                    @foreach ($countries as $country)
+                        @if ($displayedImages < 3 && $country->image)
+                            <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
+                                <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
+                                    style="width: 100%; object-fit:cover; object-position:center; height:100%">
                             </div>
+                            @php
+                                $displayedImages++;
+                            @endphp
                         @endif
                     @endforeach
-
-
+                    @if ($displayedImages == 0)
+                        <!-- Display a default image or message if there are no images -->
+                        <div class="default-image position-absolute" style="height: 300px; width: 150px;">
+                            <img src="{{ asset('image/default.jpg') }}" alt="Default Image"
+                                style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -93,7 +95,7 @@
                             </div>
                             <div class="col-8">
                                 <div class="card-body">
-                                    <p class="card-text">{{ $blog->content }}</p>
+                                    <p class="card-text">{{ Str::limit(strip_tags($blog->content), 50) }}</p>
                                 </div>
                             </div>
                         </div>
@@ -161,19 +163,26 @@
                             aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
+
                         @foreach ($countries as $key => $country)
                             <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
                                 <div class="image">
-                                    @foreach (json_decode($country->image) as $image)
-                                        <img src="{{ asset($image) }}" class="d-block w-100" alt="">
-                                    @endforeach
+                                    @if ($country->image)
+                                        <img src="{{ asset('uploads/country/' . $country->image) }}" class="d-block w-100"
+                                            alt="">
+                                    @else
+                                        <img src="{{ asset('image/default.jpg') }}" class="d-block w-100"
+                                            alt="Default Image">
+                                    @endif
                                 </div>
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>{{ $country->name }}</h5>
-                                    <p> {{ Str::limit(strip_tags($country->content), 200) }}</p>
+                                    <p>{{ Str::limit(strip_tags($country->content), 200) }}</p>
                                 </div>
                             </div>
                         @endforeach
+
+
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="prev">

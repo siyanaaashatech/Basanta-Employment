@@ -29,20 +29,20 @@ class FrontViewController extends Controller
         $courses = Course::latest()->get()->take(6);
         $testimonials = Testimonial::latest()->get()->take(10);
 
-        $countries = Country::latest()->get()->take(5);
-        $countryImages = [];
+        $countries = Country::latest()->get()->take(10);
+        // $countryImages = [];
 
-        foreach ($countries as $country) {
+        // foreach ($countries as $country) {
 
-            $images = json_decode($country->image, true);
-            // Check if $images is not null and is an array before merging
-            if ($images !== null && is_array($images)) {
-                $countryImages = array_merge($countryImages, $images);
-            } elseif ($images !== null) {
-                // If $images is not an array, convert it to an array with a single element
-                $countryImages[] = $images;
-            }
-        }
+        //     $images = json_decode($country->image, true);
+        //     // Check if $images is not null and is an array before merging
+        //     if ($images !== null && is_array($images)) {
+        //         $countryImages = array_merge($countryImages, $images);
+        //     } elseif ($images !== null) {
+        //         // If $images is not an array, convert it to an array with a single element
+        //         $countryImages[] = $images;
+        //     }
+        // }
         $lastCategory = Category::latest()->first();
         $categoryId = $lastCategory->id;
         $countryUniversityCategory = Category::findOrFail($categoryId);
@@ -57,7 +57,6 @@ class FrontViewController extends Controller
             'courses',
             'testimonials',
             'countries',
-            'countryImages',
             'sliderPost',
             'enrollPost'
         ]));
