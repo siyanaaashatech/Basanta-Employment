@@ -34,8 +34,11 @@
                     @foreach ($countries as $country)
                         @if ($displayedImages < 3 && $country->image)
                             <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
+              @endif
+
                                 <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
                                     style="width: 100%; object-fit:cover; object-position:center; height:100%">
+
                             </div>
                             @php
                                 $displayedImages++;
