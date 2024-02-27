@@ -28,7 +28,7 @@
                     <div class="projcard-innerbox">
 
                         @if ($country->image)
-                            <img class="sample_page_image" src="{{ asset('uploads/country/' . $country->image) }}"
+                            <img class="projcard-img" src="{{ asset('uploads/country/' . $country->image) }}"
                                 alt="Country Image">
                         @else
                             <img src="{{ asset('image/girl.jpg') }}" class="projcard-img" alt="">
