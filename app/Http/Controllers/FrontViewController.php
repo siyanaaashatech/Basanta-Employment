@@ -31,7 +31,7 @@ class FrontViewController extends Controller
 
         $countries = Country::latest()->get()->take(10);
     
-        $lastCategory = Category::latest()->first();
+        $lastCategory = Category::find('5');
         $categoryId = $lastCategory->id;
         $countryUniversityCategory = Category::findOrFail($categoryId);
         $sliderPost = $countryUniversityCategory->posts()->latest()->first();

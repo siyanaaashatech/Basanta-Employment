@@ -10,30 +10,30 @@
 
 
                 <div class="social-buttons">
-                    <a href="#"
+                    <a href="{{ $sitesetting->facebook_link }}"
                         class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
                         <span class="social-button__inner">
                             <i class="fab fa-facebook-f"></i>
                         </span>
                     </a>
-                    <a href="#"
+                    <a href="{{ $sitesetting->linkedin_link }}"
                         class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
                         <span class="social-button__inner">
                             <i class="fab fa-linkedin-in"></i>
                         </span>
                     </a>
-                    <a href="#" target="_blank"
+                    <a href="{{ $sitesetting->instagram_link }}" target="_blank"
                         class="social-buttons__button social-button social-button--instagram" aria-label="InstaGram">
                         <span class="social-button__inner">
                             <i class="fab fa-instagram"></i>
                         </span>
                     </a>
-                    <a href="#"
+                    {{-- <a href="#"
                         class="social-buttons__button social-button social-button--github" aria-label="GitHub">
                         <span class="social-button__inner">
                             <i class="fab fa-youtube"></i>
                         </span>
-                    </a>
+                    </a> --}}
 
 
                    

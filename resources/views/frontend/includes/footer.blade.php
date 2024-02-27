@@ -60,11 +60,11 @@
             </div>
             <div class="box2 col-md-6 col-sm-12">
                 <div class="footlogo row justify-content-center">
-                    <div class="fb col"><a href=""><i class="fa-brands fa-facebook"></i></a></div>
-                    <div class="tw col"><a href=""><i class="fa-brands fa-twitter"></i></a></div>
-                    <div class="li col"><a href=""><i class="fa-brands fa-linkedin"></i></a></div>
-                    <div class="in col"><a href=""><i class="fa-brands fa-instagram"></i></a></div>
-                    <div class="yo col"><a href=""><i class="fa-brands fa-youtube"></i></a></div>
+                    <div class="fb col"><a href="{{ $sitesetting->facebook_link }}" target="_blank"><i class="fa-brands fa-facebook"></i></a></div>
+                    {{-- <div class="tw col"><a href=""><i class="fa-brands fa-twitter"></i></a></div> --}}
+                    <div class="li col"><a href="{{ $sitesetting->linkedin_link }}" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
+                    <div class="in col"><a href="{{ $sitesetting->instagram_link }}" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
+                    {{-- <div class="yo col"><a href=""><i class="fa-brands fa-youtube"></i></a></div> --}}
                 </div>
             </div>
         </div>

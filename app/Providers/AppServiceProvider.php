@@ -8,6 +8,7 @@ use App\Models\Favicon;
 use App\Models\Service;
 use App\Models\Category;
 use App\Models\University;
+use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use App\Models\BlogPostsCategory;
 use Illuminate\Support\Facades\View;
@@ -38,6 +39,17 @@ class AppServiceProvider extends ServiceProvider
         // // dd($favicon);
         // View::share('favicon', $favicon);
 
+
+        View::composer('frontend.includes.topnav', function ($view) {
+            $sitesetting = SiteSetting::first();
+  
+            $view->with('sitesetting', $sitesetting);
+          
+        });
+
+
+
+
         //Global variable for Navbar
         View::composer('frontend.includes.navbar', function ($view) {
             $countries = Country::all();
@@ -48,6 +60,8 @@ class AppServiceProvider extends ServiceProvider
             $testPreparationPosts = Category::where('title', 'Test Prepration')->first()->posts;
             $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
 
+
+            
             $view->with('countries', $countries);
             $view->with('testimonials', $testimonials);
             $view->with('courses', $courses);
@@ -59,6 +73,7 @@ class AppServiceProvider extends ServiceProvider
 
         ////Global variable for Footer
         view()->composer('frontend.includes.footer', function ($view) {
+            $sitesetting = SiteSetting::first();
             $counsellingCategory = Category::where('title', 'Counselling')->first();
             $counsellingPosts = $counsellingCategory->posts()->take(2)->get();
             $newsCategory = Category::where('title', 'News')->first();
@@ -66,6 +81,8 @@ class AppServiceProvider extends ServiceProvider
             $services = Service::all();
             $courses = Course::all();
 
+
+            $view->with('sitesetting', $sitesetting);
             $view->with('counsellingPosts', $counsellingPosts);
             $view->with('newsCategory', $newsCategory);
             $view->with('livingAbroadPosts', $livingAbroadPosts);
