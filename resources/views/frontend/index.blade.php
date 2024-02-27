@@ -163,27 +163,33 @@
                             aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
-
-                        @foreach ($countries as $key => $country)
-                            <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                                <div class="image">
-                                    @if ($country->image)
-                                        <img src="{{ asset('uploads/country/' . $country->image) }}" class="d-block w-100"
-                                            alt="">
-                                    @else
-                                        <img src="{{ asset('image/default.jpg') }}" class="d-block w-100"
-                                            alt="Default Image">
-                                    @endif
+                        @if ($countries->isEmpty())
+                            <p>No countries found.</p>
+                        @else
+                            @foreach ($countries as $key => $country)
+                                <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                    <div class="image">
+                                        @if ($country->image)
+                                            <img src="{{ asset('uploads/country/' . $country->image) }}"
+                                                class="d-block w-100" alt="{{ $country->name }}">
+                                        @else
+                                            <img src="{{ asset('image/default.jpg') }}" class="d-block w-100"
+                                                alt="Default Image">
+                                        @endif
+                                    </div>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>{{ $country->name }}</h5>
+                                        <p>{{ $country->content ? Str::limit(strip_tags($country->content), 200) : 'No content available' }}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{ $country->name }}</h5>
-                                    <p>{{ Str::limit(strip_tags($country->content), 200) }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-
-
+                            @endforeach
+                        @endif
                     </div>
+
+
+
+
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
