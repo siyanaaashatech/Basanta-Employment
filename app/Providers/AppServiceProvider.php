@@ -8,6 +8,7 @@ use App\Models\Favicon;
 use App\Models\Service;
 use App\Models\Category;
 use App\Models\University;
+use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use App\Models\BlogPostsCategory;
 use Illuminate\Support\Facades\View;
@@ -65,12 +66,14 @@ class AppServiceProvider extends ServiceProvider
             $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
             $services = Service::all();
             $courses = Course::all();
+            $siteSettings = SiteSetting::first();
 
             $view->with('counsellingPosts', $counsellingPosts);
             $view->with('newsCategory', $newsCategory);
             $view->with('livingAbroadPosts', $livingAbroadPosts);
             $view->with('services', $services);
             $view->with('courses', $courses);
+            $view->with('siteSettings', $siteSettings);
         });
     }
 

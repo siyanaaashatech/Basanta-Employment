@@ -46,7 +46,7 @@ class SingleController extends Controller
         $sitesetting = SiteSetting::first();
         $categories = Category::latest()->get()->take(10);
         $about = About::first();
-        $posts = Post::with('getCategories')->latest()->get()->take(3);
+        $posts = Post::with('category')->latest()->get()->take(3);
 
         return view('frontend.team', compact('teams', 'sitesetting', 'categories', 'about', 'page_title', 'services', 'posts'));
 
