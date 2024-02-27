@@ -4,42 +4,39 @@
     <div class="background">
         <h1 class="page_title">{{ $service->title }}</h1>
     </div>
-    <section class="single_page">
+    <section class="sample_page">
         <div class="container">
-            <!-- {{-- <h3 class="single_title"></h3> --}}
-        <h1 class="single_title"><span>{{ $service->title }}</span></h1> -->
-            <article class="service_card row gap-5">
-                <div class="single_page_image  col-lg-8 col-sm-12 shadow-lg bg-body-tertiary rounded order-lg-1 order-sm-1">
-                    <!-- {{-- <img src="https://placehold.it/200x200"> --}} -->
-                    <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Post Image" class="singleImage">
-                </div>
-                <div
-                    class="service_about col-lg-3 col-sm-12 shadow-lg bg-body-tertiary rounded order-lg-2 order-sm-3 order-xs-3">
-                    <h2 class="service_title text-center">Title</h2>
-                    <ol type="1">
-                        <h4>
-                            <li>one</li>
-                        </h4>
-                        <h4>
-                            <li>Two</li>
-                        </h4>
-                        <h4>
-                            <li>Three</li>
-                        </h4>
-                        <h4>
-                            <li>Four</li>
-                        </h4>
-                        <h4>
-                            <li>Five</li>
-                        </h4>
-                    </ol>
+          
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12 order-1 order-md-1">
+                    <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Service Image" class="sample_page_image">
+
                 </div>
 
-                <div class="service_doc col-lg-12 col-sm-12 shadow-lg bg-body-tertiary rounded order-lg-3 order-sm-2">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 order-3 order-md-3 sample_page_content">
                     {!! $service->description !!}
-
                 </div>
-            </article>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 order-2 order-md-2 sample_page_list mt-2 mb-2 p-4">
+                    <h3 class="">Services</h3>
+                    <ul>
+                        @foreach ($listservices as $service)
+                            <li>
+                                <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
+                                  {{ $service->title }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+
+
         </div>
     </section>
 @endsection

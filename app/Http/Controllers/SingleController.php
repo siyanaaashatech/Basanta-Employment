@@ -97,9 +97,9 @@ class SingleController extends Controller
         $services = Service::latest()->get();
         $sitesetting = SiteSetting::first();
         $about = About::first();
-        $serviceHead = Service::latest()->get()->take(1);
+        $listservices = Service::where('slug', '!=', $slug)->get();
 
-        return view('frontend.service', compact('service', 'images', 'services', 'categories', 'sitesetting', 'about', 'serviceHead'));
+        return view('frontend.service', compact('service', 'images', 'services', 'categories', 'sitesetting', 'about', 'listservices'));
     }
 
     public function render_Countries()

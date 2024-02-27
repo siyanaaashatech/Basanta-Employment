@@ -88,14 +88,14 @@
         <div class="contain container">
             <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4">
                 @foreach ($blogs as $blog)
-                    <div class="card col-lg-4" style="max-width: 325px;">
+                    <div class="card col-lg-4" style="max-width: 350px;">
                         <div class="row">
                             <div class="col-4">
-                                <img src="/image/card3.avif" class="img-fluid rounded-start" alt="...">
+                                <img src="{{ asset('uploads/blogpostcategory/' .$blog->image) }}" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-8">
                                 <div class="card-body">
-                                    <p class="card-text">{{ Str::limit(strip_tags($blog->content), 50) }}</p>
+                                    <p class="card-text">{{ Str::limit(strip_tags($blog->content), 80) }}</p>
                                 </div>
                             </div>
                         </div>
@@ -110,6 +110,8 @@
             <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4 container">
                 <h1 class="text-white heading_title">Our Services</h1>
                 @foreach ($services as $service)
+
+
                     <div class="col-lg-4 " style="max-width: 325px;">
                         <div class="box text-center">
                             <div class="circle-3 text-white">
@@ -120,7 +122,11 @@
                             <div class="circle-1">
                                 <div class="circle-2">
                                     <div class="text">
-                                        <h2>{{ $service->title }}</h2>
+                                        
+                                            <a href="{{ route('SingleService', ['slug' => $service->slug]) }}" class="text-decoration-none">
+                                                <h2>{{ $service->title }}</h2>
+                                            </a>
+                                            
                                         <h4>{{ Str::limit(strip_tags($service->description), 105) }}</h4>
                                     </div>
                                 </div>
@@ -128,8 +134,13 @@
 
                         </div>
                     </div>
+
                 @endforeach
-                <div class="text-center"><button class="btn bg-primary text-white  m-5">View all Services</button></div>
+                <div class="text-center">
+                    <a href="{{ route('Service') }}">
+                    <button class="btn bg-primary text-white  m-5">View all Services</button>
+                    </a>
+                </div>
             </div>
     </section>
     <!-- Slider -->
@@ -227,10 +238,10 @@
 
             <div class="butt d-flex">
                 <div class="text-center my-5 mx-3">
-                    <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Enroll Now</a>
+                    <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Contact Now</a>
                 </div>
                 <div class="text-center my-5 mx-1">
-                    <a href="{{ route('About') }}" class="btn bg-primary text-white">Read More</a>
+                    <a href="#" class="btn bg-primary text-white">Read More</a>
                 </div>
             </div>
         </div>
@@ -290,6 +301,7 @@
             <h2 class="text-center">Popular courses for students like you</h2>
             <div class="subjects row">
                 @foreach ($courses as $course)
+                <a  href="{{ route('singleCourse', ['slug' => $course->slug]) }}">
                     <div class="subject1 col-md-4 col-sm-6">
                         <div
                             style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
@@ -298,6 +310,7 @@
                             </div>
                         </div>
                     </div>
+                </a>
                 @endforeach
             </div>
         </div>
@@ -328,7 +341,9 @@
                                             <h2>{{ $testimonial->name }}</h2>
                                             <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})
                                             </p>
-                                            <button class="bg-primary text-white text-center"> VIEW ALL -</button>
+                                        <a href="{{ route('Testimonial') }}">
+                                            <button class="bg-primary text-white text-center"> VIEW ALL</button>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>
