@@ -19,7 +19,7 @@ class BlogPostsCategoryController extends Controller
     {
 
         $summernoteContent = new SummernoteContent();
-        return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
+        return view('backend.blog_posts_category.index', ['summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
     }
 
 
