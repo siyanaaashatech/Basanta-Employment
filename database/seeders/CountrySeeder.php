@@ -16,6 +16,7 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
+
         $countries = [
             [
                 'name' => 'Australia',
@@ -72,5 +73,6 @@ class CountrySeeder extends Seeder
             // Create the country with the generated slug
             Country::create(array_merge($countryData, ['slug' => $slug]));
         }
+
     }
 }

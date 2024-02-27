@@ -61,7 +61,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'asset_url' => env('ASSET_URL'),
+    'asset_url' => env('ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -192,6 +192,7 @@ return [
 
 
         Intervention\Image\ImageServiceProvider::class,
+        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -205,7 +206,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
     ],
 
@@ -225,8 +225,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,        
         'Image' => Intervention\Image\Facades\Image::class,
-        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
+
 
 
     ])->toArray(),
