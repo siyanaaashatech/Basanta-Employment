@@ -7,12 +7,6 @@ use Intervention\Image\Facades\Image;
 
 class SummernoteContent extends Model
 {
-    /**
-     * Process Summernote content and handle image uploads.
-     *
-     * @param string $content
-     * @return string
-     */
     public function processContent($content)
     {
         if ($content != '') {

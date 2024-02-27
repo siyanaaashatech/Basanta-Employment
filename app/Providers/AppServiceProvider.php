@@ -80,6 +80,7 @@ class AppServiceProvider extends ServiceProvider
             $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
             $services = Service::all();
             $courses = Course::all();
+            $siteSettings = SiteSetting::first();
 
 
             $view->with('sitesetting', $sitesetting);
@@ -88,6 +89,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('livingAbroadPosts', $livingAbroadPosts);
             $view->with('services', $services);
             $view->with('courses', $courses);
+            $view->with('siteSettings', $siteSettings);
         });
     }
 
