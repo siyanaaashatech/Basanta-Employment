@@ -39,7 +39,7 @@
                                 @endphp
 
                                 @if ($firstImage)
-                                    <img src="{{ $firstImage }}" alt="Country Image"
+                                    <img src="{{ asset($firstImage) }}" alt="Country Image"
                                         style="width: 100%; object-fit:cover; object-position:center; height:100%">
                                 @else
                                     <img src="{{ asset('image/slide1.jpg') }}" alt="Country Image"

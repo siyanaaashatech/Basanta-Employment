@@ -2,28 +2,21 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\BlogPostsCategory;
 use App\Models\SummernoteContent;
 
-
 class BlogPostsCategoryController extends Controller
 {
-
     public function index()
-{
-    $categories = BlogPostsCategory::all();
-    $summernoteContent = new SummernoteContent(); 
-    return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
-}
-
-
+    {
+        $categories = BlogPostsCategory::all();
+        $summernoteContent = new SummernoteContent(); 
+        return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
+    }
 
     public function create()
     {
-        
         return view('backend.blog_posts_category.create');
     }
 
@@ -40,7 +33,7 @@ class BlogPostsCategoryController extends Controller
             $request->image->move(public_path('uploads/blogpostcategory'), $newImageName);
 
             $summernoteContent = new SummernoteContent();
-        $processedContent = $summernoteContent->processContent($request->content);
+            $processedContent = $summernoteContent->processContent($request->content);
 
             $category = new BlogPostsCategory();
             $category->title = $request->title;
@@ -56,37 +49,11 @@ class BlogPostsCategoryController extends Controller
             return redirect()->back()->with('error', 'Error! ' . $e->getMessage());
         }
     }
-    
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
-     * @return \Illuminate\Http\Response
-     */
-    
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
-     * @return \Illuminate\Http\Response
-     */
-
-    public function edit($id)
+    public function edit(BlogPostsCategory $blogPostsCategory)
     {
-        $category = BlogPostsCategory::find($id);
-        return view('backend.blog_posts_category.update', compact('category'));
+        return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
     }
-
 
     public function update(Request $request, BlogPostsCategory $blogPostsCategory)
     {
@@ -108,18 +75,6 @@ class BlogPostsCategoryController extends Controller
 
         return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category updated successfully.');
     }
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BlogPostsCategory $blogPostsCategory)
-{
-    return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
-}
 
     public function destroy(BlogPostsCategory $blogPostsCategory)
     {
