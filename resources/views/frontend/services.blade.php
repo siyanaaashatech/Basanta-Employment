@@ -6,47 +6,12 @@
     </div>
 
     <div class="container">
-        @foreach ($serviceHead as $serviceHead)
-            <?php
-            
-            // Get the raw content and strip all tags
-            $strippedContent = strip_tags($serviceHead->content);
-            
-            // Decode HTML entities to handle double encoding
-            $decodedContent = htmlspecialchars_decode($strippedContent);
-            
-            // Escape HTML entities
-            $escapedContent = htmlspecialchars($decodedContent);
-            
-            // Take a substring of the escaped content
-            $trimmedContent = substr($escapedContent, 0);
-            ?>
-
-
-            <p class="text-center mt-3">{{ $trimmedContent }}</p>
-        @endforeach
 
 
 
         <div class="projcard-container">
             @foreach ($services as $service)
-                <?php
-                $maxLength = 600; // Set your desired maximum length
-                
-                // Get the raw content and strip all tags
-                $strippedContent = strip_tags($service->description);
-                
-                // Decode HTML entities to handle double encoding
-                $decodedContent = htmlspecialchars_decode($strippedContent);
-                
-                // Escape HTML entities
-                $escapedContent = htmlspecialchars($decodedContent);
-                
-                // Take a substring of the escaped content
-                $trimmedContent = substr($escapedContent, 0, $maxLength);
-                ?>
-
-
+             
 
 
 
@@ -65,11 +30,13 @@
                             <div class="projcard-title">{{ $service->title }}</div>
                             {{-- <div class="projcard-subtitle">This explains the card in more detail</div> --}}
                             <div class="projcard-bar"></div>
-                            <div class="projcard-description">{{ $trimmedContent }}...</div>
+                            <div class="projcard-description">
+                                {{ Str::limit(strip_tags($service->description), 350) }}
+                            </div>
                             {{-- <div class="projcard-tagbox"> --}}
 
                             <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
-                                <button class="btn text-white mt-4 p-2">Read More &nbsp;&nbsp;<i
+                                <button class="btn bg-primary text-white">Read More &nbsp;&nbsp;<i
                                         class="fa-solid fa-arrow-right"></i></button>
                             </a>
 

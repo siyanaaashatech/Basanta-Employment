@@ -1,11 +1,24 @@
 @extends('frontend.layouts.master')
 
+
 @section('content')
+
+<style>
+    .form-group{
+        padding-bottom: 7px
+    }
+    .message-box{
+        margin-bottom: 7px;
+    }
+</style>
+
+<div class="background">
+    <h1 class="page_title">{{ __('Contact Us') }}</h1>
+</div>
+
     <section class="contact_form">
         <div class="container">
-            <h1 class="cat_title">
-                Contact Us
-            </h1>
+          
             <div class="row mt-3">
                 {{-- <div class="col-md-6 cform_left">
                     <iframe
@@ -20,9 +33,9 @@
                 </div>
 
                 <div class="col-md-6 cform_right">
-                    <form action="{{ route('Contact.store') }}" method="POST"
-                        class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form" style="padding: 10px"
-                        enctype="multipart/form-data" id="quick_contact">
+                    <form  id="quick_contact" class="form-horizontal" method="POST" role="form" action="{{ route('Contact.store') }}" method="POST">
+
+
                         @csrf
 
                         @if (Session::has('successMessage'))
@@ -37,39 +50,39 @@
                             </div>
                         @endif
 
-                        <!-- Name -->
-                        <div class="u-form-group u-form-name u-label-none">
-                            <label for="name-3b9a" class="u-label">Name</label>
-                            <input type="text" placeholder="Enter your Name" id="name-3b9a" name="name"
-                                class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-1"
-                                required="">
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="{{ old('name') }}"
+                                required>
+    
                         </div>
 
-                        <!-- Email -->
-                        <div class="u-form-email u-form-group u-label-none">
-                            <label for="email-3b9a" class="u-label">Email</label>
-                            <input type="email" placeholder="Enter a valid email address" id="email-3b9a" name="email"
-                                class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-2"
-                                required="">
+
+                        <div class="form-group">
+
+                            <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value=""
+                                required>
+    
                         </div>
 
-                        <!-- Phone -->
-                        <div class="u-form-group u-form-phone u-label-none u-form-group-3">
-                            <label for="phone-5a50" class="u-label">Phone</label>
-                            <input type="tel"
-                                pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})"
-                                placeholder="Enter your phone (e.g. +14155552675)" id="phone-5a50" name="phone_no"
-                                class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-3"
-                                required="">
+
+
+                        <div class="form-group">
+
+
+                            <input type="phone" name="phone_no" class="form-control" id="phone_no" placeholder="Phone No."
+                                required>
+    
+    
                         </div>
 
-                        <!-- Message -->
-                        <div class="u-form-group u-form-message u-label-none">
-                            <label for="message-3b9a" class="u-label">Message</label>
-                            <textarea placeholder="Enter your message" rows="4" cols="50" id="message-3b9a" name="message"
-                                class="u-border-1 u-border-grey-30 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-4"
-                                required=""></textarea>
-                        </div>
+                   
+
+                        <textarea class="form-control message-box" rows="10" placeholder="MESSAGE" name="message" required></textarea>
+
+         
+                
 
                         <!-- Add reCAPTCHA field -->
                         <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
@@ -78,7 +91,7 @@
 
 
                         <input type="submit" value="Submit" id="submitBtn"
-                            class="u-active-custom-color-2 u-border-2 u-border-active-white u-border-custom-color-1 u-border-hover-white u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-2 u-radius-50 u-btn-1">
+                            class="btn bg-primary text-white">
                     </form>
                 </div>
                 {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
