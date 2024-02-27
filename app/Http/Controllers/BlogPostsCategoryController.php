@@ -11,14 +11,19 @@ class BlogPostsCategoryController extends Controller
     public function index()
     {
         $categories = BlogPostsCategory::all();
+
         $summernoteContent = new SummernoteContent(); 
         return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
     }
 
     public function create()
     {
-        return view('backend.blog_posts_category.create');
+
+        $summernoteContent = new SummernoteContent();
+        return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
     }
+
+
 
     public function store(Request $request)
     {
@@ -50,7 +55,10 @@ class BlogPostsCategoryController extends Controller
         }
     }
 
-    public function edit(BlogPostsCategory $blogPostsCategory)
+
+
+    public function edit($id)
+
     {
         return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
     }
@@ -75,6 +83,7 @@ class BlogPostsCategoryController extends Controller
 
         return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category updated successfully.');
     }
+
 
     public function destroy(BlogPostsCategory $blogPostsCategory)
     {
