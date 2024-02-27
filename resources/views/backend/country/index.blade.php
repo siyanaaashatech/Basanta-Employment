@@ -50,7 +50,7 @@
                         <td width="5%">{{ $loop->iteration }}</td>
                         <td>{{ $country->name }}</td>
 
-                        <td>
+                        {{-- <td>
                             @if ($country->image)
                                 @foreach (json_decode($country->image) as $image)
                                     <img src="{{ asset($image) }}" class="preview-image"
@@ -59,7 +59,9 @@
                             @else
                                 No image available
                             @endif
-                        </td>
+                        </td> --}}
+                        <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/country/' . $country->image) }}"
+                                style="width: 150px; height:150px" /></td>
                         <td>
                             <!-- Displaying Summernote content -->
                             {!! $summernoteContent->processContent($country->content) !!}
@@ -86,5 +88,15 @@
             @endif
         </tbody>
     </table>
+    <script>
+        const previewImage = e => {
+            const reader = new FileReader();
+            reader.readAsDataURL(e.target.files[0]);
+            reader.onload = () => {
+                const preview = document.getElementById('preview');
+                preview.src = reader.result;
+            };
+        };
+    </script>
 
 @endsection

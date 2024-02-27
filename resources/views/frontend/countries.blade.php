@@ -28,9 +28,8 @@
                     <div class="projcard-innerbox">
 
                         @if ($country->image)
-                            @foreach (json_decode($country->image) as $image)
-                                <img src="{{ asset($image) }}" class="projcard-img" alt="Country Image">
-                            @endforeach
+                            <img class="sample_page_image" src="{{ asset('uploads/country/' . $country->image) }}"
+                                alt="Country Image">
                         @else
                             <img src="{{ asset('image/girl.jpg') }}" class="projcard-img" alt="">
                         @endif

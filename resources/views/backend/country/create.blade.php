@@ -45,7 +45,7 @@
             </div>
 
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="exampleInputEmail1"> Images <span style="color:red;"></span></label>
                 <span style="color:red; font-size:large"> *</span>
 
@@ -60,7 +60,13 @@
                         <span class="remove-image" onclick="removePreview(this)">Remove</span>
                     </div>
                 @endforeach
+            </div> --}}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Image</label>
+                <input type="file" name="image" class="form-control" onchange="previewImage(event)" placeholder="Image"
+                    required>
             </div>
+            <img id="preview1" style="max-width: 200px; max-height:500px" />
 
             <!-- Summernote editor initialization -->
             <script>
@@ -80,7 +86,7 @@
     </form>
 
 
-    <script>
+    {{-- <script>
         const previewImages = e => {
             const files = e.target.files;
             const imagePreviews = document.getElementById('imagePreviews');
@@ -100,6 +106,16 @@
                     imagePreviews.appendChild(img); // Append image to imagePreviews
                 };
             }
+        };
+    </script> --}}
+    <script>
+        const previewImage = e => {
+            const reader = new FileReader();
+            reader.readAsDataURL(e.target.files[0]);
+            reader.onload = () => {
+                const preview = document.getElementById('preview1');
+                preview.src = reader.result;
+            };
         };
     </script>
 @endsection

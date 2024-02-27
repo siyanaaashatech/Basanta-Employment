@@ -79,6 +79,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     Route::resource('site-settings', SiteSettingController::class);
 
     // Cover images
+    // Route::resource('cover-images', CoverImageController::class);
+
+    // Route::get('cover-images', [CoverImageController::class,'create'])->name('cover-images');
     Route::resource('cover-images', CoverImageController::class);
 
     // About us

@@ -13,17 +13,17 @@ class BlogPostsCategoryController extends Controller
 {
 
     public function index()
-{
-    $categories = BlogPostsCategory::all();
-    $summernoteContent = new SummernoteContent(); 
-    return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
-}
+    {
+        $categories = BlogPostsCategory::all();
+        $summernoteContent = new SummernoteContent();
+        return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
+    }
 
 
 
     public function create()
     {
-        
+
         return view('backend.blog_posts_category.create');
     }
 
@@ -40,7 +40,7 @@ class BlogPostsCategoryController extends Controller
             $request->image->move(public_path('uploads/blogpostcategory'), $newImageName);
 
             $summernoteContent = new SummernoteContent();
-        $processedContent = $summernoteContent->processContent($request->content);
+            $processedContent = $summernoteContent->processContent($request->content);
 
             $category = new BlogPostsCategory();
             $category->title = $request->title;
@@ -56,7 +56,7 @@ class BlogPostsCategoryController extends Controller
             return redirect()->back()->with('error', 'Error! ' . $e->getMessage());
         }
     }
-    
+
 
 
     /**
@@ -72,7 +72,7 @@ class BlogPostsCategoryController extends Controller
      * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
      * @return \Illuminate\Http\Response
      */
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -116,10 +116,6 @@ class BlogPostsCategoryController extends Controller
      * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(BlogPostsCategory $blogPostsCategory)
-{
-    return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
-}
 
     public function destroy(BlogPostsCategory $blogPostsCategory)
     {

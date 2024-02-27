@@ -15,16 +15,14 @@
 
 
                 <div class="col-lg-8 col-md-8 col-sm-12 order-1 order-md-1">
-                    @if (count(json_decode($country->image)) > 0)
-                        @foreach (json_decode($country->image) as $image)
-                            <img class="sample_page_image"
-                                src="{{ asset($image) }}" alt="Country Image">
-                        @endforeach
+                    @if ($country->image)
+                        <img class="sample_page_image" src="{{ asset('uploads/country/' . $country->image) }}"
+                            alt="Country Image">
                     @else
                         <!-- Display an icon if no images are available -->
                         <i class="fa-solid fa-image" style="font-size: 100px;"></i>
                     @endif
-                
+
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 order-3 order-md-3 sample_page_content">
                     {!! $country->content !!}
@@ -35,7 +33,7 @@
                     <ul>
                         @foreach ($recommendedCountries as $recommendedCountry)
                             <li>
-                                <a href="{{ route('singleCountry', ['slug' => $recommendedCountry->slug]) }}" >
+                                <a href="{{ route('singleCountry', ['slug' => $recommendedCountry->slug]) }}">
                                     Study in {{ $recommendedCountry->name }}
                                 </a>
                             </li>
