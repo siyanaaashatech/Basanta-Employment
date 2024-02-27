@@ -45,18 +45,10 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleInputEmail1">Images <span style="color:red;"></span></label>
-                <span style="color:red; font-size:large"> *</span>
-                <input type="file" name="image[]" class="form-control" multiple onchange="previewImages(event)">
-            </div>
-
-            <!-- Image Preview -->
-            <div id="imagePreviews" class="row mt-3">
-                @foreach (json_decode($country->image, true) as $image)
-                    <div class="col-md-2 mb-3 image-preview">
-                        <img src="{{ asset($image) }}" alt="Image Preview" class="img-fluid">
-                    </div>
-                @endforeach
+                <label for="image">Image</label>
+                <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
+                <img id="preview1" src="{{ asset('uploads/country/' . $country->image) }}"
+                    style="max-width: 300px; max-height:300px" />
             </div>
         </div>
         <!-- /.card-body -->
@@ -75,7 +67,7 @@
         // Function to preview selected images
         const previewImages = e => {
             const files = e.target.files;
-            const imagePreviews = document.getElementById('imagePreviews');
+            const imagePreviews = document.getElementById('preview1');
             imagePreviews.innerHTML = ''; // Clear existing previews
 
             for (const file of files) {
