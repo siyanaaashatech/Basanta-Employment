@@ -16,7 +16,7 @@
                     <div class="col-md-6 mt-3 mb-3">
                         <a style="color: var(--first)" href="{{ route('Gallery', ['id' => $image->id]) }}">
                             <div class="accordion">
-                                <h4 class="text-center">{{ $image->img_desc }}</h4>
+                                <h4 class="text-center">{{ $image->title }}</h4>
                                 <ul>
 
                                     @foreach ($image->img as $imgUrl)
