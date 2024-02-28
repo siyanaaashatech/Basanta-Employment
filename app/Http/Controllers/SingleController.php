@@ -162,9 +162,9 @@ class SingleController extends Controller
         return view('frontend.galleries', compact('images', 'services', 'categories', 'sitesetting', 'about'));
     }
 
-    public function render_singleImage($id)
+    public function render_singleImage($slug)
     {
-        $image = PhotoGallery::find($id);
+        $image = PhotoGallery::where('slug', $slug)->firstOrFail();
         $categories = Category::all();
         $services = Service::latest()->get();
         $sitesetting = SiteSetting::first();

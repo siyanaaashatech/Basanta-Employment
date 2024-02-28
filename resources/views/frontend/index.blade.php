@@ -139,7 +139,7 @@
                 @endforeach
                 <div class="text-center">
                     <a href="{{ route('Service') }}">
-                    <button class="btn bg-primary text-white  m-5">View all Services</button>
+                    <button class="btn bg-primary text-white m-5">View all Services</button>
                     </a>
                 </div>
             </div>
@@ -342,16 +342,25 @@
                                             <h2>{{ $testimonial->name }}</h2>
                                             <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})
                                             </p>
-                                        <a href="{{ route('Testimonial') }}">
-                                            <button class="bg-primary text-white text-center"> VIEW ALL</button>
-                                        </a>
+                                            <a href="{{ route('Testimonial') }}">
+                                                <button class="btn bg-primary text-white m-5"> VIEW ALL</button>
+                                            </a>
                                         </div>
                                     </div>
+
                                 </div>
+
+
+                                
                             </div>
                         </div>
                     @endforeach
+
+
                 </div>
+
+
+
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
@@ -363,6 +372,10 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
+            
+
+
         </div>
     </div>
 

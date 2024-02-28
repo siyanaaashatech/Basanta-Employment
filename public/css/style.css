@@ -569,7 +569,8 @@
 
 
 
-height: 120px;
+min-height: 120px;
+max-height: 200px;
 
 /* center and scale the image */
 background-position: center;
@@ -631,6 +632,13 @@ position: relative;
 }
 
 
+@media screen {
+  .page_title{
+    font-size:30px;
+    white-space: wrap;
+    text-align: center;
+  }
+}
 
 /* FOr About Page */
 .about_page_img{
@@ -824,7 +832,8 @@ position: relative;
   .projcard {
   position: relative;
   width: 100%;
-  height: 300px;
+  min-height: 300px;
+  /* max-height: 550px; */
   margin-bottom: 40px;
   border-radius: 10px;
   background-color: #fff;
@@ -1009,13 +1018,53 @@ position: relative;
   }
   
 
-  /* Media Query for smaller screens */
-@media screen and (max-width: 768px) {
-  .projcard-container {
-    
-    width: 100%;
+
+  @media (min-width: 300px) and (max-width: 1000px) { 
+   
+    .projcard-container{
+      width: 100%;
     }
-}
+
+    .projcard-img {
+      
+      height: 300px;
+      width: 100%;
+      max-width: 300px;
+   
+      }
+
+      .projcard-textbox {
+  width: 290px;
+  position: absolute;
+    top: 7%;
+    bottom: 7%;
+    left: initial;
+    right: 0% ;
+
+    font-size: 15px;
+    text-wrap: wrap;
+        }
+
+        .projcard:nth-child(2n) .projcard-textbox {
+          
+          width: 290px;
+          position: absolute;
+            top: 7%;
+            bottom: 7%;
+            left: initial;
+            right: 0% ;
+        
+            font-size: 15px;
+            text-wrap: wrap;
+          }
+
+          .projcard:nth-child(2n) .projcard-img{
+            position: initial;
+          }
+
+   }
+
+  /* @media (min-width: 768px) { ... } */
 
 
   /* For Single Service Page */
@@ -1455,4 +1504,34 @@ height: 500px;
  .sample_page_list ul li a{
   text-decoration: none;
   color: #d7d6de;
+ }
+
+
+ /* For Testimonial Page */
+ .testimonial_page{
+  margin: 10px auto;
+ }
+ .test_row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+ }
+ .test_image{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  object-position: center;
+  object-fit: cover;
+  margin: 10px 0;
+ }
+ .testimonial_page h3{
+  color: rgb(9, 28, 72);
+ }
+ .testimonial_page p{
+  text-align: justify;
+ }
+ .testimonial_page h3, .testimonial_page h5, .testimonial_page h6{
+  text-align: center;
  }

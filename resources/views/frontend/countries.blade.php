@@ -11,17 +11,17 @@
             
 
                 <div class="projcard projcard-blue">
-                    <div class="projcard-innerbox">
+                    <div class="projcard-innerbox row">
+                        <div class="image col-lg-6 col-sm-12">
+                            @if ($country->image)
+                                <img class="projcard-img img-fluid" src="{{ asset('uploads/country/' . $country->image) }}"
+                                    alt="Country Image">
+                            @else
+                                <img src="{{ asset('image/girl.jpg') }}" class="projcard-img img-fluid" alt="">
+                            @endif
+                        </div>
 
-                        @if ($country->image)
-                            <img class="projcard-img" src="{{ asset('uploads/country/' . $country->image) }}"
-                                alt="Country Image">
-                        @else
-                            <img src="{{ asset('image/girl.jpg') }}" class="projcard-img" alt="">
-                        @endif
-
-
-                        <div class="projcard-textbox">
+                        <div class="projcard-textbox col-lg-6 col-sm-12">
                             <div class="projcard-title">{{ $country->name }}</div>
                             {{-- <div class="projcard-subtitle">This explains the card in more detail</div> --}}
                             <div class="projcard-bar"></div>
@@ -37,6 +37,11 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+
             @endforeach
         </div>
 

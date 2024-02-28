@@ -24,7 +24,7 @@
                 <div class="col-md-7 col-lg-6 col-sm-12 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
                     <!-- About Us Content -->
                     <div style="text-align: justify;">
-                        {{ $about->content }}
+                        {!! $about->content !!}
                     </div>
                 </div>
             </div>
