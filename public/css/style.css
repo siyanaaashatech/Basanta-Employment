@@ -261,7 +261,7 @@
   border-radius: 50%;
   position: absolute;
   margin-left: 200px;
-  background-color: #070842;
+  background-color: rgb(231, 83, 8);
 }
 .contain .flexbox .col-lg-4 .box .circle-1 {
   background-color: white;
@@ -1012,27 +1012,9 @@ position: relative;
   /* Media Query for smaller screens */
 @media screen and (max-width: 768px) {
   .projcard-container {
-    padding: 0 20px; /* Add padding to container */
-    width: calc(100% - 40px); /* Adjust width */
-    max-width: none;
-  }
-
-  .projcard {
-    width: 100%; /* Adjust width */
-    max-width: none;
-    height: auto;
-    margin-bottom: 20px; /* Decrease margin for smaller screens */
-  }
-
-  .projcard-img {
-    width: 100%; /* Adjust image width to fit container */
-    height: auto; /* Maintain aspect ratio */
-  }
-
-  .projcard-textbox {
-    font-size: 14px; /* Further decrease font size for smaller screens */
-    padding: 20px; /* Add padding */
-  }
+    
+    width: 100%;
+    }
 }
 
 

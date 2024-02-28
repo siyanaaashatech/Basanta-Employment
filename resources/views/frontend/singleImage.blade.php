@@ -6,7 +6,7 @@
 
 <div class="background">
     <h1 class="page_title">
-        {{ __($image->img_desc) }}
+        {{ __($image->title) }}
     </h1>
   </div>
 
@@ -14,6 +14,8 @@
     <div class="container">
 
         <div class="row mt-3">
+
+            <p>{{ $image->description }}</p>
 
             @foreach ($image->img as $imgUrl) 
                 <div class="col-md-4 mb-3">

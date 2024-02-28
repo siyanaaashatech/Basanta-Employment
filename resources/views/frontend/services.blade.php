@@ -24,27 +24,31 @@
                             <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
                         @endif
 
-
-                        <img class="projcard-img col-lg-6 col-sm-12" src="{{ asset('uploads/service/' . $service->image) }}" />
-                        <div class="projcard-textbox col-lg-6 col-sm-12">
-                            <div class="projcard-title">{{ $service->title }}</div>
-                            {{-- <div class="projcard-subtitle">This explains the card in more detail</div> --}}
-                            <div class="projcard-bar"></div>
-                            <div class="projcard-description">
-                                {{ Str::limit(strip_tags($service->description), 350) }}
-                            </div>
-                            {{-- <div class="projcard-tagbox"> --}}
-
-                            <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
-                                <button class="btn bg-primary text-white">Read More &nbsp;&nbsp;<i
-                                        class="fa-solid fa-arrow-right"></i></button>
-                            </a>
-
-
-                            {{-- <span class="projcard-tag">Read More <i class="fa-solid fa-arrow-right"></i></span> --}}
-
-                            {{-- </div> --}}
+                        <div class=" col-lg-6 col-sm-12">
+                            <img class="projcard-img" src="{{ asset('uploads/service/' . $service->image) }}" />
                         </div>
+
+                        <div class=" col-lg-6 col-sm-12">
+                            <div class="projcard-textbox">
+                                <div class="projcard-title">{{ $service->title }}</div>
+                                {{-- <div class="projcard-subtitle">This explains the card in more detail</div> --}}
+                                <div class="projcard-bar"></div>
+                                <div class="projcard-description">
+                                    {{ Str::limit(strip_tags($service->description), 350) }}
+                                </div>
+                                {{-- <div class="projcard-tagbox"> --}}
+
+                                <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
+                                    <button class="btn bg-primary text-white">Read More &nbsp;&nbsp;<i
+                                            class="fa-solid fa-arrow-right"></i></button>
+                                </a>
+
+
+                                {{-- <span class="projcard-tag">Read More <i class="fa-solid fa-arrow-right"></i></span> --}}
+
+                                {{-- </div> --}}
+                            </div>
+                    </div>
                     </div>
                 </div>
             @endforeach
