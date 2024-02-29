@@ -92,7 +92,8 @@
                     <div class="card col-lg-4" style="max-width: 350px;">
                         <div class="row">
                             <div class="col-4">
-                                <img src="{{ asset('uploads/blogpostcategory/' .$blog->image) }}" class="img-fluid rounded-start" alt="...">
+                                <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}"
+                                    class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-8">
                                 <div class="card-body">
@@ -111,8 +112,6 @@
             <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4 container">
                 <h1 class="text-white heading_title">Our Services</h1>
                 @foreach ($services as $service)
-
-
                     <div class="col-lg-4 " style="max-width: 325px;">
                         <div class="box text-center">
                             <div class="circle-3 text-white">
@@ -123,11 +122,12 @@
                             <div class="circle-1">
                                 <div class="circle-2">
                                     <div class="text">
-                                        
-                                            <a href="{{ route('SingleService', ['slug' => $service->slug]) }}" class="text-decoration-none">
-                                                <h2>{{ $service->title }}</h2>
-                                            </a>
-                                            
+
+                                        <a href="{{ route('SingleService', ['slug' => $service->slug]) }}"
+                                            class="text-decoration-none">
+                                            <h2>{{ $service->title }}</h2>
+                                        </a>
+
                                         <h4>{{ Str::limit(strip_tags($service->description), 105) }}</h4>
                                     </div>
                                 </div>
@@ -135,11 +135,10 @@
 
                         </div>
                     </div>
-
                 @endforeach
                 <div class="text-center">
                     <a href="{{ route('Service') }}">
-                    <button class="btn bg-primary text-white  m-5">View all Services</button>
+                        <button class="btn bg-primary text-white  m-5">View all Services</button>
                     </a>
                 </div>
             </div>
@@ -234,7 +233,13 @@
                     @endif
                 </p>
                 {{-- <b> Calling All Artists K-12. Use your creativity to help sustain our world!</b> --}}
-
+                {{-- @foreach ($categories as $category)
+                    @if ($category->post)
+                        <h2>{{ $category->post->title }}</h2>
+                        <p>{{ Str::limit(strip_tags($category->post->description), 600) }}</p>
+                        <!-- Add any other content or styling you need -->
+                    @endif
+                @endforeach --}}
             </div>
 
             <div class="butt d-flex">
@@ -302,16 +307,16 @@
             <h2 class="text-center">Popular courses for students like you</h2>
             <div class="subjects row">
                 @foreach ($courses as $course)
-                <a  href="{{ route('singleCourse', ['slug' => $course->slug]) }}">
-                    <div class="subject1 col-md-4 col-sm-6">
-                        <div
-                            style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
-                            <div class="text-center">
-                                <button class="btn bg-primary text-white">{{ $course->title }}</button>
+                    <a href="{{ route('singleCourse', ['slug' => $course->slug]) }}">
+                        <div class="subject1 col-md-4 col-sm-6">
+                            <div
+                                style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
+                                <div class="text-center">
+                                    <button class="btn bg-primary text-white">{{ $course->title }}</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -342,9 +347,9 @@
                                             <h2>{{ $testimonial->name }}</h2>
                                             <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})
                                             </p>
-                                        <a href="{{ route('Testimonial') }}">
-                                            <button class="bg-primary text-white text-center"> VIEW ALL</button>
-                                        </a>
+                                            <a href="{{ route('Testimonial') }}">
+                                                <button class="bg-primary text-white text-center"> VIEW ALL</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

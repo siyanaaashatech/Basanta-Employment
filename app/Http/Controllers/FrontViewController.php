@@ -30,12 +30,16 @@ class FrontViewController extends Controller
         $testimonials = Testimonial::latest()->get()->take(10);
 
         $countries = Country::latest()->get()->take(10);
-    
+
+
         $lastCategory = Category::find('5');
         $categoryId = $lastCategory->id;
         $countryUniversityCategory = Category::findOrFail($categoryId);
         $sliderPost = $countryUniversityCategory->posts()->latest()->first();
         $enrollPost = $countryUniversityCategory->posts()->orderBy('id', 'desc')->skip(1)->first();
+
+        
+
 
 
         return view('frontend.index', compact([
