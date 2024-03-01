@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
             $testPreparationPosts = Category::where('title', 'Test Prepration')->first()->posts;
             $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
 
-
+            $sitesetting = SiteSetting::first();
             
             $view->with('countries', $countries);
             $view->with('testimonials', $testimonials);
@@ -69,6 +69,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('blogpostcategories', $blogpostcategories);
             $view->with('testPreparationPosts', $testPreparationPosts);
             $view->with('livingAbroadPosts', $livingAbroadPosts);
+            $view->with('sitesetting', $sitesetting);
         });
 
         ////Global variable for Footer

@@ -44,7 +44,7 @@
 
             <div class="form-group">
                 <label for="url">Url</label><span style="color:red; font-size:large"> *</span>
-                <input style="width:auto;" type="url" name="url" class="form-control" id="url"
+                <input style="width:auto;" type="text" name="url" class="form-control" id="url"
                     value="{{ old('url') }}" placeholder="Url">
             </div>
 

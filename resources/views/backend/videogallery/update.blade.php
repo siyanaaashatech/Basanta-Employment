@@ -45,7 +45,7 @@
 
                 <div class="form-group">
                     <label for="Url">URL</label><span style="color:red; font-size:large"> *</span>
-                    <input style="width:auto;" type="url" name="url" class="form-control" id="url"
+                    <input style="width:auto;" type="text" name="url" class="form-control" id="url"
                         placeholder="Url" value="{{ old('url', $video->url) }}">
 
                 </div>
