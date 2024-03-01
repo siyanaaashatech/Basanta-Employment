@@ -504,6 +504,42 @@
                 @endhasanyrole
                 {{-- End of FAQs --}}
 
+                {{-- Beginning of DIRECTORMESSAGE --}}
+                @hasanyrole('superadmin|admin')
+                    <li class="nav-item">
+                        <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                            <div class="col-auto navbar-vertical-label">Director Messages</div>
+                            <div class="col ps-0">
+                                <hr class="mb-0 navbar-vertical-divider">
+                            </div>
+                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'director_messages' ? 'active' : '' }}"
+                            href="#d_msg" role="button" data-bs-toggle="collapse" aria-expanded="true"
+                            aria-controls="d_msg">
+                            <div class="d-flex align-items-center">
+                                <span class="nav-link-icon"><i class="fas fa-question-circle"></i></span>
+                                <span class="nav-link-text ps-1">Director Messages</span>
+                            </div>
+                        </a>
+                        <ul class="nav collapse {{ Request::segment(2) == 'director_messages' ? 'show' : '' }}"
+                            id="d_msg" id="dashboard21">
+                            {{-- Director Messages --}}
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(2) == 'director_messages' ? 'active' : '' }}"
+                                    href="{{ route('admin.director_messages.index') }}">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa fa-list"></i>
+                                        <span class="nav-link-text ps-1">Director Message</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    </li>
+                @endhasanyrole
+                {{-- End of DIRECTORMESSAGE --}}
+
 
             </ul>
         </div>
