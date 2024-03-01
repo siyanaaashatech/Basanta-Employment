@@ -1,7 +1,6 @@
 @extends('backend.layouts.master')
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
 
     @if (Session::has('success'))
         <div class="alert alert-success">
@@ -18,9 +17,9 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.countries.create') }}"><button class="btn btn-primary btn-sm"><i
+            <a href="{{ route('admin.director_messages.create') }}"><button class="btn btn-primary btn-sm"><i
                         class="fa fa-plus"></i>Add
-                    Country</button></a>
+                    Director Message</button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -32,36 +31,38 @@
         </div>
     </div>
 
-    <!-- Countries Table -->
+
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>S.N.</th>
                 <th>Name</th>
+                <th>Position</th>
+                <th>Company Name</th>
                 <th>Image</th>
-                <th>Content</th>
+                <th>Message</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @if ($countries && count($countries) > 0)
-                @foreach ($countries as $country)
+            @if ($directorMessages && count($directorMessages) > 0)
+                @foreach ($directorMessages as $directorMessage)
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td width="5%">{{ $loop->iteration }}</td>
-                        <td>{{ $country->name }}</td>
-                        <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/country/' . $country->image) }}"
+                        <td>{{ $directorMessage->name }}</td>
+                        <td>{{ $directorMessage->position }}</td>
+                        <td>{{ $directorMessage->companyName }}</td>
+                        <td> <img id="preview{{ $loop->iteration }}"
+                                src="{{ asset('uploads/director_messages/' . $directorMessage->image) }}"
                                 style="width: 150px; height:150px" /></td>
-                        <td>
-                            <!-- Displaying Summernote content -->
-                            {!! $summernoteContent->processContent($country->content) !!}
-                        </td>
+                        <td>{!! $directorMessage->message !!}</td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
-                                <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-warning btn-sm"
-                                    style="margin-right: 5px;"><i class="fas fa-edit"></i>
+                                <a href="{{ route('admin.director_messages.edit', $directorMessage->id) }}"
+                                    class="btn btn-warning btn-sm" style="margin-right: 5px;"><i class="fas fa-edit"></i>
                                     Edit</a>
-                                <form action="{{ route('admin.countries.destroy', $country->id) }}" method="POST"
-                                    onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <form action="{{ route('admin.director_messages.destroy', $directorMessage->id) }}"
+                                    method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -72,7 +73,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="5">No countries found.</td>
+                    <td colspan="7">No director messages found.</td>
                 </tr>
             @endif
         </tbody>

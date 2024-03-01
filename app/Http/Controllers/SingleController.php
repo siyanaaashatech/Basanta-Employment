@@ -136,7 +136,8 @@ class SingleController extends Controller
     {
         $category = Category::where('slug', $slug)->firstOrFail();
         $relatedCategories = Category::where('id', '!=', $category->id)->get();
-        return view('frontend.category', compact('category', 'relatedCategories'));
+        $posts = $category->posts()->paginate(10);
+        return view('frontend.category', compact('category', 'relatedCategories', 'posts'));
     }
 
     public function render_singlePost($slug)
@@ -203,5 +204,4 @@ class SingleController extends Controller
         $googleMapsLink = SiteSetting::first()->google_maps_link;
         return view('frontend.contactpage', compact('page_title', 'googleMapsLink'));
     }
-
 }

@@ -44,12 +44,19 @@
                     value="{{ $testimonials->name }}" required>
             </div>
             <div class="form-group">
+                <label for="image">Image</label>
+                <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
+                <img id="preview1" src="{{ asset('uploads/testimonial/' . $testimonials->image) }}"
+                    style="max-width: 300px; max-height:300px" />
+            </div>
+            <div class="form-group">
                 <label for="university_id">University</label>
                 <select name="university_id" class="form-control" id="university_id" required>
                     <option value="">Select University</option>
                     @foreach ($universities as $university)
                         <option value="{{ $university->id }}"
-                            {{ $testimonials->university_id == $university->id ? 'selected' : '' }}>{{ $university->title }}
+                            {{ $testimonials->university_id == $university->id ? 'selected' : '' }}>
+                            {{ $university->title }}
                         </option>
                     @endforeach
                 </select>
@@ -74,4 +81,24 @@
             <button type="submit" class="btn btn-primary">Update Testimonial</button>
         </div>
     </form>
+    <script>
+        // Function to preview selected images
+        const previewImages = e => {
+            const files = e.target.files;
+            const imagePreviews = document.getElementById('preview1');
+            imagePreviews.innerHTML = ''; // Clear existing previews
+
+            for (const file of files) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onload = () => {
+                    const preview = document.createElement('div');
+                    preview.className = 'col-md-2 mb-3';
+                    preview.innerHTML = `<img src="${reader.result}" alt="Image Preview" class="img-fluid">`;
+                    imagePreviews.appendChild(preview);
+                };
+            }
+        };
+    </script>
 @endsection

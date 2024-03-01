@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DirectorMessageController;
+use App\Models\DirectorMessage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
@@ -42,6 +44,7 @@ use App\Http\Controllers\BlogPostsCategoryController;
 
 Route::get('/', [FrontViewController::class, 'index'])->name('index');
 Route::get('/index', [FrontViewController::class, 'index'])->name('index');
+Route::get('/singleposts/{slug}', [FrontViewController::class, 'singlePost'])->name('SinglePost');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
 
 //Routes for SingleController
@@ -134,6 +137,10 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     // Favicon controller
     Route::resource('favicons', FaviconController::class);
+
+    //DirectorMessage Controller
+
+    Route::resource('director_messages', DirectorMessageController::class);
 
 });
 

@@ -8,8 +8,6 @@
     <div class="container">
         <div class="projcard-container">
             @foreach ($blogpostcategories as $blogpostcategory)
-               
-
                 <div class="projcard projcard-blue">
                     <div class="projcard-innerbox row">
 

@@ -12,17 +12,13 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('testimonials', function (Blueprint $table) {
+        Schema::create('director_messages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-
-            $table->unsignedBigInteger('university_id');
-            $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');
-
-            $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->string('position');
+            $table->string('companyName');
             $table->string('image')->nullable();
-            $table->text('description');
+            $table->longText('message')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('testimonials');
+        Schema::dropIfExists('director_messages');
     }
 };

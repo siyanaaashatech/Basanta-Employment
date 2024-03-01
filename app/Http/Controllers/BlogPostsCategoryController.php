@@ -10,16 +10,17 @@ class BlogPostsCategoryController extends Controller
 {
     public function index()
     {
-        $categories = BlogPostsCategory::all();
+        $categories = BlogPostsCategory::paginate(10);
         $summernoteContent = new SummernoteContent();
         return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
     }
+
 
     public function create()
     {
 
         $summernoteContent = new SummernoteContent();
-        return view('backend.blog_posts_category.index', ['summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
+        return view('backend.blog_posts_category.create', ['summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
     }
 
 
@@ -54,31 +55,6 @@ class BlogPostsCategoryController extends Controller
         }
     }
 
-
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
-     * @return \Illuminate\Http\Response
-     */
-
     public function edit($id)
     {
         $category = BlogPostsCategory::find($id);
@@ -106,14 +82,6 @@ class BlogPostsCategoryController extends Controller
         return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category updated successfully.');
     }
 
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\BlogPostsCategory  $blogPostsCategory
-     * @return \Illuminate\Http\Response
-     */
 
     public function destroy(BlogPostsCategory $blogPostsCategory)
     {

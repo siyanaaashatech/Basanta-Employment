@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Testimonial extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'university_id', 'course_id', 'description'];
+    protected $fillable = ['name', 'university_id', 'course_id', 'image', 'description'];
 
     public function university()
     {
