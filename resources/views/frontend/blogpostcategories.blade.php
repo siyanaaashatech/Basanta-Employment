@@ -8,18 +8,19 @@
     <div class="container">
         <div class="projcard-container">
             @foreach ($blogpostcategories as $blogpostcategory)
-               
-
                 <div class="projcard projcard-blue">
                     <div class="projcard-innerbox">
 
                         @if ($blogpostcategory->image)
-                            <img src="{{ asset('uploads/blogpostcategory/)'. $blogpostcategory->image) }}" class="projcard-img" alt="">
+                            <img src="{{ asset($blogpostcategory->image) }}" class="projcard-img" alt="">
                         @else
                             <img src="{{ asset('image/girl.jpg') }}" class=" projcard-img" alt="">
                         @endif
 
-
+                        <div class=" col-lg-6 col-sm-12">
+                            <img class="projcard-img"
+                                src="{{ asset('uploads/blogpostcategory/' . $blogpostcategory->image) }}" />
+                        </div>
 
                         <div class="projcard-textbox">
                             <div class="projcard-title">{{ $blogpostcategory->title }}</div>

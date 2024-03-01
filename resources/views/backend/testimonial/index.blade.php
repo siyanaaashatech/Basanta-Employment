@@ -42,6 +42,7 @@
             <tr>
                 <th>S.N.</th>
                 <th>Name</th>
+                <th>Image</th>
                 <th>University</th>
                 <th>Course</th>
                 <th>Description</th>
@@ -53,6 +54,9 @@
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
                     <td>{{ $testimonial->name ?? '' }}</td>
+                    <td> <img id="preview{{ $loop->iteration }}"
+                            src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
+                            style="width: 150px; height:150px" /></td>
                     <td>{{ $testimonial->university->title ?? 'No University' }}</td>
                     <td>{{ $testimonial->course->title ?? 'No Course' }}</td>
                     <td>{{ $testimonial->description ?? '' }}</td>

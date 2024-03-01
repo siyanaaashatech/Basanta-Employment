@@ -79,7 +79,11 @@ class RolePermissionSeeder extends Seeder
             'create_posts',
             'list_posts',
             'edit_posts',
-            'delete_posts'
+            'delete_posts',
+            'create_director_messages',
+            'list_director_messages',
+            'edit_director_messages',
+            'delete_director_messages'
 
             // 'create_users',
             // 'list_users',
@@ -159,7 +163,11 @@ class RolePermissionSeeder extends Seeder
             'create_posts',
             'list_posts',
             'edit_posts',
-            'delete_posts'
+            'delete_posts',
+            'create_director_messages',
+            'list_director_messages',
+            'edit_director_messages',
+            'delete_director_messages'
 
         ];
         $guardName = 'web';

@@ -28,57 +28,42 @@
             </div>
             <div class="box2 col-lg-4 col-md-6 col-sm-12">
                 <div class="position-relative">
-                    @php
-                        $displayedImages = 0;
-                    @endphp
-                    @foreach ($countries as $country)
-                        @if ($displayedImages < 3 && $country->image)
+                    @foreach ($countries->take(3) as $country)
+                        @if ($country->image)
                             <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-
                                 <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                    style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                    style="width: 100%; object-fit: cover; object-position: center; height: 100%">
                             </div>
-                            @php
-                                $displayedImages++;
-                            @endphp
                         @endif
                     @endforeach
-                    @if ($displayedImages == 0)
-                        <!-- Display a default image or message if there are no images -->
-                        <div class="default-image position-absolute" style="height: 300px; width: 150px;">
-                            <img src="{{ asset('image/default.jpg') }}" alt="Default Image"
-                                style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                        </div>
-                    @endif
-
                 </div>
             </div>
+
             <div class="box3 col-lg-3 col-md-6 col-sm-12">
                 <div class="position-relative">
-
-                    @php
-                        $displayedImages = 0;
-                    @endphp
-                    @foreach ($countries as $country)
-                        @if ($displayedImages < 3 && $country->image)
-                            <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
+                    @foreach ($countries->slice(3, 2) as $country)
+                        @if ($country->image)
+                            <div class="image{{ $loop->index + 4 }} position-absolute" style="height: 300px; width: 150px;">
                                 <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                    style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                    style="width: 100%; object-fit: cover; object-position: center; height: 100%">
                             </div>
-                            @php
-                                $displayedImages++;
-                            @endphp
                         @endif
                     @endforeach
-                    @if ($displayedImages == 0)
-                        <!-- Display a default image or message if there are no images -->
-                        <div class="default-image position-absolute" style="height: 300px; width: 150px;">
-                            <img src="{{ asset('image/default.jpg') }}" alt="Default Image"
-                                style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                        </div>
+
+                    @if ($countries->count() < 5)
+                        @foreach ($countries->slice(5 - $countries->count()) as $country)
+                            @if ($country->image)
+                                <div class="image{{ $loop->index + 5 }} position-absolute"
+                                    style="height: 300px; width: 150px;">
+                                    <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
+                                        style="width: 100%; object-fit: cover; object-position: center; height: 100%">
+                                </div>
+                            @endif
+                        @endforeach
                     @endif
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -92,7 +77,8 @@
                     <div class="card col-lg-4" style="max-width: 350px;">
                         <div class="row">
                             <div class="col-4">
-                                <img src="{{ asset('uploads/blogpostcategory/' .$blog->image) }}" class="img-fluid rounded-start" alt="...">
+                                <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}"
+                                    class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-8">
                                 <div class="card-body">
@@ -111,8 +97,6 @@
             <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4 container">
                 <h1 class="text-white heading_title">Our Services</h1>
                 @foreach ($services as $service)
-
-
                     <div class="col-lg-4 " style="max-width: 325px;">
                         <div class="box text-center">
                             <div class="circle-3 text-white">
@@ -123,11 +107,12 @@
                             <div class="circle-1">
                                 <div class="circle-2">
                                     <div class="text">
-                                        
-                                            <a href="{{ route('SingleService', ['slug' => $service->slug]) }}" class="text-decoration-none">
-                                                <h2>{{ $service->title }}</h2>
-                                            </a>
-                                            
+
+                                        <a href="{{ route('SingleService', ['slug' => $service->slug]) }}"
+                                            class="text-decoration-none">
+                                            <h2>{{ $service->title }}</h2>
+                                        </a>
+
                                         <h4>{{ Str::limit(strip_tags($service->description), 105) }}</h4>
                                     </div>
                                 </div>
@@ -135,11 +120,10 @@
 
                         </div>
                     </div>
-
                 @endforeach
                 <div class="text-center">
                     <a href="{{ route('Service') }}">
-                    <button class="btn bg-primary text-white  m-5">View all Services</button>
+                        <button class="btn bg-primary text-white  m-5">View all Services</button>
                     </a>
                 </div>
             </div>
@@ -234,16 +218,27 @@
                     @endif
                 </p>
                 {{-- <b> Calling All Artists K-12. Use your creativity to help sustain our world!</b> --}}
-
+                {{-- @foreach ($categories as $category)
+                    @if ($category->post)
+                        <h2>{{ $category->post->title }}</h2>
+                        <p>{{ Str::limit(strip_tags($category->post->description), 600) }}</p>
+                        <!-- Add any other content or styling you need -->
+                    @endif
+                @endforeach --}}
             </div>
 
             <div class="butt d-flex">
                 <div class="text-center my-5 mx-3">
                     <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Contact Now</a>
                 </div>
-                <div class="text-center my-5 mx-1">
+                {{-- <div class="text-center my-5 mx-1">
                     <a href="#" class="btn bg-primary text-white">Read More</a>
+                </div> --}}
+                <div class="text-center my-5 mx-1">
+                    <a href="{{ route('SinglePost', ['slug' => $sliderPost->slug]) }}"
+                        class="btn bg-primary text-white">Read More</a>
                 </div>
+
             </div>
         </div>
     </div>
@@ -302,16 +297,18 @@
             <h2 class="text-center">Popular courses for students like you</h2>
             <div class="subjects row">
                 @foreach ($courses as $course)
-                <a  href="{{ route('singleCourse', ['slug' => $course->slug]) }}">
                     <div class="subject1 col-md-4 col-sm-6">
                         <div
                             style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
                             <div class="text-center">
-                                <button class="btn bg-primary text-white">{{ $course->title }}</button>
+                                <button class="btn bg-primary text-white">
+                                    <a href="{{ route('singleCourse', ['slug' => $course->slug]) }}"
+                                        class="text-decoration-none text-white">{{ $course->title }}
+                                    </a>
+                                </button>
                             </div>
                         </div>
                     </div>
-                </a>
                 @endforeach
             </div>
         </div>
@@ -342,9 +339,9 @@
                                             <h2>{{ $testimonial->name }}</h2>
                                             <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})
                                             </p>
-                                        <a href="{{ route('Testimonial') }}">
-                                            <button class="bg-primary text-white text-center"> VIEW ALL</button>
-                                        </a>
+                                            <a href="{{ route('Testimonial') }}">
+                                                <button class="bg-primary text-white text-center"> VIEW ALL</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
