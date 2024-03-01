@@ -28,14 +28,19 @@ class TestimonialController extends Controller
             'name' => 'required|string|max:255',
             'university_id' => 'required|exists:universities,id',
             'course_id' => 'required|exists:courses,id',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
             'description' => 'required|string',
         ]);
 
         try {
+            $newImageName = time() . '-' . $request->image->getClientOriginalName();
+            $request->image->move(public_path('uploads/testimonial'), $newImageName);
+
             $testimonial = new Testimonial();
             $testimonial->name = $request->name;
             $testimonial->university_id = $request->university_id;
             $testimonial->course_id = $request->course_id;
+            $testimonial->image = $newImageName;
             $testimonial->description = $request->description;
 
             $testimonial->save();
@@ -70,6 +75,7 @@ class TestimonialController extends Controller
             'name' => 'required|string|max:255',
             'university_id' => 'required|exists:universities,id',
             'course_id' => 'required|exists:courses,id',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,avif,webp|nullable|max:2048',
             'description' => 'required|string',
         ]);
 
@@ -79,18 +85,32 @@ class TestimonialController extends Controller
                 return back()->with('error', 'Testimonial not found.');
             }
 
-            $testimonial->update([
-                'name' => $request->name,
-                'university_id' => $request->university_id,
-                'course_id' => $request->course_id,
-                'description' => $request->description,
-            ]);
+            // Check if a new image is uploaded
+            if ($request->hasFile('image')) {
+                // Delete the old image from the server if it exists
+                if ($testimonial->image && file_exists(public_path('uploads/testimonial/' . $testimonial->image))) {
+                    unlink(public_path('uploads/testimonial/' . $testimonial->image));
+                }
+
+                // Upload the new image
+                $newImageName = time() . '-' . $request->image->getClientOriginalName();
+                $request->image->move(public_path('uploads/testimonial'), $newImageName);
+                $testimonial->image = $newImageName;
+            }
+
+            // Update the testimonial with the new data
+            $testimonial->name = $request->name;
+            $testimonial->university_id = $request->university_id;
+            $testimonial->course_id = $request->course_id;
+            $testimonial->description = $request->description;
+            $testimonial->save();
 
             return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial updated successfully.');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'An error occurred while updating the testimonial: ' . $e->getMessage());
         }
     }
+
 
     public function destroy($id)
     {

@@ -43,6 +43,12 @@
                 <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
             </div>
             <div class="form-group">
+                <label for="exampleInputEmail1">Image</label>
+                <input type="file" name="image" class="form-control" onchange="previewImage(event)" placeholder="Image"
+                    required>
+            </div>
+            <img id="preview1" style="max-width: 200px; max-height:500px" />
+            <div class="form-group">
                 <label for="university_id">University</label>
                 <select name="university_id" class="form-control" id="university_id" required>
                     <option value="">Select University</option>
@@ -75,7 +81,7 @@
         const previewImage = e => {
             const reader = new FileReader();
             reader.onload = function(e) {
-                document.getElementById('preview').src = e.target.result;
+                document.getElementById('preview1').src = e.target.result;
             }
             reader.readAsDataURL(e.target.files[0]);
         };
