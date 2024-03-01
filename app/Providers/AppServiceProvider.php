@@ -35,16 +35,21 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        // $favicon = Favicon::latest()->get()->take(1);
-        // // dd($favicon);
+        // $favicon = Favicon::latest()->first();
         // View::share('favicon', $favicon);
+
+        $favicon = Favicon::first();
+        // dd($favicon);
+        View::share('favicon', $favicon);
+
+
 
 
         View::composer('frontend.includes.topnav', function ($view) {
             $sitesetting = SiteSetting::first();
-  
+
             $view->with('sitesetting', $sitesetting);
-          
+
         });
 
 
@@ -60,8 +65,7 @@ class AppServiceProvider extends ServiceProvider
             $testPreparationPosts = Category::where('title', 'Test Prepration')->first()->posts;
             $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
 
-            $sitesetting = SiteSetting::first();
-            
+
             $view->with('countries', $countries);
             $view->with('testimonials', $testimonials);
             $view->with('courses', $courses);
