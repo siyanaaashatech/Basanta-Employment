@@ -77,8 +77,10 @@
                     <div class="card col-lg-4" style="max-width: 350px;">
                         <div class="row">
                             <div class="col-4">
-                                <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}"
-                                    class="img-fluid rounded-start" alt="...">
+                                <a href="{{ route('SingleBlogpostcategory', ['id' => $blog->id]) }}">
+                                    <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}"
+                                        class="img-fluid rounded-start" alt="...">
+                                </a>
                             </div>
                             <div class="col-8">
                                 <div class="card-body">
@@ -123,7 +125,7 @@
                 @endforeach
                 <div class="text-center">
                     <a href="{{ route('Service') }}">
-                        <button class="btn bg-primary text-white  m-5">View all Services</button>
+                        <button class="btn bg-primary text-white m-5">View all Services</button>
                     </a>
                 </div>
             </div>
@@ -144,9 +146,14 @@
                         </p>
                     </h2>
                 </div>
+
+
                 <a href="{{ route('Countries') }}">
-                    <button class="btn bg-primary text-white">SEE ALL COUNTRIES</button>
+                    <button class="btn bg-primary text-white mt-5">SEE ALL COUNTRIES</button>
                 </a>
+
+
+
             </div>
             <div class="col-md-6 col-sm-12">
                 <div id="carouselExampleCaptions" class="carousel slide">
@@ -173,6 +180,7 @@
                                                 alt="Default Image">
                                         @endif
                                     </div>
+                                    <div class="overlay"></div>
                                     <div class="carousel-caption d-none d-md-block">
                                         <h5>{{ $country->name }}</h5>
                                         <p>{{ $country->content ? Str::limit(strip_tags($country->content), 200) : 'No content available' }}
@@ -201,12 +209,15 @@
                     <img src="{{ asset('image/back.png') }}" alt="">
                 </div> --}}
             </div>
+
         </div>
     </div>
     <!-- Enroll -->
 
-    <div class="enroll" row
-        style="background-image: url('{{ asset('image/convo.avif') }}'); background-size: cover; background-position: center;">
+
+
+    <div class="enroll" style="background-image: url('{{ asset('image/convo.avif') }}'); background-size: cover; background-position: center;">
+
         <div class="col-md-5 mx-5">
             <div class="empty">.</div>
             <div class="text mx-5 text-white">
@@ -231,9 +242,7 @@
                 <div class="text-center my-5 mx-3">
                     <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Contact Now</a>
                 </div>
-                {{-- <div class="text-center my-5 mx-1">
-                    <a href="#" class="btn bg-primary text-white">Read More</a>
-                </div> --}}
+
                 <div class="text-center my-5 mx-1">
                     <a href="{{ route('SinglePost', ['slug' => $sliderPost->slug]) }}"
                         class="btn bg-primary text-white">Read More</a>
@@ -323,13 +332,14 @@
                 <div class="carousel-inner">
                     @foreach ($testimonials as $testimonial)
                         <div class="carousel-item{{ $loop->first ? ' active' : '' }}" data-bs-interval="10000">
-                            <div class="row">
+                            <div class="row test_row">
                                 <div class="col-lg-6 col-md-6">
                                     @if ($testimonial->image)
-                                        <img src="{{ asset($testimonial->image) }}" class="d-block w-100"
+                                        <img src="{{ asset($testimonial->image) }}" class="d-block w-100 test_image"
                                             alt="">
                                     @else
-                                        <img src="{{ asset('image/girl.jpg') }}" class=" d-block w-100" alt="">
+                                        <img src="{{ asset('image/girl.jpg') }}" class=" d-block w-100 test_image"
+                                            alt="">
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6">
@@ -339,16 +349,26 @@
                                             <h2>{{ $testimonial->name }}</h2>
                                             <p>{{ $testimonial->university->title }} ({{ $testimonial->course->title }})
                                             </p>
-                                            <a href="{{ route('Testimonial') }}">
-                                                <button class="bg-primary text-white text-center"> VIEW ALL</button>
-                                            </a>
+
                                         </div>
                                     </div>
+
+                                </div>
+
+                                <div class="text-center">
+                                    <a href="{{ route('Testimonial') }}">
+                                        <button class="btn bg-primary text-white m-5"> VIEW ALL</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+
+
                 </div>
+
+
+
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
@@ -360,6 +380,10 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
+
+
+
         </div>
     </div>
 

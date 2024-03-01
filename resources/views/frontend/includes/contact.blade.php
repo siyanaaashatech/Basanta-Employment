@@ -91,7 +91,7 @@
 
 
                         <input type="submit" value="Submit" id="submitBtn"
-                            class="btn bg-primary text-white">
+                            class="btn bg-primary text-white mb-3">
                     </form>
                 </div>
                 {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
