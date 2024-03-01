@@ -1,10 +1,15 @@
     <!-- Header -->
     <div class="header">
-        <nav class="navbar navbar-expand-lg container">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
                 <a class="navbar-brand" href="{{ route('index') }}">
                     <div class="image">
-                        <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
+                        @if ($sitesetting->main_logo)
+                            <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" alt="Main Logo"
+                                height="50">
+                        @else
+                            <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
+                        @endif
                     </div>
                 </a>
 
@@ -112,20 +117,18 @@
 
                         </li>
 
-                    <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Gallery
                             </a>
                             <ul class="dropdown-menu">
-                                
-                                    <li><a class="dropdown-item"
-                                            href="{{ route('Gallery') }}">
-                                            Photo Gallery</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="{{ route('Video') }}">
-                                            Video Gallery</a></li>
-                            
+
+                                <li><a class="dropdown-item" href="{{ route('Gallery') }}">
+                                        Photo Gallery</a></li>
+                                <li><a class="dropdown-item" href="{{ route('Video') }}">
+                                        Video Gallery</a></li>
+
                             </ul>
                         </li>
 
@@ -136,15 +139,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">Blogs</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link text-primary" href="{{ route('Contact') }}">Contact</a>
                         </li>
 
-                
+
 
                     </ul>
-                   
+
                 </div>
             </div>
         </nav>

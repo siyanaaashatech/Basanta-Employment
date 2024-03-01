@@ -16,6 +16,7 @@ use App\Models\PhotoGallery;
 use App\Models\VideoGallery;
 use Illuminate\Http\Request;
 use App\Models\BlogPostsCategory;
+use App\Models\DirectorMessage;
 
 class SingleController extends Controller
 {
@@ -31,8 +32,10 @@ class SingleController extends Controller
         $services = Service::latest()->get()->take(6);
         $posts = Post::with('category')->latest()->get()->take(3);
         $images = PhotoGallery::latest()->get();
+        $listservices = Service::latest()->get()->take(5);
+        $message = DirectorMessage::first();
 
-        return view('frontend.aboutus', compact('categories', 'sitesetting', 'about', 'teams', 'services', 'posts', 'images'));
+        return view('frontend.aboutus', compact('categories', 'sitesetting', 'about', 'teams', 'services', 'posts', 'images', 'listservices', 'message'));
 
     }
 
@@ -85,8 +88,9 @@ class SingleController extends Controller
     public function render_singleBlogpostcategory($id)
     {
         $blogpostcategory = BlogPostsCategory::findOrFail($id);
+        $listblogs = BlogPostsCategory::where('id', '!=', $id)->latest()->get()->take(5);
 
-        return view('frontend.blogpostcategory', compact('blogpostcategory'));
+        return view('frontend.blogpostcategory', compact('blogpostcategory', 'listblogs'));
     }
 
     public function render_singleService($slug)
@@ -163,9 +167,9 @@ class SingleController extends Controller
         return view('frontend.galleries', compact('images', 'services', 'categories', 'sitesetting', 'about'));
     }
 
-    public function render_singleImage($id)
+    public function render_singleImage($slug)
     {
-        $image = PhotoGallery::find($id);
+        $image = PhotoGallery::where('slug', $slug)->firstOrFail();
         $categories = Category::all();
         $services = Service::latest()->get();
         $sitesetting = SiteSetting::first();

@@ -15,7 +15,7 @@
 
         <div class="row mt-3">
 
-            <p>{{ $image->description }}</p>
+            <p class="text-center">{{ $image->img_desc }}</p>
 
             @foreach ($image->img as $imgUrl) 
                 <div class="col-md-4 mb-3">

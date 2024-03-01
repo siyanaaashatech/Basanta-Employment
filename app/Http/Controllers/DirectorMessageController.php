@@ -27,7 +27,7 @@ class DirectorMessageController extends Controller
             'name' => 'required|string',
             'position' => 'required|string',
             'companyName' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
             'message' => 'nullable|string',
         ]);
 
