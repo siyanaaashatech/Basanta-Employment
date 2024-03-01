@@ -38,7 +38,7 @@ class FrontViewController extends Controller
         $sliderPost = $countryUniversityCategory->posts()->latest()->first();
         $enrollPost = $countryUniversityCategory->posts()->orderBy('id', 'desc')->skip(1)->first();
 
-        
+
 
 
 
@@ -53,6 +53,14 @@ class FrontViewController extends Controller
             'enrollPost'
         ]));
     }
+    public function singlePost($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $relatedPosts = Post::where('id', '!=', $post->id)->get();
+
+        return view('frontend.posts', compact('post', 'relatedPosts'));
+    }
+
 
     public function about()
     {

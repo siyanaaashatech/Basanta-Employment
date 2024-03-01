@@ -28,57 +28,42 @@
             </div>
             <div class="box2 col-lg-4 col-md-6 col-sm-12">
                 <div class="position-relative">
-                    @php
-                        $displayedImages = 0;
-                    @endphp
-                    @foreach ($countries as $country)
-                        @if ($displayedImages < 3 && $country->image)
+                    @foreach ($countries->take(3) as $country)
+                        @if ($country->image)
                             <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-
                                 <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                    style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                    style="width: 100%; object-fit: cover; object-position: center; height: 100%">
                             </div>
-                            @php
-                                $displayedImages++;
-                            @endphp
                         @endif
                     @endforeach
-                    @if ($displayedImages == 0)
-                        <!-- Display a default image or message if there are no images -->
-                        <div class="default-image position-absolute" style="height: 300px; width: 150px;">
-                            <img src="{{ asset('image/default.jpg') }}" alt="Default Image"
-                                style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                        </div>
-                    @endif
-
                 </div>
             </div>
+
             <div class="box3 col-lg-3 col-md-6 col-sm-12">
                 <div class="position-relative">
-
-                    @php
-                        $displayedImages = 0;
-                    @endphp
-                    @foreach ($countries as $country)
-                        @if ($displayedImages < 3 && $country->image)
-                            <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
+                    @foreach ($countries->slice(3, 2) as $country)
+                        @if ($country->image)
+                            <div class="image{{ $loop->index + 4 }} position-absolute" style="height: 300px; width: 150px;">
                                 <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                    style="width: 100%; object-fit:cover; object-position:center; height:100%">
+                                    style="width: 100%; object-fit: cover; object-position: center; height: 100%">
                             </div>
-                            @php
-                                $displayedImages++;
-                            @endphp
                         @endif
                     @endforeach
-                    @if ($displayedImages == 0)
-                        <!-- Display a default image or message if there are no images -->
-                        <div class="default-image position-absolute" style="height: 300px; width: 150px;">
-                            <img src="{{ asset('image/default.jpg') }}" alt="Default Image"
-                                style="width: 100%; object-fit:cover; object-position:center; height:100%">
-                        </div>
+
+                    @if ($countries->count() < 5)
+                        @foreach ($countries->slice(5 - $countries->count()) as $country)
+                            @if ($country->image)
+                                <div class="image{{ $loop->index + 5 }} position-absolute"
+                                    style="height: 300px; width: 150px;">
+                                    <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
+                                        style="width: 100%; object-fit: cover; object-position: center; height: 100%">
+                                </div>
+                            @endif
+                        @endforeach
                     @endif
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -246,9 +231,14 @@
                 <div class="text-center my-5 mx-3">
                     <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Contact Now</a>
                 </div>
-                <div class="text-center my-5 mx-1">
+                {{-- <div class="text-center my-5 mx-1">
                     <a href="#" class="btn bg-primary text-white">Read More</a>
+                </div> --}}
+                <div class="text-center my-5 mx-1">
+                    <a href="{{ route('SinglePost', ['slug' => $sliderPost->slug]) }}"
+                        class="btn bg-primary text-white">Read More</a>
                 </div>
+
             </div>
         </div>
     </div>
@@ -307,16 +297,18 @@
             <h2 class="text-center">Popular courses for students like you</h2>
             <div class="subjects row">
                 @foreach ($courses as $course)
-                    <a href="{{ route('singleCourse', ['slug' => $course->slug]) }}">
-                        <div class="subject1 col-md-4 col-sm-6">
-                            <div
-                                style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
-                                <div class="text-center">
-                                    <button class="btn bg-primary text-white">{{ $course->title }}</button>
-                                </div>
+                    <div class="subject1 col-md-4 col-sm-6">
+                        <div
+                            style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
+                            <div class="text-center">
+                                <button class="btn bg-primary text-white">
+                                    <a href="{{ route('singleCourse', ['slug' => $course->slug]) }}"
+                                        class="text-decoration-none text-white">{{ $course->title }}
+                                    </a>
+                                </button>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 @endforeach
             </div>
         </div>

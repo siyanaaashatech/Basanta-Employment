@@ -42,6 +42,7 @@ use App\Http\Controllers\BlogPostsCategoryController;
 
 Route::get('/', [FrontViewController::class, 'index'])->name('index');
 Route::get('/index', [FrontViewController::class, 'index'])->name('index');
+Route::get('/singleposts/{slug}', [FrontViewController::class, 'singlePost'])->name('SinglePost');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
 
 //Routes for SingleController
