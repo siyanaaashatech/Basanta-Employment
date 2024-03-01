@@ -57,8 +57,8 @@ class BlogPostsCategoryController extends Controller
 
     public function edit($id)
     {
-        $category = BlogPostsCategory::find($id);
-        return view('backend.blog_posts_category.update', compact('category'));
+        $blogPostsCategory = BlogPostsCategory::find($id);
+        return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
     }
 
     public function update(Request $request, BlogPostsCategory $blogPostsCategory)

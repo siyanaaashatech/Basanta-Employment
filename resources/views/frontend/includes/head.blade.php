@@ -11,6 +11,21 @@
     <meta name="description" content="Trademark Education Consultancy">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
+    {{-- <link rel="stylesheet" href="{{ asset('adminassets/assets/bootstrap/dist/css/bootstrap.min.css') }}" />
+
+    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon/' . $favicon->favicon_ico) }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('uploads/favicon/' . $favicon->apple_touch_icon) }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ asset('uploads/favicon/' . $favicon->favicon_thirtyTwo) }}">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ asset('uploads/favicon/' . $favicon->favicon_sixteen) }}">
+    <link rel="manifest" href="{{ asset('uploads/favicon/file' . $favicon->site_webmanifest) }}">
+
+
+    <meta name="msapplication-TileImage" content="{{ asset('adminassets/assets/img/favicons/mstile-150x150.png') }}">
+    <meta name="theme-color" content="#ffffff">
+    <script src="{{ asset('adminassets//assets/js/config.js') }}"></script>
+    <script src="{{ asset('adminassets/vendors/overlayscrollbars/OverlayScrollbars.min.js') }}"></script> --}}
 
 
     <meta name="author" content="BibekGuragain">
@@ -25,7 +40,7 @@
 
     <!-- Google reCAPTCHA -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    
+
 
 
     {{-- {!! htmlScriptTagJsApi([

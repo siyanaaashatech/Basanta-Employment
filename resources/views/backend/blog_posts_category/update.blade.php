@@ -33,7 +33,7 @@
     <script>
         function previewImage(event) {
             var input = event.target;
-            var preview = document.getElementById('imagePreview');
+            var preview = document.getElementById('image');
 
             while (preview.firstChild) {
                 preview.removeChild(preview.firstChild); // Clear previous preview
