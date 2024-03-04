@@ -45,19 +45,17 @@
 
 
 
-
+{{-- 
 <div class="container">
     <div class="projcard-container">
         @foreach ($newsPosts as $post)
             <div class="projcard projcard-blue">
                 <div class="projcard-innerbox row">
-                    <!-- Display news post content here -->
                     <h2>{{ $post->title }}</h2>
                     <p>{{ $post->content }}</p>
                 </div>
             </div>
         @endforeach
     </div>
-    <!-- Pagination links if needed -->
     {{ $newsPosts->links() }}
-</div>
+</div> --}}

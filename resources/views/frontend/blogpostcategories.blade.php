@@ -17,7 +17,7 @@
                 <div class="card col-lg-4">
                     <div class="multi_post_image">
                         @if ($blogpostcategory->image)
-                            <img src="{{ asset('uploads/blogpostcategory/)'. $blogpostcategory->image) }}"
+                            <img src="{{ asset('uploads/blogpostcategory/'. $blogpostcategory->image) }}"
                                 class="card-img-top" alt="Services Image">
                         @else
                             <img src="https://plus.unsplash.com/premium_photo-1705091309202-5838aeedd653?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
