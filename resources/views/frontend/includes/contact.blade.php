@@ -2,23 +2,34 @@
 
 
 @section('content')
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
 
-<style>
-    .form-group{
-        padding-bottom: 7px
-    }
-    .message-box{
-        margin-bottom: 7px;
-    }
-</style>
+    @if (Session::has('error'))
+        <div class="alert alert-danger">
+            {{ Session::get('error') }}
+        </div>
+    @endif
+    <style>
+        .form-group {
+            padding-bottom: 7px
+        }
 
-<div class="background">
-    <h1 class="page_title">{{ __('Contact Us') }}</h1>
-</div>
+        .message-box {
+            margin-bottom: 7px;
+        }
+    </style>
+
+    <div class="background">
+        <h1 class="page_title">{{ __('Contact Us') }}</h1>
+    </div>
 
     <section class="contact_form">
         <div class="container">
-          
+
             <div class="row mt-3">
                 {{-- <div class="col-md-6 cform_left">
                     <iframe
@@ -33,37 +44,24 @@
                 </div>
 
                 <div class="col-md-6 cform_right">
-                    <form  id="quick_contact" class="form-horizontal" method="POST" role="form" action="{{ route('Contact.store') }}" method="POST">
+                    <form id="quick_contact" class="form-horizontal" method="POST" role="form"
+                        action="{{ route('Contact.store') }}" method="POST">
 
 
                         @csrf
-
-                        @if (Session::has('successMessage'))
-                            <div class="alert alert-success">
-                                {{ Session::get('success') }}
-                            </div>
-                        @endif
-
-                        @if (Session::has('error'))
-                            <div class="alert alert-danger">
-                                {{ Session::get('error') }}
-                            </div>
-                        @endif
-
-
                         <div class="form-group">
 
-                            <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="{{ old('name') }}"
-                                required>
-    
+                            <input type="text" class="form-control" id="name" placeholder="NAME" name="name"
+                                value="" required>
+
                         </div>
 
 
                         <div class="form-group">
 
-                            <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value=""
-                                required>
-    
+                            <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email"
+                                value="" required>
+
                         </div>
 
 
@@ -71,18 +69,18 @@
                         <div class="form-group">
 
 
-                            <input type="phone" name="phone_no" class="form-control" id="phone_no" placeholder="Phone No."
-                                required>
-    
-    
+                            <input type="phone" name="phone_no" class="form-control" id="phone_no"
+                                placeholder="Phone No." required>
+
+
                         </div>
 
-                   
+
 
                         <textarea class="form-control message-box" rows="10" placeholder="MESSAGE" name="message" required></textarea>
 
-         
-                
+
+
 
                         <!-- Add reCAPTCHA field -->
                         <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
@@ -90,8 +88,7 @@
 
 
 
-                        <input type="submit" value="Submit" id="submitBtn"
-                            class="btn bg-primary text-white mb-3">
+                        <input type="submit" value="Submit" id="submitBtn" class="btn bg-primary text-white mb-3">
                     </form>
                 </div>
                 {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
