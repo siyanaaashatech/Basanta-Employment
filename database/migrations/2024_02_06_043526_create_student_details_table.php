@@ -25,7 +25,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
 
-            $table->date('intake_date');
+            $table->date('intake_month_year');
             $table->string('image')->nullable();
             $table->json('documents')->nullable();
             $table->timestamps();

@@ -77,7 +77,7 @@
                     <div class="card col-lg-4" style="max-width: 350px;">
                         <div class="row">
                             <div class="col-4">
-                                <a href="{{ route('SingleBlogpostcategory', ['id' => $blog->id]) }}">
+                                <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
                                     <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}"
                                         class="img-fluid rounded-start" alt="...">
                                 </a>
@@ -158,17 +158,17 @@
             <div class="col-md-6 col-sm-12">
                 <div id="carouselExampleCaptions" class="carousel slide">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
+                        @if (!$countries->isEmpty())
+                            @foreach ($countries as $key => $country)
+                                <button type="button" data-bs-target="#carouselExampleCaptions"
+                                    data-bs-slide-to="{{ $key }}" class="{{ $key === 0 ? 'active' : '' }}"
+                                    aria-current="{{ $key === 0 ? 'true' : 'false' }}"
+                                    aria-label="Slide {{ $key + 1 }}"></button>
+                            @endforeach
+                        @endif
                     </div>
                     <div class="carousel-inner">
-                        @if ($countries->isEmpty())
-                            <p>No countries found.</p>
-                        @else
+                        @if (!$countries->isEmpty())
                             @foreach ($countries as $key => $country)
                                 <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
                                     <div class="image">
@@ -190,10 +190,6 @@
                             @endforeach
                         @endif
                     </div>
-
-
-
-
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -205,9 +201,6 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-                {{-- <div class="back">
-                    <img src="{{ asset('image/back.png') }}" alt="">
-                </div> --}}
             </div>
 
         </div>
@@ -216,7 +209,8 @@
 
 
 
-    <div class="enroll" style="background-image: url('{{ asset('image/convo.avif') }}'); background-size: cover; background-position: center;">
+    <div class="enroll"
+        style="background-image: url('{{ asset('image/convo.avif') }}'); background-size: cover; background-position: center;">
 
         <div class="col-md-5 mx-5">
             <div class="empty">.</div>
@@ -244,8 +238,11 @@
                 </div>
 
                 <div class="text-center my-5 mx-1">
-                    <a href="{{ route('SinglePost', ['slug' => $sliderPost->slug]) }}"
-                        class="btn bg-primary text-white">Read More</a>
+                    @if ($sliderPost)
+                        <a href="{{ route('SinglePost', ['slug' => $sliderPost->slug]) }}"
+                            class="btn bg-primary text-white">Read More</a>
+                    @endif
+
                 </div>
 
             </div>

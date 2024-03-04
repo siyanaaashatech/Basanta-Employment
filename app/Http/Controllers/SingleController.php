@@ -85,10 +85,10 @@ class SingleController extends Controller
         return view('frontend.blogpostcategories', compact('blogpostcategories'));
     }
 
-    public function render_singleBlogpostcategory($id)
+    public function render_singleBlogpostcategory($slug)
     {
-        $blogpostcategory = BlogPostsCategory::findOrFail($id);
-        $listblogs = BlogPostsCategory::where('id', '!=', $id)->latest()->get()->take(5);
+        $blogpostcategory = BlogPostsCategory::where('slug', $slug)->firstOrFail();
+        $listblogs = BlogPostsCategory::where('slug', '!=', $slug)->latest()->get()->take(5);
 
         return view('frontend.blogpostcategory', compact('blogpostcategory', 'listblogs'));
     }

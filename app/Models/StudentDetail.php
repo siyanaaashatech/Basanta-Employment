@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class StudentDetail extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'phone_no', 'email', 'country_id', 'university_id', 'course_id', 'intake_date', 'photo'];
+    protected $fillable = ['name', 'phone_no', 'email', 'country_id', 'university_id', 'course_id', 'intake_month_year', 'image', 'documents'];
 
     public function country()
     {
