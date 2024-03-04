@@ -64,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
             $blogpostcategories = BlogPostsCategory::all();
             $testPreparationPosts = Category::where('title', 'Test Prepration')->first()->posts;
             $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
-
+            $sitesetting = SiteSetting::first();
 
             $view->with('countries', $countries);
             $view->with('testimonials', $testimonials);
