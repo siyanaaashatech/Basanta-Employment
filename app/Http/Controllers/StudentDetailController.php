@@ -25,14 +25,15 @@ class StudentDetailController extends Controller
     }
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        // dd($request);
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'phone_no' => 'required',
             'country_id' => 'required|exists:countries,id',
             'university_id' => 'required|exists:universities,id',
             'course_id' => 'required|exists:courses,id',
-            'intake_date' => 'required|date',
+            'intake_month_year' => 'required|date',
             'image' => 'nullable|image',
             'documents' => 'nullable|array',
             'documents.*' => 'file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
@@ -70,7 +71,7 @@ class StudentDetailController extends Controller
             $studentdetail->country_id = $request->country_id;
             $studentdetail->university_id = $request->university_id;
             $studentdetail->course_id = $request->course_id;
-            $studentdetail->intake_date = $request->intake_date;
+            $studentdetail->intake_month_year = $request->intake_month_year;
             $studentdetail->documents = json_encode($documentPaths);
 
             if ($studentdetail->save()) {

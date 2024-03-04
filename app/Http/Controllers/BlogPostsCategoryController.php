@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BlogPostsCategory;
 use App\Models\SummernoteContent;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class BlogPostsCategoryController extends Controller
 {
@@ -42,6 +43,7 @@ class BlogPostsCategoryController extends Controller
 
             $category = new BlogPostsCategory();
             $category->title = $request->title;
+            $category->slug = SlugService::createSlug(BlogPostsCategory::class, 'slug', $request->input('title'));
             $category->content = $processedContent;
             $category->image = $newImageName;
 
@@ -70,6 +72,7 @@ class BlogPostsCategoryController extends Controller
         ]);
 
         $blogPostsCategory->title = $request->input('title');
+        $blogPostsCategory->slug = SlugService::createSlug(BlogPostsCategory::class, 'slug', $request->title);
         $blogPostsCategory->content = $request->input('content');
 
         if ($request->hasFile('image')) {

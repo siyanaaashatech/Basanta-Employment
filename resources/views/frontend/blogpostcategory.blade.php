@@ -5,7 +5,7 @@
         <h1 class="page_title">{{ $blogpostcategory->title }}</h1>
     </div>
 
-  
+
 
 
     <section class="sample_page">
@@ -14,7 +14,8 @@
 
                 <div class="col-lg-8 col-md-8 col-sm-12 order-1 order-md-1">
 
-                    <img class="sample_page_image" src="{{ asset('uploads/blogpostcategory/' . $blogpostcategory->image) }}" alt="Country Image">
+                    <img class="sample_page_image" src="{{ asset('uploads/blogpostcategory/' . $blogpostcategory->image) }}"
+                        alt="Country Image">
 
 
 
@@ -28,7 +29,8 @@
                     <ul>
                         @foreach ($listblogs as $blog)
                             <li>
-                                <a href="{{ route('SingleBlogpostcategory', ['id' => $blog->id]) }}">{{ $blog->title }}</a>
+                                <a
+                                    href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">{{ $blog->title }}</a>
                             </li>
                         @endforeach
                     </ul>

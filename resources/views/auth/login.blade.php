@@ -95,8 +95,17 @@
                                                 <div class="z-index-1 position-relative"><a
                                                         class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder"
                                                         href="#">{{ env('APP_NAME') }}</a>
-                                                    <img height="200" width="200"
-                                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Emblem_of_Nepal.svg/800px-Emblem_of_Nepal.svg.png">
+                                                    {{-- <img height="200" width="200"
+                                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Emblem_of_Nepal.svg/800px-Emblem_of_Nepal.svg.png"> --}}
+                                                    <?php
+                                                    $siteSettings = \App\Models\SiteSetting::first();
+                                                    if ($siteSettings && $siteSettings->main_logo) {
+                                                        $logoUrl = asset('uploads/sitesetting/' . $siteSettings->main_logo);
+                                                    } else {
+                                                        $logoUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Emblem_of_Nepal.svg/800px-Emblem_of_Nepal.svg.png';
+                                                    }
+                                                    ?>
+                                                    <img height="200" width="200" src="{{ $logoUrl }}">
                                                     {{-- <p class="opacity-75 text-white">With the power of Falcon, you can now focus only on functionaries for your digital products, while leaving the UI design on us!</p> --}}
                                                 </div>
                                             </div>

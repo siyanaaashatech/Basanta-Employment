@@ -36,7 +36,7 @@ class ContactController extends Controller
                     'remoteip' => \request()->ip()
                 ]);
 
-                if (!$g_response->json('successMessage')) {
+                if (!$g_response->json('success')) {
                     $fail('The ' . $attribute . ' is invalid.');
                 }
             },
@@ -49,7 +49,7 @@ class ContactController extends Controller
         $contact->message = $request->message;
         $contact->save();
 
-        return response()->json(['successMessage' => true]);
+        return response()->json(['success' => true]);
     }
 
 
