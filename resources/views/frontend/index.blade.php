@@ -32,7 +32,7 @@
     <!-- WhatsApp Chat Button -->
     <div class="whatsapp-chat-container" id="whatsappChatContainer">
         <div class="whatsapp-chat">
-            <a href="https://api.whatsapp.com/send?phone=9779812345678" target="_blank">
+            <a href="https://api.whatsapp.com/send?phone={{ $sitesetting->office_contact }}" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png"
                     alt="WhatsApp Chat" width="50" height="50">
             </a>

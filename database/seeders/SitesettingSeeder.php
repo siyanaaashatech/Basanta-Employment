@@ -18,7 +18,7 @@ class SitesettingSeeder extends Seeder
         DB::table('site_settings')->insert([
             'office_name' => 'Trademark Education',
             'office_address' => 'Sinamangal,Kathmandu',
-            'office_contact' => '+9774596538, 9851241656',
+            'office_contact' => '9779851241656',
             'office_email' => 'info.aashatech@gmail.com',
             'main_logo' => 'uploads/sitesetting/main_logo.png',
             'side_logo' => 'uploads/sitesetting/side_logo.png',
