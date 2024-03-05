@@ -38,19 +38,23 @@ class AppServiceProvider extends ServiceProvider
         // $favicon = Favicon::latest()->first();
         // View::share('favicon', $favicon);
 
+        //FAVICON for ALL PAGES
         $favicon = Favicon::first();
-        // dd($favicon);
         View::share('favicon', $favicon);
 
+        //SITESETTING for ALL PAGES
+        $sitesetting = SiteSetting::first();
+        View::share('sitesetting', $sitesetting);
 
 
 
-        View::composer('frontend.includes.topnav', function ($view) {
-            $sitesetting = SiteSetting::first();
 
-            $view->with('sitesetting', $sitesetting);
+        // View::composer('frontend.includes.topnav', function ($view) {
+        //     $sitesetting = SiteSetting::first();
 
-        });
+        //     $view->with('sitesetting', $sitesetting);
+
+        // });
 
 
 

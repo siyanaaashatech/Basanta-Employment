@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Category;
+use App\Models\Service;
 use App\Models\StudentDetail;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -24,6 +25,10 @@ class SearchController extends Controller
             ->get();
 
         $abouts = About::where('title', 'like', "%$searchTerm%")
+            ->orWhere('description', 'like', "%$searchTerm%")
+            ->get();
+
+        $services = Service::where('title', 'like', "%$searchTerm%")
             ->orWhere('description', 'like', "%$searchTerm%")
             ->get();
 
@@ -55,6 +60,6 @@ class SearchController extends Controller
         $studentDetails = StudentDetail::where('name', 'like', "%$searchTerm%")
             ->get();
 
-        return view('frontend.search-results', compact('posts', 'abouts', 'categories', 'contacts', 'countries', 'courses', 'testimonials', 'blogCategories', 'studentDetails'));
+        return view('frontend.search-results', compact('posts', 'abouts', 'services', 'categories', 'contacts', 'countries', 'courses', 'testimonials', 'blogCategories', 'studentDetails'));
     }
 }

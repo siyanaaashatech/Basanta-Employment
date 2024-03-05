@@ -7,6 +7,7 @@
                 @if (
                     $posts->isNotEmpty() ||
                         $abouts->isNotEmpty() ||
+                        $services->isNotEmpty() ||
                         $categories->isNotEmpty() ||
                         $contacts->isNotEmpty() ||
                         $countries->isNotEmpty() ||
@@ -33,6 +34,26 @@
                             <div class="about-list">
                                 <a href="{{ route('About', $about->slug) }}">
                                     <p>{{ $about->title }}</p>
+                                </a>
+                            </div>
+                        @endforeach
+                    @endif
+                    @if ($services->isNotEmpty())
+                        <h2>Services</h2>
+                        @foreach ($services as $service)
+                            <div class="service-list">
+                                <a href="{{ route('SingleService', $service->slug) }}">
+                                    <p>{{ $service->title }}</p>
+                                </a>
+                            </div>
+                        @endforeach
+                    @endif
+                    @if ($blogCategories->isNotEmpty())
+                        <h2>Blog Post Category</h2>
+                        @foreach ($blogCategories as $blog)
+                            <div class="blog-list">
+                                <a href="{{ route('SingleBlogpostcategory', $blog->slug) }}">
+                                    <p>{{ $blog->title }}</p>
                                 </a>
                             </div>
                         @endforeach
