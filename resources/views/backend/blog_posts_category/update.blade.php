@@ -13,13 +13,10 @@
                     required>
             </div>
             <div class="form-group">
-                <label for="image">Choose Image:</label>
-                <input type="file" class="form-control" id="image" name="image" onchange="previewImage(event)">
-                @if ($blogPostsCategory->image)
-                    <p>Current Image: {{ $blogPostsCategory->image }}</p>
-                @else
-                    <p>No current image</p>
-                @endif
+                <label for="image">Image</label>
+                <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
+                <img id="preview1" src="{{ asset('uploads/blogpostcategory/' . $blogPostsCategory->image) }}"
+                    style="max-width: 300px; max-height:300px" />
             </div>
             <div id="imagePreview" class="mt-2"></div>
             <div class="form-group">
@@ -31,31 +28,19 @@
     </div>
 
     <script>
-        function previewImage(event) {
-            var input = event.target;
-            var preview = document.getElementById('image');
-
-            while (preview.firstChild) {
-                preview.removeChild(preview.firstChild); // Clear previous preview
-            }
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    var img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '200px'; // Adjust the maximum width as needed
-                    img.style.maxHeight = '200px'; // Adjust the maximum height as needed
-                    preview.appendChild(img);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $(document).ready(function() {
-            $('.summernote').summernote();
+        $('#content').summernote({
+            placeholder: 'Enter message here...',
+            tabsize: 2,
+            height: 100
         });
+
+        const previewImage = e => {
+            const reader = new FileReader();
+            reader.readAsDataURL(e.target.files[0]);
+            reader.onload = () => {
+                const preview = document.getElementById('preview1');
+                preview.src = reader.result;
+            };
+        };
     </script>
 @endsection

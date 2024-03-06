@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\DirectorMessageController;
 use App\Models\DirectorMessage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +26,9 @@ use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\VideoGalleryController;
 use App\Http\Controllers\StudentDetailController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\DirectorMessageController;
 use App\Http\Controllers\BlogPostsCategoryController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,8 @@ Route::prefix('/')->group(function () {
 
 // Authentication routes
 Auth::routes();
+Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+
 
 // Backend routes with prefix and middleware
 Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {

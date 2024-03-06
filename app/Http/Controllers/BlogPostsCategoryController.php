@@ -63,26 +63,36 @@ class BlogPostsCategoryController extends Controller
         return view('backend.blog_posts_category.update', compact('blogPostsCategory'));
     }
 
-    public function update(Request $request, BlogPostsCategory $blogPostsCategory)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        try {
+            $message = BlogPostsCategory::findOrFail($id);
 
-        $blogPostsCategory->title = $request->input('title');
-        $blogPostsCategory->slug = SlugService::createSlug(BlogPostsCategory::class, 'slug', $request->title);
-        $blogPostsCategory->content = $request->input('content');
+            if ($request->hasFile('image')) {
+                if ($message->image && file_exists(public_path('uploads/blogpostcategory/' . $message->image))) {
+                    unlink(public_path('uploads/blogpostcategory/' . $message->image));
+                }
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images/blog-posts-categories');
-            $blogPostsCategory->image = $imagePath;
+                $newImageName = time() . '-' . $request->image->getClientOriginalName();
+                $request->image->move(public_path('uploads/blogpostcategory/'), $newImageName);
+                $message->image = $newImageName;
+            }
+            $summernoteContent = new SummernoteContent();
+            $processedContent = $summernoteContent->processContent($request->input('content'));
+
+            $message->title = $request->input('title');
+            $message->content = $processedContent;
+            $message->save();
+
+            return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post updated successfully.');
+        } catch (Exception $e) {
+            return back()->with('error', 'Error updating director message: ' . $e->getMessage());
         }
-
-        $blogPostsCategory->save();
-
-        return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post Category updated successfully.');
     }
 
 

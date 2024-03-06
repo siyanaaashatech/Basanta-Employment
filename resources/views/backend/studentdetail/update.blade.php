@@ -94,9 +94,9 @@
             </div>
             <!-- Intake Date -->
             <div class="form-group">
-                <label for="intake_date">Intake Date</label>
-                <input type="date" name="intake_date" class="form-control" id="intake_date"
-                    value="{{ $studentDetail->intake_date }}" required>
+                <label for="intake_month_year">Intake Date</label>
+                <input type="date" name="intake_month_year" class="form-control" id="intake_month_year"
+                    value="{{ $studentDetail->intake_month_year }}" required>
             </div>
             <!-- Image -->
             <div class="form-group">
@@ -115,7 +115,7 @@
             <div class="form-group">
                 <label for="documents">Upload Documents</label>
                 @if ($studentDetail->documents && is_array(json_decode($studentDetail->documents, true)))
-                    <ul>
+                    <ul id="documentList">
                         @foreach (json_decode($studentDetail->documents, true) as $document)
                             <li>
                                 <a href="{{ asset($document) }}" target="_blank">View Document</a>
@@ -127,6 +127,7 @@
                     accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif">
                 <small class="form-text text-muted">Supported formats: pdf, doc, docx, jpg, jpeg, png, gif.</small>
             </div>
+
 
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Update Student Details</button>
@@ -148,4 +149,24 @@
             reader.readAsDataURL(event.target.files[0]);
         };
     </script>
+    {{-- <script>
+        const updateDocumentList = () => {
+            const documentList = document.getElementById('documentList');
+            if (documentList) {
+                documentList.innerHTML = ''; // Clear the document list
+                const files = document.getElementById('documents').files;
+                const start = Math.max(files.length - 2, 0); // Start from the 2nd last file
+                for (let i = start; i < files.length; i++) {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(files[i]);
+                    link.textContent = 'View Document';
+                    listItem.appendChild(link);
+                    documentList.appendChild(listItem);
+                }
+            }
+        };
+
+        document.getElementById('documents').addEventListener('change', updateDocumentList);
+    </script> --}}
 @endsection

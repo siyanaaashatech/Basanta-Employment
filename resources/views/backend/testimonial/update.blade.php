@@ -82,23 +82,13 @@
         </div>
     </form>
     <script>
-        // Function to preview selected images
-        const previewImages = e => {
-            const files = e.target.files;
-            const imagePreviews = document.getElementById('preview1');
-            imagePreviews.innerHTML = ''; // Clear existing previews
-
-            for (const file of files) {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-
-                reader.onload = () => {
-                    const preview = document.createElement('div');
-                    preview.className = 'col-md-2 mb-3';
-                    preview.innerHTML = `<img src="${reader.result}" alt="Image Preview" class="img-fluid">`;
-                    imagePreviews.appendChild(preview);
-                };
-            }
+        const previewImage = e => {
+            const reader = new FileReader();
+            reader.readAsDataURL(e.target.files[0]);
+            reader.onload = () => {
+                const preview = document.getElementById('preview1');
+                preview.src = reader.result;
+            };
         };
     </script>
 @endsection
