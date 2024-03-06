@@ -54,7 +54,7 @@
                         @foreach ($listservices as $service)
                             <li>
                                 <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
-                                    {{ $service->name }}
+                                    {{ $service->title }}
                                 </a>
                             </li>
                         @endforeach
