@@ -1,4 +1,4 @@
-<head>
+
     <?php
     use App\Models\Favicon;
     $favicon = Favicon::first();
@@ -74,7 +74,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('adminassets/assets/select2/dist/css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('adminassets/vendors/flatpickr/flatpickr.min.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('adminasset/css/custom.css') }}" asp-append-version="true" />
 
     {{-- for tinyMCE --}}
     <script src={{ asset('tinymce/tinymce.min.js') }}></script>
@@ -106,4 +105,7 @@
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-</head>
+
+
+    <link rel="stylesheet" href="{{ asset('adminasset/css/custom.css') }}" asp-append-version="true" />
+
