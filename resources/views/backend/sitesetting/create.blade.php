@@ -55,6 +55,11 @@
                     <input type="email" name="office_email" class="form-control" placeholder="office_email"
                         id="office_email">
                 </div>
+                <div class="form-group">
+                    <label for="whatsapp_number">Whatsapp Number</label>
+                    <input type="text" name="whatsapp_number" class="form-control" placeholder="Whatsapp Number"
+                        id="whatsapp_number">
+                </div>
                 <!-- Office Name, Address, Contact, Email fields... -->
                 <div class="form-group">
                     <label for="main_logo">Main Logo</label>
@@ -90,8 +95,8 @@
                 </div>
                 <div class="form-group">
                     <label for="linkedin_link">Linkedin URL</label>
-                    <input type="url" name="linkedin_link" class="form-control" placeholder="LinkedIn URL (https://)"
-                        id="linkedin_link">
+                    <input type="url" name="linkedin_link" class="form-control"
+                        placeholder="LinkedIn URL (https://)" id="linkedin_link">
                 </div>
                 <div class="form-group">
                     <label for="google_maps_link">Google Maps</label>

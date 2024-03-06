@@ -20,6 +20,7 @@ class SitesettingSeeder extends Seeder
             'office_address' => 'Sinamangal,Kathmandu',
             'office_contact' => '9779851241656',
             'office_email' => 'info.aashatech@gmail.com',
+            'whatsapp_number' => '9779851241656',
             'main_logo' => 'uploads/sitesetting/main_logo.png',
             'side_logo' => 'uploads/sitesetting/side_logo.png',
             'company_registered_date' => '2020-01-02',

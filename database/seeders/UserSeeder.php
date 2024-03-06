@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
     {
         // $superAdminRole = Role::where('name', 'Super Admin')->first();
 
+        //create an superadmin user
         $superAdminUser = User::create([
             'name' => "superadmin",
             'email' => 'info.aashatech@gmail.com',
@@ -25,5 +26,17 @@ class UserSeeder extends Seeder
         $superAdminRole = Role::where('name', 'superadmin')->first();
         $superAdminUser->assignRole($superAdminRole);
 
+
+        // Create an admin user
+        $adminUser = User::create([
+            'name' => "admin",
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        // Assign the admin role to the admin user
+        $adminRole = Role::where('name', 'admin')->first();
+        $adminUser->assignRole($adminRole);
     }
+
 }
