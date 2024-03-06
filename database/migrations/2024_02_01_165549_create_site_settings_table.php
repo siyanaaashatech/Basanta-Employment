@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->text('office_address');
             $table->string('office_contact');
             $table->string('office_email');
+            $table->string('whatsapp_number');
             $table->string('main_logo');
             $table->string('side_logo')->nullable();
             $table->date('company_registered_date');

@@ -49,7 +49,8 @@ class ContactController extends Controller
         $contact->message = $request->message;
         $contact->save();
 
-        return response()->json(['success' => true]);
+        // return response()->json(['success' => true]);
+        return redirect()->back();
     }
 
 

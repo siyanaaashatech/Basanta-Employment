@@ -93,7 +93,7 @@
                 </div>
                 {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
                 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                <script>
+                {{-- <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById('quick_contact').addEventListener('submit', function(event) {
                             event.preventDefault();
@@ -141,7 +141,7 @@
                             });
                         });
                     });
-                </script>
+                </script> --}}
 
             </div>
     </section>

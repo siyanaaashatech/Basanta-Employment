@@ -60,6 +60,11 @@
                             <input type="email" name="office_email" class="form-control" placeholder="Email"
                                 id="office_email" value="{{ $sitesetting->office_email }}">
                         </div>
+                        <div class="form-group">
+                            <label for="whatsapp_number">Whatsapp Number</label>
+                            <input type="text" name="whatsapp_number" class="form-control" placeholder="Whatsapp Number"
+                                id="whatsapp_number" value="{{ $sitesetting->whatsapp_number }}">
+                        </div>
 
                         <div class="form-group">
                             <label for="company_registered_date">Company Registered Date</label>

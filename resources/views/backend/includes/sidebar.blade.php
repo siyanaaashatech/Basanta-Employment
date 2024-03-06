@@ -42,7 +42,7 @@
                 </li>
 
                 {{-- Beginning of Site Settings --}}
-                @hasanyrole('superadmin|admin')
+                @hasanyrole('superadmin')
                     <li class="nav-item">
                         <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
                             <div class="col-auto navbar-vertical-label">Site Settings</div>
@@ -156,7 +156,7 @@
 
 
                 {{-- Beginning of Informations --}}
-                @hasanyrole('superadmin|admin')
+                @hasanyrole('superadmin')
                     <li class="nav-item">
                         <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
                             <div class="col-auto navbar-vertical-label">Informations</div>
@@ -217,7 +217,7 @@
 
 
                 {{-- Beginning of Introduction --}}
-                @hasanyrole('superadmin|admin')
+                @hasanyrole('superadmin')
                     <li class="nav-item">
                         <!-- Navbar vertical label -->
                         <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
@@ -289,7 +289,7 @@
 
 
                 {{-- Beginning of Posts --}}
-                @hasanyrole('superadmin|admin')
+                @hasanyrole('superadmin')
                     <li class="nav-item">
                         <!-- Navbar vertical label -->
                         <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
@@ -505,7 +505,7 @@
                 {{-- End of FAQs --}}
 
                 {{-- Beginning of DIRECTORMESSAGE --}}
-                @hasanyrole('superadmin|admin')
+                @hasanyrole('superadmin')
                     <li class="nav-item">
                         <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
                             <div class="col-auto navbar-vertical-label">Director Messages</div>
