@@ -44,7 +44,6 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 // Frontend routes
 
 Route::get('/', [FrontViewController::class, 'index'])->name('index');
-Route::get('/index', [FrontViewController::class, 'index'])->name('index');
 Route::get('/singleposts/{slug}', [FrontViewController::class, 'singlePost'])->name('SinglePost');
 Route::post('/contactpage', [ContactController::class, 'store'])->name('Contact.store');
 
@@ -74,7 +73,6 @@ Route::prefix('/')->group(function () {
 
 // Authentication routes
 Auth::routes();
-Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 
 
 // Backend routes with prefix and middleware
