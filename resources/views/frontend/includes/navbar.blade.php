@@ -1,3 +1,10 @@
+<style>
+    .nav-link.active,
+    .nav-link.current {
+        background-color: #666;
+        color: #000;
+    }
+</style>
 <!-- Header -->
 <div class="header">
     <nav class="navbar navbar-expand-lg">
@@ -29,10 +36,6 @@
                             <li><a class="dropdown-item" href="{{ route('About') }}">About us</a></li>
                             <li><a class="dropdown-item" href="{{ route('Team') }}">Our Teams</a></li>
                             <li><a class="dropdown-item" href="{{ route('Service') }}">Services</a></li>
-                            {{-- <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -50,21 +53,6 @@
                         </ul>
 
                     </li>
-                    {{-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Universities
-                            </a>
-                            <ul class="dropdown-menu">
-                                @foreach ($universities as $university)
-                                    <li><a class="dropdown-item"
-                                            href="{{ route('singleUniversity', ['slug' => $university->slug]) }}">
-                                            {{ $university->title }}</a></li>
-                                @endforeach
-                            </ul>
-                        </li> --}}
-
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -150,3 +138,32 @@
         </div>
     </nav>
 </div>
+
+{{-- Highlight the active/current (pressed) button --}}
+<script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentURL = window.location.href.split('#')[0];
+
+    navLinks.forEach(link => {
+        if (link.nextElementSibling && link.nextElementSibling.classList.contains('dropdown-menu')) {
+            const subLinks = link.nextElementSibling.querySelectorAll('.dropdown-item');
+
+            subLinks.forEach(subLink => {
+                if (subLink.href && subLink.href.split('#')[0] === currentURL) {
+                    link.classList.add('active');
+                    subLink.classList.add('active');
+                    return;
+                }
+            });
+        } else {
+            if (link.href && link.href.split('#')[0] === currentURL) {
+                link.classList.add('active');
+            }
+        }
+
+        link.addEventListener('click', () => {
+            navLinks.forEach(otherLink => otherLink.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+</script>
