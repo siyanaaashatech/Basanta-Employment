@@ -107,7 +107,7 @@ class StudentDetailController extends Controller
             'country_id' => 'required|exists:countries,id',
             'university_id' => 'required|exists:universities,id',
             'course_id' => 'required|exists:courses,id',
-            'intake_date' => 'required|date',
+            'intake_month_year' => 'required|date',
             'image' => 'nullable|image',
             'documents' => 'nullable|array',
             'documents.*' => 'file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
@@ -128,7 +128,8 @@ class StudentDetailController extends Controller
             }
 
             // Handling document uploads
-            $documentPaths = json_decode($studentDetail->documents, true) ?: [];
+            // $documentPaths = json_decode($studentDetail->documents, true) ?: [];
+            $documentPaths = [];
             if ($request->hasFile('documents')) {
                 foreach ($request->file('documents') as $document) {
                     $fileName = time() . '-' . uniqid() . '.' . $document->getClientOriginalExtension();
@@ -141,6 +142,16 @@ class StudentDetailController extends Controller
                     $documentPaths[] = asset($targetDirectory . '/' . $fileName);
                 }
             }
+            //clear existing file
+            $existingDocuments = json_decode($studentDetail->documents, true);
+            if (is_array($existingDocuments)) {
+                foreach ($existingDocuments as $existingDocument) {
+                    $existingDocumentPath = public_path(str_replace(asset(''), '', $existingDocument));
+                    if (file_exists($existingDocumentPath)) {
+                        unlink($existingDocumentPath);
+                    }
+                }
+            }
             // Updating student details
             $studentDetail->update([
                 'name' => $validated['name'],
@@ -149,7 +160,7 @@ class StudentDetailController extends Controller
                 'country_id' => $validated['country_id'],
                 'university_id' => $validated['university_id'],
                 'course_id' => $validated['course_id'],
-                'intake_date' => $validated['intake_date'],
+                'intake_month_year' => $validated['intake_month_year'],
                 'documents' => json_encode($documentPaths),
                 // 'image' is already set above
             ]);

@@ -385,7 +385,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="pages/user/settings.html">Settings</a> --}}
                     {{-- <a class="dropdown-item" href="pages/authentication/card/logout.html">Logout</a> --}}
-
+                    <a class="dropdown-item" href="{{ route('password.request') }}">{{ __('Change Password') }}</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}

@@ -63,7 +63,7 @@
                     <td>{{ $studentDetail->country->name ?? 'No Country' }}</td>
                     <td>{{ $studentDetail->university->title ?? 'No University' }}</td>
                     <td>{{ $studentDetail->course->title ?? 'No Course' }}</td>
-                    <td>{{ $studentDetail->intake_date ?? '' }}</td>
+                    <td>{{ $studentDetail->intake_month_year ?? '' }}</td>
                     <td>
                         <img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/students_detail/image/' . $studentDetail->image) }}"

@@ -43,8 +43,9 @@
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
                     <td>{{ $category->title }}</td>
-                    <td><img id="preview{{ $loop->iteration }}"
-                            src="{{ asset('uploads/blogpostcategory/' . $category->image) }}" alt="Category Image"
+
+                    <td> <img id="preview{{ $loop->iteration }}"
+                            src="{{ asset('uploads/blogpostcategory/' . $category->image) }}"
                             style="width: 150px; height:150px" /></td>
                     <td>
 
@@ -74,5 +75,4 @@
             };
         };
     </script>
-    </div>
 @endsection
