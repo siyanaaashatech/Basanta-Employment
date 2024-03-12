@@ -73,7 +73,7 @@ Route::prefix('/')->group(function () {
 
 // Authentication routes
 Auth::routes();
-
+Route::post('/change-password', [ResetPasswordController::class, 'updatePassword'])->name('changePassword')->middleware('auth');
 
 // Backend routes with prefix and middleware
 Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
