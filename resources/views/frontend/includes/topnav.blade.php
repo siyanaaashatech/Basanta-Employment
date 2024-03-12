@@ -28,12 +28,7 @@
                             <i class="fab fa-instagram"></i>
                         </span>
                     </a>
-                    {{-- <a href="#"
-                        class="social-buttons__button social-button social-button--github" aria-label="GitHub">
-                        <span class="social-button__inner">
-                            <i class="fab fa-youtube"></i>
-                        </span>
-                    </a> --}}
+                  
 
 
                    
@@ -44,6 +39,8 @@
 
 
             <div class="col-md-6 col-sm-12 top_right">
+                
+                <p class="mt-3">{{ $sitesetting->office_contact }}</p>
 
                 <form action="{{ route('search') }}" method="GET" class="search-form">
                     <input type="text" name="search" placeholder="Search..." required />

@@ -13,7 +13,7 @@
                 <div class="text-white">
                     <h2><b>WANT TO STUDY ABROAD?</b></h2>
                     <h5><b>Institutions We Represent from</b></h5>
-                    <h3><b>
+                    <h3><b class="text-uppercase">
                             @foreach ($countries as $key => $country)
                                 {{ $country->name }}
                                 @if (!$loop->last)
@@ -25,13 +25,14 @@
                                 @endif
                             @endforeach
                         </b></h3>
-                    <h3 class="lastword">Next Intake- February2020</b></h3>
+                    <h3 class="lastword">Next Intake- July 2024</b></h3>
                 </div>
             </div>
             <div class="box2 col-lg-4 col-md-6 col-sm-12">
                 <div class="position-relative">
                     @foreach ($countries->take(3) as $country)
                         @if ($country->image)
+                       
                             <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
                                 <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
                                     style="width: 100%; object-fit: cover; object-position: center; height: 100%">
