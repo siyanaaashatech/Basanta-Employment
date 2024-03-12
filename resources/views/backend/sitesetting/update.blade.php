@@ -75,18 +75,18 @@
                         <div class="form-group">
                             <label for="main_logo">Main Logo</label>
                             <input type="file" name="main_logo" class="form-control" placeholder="Main Logo"
-                                id="main_logo" onchange="previewImage1(event)">
+                                id="main_logo" onchange="previewMainImage(event)">
 
-                            <img id="preview1" src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}"
+                            <img id="main_preview" src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}"
                                 style="max-width: 300px; max-height:300px" />
                         </div>
 
                         <div class="form-group">
                             <label for="side_logo">Side Logo</label>
                             <input type="file" name="side_logo" class="form-control" placeholder="Side Logo"
-                                id="side_logo" onchange="previewImage1(event)">
+                                id="side_logo" onchange="previewSideImage(event)">
 
-                            <img id="preview1" src="{{ asset('uploads/sitesetting/' . $sitesetting->side_logo) }}"
+                            <img id="side_preview" src="{{ asset('uploads/sitesetting/' . $sitesetting->side_logo) }}"
                                 style="max-width: 300px; max-height:300px" />
                         </div>
                         <div class="form-group">
@@ -124,11 +124,20 @@
 
     </form>
     <script>
-        const previewImage1 = e => {
+        const previewMainImage = e => {
             const reader = new FileReader();
             reader.readAsDataURL(e.target.files[0]);
             reader.onload = () => {
-                const preview = document.getElementById('preview1');
+                const preview = document.getElementById('main_preview');
+                preview.src = reader.result;
+            };
+        };
+
+        const previewSideImage = e => {
+            const reader = new FileReader();
+            reader.readAsDataURL(e.target.files[0]);
+            reader.onload = () => {
+                const preview = document.getElementById('side_preview');
                 preview.src = reader.result;
             };
         };

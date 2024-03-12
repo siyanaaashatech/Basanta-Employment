@@ -47,13 +47,9 @@
                     <td>{{ $sitesetting->office_name ?? '' }}</td>
                     <td>{{ $sitesetting->office_email ?? '' }}</td>
                     <td>{{ $sitesetting->office_contact ?? '' }}</td>
-                    <td>
-
-                        <img src="{{ asset('uploads/sitesetting/1707819265.jpg') }}" style="width: 150px; height: 150px;">
-
-
-
-                    </td>
+                    <td><img id="preview{{ $loop->iteration }}"
+                            src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}"
+                            style="width: 150px; height:150px" /></td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <a href="{{ route('admin.site-settings.edit', $sitesetting->id) }}"
