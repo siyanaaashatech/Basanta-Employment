@@ -56,12 +56,6 @@
                                 class="btn btn-warning btn-sm" style="margin-right: 5px;">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
-                            <form action="{{ route('admin.site-settings.destroy', $sitesetting->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
                         </div>
                     </td>
                 </tr>
