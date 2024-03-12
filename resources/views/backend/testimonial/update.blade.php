@@ -78,7 +78,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Update Testimonial</button>
+            <button type="submit" class="btn btn-primary">Update Student Review</button>
         </div>
     </form>
     <script>

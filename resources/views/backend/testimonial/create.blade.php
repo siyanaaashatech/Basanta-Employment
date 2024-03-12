@@ -73,7 +73,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Create Testimonial</button>
+            <button type="submit" class="btn btn-primary">Create Student Review</button>
         </div>
     </form>
 

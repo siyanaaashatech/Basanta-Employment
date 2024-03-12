@@ -52,7 +52,7 @@ Route::prefix('/')->group(function () {
     Route::get('/search', [SearchController::class, 'search'])->name('search');
     Route::get('/contactpage', [SingleController::class, 'render_contact'])->name('Contact');
     Route::get('/aboutus', [SingleController::class, 'render_about'])->name('About');
-    Route::get('/testimonials', [SingleController::class, 'render_testimonial'])->name('Testimonial');
+    Route::get('/studentreviews', [SingleController::class, 'render_testimonial'])->name('Testimonial');
     Route::get('/blogpostcategories', [SingleController::class, 'render_blogpostcategory'])->name('Blogpostcategory');
     Route::get('/blogpostcategory/{slug}', [SingleController::class, 'render_singleBlogpostcategory'])->name('SingleBlogpostcategory');
     Route::get('/team', [SingleController::class, 'render_team'])->name('Team');
