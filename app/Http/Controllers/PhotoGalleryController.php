@@ -25,35 +25,35 @@ class PhotoGalleryController extends Controller
     }
 
     public function store(Request $request)
-{
-    $this->validate($request, [
-        'title' => 'required|string',
-        'img_desc' => 'nullable|string',
-        'img' => 'required|array',
-        'img.*' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048' // maximum file size of 2 MB
-    ]);
-    try {
-        $images = $request->file('img');
-        $path = 'uploads/photogallery/';
-        $convertedImages = [];
-        foreach ($images as $image) {
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path($path), $imageName);
-            $convertedImages[] = $path . $imageName;
+    {
+        $this->validate($request, [
+            'title' => 'required|string',
+            'img_desc' => 'nullable|string',
+            'img' => 'required|array',
+            'img.*' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048' // maximum file size of 2 MB
+        ]);
+        try {
+            $images = $request->file('img');
+            $path = 'uploads/photogallery/';
+            $convertedImages = [];
+            foreach ($images as $image) {
+                $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path($path), $imageName);
+                $convertedImages[] = $path . $imageName;
+            }
+
+            $gallery = new PhotoGallery;
+            $gallery->title = $request->title;
+            $gallery->img_desc = $request->img_desc;
+            $gallery->slug = SlugService::createSlug(PhotoGallery::class, 'slug', $request->title);
+            $gallery->img = $convertedImages;
+
+            $gallery->save();
+            return redirect()->route('admin.photo-galleries.index')->with(['success' => 'Success!! Gallery Created']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => 'Error creating gallery. Please try again.']);
         }
-
-        $gallery = new PhotoGallery;
-        $gallery->title = $request->title;
-        $gallery->img_desc = $request->img_desc;
-        $gallery->slug = SlugService::createSlug(PhotoGallery::class, 'slug', $request->title);
-        $gallery->img = $convertedImages;
-
-        $gallery->save();
-        return redirect()->route('admin.photo-galleries.index')->with(['success' => 'Success!! Gallery Created']);
-    } catch (\Exception $e) {
-        return redirect()->back()->with(['error' => 'Error creating gallery. Please try again.']);
     }
-}
 
 
     public function edit($id)
@@ -68,8 +68,8 @@ class PhotoGalleryController extends Controller
         $this->validate($request, [
             'title' => 'required|string',
             'img_desc' => 'nullable|string',
-            'img' => 'required|array',
-            'img.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048' // maximum file size of 2 MB
+            'img' => 'nullable|array',
+            'img.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // maximum file size of 2 MB
         ]);
 
         try {
