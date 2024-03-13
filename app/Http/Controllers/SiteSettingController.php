@@ -89,7 +89,7 @@ class SiteSettingController extends Controller
             'office_contact' => 'required|string',
             'office_email' => 'required|string',
             'whatsapp_number' => 'required|string',
-            'main_logo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
+            'main_logo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
             'side_logo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
             'company_registered_date' => 'required|date_format:Y-m-d',
             'facebook_link' => 'nullable|url',
@@ -101,24 +101,21 @@ class SiteSettingController extends Controller
         try {
             // $sitesetting = SiteSetting::find($request->id);
             $sitesetting = SiteSetting::findOrFail($id);
-
             if ($request->hasFile('main_logo')) {
-                $newMainLogo = time() . '.' . $request->main_logo->extension();
-                $request->main_logo->move(public_path('uploads/sitesetting'), $newMainLogo);
-                Storage::delete('public/uploads/sitesetting' . $sitesetting->main_logo);
-                $sitesetting->main_logo = $newMainLogo;
-            } else {
-                unset($request['main_logo']);
+                if ($sitesetting->main_logo && file_exists(public_path('uploads/sitesetting/' . $sitesetting->main_logo))) {
+                    unlink(public_path('uploads/sitesetting/' . $sitesetting->main_logo));
+                }
+                $newMainName = time() . '-' . $request->main_logo->getClientOriginalName();
+                $request->main_logo->move(public_path('uploads/sitesetting'), $newMainName);
+                $sitesetting->main_logo = $newMainName;
             }
-
-
             if ($request->hasFile('side_logo')) {
-                $newSideLogo = time() . '.' . $request->side_logo->extension();
-                $request->side_logo->move(public_path('uploads/sitesetting'), $newSideLogo);
-                Storage::delete('uploads/sitesetting' . $sitesetting->side_logo);
-                $sitesetting->side_logo = $newSideLogo;
-            } else {
-                unset($request['side_logo']);
+                if ($sitesetting->side_logo && file_exists(public_path('uploads/sitesetting/' . $sitesetting->side_logo))) {
+                    unlink(public_path('uploads/sitesetting/' . $sitesetting->side_logo));
+                }
+                $newSideName = time() . '-' . $request->side_logo->getClientOriginalName();
+                $request->side_logo->move(public_path('uploads/sitesetting'), $newSideName);
+                $sitesetting->side_logo = $newSideName;
             }
 
             $sitesetting->office_name = $request->office_name;
@@ -126,8 +123,6 @@ class SiteSettingController extends Controller
             $sitesetting->office_contact = $request->office_contact;
             $sitesetting->office_email = $request->office_email;
             $sitesetting->whatsapp_number = $request->whatsapp_number;
-            $sitesetting->main_logo = $newMainLogo;
-            $sitesetting->side_logo = $newSideLogo ?? '';
             $sitesetting->company_registered_date = $request->company_registered_date;
             $sitesetting->facebook_link = $request->facebook_link ?? '';
             $sitesetting->instagram_link = $request->instagram_link ?? '';

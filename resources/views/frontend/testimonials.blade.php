@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __('Testimonials') }}</h1>
+        <h1 class="page_title">{{ __('Student Review') }}</h1>
     </div>
 
-    
+
     <section class="testimonial_page">
         <div class="container">
             <div class="row">
@@ -25,7 +25,7 @@
                             <h3>{{ $testimonial->name }}</h3>
                             <h5>{{ $testimonial->university->title }}</h5>
                             <h6>({{ $testimonial->course->title }})</h6>
-                               
+
                         </div>
 
                     </div>

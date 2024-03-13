@@ -32,11 +32,13 @@
                 <div class="position-relative">
                     @foreach ($countries->take(3) as $country)
                         @if ($country->image)
-                       
-                            <div class="image{{ $loop->index + 1 }} position-absolute" style="height: 300px; width: 150px;">
-                                <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                    style="width: 100%; object-fit: cover; object-position: center; height: 100%">
-                            </div>
+                            <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
+                                <div class="image{{ $loop->index + 1 }} position-absolute"
+                                    style="height: 300px; width: 150px;">
+                                    <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
+                                        style="width: 100%; object-fit: cover; object-position: center; height: 100%">
+                                </div>
+                            </a>
                         @endif
                     @endforeach
                 </div>
@@ -46,21 +48,26 @@
                 <div class="position-relative">
                     @foreach ($countries->slice(3, 2) as $country)
                         @if ($country->image)
-                            <div class="image{{ $loop->index + 4 }} position-absolute" style="height: 300px; width: 150px;">
-                                <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                    style="width: 100%; object-fit: cover; object-position: center; height: 100%">
-                            </div>
+                            <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
+                                <div class="image{{ $loop->index + 4 }} position-absolute"
+                                    style="height: 300px; width: 150px;">
+                                    <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
+                                        style="width: 100%; object-fit: cover; object-position: center; height: 100%">
+                                </div>
+                            </a>
                         @endif
                     @endforeach
 
                     @if ($countries->count() < 5)
                         @foreach ($countries->slice(5 - $countries->count()) as $country)
                             @if ($country->image)
-                                <div class="image{{ $loop->index + 5 }} position-absolute"
-                                    style="height: 300px; width: 150px;">
-                                    <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                        style="width: 100%; object-fit: cover; object-position: center; height: 100%">
-                                </div>
+                                <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
+                                    <div class="image{{ $loop->index + 5 }} position-absolute"
+                                        style="height: 300px; width: 150px;">
+                                        <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
+                                            style="width: 100%; object-fit: cover; object-position: center; height: 100%">
+                                    </div>
+                                </a>
                             @endif
                         @endforeach
                     @endif

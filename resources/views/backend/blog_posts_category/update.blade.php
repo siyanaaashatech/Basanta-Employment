@@ -1,6 +1,17 @@
 @extends('backend.layouts.master')
 
 @section('content')
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
+    @if (Session::has('error'))
+        <div class="alert alert-danger">
+            {{ Session::get('error') }}
+        </div>
+    @endif
     <div class="container">
         <h1>Edit Blog Post Category</h1>
         <form method="POST" action="{{ route('admin.blog-posts-categories.update', $blogPostsCategory->id) }}"
@@ -9,8 +20,8 @@
             @method('PUT')
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ $blogPostsCategory->title }}"
-                    required>
+                <input type="text" class="form-control" id="title" name="title"
+                    value="{{ $blogPostsCategory->title }}" required>
             </div>
             <div class="form-group">
                 <label for="image">Image</label>
