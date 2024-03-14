@@ -87,6 +87,7 @@ class SingleController extends Controller
 
     public function render_singleBlogpostcategory($slug)
     {
+        
         $blogpostcategory = BlogPostsCategory::where('slug', $slug)->firstOrFail();
         $listblogs = BlogPostsCategory::where('slug', '!=', $slug)->latest()->get()->take(5);
 

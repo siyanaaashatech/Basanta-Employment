@@ -8,26 +8,175 @@
 
     <!-- Banner -->
     <div class="banner">
-        <div class="contain row">
-            <div class="box1 col-lg-5 col-md-6 col-sm-12">
-                <div class="text-white">
-                    <h2><b>WANT TO STUDY ABROAD?</b></h2>
-                    <h5><b>Institutions We Represent from</b></h5>
-                    <h3><b class="text-uppercase">
-                            @foreach ($countries as $key => $country)
-                                {{ $country->name }}
-                                @if (!$loop->last)
-                                    @if ($loop->remaining == 1)
-                                        and
-                                    @else
-                                        ,
+        <div class="container">
+            <div class="row">
+                <div class="box1 col-lg-5 col-md-6 col-sm-12">
+                    <div class="text-white">
+                        <h2><b>WANT TO STUDY ABROAD?</b></h2>
+                        <h5><b>Institutions We Represent from</b></h5>
+                        <h3><b class="text-uppercase">
+                                @foreach ($countries as $key => $country)
+                                    {{ $country->name }}
+                                    @if (!$loop->last)
+                                        @if ($loop->remaining == 1)
+                                            and
+                                        @else
+                                            ,
+                                        @endif
                                     @endif
-                                @endif
-                            @endforeach
-                        </b></h3>
-                    <h3 class="lastword">Next Intake- July 2024</b></h3>
+                                @endforeach
+                            </b></h3>
+                        <h3 class="lastword">"Explore Your Dreams"</b></h3>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <div id="carouselExampleCaptions" class="carousel slide">
+                        <div class="carousel-indicators">
+                            @if (!$countries->isEmpty())
+                                @foreach ($countries as $key => $country)
+                                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                                        data-bs-slide-to="{{ $key }}" class="{{ $key === 0 ? 'active' : '' }}"
+                                        aria-current="{{ $key === 0 ? 'true' : 'false' }}"
+                                        aria-label="Slide {{ $key + 1 }}"></button>
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="carousel-inner">
+                            @if (!$countries->isEmpty())
+                                @foreach ($countries as $key => $country)
+                                <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
+
+                                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                        <div class="image">
+                                            @if ($country->image)
+                                                <img src="{{ asset('uploads/country/' . $country->image) }}"
+                                                    class="d-block w-100" alt="{{ $country->name }}">
+                                            @else
+                                                <img src="{{ asset('image/default.jpg') }}" class="d-block w-100"
+                                                    alt="Default Image">
+                                            @endif
+                                        </div>
+                                        <div class="overlay"></div>
+                                        <div class="carousel-caption d-none d-md-block">
+                                                <h5>{{ $country->name }}</h5>
+                                            <p>{{ Str::limit(strip_tags($country->content), 200) }}</p>
+                                            {{-- <p>{{ $country->content ? Str::limit(strip_tags($country->content), 200) : 'No content available' }}
+                                        </p> --}}
+                                        </div>
+                                    </div>
+                                </a>
+                                @endforeach
+                            @endif
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- flotbox -->
+    <section class="secondSection">
+        <div class="contain container">
+            <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4">
+                @foreach ($blogs as $blog)
+                    <div class="card col-lg-4" style="max-width: 350px;">
+                        <div class="row">
+                            <div class="col-4">
+                                <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
+                                    <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}"
+                                        class="img-fluid rounded-start" alt="...">
+                                </a>
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <p class="card-text">{{ Str::limit(strip_tags($blog->content), 90) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <!-- Services -->
+        <div class="contain container">
+
+            <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4 container">
+                <h1 class="text-white heading_title">Our Services</h1>
+                @foreach ($services as $service)
+                    <div class="col-lg-4 " style="max-width: 325px;">
+                        <div class="box text-center">
+                            <div class="circle-3 text-white">
+                                <b>
+                                    <p class="my-2">{{ $loop->iteration }}</p>
+                                </b>
+                            </div>
+                            <div class="circle-1">
+                                <div class="circle-2">
+                                    <div class="text">
+
+                                        <a href="{{ route('SingleService', ['slug' => $service->slug]) }}"
+                                            class="text-decoration-none">
+                                            <h2>{{ $service->title }}</h2>
+                                        </a>
+
+                                        <h4>{{ Str::limit(strip_tags($service->description), 170) }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+                <div class="text-center">
+                    <a href="{{ route('Service') }}">
+                        <button class="btn bg-primary text-white m-5">View all Services</button>
+                    </a>
                 </div>
             </div>
+        </div>
+    </section>
+    <!-- Slider -->
+    <div class="container my-5">
+        <div class="slider row">
+            <div class="word col-lg-5">
+                <div class="text">
+                    <h2>
+                        <p>
+                            @if ($sliderPost)
+                                <h2>{{ $sliderPost->title }}</h2>
+                                <p>{{ Str::limit(strip_tags($sliderPost->description), 600) }}</p>
+                            @else
+                                <p>No slider post available</p>
+                            @endif
+                        </p>
+                    </h2>
+                </div>
+
+
+                <a href="{{ route('Countries') }}">
+                    <button class="btn bg-primary text-white mt-5">SEE ALL COUNTRIES</button>
+                </a>
+
+
+
+            </div>
+
             <div class="box2 col-lg-4 col-md-6 col-sm-12">
                 <div class="position-relative">
                     @foreach ($countries->take(3) as $country)
@@ -74,143 +223,8 @@
                 </div>
             </div>
 
-        </div>
-    </div>
 
 
-    <!-- flotbox -->
-    <section class="secondSection">
-        <div class="contain container">
-            <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4">
-                @foreach ($blogs as $blog)
-                    <div class="card col-lg-4" style="max-width: 350px;">
-                        <div class="row">
-                            <div class="col-4">
-                                <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
-                                    <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}"
-                                        class="img-fluid rounded-start" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <p class="card-text">{{ Str::limit(strip_tags($blog->content), 80) }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <!-- Services -->
-        <div class="contain container">
-
-            <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4 container">
-                <h1 class="text-white heading_title">Our Services</h1>
-                @foreach ($services as $service)
-                    <div class="col-lg-4 " style="max-width: 325px;">
-                        <div class="box text-center">
-                            <div class="circle-3 text-white">
-                                <b>
-                                    <p class="my-2">{{ $loop->iteration }}</p>
-                                </b>
-                            </div>
-                            <div class="circle-1">
-                                <div class="circle-2">
-                                    <div class="text">
-
-                                        <a href="{{ route('SingleService', ['slug' => $service->slug]) }}"
-                                            class="text-decoration-none">
-                                            <h2>{{ $service->title }}</h2>
-                                        </a>
-
-                                        <h4>{{ Str::limit(strip_tags($service->description), 105) }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                @endforeach
-                <div class="text-center">
-                    <a href="{{ route('Service') }}">
-                        <button class="btn bg-primary text-white m-5">View all Services</button>
-                    </a>
-                </div>
-            </div>
-    </section>
-    <!-- Slider -->
-    <div class="container my-5">
-        <div class="slider row">
-            <div class="word col-md-6">
-                <div class="text">
-                    <h2>
-                        <p>
-                            @if ($sliderPost)
-                                <h2>{{ $sliderPost->title }}</h2>
-                                <p>{{ Str::limit(strip_tags($sliderPost->description), 600) }}</p>
-                            @else
-                                <p>No slider post available</p>
-                            @endif
-                        </p>
-                    </h2>
-                </div>
-
-
-                <a href="{{ route('Countries') }}">
-                    <button class="btn bg-primary text-white mt-5">SEE ALL COUNTRIES</button>
-                </a>
-
-
-
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <div id="carouselExampleCaptions" class="carousel slide">
-                    <div class="carousel-indicators">
-                        @if (!$countries->isEmpty())
-                            @foreach ($countries as $key => $country)
-                                <button type="button" data-bs-target="#carouselExampleCaptions"
-                                    data-bs-slide-to="{{ $key }}" class="{{ $key === 0 ? 'active' : '' }}"
-                                    aria-current="{{ $key === 0 ? 'true' : 'false' }}"
-                                    aria-label="Slide {{ $key + 1 }}"></button>
-                            @endforeach
-                        @endif
-                    </div>
-                    <div class="carousel-inner">
-                        @if (!$countries->isEmpty())
-                            @foreach ($countries as $key => $country)
-                                <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                                    <div class="image">
-                                        @if ($country->image)
-                                            <img src="{{ asset('uploads/country/' . $country->image) }}"
-                                                class="d-block w-100" alt="{{ $country->name }}">
-                                        @else
-                                            <img src="{{ asset('image/default.jpg') }}" class="d-block w-100"
-                                                alt="Default Image">
-                                        @endif
-                                    </div>
-                                    <div class="overlay"></div>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>{{ $country->name }}</h5>
-                                        <p>{{ $country->content ? Str::limit(strip_tags($country->content), 200) : 'No content available' }}
-                                        </p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endif
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
 
         </div>
     </div>
@@ -341,8 +355,8 @@
                             <div class="row test_row">
                                 <div class="col-lg-6 col-md-6">
                                     @if ($testimonial->image)
-                                        <img src="{{ asset($testimonial->image) }}" class="d-block w-100 test_image"
-                                            alt="">
+                                        <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
+                                            class="d-block w-100 test_image" alt="">
                                     @else
                                         <img src="{{ asset('image/girl.jpg') }}" class=" d-block w-100 test_image"
                                             alt="">

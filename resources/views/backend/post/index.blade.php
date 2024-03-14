@@ -46,7 +46,8 @@
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td width="5%">{{ $loop->iteration }}</td>
                         <td>{{ $post->title ?? '' }}</td>
-                        <td> {!! $summernoteContent->processContent($post->description) !!} </td><!-- Display description -->
+                        <td>{{ Str::limit(strip_tags($post->description), 200) }}</td>
+                       
                         <td>{{ $post->category->title ?? 'No Country' }}</td>
                         <td>
                             <img src="{{ url('uploads/post/' . $post->image) }}" alt="Post Image" style="max-width: 100px;">
