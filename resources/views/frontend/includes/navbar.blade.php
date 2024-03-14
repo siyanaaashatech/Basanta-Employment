@@ -119,7 +119,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Testimonial') }}">Student Review</a>
+                        <a class="nav-link text-primary" href="{{ route('Testimonial') }}">Reviews</a>
                     </li>
 
                     <li class="nav-item">

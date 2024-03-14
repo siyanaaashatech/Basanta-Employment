@@ -30,27 +30,37 @@
             </div>
 
         </li>
+
+        <?php
+        $siteSettings = \App\Models\SiteSetting::first();
+        $user = Auth::user();
+        $roleNames = $user->roles->pluck('name')->implode(', ');
+        
+        if ($siteSettings && $siteSettings->main_logo) {
+            $logoUrl = asset('uploads/sitesetting/' . $siteSettings->main_logo);
+        } else {
+            $logoUrl = asset('adminassets/assets/img/team/3-thumb.png');
+        }
+        ?>
+
+
+        <li class="nav-item">
+            <div class="role-name">
+                <div class="role-name">{{ $roleNames }}</div>
+                {{-- <div class="user-email">{{ Auth::user()->email }}</div> --}}
+            </div>
+
+        </li>
+
+
         <li class="nav-item dropdown"><a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php
-                $siteSettings = \App\Models\SiteSetting::first();
-                $user = Auth::user();
-                $roleNames = $user->roles->pluck('name')->implode(', ');
-                
-                if ($siteSettings && $siteSettings->main_logo) {
-                    $logoUrl = asset('uploads/sitesetting/' . $siteSettings->main_logo);
-                } else {
-                    $logoUrl = asset('adminassets/assets/img/team/3-thumb.png');
-                }
-                ?>
+
                 <div class="avatar-container">
                     <div class="avatar avatar-xl">
                         <img class="rounded-circle" src="{{ $logoUrl }}" alt="">
                     </div>
-                    <div class="role-name">
-                        <div class="role-name">{{ $roleNames }}</div>
-                        {{-- <div class="user-email">{{ Auth::user()->email }}</div> --}}
-                    </div>
+                  
                 </div>
                 <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0"
                     aria-labelledby="navbarDropdownUser">

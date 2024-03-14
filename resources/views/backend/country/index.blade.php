@@ -53,7 +53,8 @@
                                 style="width: 150px; height:150px" /></td>
                         <td>
                             <!-- Displaying Summernote content -->
-                            {!! $summernoteContent->processContent($country->content) !!}
+                            {{ Str::limit(strip_tags($country->content), 200) }}
+                           
                         </td>
                         <td>
                             <div style="display: flex; flex-direction:row;">

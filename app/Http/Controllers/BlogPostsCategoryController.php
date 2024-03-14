@@ -39,7 +39,7 @@ class BlogPostsCategoryController extends Controller
             $request->image->move(public_path('uploads/blogpostcategory'), $newImageName);
 
             $summernoteContent = new SummernoteContent();
-            $processedContent = $summernoteContent->processContent($request->content);
+            $processedContent = $summernoteContent->processContent($request->input('content'));
 
             $category = new BlogPostsCategory();
             $category->title = $request->title;
@@ -87,6 +87,8 @@ class BlogPostsCategoryController extends Controller
 
             $message->title = $request->input('title');
             $message->content = $processedContent;
+            $message->slug = SlugService::createSlug(BlogPostsCategory::class, 'slug', $request->input('title'), ['unique' => false, 'source' => 'title', 'onUpdate' => true], $id);
+
             $message->save();
 
             return redirect()->route('admin.blog-posts-categories.index')->with('success', 'Blog Post updated successfully.');
