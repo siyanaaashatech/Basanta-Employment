@@ -57,31 +57,69 @@
                                 style="width: 150px; height:150px" /></td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
-                                <a href="{{ route('admin.teams.edit', $member->id) }}" class="btn btn-warning btn-sm"
-                                    style="margin-right: 5px;"><i class="fas fa-edit"></i> Edit</a>
-                                <form action="{{ route('admin.teams.destroy', $member->id) }}" method="POST"
-                                    onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
+                                <button class="btn btn-warning btn-sm" data-toggle="modal"
+                                    data-target="#editModal{{ $member->id }}" style="margin-right: 5px;"><i
+                                        class="fas fa-edit"></i> Edit</button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#deleteModal{{ $member->id }}"><i class="fas fa-trash"></i>
+                                    Delete</button>
                             </div>
                         </td>
                     </tr>
+
+                    <!-- Edit Modal -->
+                    <div class="modal fade" id="editModal{{ $member->id }}" tabindex="-1" role="dialog"
+                        aria-labelledby="editModalLabel{{ $member->id }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel{{ $member->id }}">Edit Team Member</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Your edit form content here -->
+                                    <p>Edit form content goes here</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <a href="{{ route('admin.teams.edit', $member->id) }}" class="btn btn-primary">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deleteModal{{ $member->id }}" tabindex="-1" role="dialog"
+                        aria-labelledby="deleteModalLabel{{ $member->id }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel{{ $member->id }}">Delete Team Member
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this team member?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <form id="deleteForm{{ $member->id }}"
+                                        action="{{ route('admin.teams.destroy', $member->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
             </tbody>
 
         </table>
     </div>
-
-    <script>
-        const previewImage1 = e => {
-            const reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onload = () => {
-                const preview = document.getElementById('preview1');
-                preview.src = reader.result;
-            };
-        };
-    </script>
 @endsection

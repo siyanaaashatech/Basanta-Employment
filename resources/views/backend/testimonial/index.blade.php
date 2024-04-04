@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
 
@@ -15,9 +14,6 @@
             {{ Session::get('error') }}
         </div>
     @endif
-
-
-
 
     <div class="row mb-2">
         <div class="col-sm-6">
@@ -35,7 +31,6 @@
             </ol>
         </div><!-- /.col -->
     </div><!-- /.row -->
-
 
     <table class="table table-bordered table-hover">
         <thead>
@@ -62,29 +57,74 @@
                     <td>{{ $testimonial->description ?? '' }}</td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
-                            <a href="{{ route('admin.testimonials.edit', $testimonial->id) }}"
-                                class="btn btn-warning btn-sm" style="margin-right: 5px;"><i class="fas fa-edit"></i>
-                                Edit</a>
-                            <form action="{{ route('admin.testimonials.destroy', $testimonial->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+                            <!-- Edit Button -->
+                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                data-target="#editModal{{ $testimonial->id }}">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <!-- Delete Button -->
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal{{ $testimonial->id }}">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
                         </div>
                     </td>
                 </tr>
+
+                <!-- Edit Modal -->
+                <div class="modal fade" id="editModal{{ $testimonial->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editModalLabel{{ $testimonial->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel{{ $testimonial->id }}">Edit Testimonial</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>To edit this testimonial, please click the button below:</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a href="{{ route('admin.testimonials.edit', $testimonial->id) }}"
+                                    class="btn btn-primary">Edit Testimonial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Delete Modal -->
+                <div class="modal fade" id="deleteModal{{ $testimonial->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteModalLabel{{ $testimonial->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel{{ $testimonial->id }}">Delete Testimonial</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete this testimonial?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <form action="{{ route('admin.testimonials.destroy', $testimonial->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
         </tbody>
     </table>
 
-
-
-
     <!-- Main row -->
-
-
-
 
     <script>
         const previewImage = e => {

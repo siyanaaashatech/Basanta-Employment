@@ -16,16 +16,12 @@
         </div>
     @endif
 
-
-
-
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.courses.create') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                    Course</button></a>
-            <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
-                    Back</button></a>
+            <a href="{{ route('admin.courses.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
+                Course</a>
+            <a href="{{ url('admin') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -51,38 +47,72 @@
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
                     <td>{{ $course->title ?? '' }}</td>
-                    <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/course/' . $course->image) }}"
+                    <td><img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/course/' . $course->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>
-                        <!-- Displaying Summernote content -->
-                        {{ Str::limit(strip_tags($course->description), 200) }}
-           
-                    </td>
+                    <td>{{ Str::limit(strip_tags($course->description), 200) }}</td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
-                            <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-warning btn-sm"
-                                style="margin-right: 5px;"><i class="fas fa-edit"></i>
-                                Edit</a>
-                            <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+                            <button class="btn btn-warning btn-sm" data-toggle="modal"
+                                data-target="#editModal{{ $course->id }}" style="margin-right: 5px;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal{{ $course->id }}"><i class="fas fa-trash"></i> Delete</button>
                         </div>
                     </td>
                 </tr>
+
+                <!-- Edit Modal -->
+                <div class="modal fade" id="editModal{{ $course->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editModalLabel{{ $course->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel{{ $course->id }}">Edit Course</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Your edit form content here -->
+                                <p>Edit form content goes here</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delete Modal -->
+                <div class="modal fade" id="deleteModal{{ $course->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteModalLabel{{ $course->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel{{ $course->id }}">Delete Course</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this course?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <form id="deleteForm{{ $course->id }}"
+                                    action="{{ route('admin.courses.destroy', $course->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
         </tbody>
     </table>
-
-
-
-
-    <!-- Main row -->
-
-
-
 
     <script>
         const previewImage = e => {

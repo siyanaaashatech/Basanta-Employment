@@ -38,7 +38,6 @@
                 <th>Title</th>
                 <th>Image</th>
                 <th>Action</th>
-
             </tr>
         </thead>
         <tbody>
@@ -51,27 +50,87 @@
                             style="width: 150px; height:150px" /></td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
-                            <a href="{{ route('admin.cover-images.edit', $coverimage->id) }}"
-                                class="btn btn-warning btn-sm" style="margin-right: 5px;"><i class="fas fa-edit"></i>
-                                Edit</a>
-                            <form action="{{ route('admin.cover-images.destroy', $coverimage->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+                            <!-- Edit button triggers edit modal -->
+                            <button class="btn btn-warning btn-sm" data-toggle="modal"
+                                data-target="#editCoverImageModal{{ $coverimage->id }}" style="margin-right: 5px;">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <!-- Delete button triggers delete modal -->
+                            <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteCoverImageModal{{ $coverimage->id }}">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
                         </div>
                     </td>
                 </tr>
+
+                <!-- Edit Cover Image Modal -->
+                <div class="modal fade" id="editCoverImageModal{{ $coverimage->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editCoverImageModalLabel{{ $coverimage->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <!-- Modal header -->
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editCoverImageModalLabel{{ $coverimage->id }}">Edit Cover
+                                    Image</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <!-- Form for editing the cover image -->
+                                <form id="editCoverImageForm{{ $coverimage->id }}"
+                                    action="{{ route('admin.cover-images.edit', $coverimage->id) }}" method="GET">
+                                    @csrf
+                                    <!-- Your form fields for editing -->
+                                </form>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary"
+                                    form="editCoverImageForm{{ $coverimage->id }}">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delete Cover Image Modal -->
+                <div class="modal fade" id="deleteCoverImageModal{{ $coverimage->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteCoverImageModalLabel{{ $coverimage->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <!-- Modal header -->
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteCoverImageModalLabel{{ $coverimage->id }}">Delete Cover
+                                    Image</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <!-- Content for deleting cover image goes here -->
+                                Are you sure you want to delete this cover image?
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <form id="deleteCoverImageForm{{ $coverimage->id }}"
+                                    action="{{ route('admin.cover-images.destroy', $coverimage->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
         </tbody>
 
     </table>
-
-
-    {{-- </div>
-    </section> --}}
-
 
     <script>
         const previewImage1 = e => {

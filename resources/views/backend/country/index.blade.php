@@ -2,7 +2,6 @@
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
-
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -19,8 +18,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.countries.create') }}"><button class="btn btn-primary btn-sm"><i
-                        class="fa fa-plus"></i>Add
-                    Country</button></a>
+                        class="fa fa-plus"></i>Add Country</button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -54,22 +52,86 @@
                         <td>
                             <!-- Displaying Summernote content -->
                             {{ Str::limit(strip_tags($country->content), 200) }}
-                           
                         </td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
-                                <a href="{{ route('admin.countries.edit', $country->id) }}" class="btn btn-warning btn-sm"
-                                    style="margin-right: 5px;"><i class="fas fa-edit"></i>
-                                    Edit</a>
-                                <form action="{{ route('admin.countries.destroy', $country->id) }}" method="POST"
-                                    onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
+                                <!-- Edit Button with Modal -->
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                    data-target="#editModal{{ $country->id }}" style="margin-right: 5px;">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+
+                                <!-- Delete Button with Modal -->
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#deleteModal{{ $country->id }}">
+                                    Delete
+                                </button>
                             </div>
                         </td>
                     </tr>
+
+                    <!-- Edit Modal -->
+                    <div class="modal fade" id="editModal{{ $country->id }}" tabindex="-1" role="dialog"
+                        aria-labelledby="editModalLabel{{ $country->id }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel{{ $country->id }}">Edit Country</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Form for editing the country -->
+                                    <form action="{{ route('admin.countries.update', $country->id) }}" method="POST">
+                                        @csrf
+                                        <!-- Your form fields for editing -->
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <!-- Change made: Added form with action and method -->
+                                    <form id="editForm{{ $country->id }}" method="GET" action="{{ route('admin.countries.edit', $country->id) }}">
+                                        <!-- CSRF token -->
+                                        @csrf
+                                        <!-- Edit button -->
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deleteModal{{ $country->id }}" tabindex="-1" role="dialog"
+                        aria-labelledby="deleteModalLabel{{ $country->id }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel{{ $country->id }}">Delete Country</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this country?
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('admin.countries.destroy', $country->id) }}" method="POST"
+                                        id="deleteForm{{ $country->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
             @else
                 <tr>
@@ -78,15 +140,4 @@
             @endif
         </tbody>
     </table>
-    <script>
-        const previewImage = e => {
-            const reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onload = () => {
-                const preview = document.getElementById('preview');
-                preview.src = reader.result;
-            };
-        };
-    </script>
-
 @endsection

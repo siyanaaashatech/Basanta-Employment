@@ -5,7 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+                    <a href="{{ route('admin.teams.index') }}"><button class="btn btn-primary btn-sm"><i
+                                class="fa fa-arrow-left"></i>
+                            Back</button></a>
                     <div class="card-header">Edit Team Member</div>
+
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('admin.teams.update', ['team' => $teamMember->id]) }}"
@@ -70,7 +74,7 @@
         const preview = document.getElementById('preview');
         preview.src = URL.createObjectURL(event.target.files[0]);
         preview.onload = () => {
-            URL.revokeObjectURL(preview.src); 
+            URL.revokeObjectURL(preview.src);
         };
     };
 </script>

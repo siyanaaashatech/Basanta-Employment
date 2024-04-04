@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
 
@@ -50,37 +49,80 @@
                     <td>{{ $service->title ?? '' }}</td>
                     <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/service/' . $service->image) }}"
                             style="width: 150px; height:150px" /></td>
-                            <td> 
-                                <!-- Displaying Summernote content -->
-                                {!! $summernoteContent->processContent($service->description) !!}
-                            </td>
+                    <td>
+                        <!-- Displaying Summernote content -->
+                        {!! $summernoteContent->processContent($service->description) !!}
+                    </td>
 
 
                     <td>
                         <div style="display: flex; flex-direction:row;">
-                            <a href="{{ route('admin.services.edit', $service->id) }}" class="btn btn-warning btn-sm"
-                                style="margin-right: 5px;"><i class="fas fa-edit"></i>
-                                Edit</a>
-                            <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+                            <button class="btn btn-warning btn-sm" data-toggle="modal"
+                                data-target="#editModal{{ $service->id }}" style="margin-right: 5px;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal{{ $service->id }}"><i class="fas fa-trash"></i> Delete</button>
                         </div>
                     </td>
                 </tr>
+
+                <!-- Edit Modal -->
+
+                <div class="modal fade" id="editModal{{ $service->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editModalLabel{{ $service->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <!-- Modal header -->
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel{{ $service->id }}">Edit Service</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <p>Are you sure you want to edit this service?</p>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <form action="{{ route('admin.services.edit', $service->id) }}" method="GET">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Delete Modal -->
+                <div class="modal fade" id="deleteModal{{ $service->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteModalLabel{{ $service->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel{{ $service->id }}">Delete Service</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this service?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <form id="deleteForm{{ $service->id }}"
+                                    action="{{ route('admin.services.destroy', $service->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
         </tbody>
     </table>
-    <script>
-        $(document).ready(function() {
-            function extractPlainTextFromSummernote() {
-                var plainText = $('.note-editable')
-                    .text(); // Assuming '.note-editable' is the class used by Summernote
-                console.log(plainText); // For demonstration purposes, you can log the plainText to the console
-                // Now, you can do something with the plainText, such as saving it to your database
-            }
-        });
-    </script>
 @endsection

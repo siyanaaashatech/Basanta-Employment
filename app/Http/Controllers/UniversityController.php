@@ -23,45 +23,53 @@ class UniversityController extends Controller
         return view('backend.university.create', ['countries' => $countries, 'page_title' => 'Create University']);
     }
     public function store(Request $request)
-    {
-        // dd($request);
-        $this->validate($request, [
-            'logo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
-            'title' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'country_id' => 'required|exists:countries,id',
-            'phone_no' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'email' => 'nullable|email',
-            'website' => 'nullable|url',
+{
+    // Validate the incoming request
+    // $this->validate($request, [
+    //     'logo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
+    //     'title' => 'required|string|max:255',
+    //     'address' => 'required|string|max:255',
+    //     'country_id' => 'required|exists:countries,id',
+    //     'phone_no' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/',
+    //     'email' => 'nullable|email',
+    //     'website' => 'nullable|url',
+    // ]);
 
-        ]);
-        try {
-            if ($request->hasFile('logo')) {
-                $newLogo = time() . '.' . $request->logo->getClientOriginalName();
-                $request->logo->move('uploads/university/', $newLogo);
-            } else {
-                $newLogo = "NoImage";
-            }
-
-            $university = new University;
-            $university->logo = $newLogo;
-            $university->title = $request->title;
-            $university->address = $request->address;
-            $university->country_id = $request->country_id;
-            $university->slug = SlugService::createSlug(University::class, 'slug', $request->title);
-            $university->phone_no = $request->phone_no;
-            $university->email = $request->email;
-            $university->website = $request->website;
-
-            if ($university->save()) {
-                return redirect()->route('admin.universities.index')->with('success', 'Success! University created.');
-            } else {
-                return redirect()->back()->with('error', 'Error! University  not created.');
-            }
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error! Something went wrong.');
+    try {
+        // Handle file upload
+        if ($request->hasFile('logo')) {
+            $newLogo = time() . '.' . $request->logo->getClientOriginalExtension();
+            $request->logo->move(public_path('uploads/university/'), $newLogo);
+        } else {
+            $newLogo = "NoImage";
         }
+
+        // Generate slug
+        $slug = SlugService::createSlug(University::class, 'slug', $request->title);
+
+        // Create a new instance of University
+        $university = new University;
+        $university->logo = $newLogo;
+        $university->title = $request->title;
+        $university->address = $request->address;
+        $university->country_id = $request->country_id;
+        $university->slug = $slug; // Assign generated slug
+        $university->phone_no = $request->phone_no;
+        $university->email = $request->email;
+        $university->website = $request->website;
+
+        // Save the university
+        if ($university->save()) {
+            return redirect()->route('admin.universities.index')->with('success', 'Success! University created.');
+        } else {
+            return redirect()->back()->with('error', 'Error! University not created.');
+        }
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Error! Something went wrong.');
     }
+}
+
+
     public function edit($id)
     {
         $countries = Country::all();

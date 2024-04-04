@@ -95,19 +95,71 @@
 
                     <td>
                         <div style="display: flex; flex-direction:row;">
-                            <a href="{{ route('admin.student-details.edit', $studentDetail->id) }}"
-                                class="btn btn-warning btn-sm" style="margin-right: 5px;">
+                            <!-- Edit Button -->
+                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                data-target="#editModal{{ $studentDetail->id }}">
                                 <i class="fas fa-edit"></i> Edit
-                            </a>
-                            <form action="{{ route('admin.student-details.destroy', $studentDetail->id) }}" method="POST"
-                                onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+                            </button>
+                            <!-- Delete Button -->
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal{{ $studentDetail->id }}">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
                         </div>
                     </td>
                 </tr>
+
+                <!-- Edit Modal -->
+                <div class="modal fade" id="editModal{{ $studentDetail->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editModalLabel{{ $studentDetail->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel{{ $studentDetail->id }}">Edit Student Detail
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>To edit this student detail, please click the button below:</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a href="{{ route('admin.student-details.edit', $studentDetail->id) }}"
+                                    class="btn btn-primary">Edit Student Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delete Modal -->
+                <div class="modal fade" id="deleteModal{{ $studentDetail->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteModalLabel{{ $studentDetail->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel{{ $studentDetail->id }}">Delete Student Detail
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete this student detail?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <form action="{{ route('admin.student-details.destroy', $studentDetail->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
         </tbody>
     </table>

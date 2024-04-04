@@ -17,8 +17,12 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
-                    Back</button></a>
+            <!-- Update the href attribute to point to the index route -->
+            <a href="{{ route('admin.countries.index') }}">
+                <button class="btn btn-primary btn-sm">
+                    <i class="fa fa-arrow-left"></i> Back
+                </button>
+            </a>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -31,30 +35,33 @@
     <form id="quickForm" method="POST" action="{{ route('admin.countries.update', $country->id) }}"
         enctype="multipart/form-data">
         @csrf
-        @method('PUT') <!-- Spoofing a PUT request -->
-        <div class="card-body">
-            <div class="form-group">
-                <label for="name">Name</label><span style="color:red; font-size:large"> *</span>
-                <input style="width:auto;" type="text" name="name" class="form-control" id="name"
-                    placeholder="Name" value="{{ old('name', $country->name) }}" required>
-            </div>
-
-            <div>
-                <label for="content">Content:</label>
-                <textarea name="content" id="content" cols="30" rows="10">{{ old('content', $country->content) }}</textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="image">Image</label>
-                <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
-                <img id="preview1" src="{{ asset('uploads/country/' . $country->image) }}"
-                    style="max-width: 300px; max-height:300px" />
-            </div>
+        @method('PUT')
+        <!-- Form content goes here -->
+    </form>
+    Spoofing a PUT request -->
+    <div class="card-body">
+        <div class="form-group">
+            <label for="name">Name</label><span style="color:red; font-size:large"> *</span>
+            <input style="width:auto;" type="text" name="name" class="form-control" id="name" placeholder="Name"
+                value="{{ old('name', $country->name) }}" required>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Update</button>
+
+        <div>
+            <label for="content">Content:</label>
+            <textarea name="content" id="content" cols="30" rows="10">{{ old('content', $country->content) }}</textarea>
         </div>
+
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
+            <img id="preview1" src="{{ asset('uploads/country/' . $country->image) }}"
+                style="max-width: 300px; max-height:300px" />
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
     </form>
 
     <script>

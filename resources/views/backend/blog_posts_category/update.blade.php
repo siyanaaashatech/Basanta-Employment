@@ -18,11 +18,13 @@
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <a href="{{ route('admin.blog-posts-categories.index') }}" class="btn btn-secondary">Back</a>
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" id="title" name="title"
                     value="{{ $blogPostsCategory->title }}" required>
             </div>
+            
             <div class="form-group">
                 <label for="image">Image</label>
                 <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
@@ -35,6 +37,8 @@
                 <textarea class="form-control summernote" id="content" name="content" rows="5" required>{{ $blogPostsCategory->content }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Update Category</button>
+            <!-- Update the back button to redirect to the index route -->
+
         </form>
     </div>
 

@@ -33,44 +33,44 @@ class FrontViewController extends Controller
 
 
         $lastCategory = Category::find('5');
-        $categoryId = $lastCategory->id;
-        $countryUniversityCategory = Category::findOrFail($categoryId);
-        $sliderPost = $countryUniversityCategory->posts()->latest()->first();
-        $enrollPost = $countryUniversityCategory->posts()->orderBy('id', 'desc')->skip(1)->first();
+        // $categoryId = $lastCategory->id;
+        // $countryUniversityCategory = Category::findOrFail($categoryId);
+        // $sliderPost = $countryUniversityCategory->posts()->latest()->first();
+        // $enrollPost = $countryUniversityCategory->posts()->orderBy('id', 'desc')->skip(1)->first();
 
 
 
 
 
-        return view('frontend.index', compact([
-            'services',
-            'contacts',
-            'blogs',
-            'courses',
-            'testimonials',
-            'countries',
-            'sliderPost',
-            'enrollPost'
-        ]));
-    }
-    public function singlePost($slug)
-    {
-        $post = Post::where('slug', $slug)->firstOrFail();
-        $relatedPosts = Post::where('id', '!=', $post->id)->get();
+    //     return view('frontend.index', compact([
+    //         'services',
+    //         'contacts',
+    //         'blogs',
+    //         'courses',
+    //         'testimonials',
+    //         'countries',
+    //         'sliderPost',
+    //         'enrollPost'
+    //     ]));
+    // }
+//     public function singlePost($slug)
+//     {
+//         $post = Post::where('slug', $slug)->firstOrFail();
+//         $relatedPosts = Post::where('id', '!=', $post->id)->get();
 
-        return view('frontend.posts', compact('post', 'relatedPosts'));
-    }
+//         return view('frontend.posts', compact('post', 'relatedPosts'));
+//     }
 
 
-    public function about()
-    {
-        $serviceList = Service::latest()->get()->take(6);
-        $categories = Category::all();
-        $services = Service::latest()->get();
-        $sitesetting = SiteSetting::first();
-        $about = About::first();
-        $images = PhotoGallery::latest()->get();
+//     public function about()
+//     {
+//         $serviceList = Service::latest()->get()->take(6);
+//         $categories = Category::all();
+//         $services = Service::latest()->get();
+//         $sitesetting = SiteSetting::first();
+//         $about = About::first();
+//         $images = PhotoGallery::latest()->get();
 
-        return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about', 'services', 'images'));
-    }
-}
+//         return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about', 'services', 'images'));
+//     }
+// }
