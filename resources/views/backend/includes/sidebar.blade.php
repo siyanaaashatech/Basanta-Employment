@@ -130,7 +130,7 @@
                                     <a class="nav-link {{ Request::segment(2) == 'contact-details' && Request::segment(3) == 'student-details' ? 'active' : '' }}"
                                         href="{{ route('admin.student-details.index') }}">
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            Student Details
+                                            Worker Details
                                         </div>
                                     </a>
                                 </li>
@@ -192,7 +192,7 @@
                                     <a class="nav-link {{ Request::segment(2) == 'universities' ? 'active' : '' }}"
                                         href="{{ route('admin.universities.index') }}">
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            University
+                                            Company
                                         </div>
                                     </a>
                                 </li>
@@ -408,7 +408,7 @@
                         <a class="nav-link dropdown-indicator" href="#dashboard16" role="button"
                             data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard16">
                             <div class="d-flex align-items-center"><span class="nav-link-icon"><i
-                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Student Reviews
+                                        class="fas fa-users"></i></span><span class="nav-link-text ps-1">Testimonials
                                 </span></div>
                         </a>
                         <ul class="nav collapse  {{ Request::segment(2) == 'testimonials' ? 'show' : '' }}"
@@ -418,7 +418,7 @@
                                         class="nav-link {{ Request::segment(2) == 'testimonials' ? 'active' : '' }}"
                                         href="{{ route('admin.testimonials.index') }}">
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            Student Review
+                                            Testimonial
 
                                         </div>
                                     </a>

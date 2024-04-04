@@ -23,8 +23,8 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.universities.index') }}"><button class="btn btn-primary btn-sm"><i
-                class="fa fa-arrow-left"></i>
-            Back</button></a>
+                        class="fa fa-arrow-left"></i>
+                    Back</button></a>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -50,7 +50,7 @@
                         style="max-width: 150px; max-height:150px; margin-top:10px;">
                 </div>
                 <div class="form-group">
-                    <label for="title">University Title</label>
+                    <label for="title">Company Title</label>
                     <input type="text" name="title" class="form-control" id="title" placeholder="University Title"
                         value="{{ $universities->title }}" required>
                 </div>
@@ -88,7 +88,7 @@
 
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Update University</button>
+                    <button type="submit" class="btn btn-primary">Update Company</button>
                 </div>
             </form>
         </div>

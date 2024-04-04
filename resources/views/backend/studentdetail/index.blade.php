@@ -20,7 +20,7 @@
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.student-details.create') }}">
                 <button class="btn btn-primary btn-sm">
-                    <i class="fa fa-plus"></i> Add Student Detail
+                    <i class="fa fa-plus"></i> Add Worker Detail
                 </button>
             </a>
             <a href="{{ url('admin') }}">
@@ -115,19 +115,19 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel{{ $studentDetail->id }}">Edit Student Detail
+                                <h5 class="modal-title" id="editModalLabel{{ $studentDetail->id }}">Edit Worker Detail
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p>To edit this student detail, please click the button below:</p>
+                                <p>To edit this worker detail, please click the button below:</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <a href="{{ route('admin.student-details.edit', $studentDetail->id) }}"
-                                    class="btn btn-primary">Edit Student Detail</a>
+                                    class="btn btn-primary">Edit Worker Detail</a>
                             </div>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p>Are you sure you want to delete this student detail?</p>
+                                <p>Are you sure you want to delete this worker detail?</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

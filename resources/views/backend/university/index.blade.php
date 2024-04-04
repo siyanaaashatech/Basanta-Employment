@@ -19,7 +19,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.universities.create') }}">
-                <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add University</button>
+                <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Company</button>
             </a>
             <a href="{{ url('admin') }}">
                 <button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</button>
@@ -83,7 +83,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel{{ $university->id }}">Edit University</h5>
+                                <h5 class="modal-title" id="editModalLabel{{ $university->id }}">Edit Company</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -91,7 +91,7 @@
                             <div class="modal-body">
                                 <!-- Redirect to edit page -->
                                 <a href="{{ route('admin.universities.edit', $university->id) }}" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i> Edit University
+                                    <i class="fas fa-edit"></i> Edit Company
                                 </a>
                             </div>
                             <div class="modal-footer">
