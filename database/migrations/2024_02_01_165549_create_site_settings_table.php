@@ -26,6 +26,7 @@ return new class extends Migration {
             $table->string('instagram_link')->nullable();
             $table->string('linkedin_link')->nullable();
             $table->text('google_maps_link')->nullable();
+            $table->string('slogan')->nullable(); // Added slogan field
             $table->timestamps();
         });
     }
@@ -40,3 +41,4 @@ return new class extends Migration {
         Schema::dropIfExists('site_settings');
     }
 };
+

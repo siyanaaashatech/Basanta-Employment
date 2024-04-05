@@ -11,7 +11,7 @@
 
 <body data-home-page-title="Home" class="u-body u-xl-mode">
 
-    {{-- @include('frontend.includes.topnav') --}}
+    @include('frontend.includes.topnav')
 
 
 

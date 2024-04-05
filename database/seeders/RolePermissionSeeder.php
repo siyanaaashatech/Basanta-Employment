@@ -83,7 +83,12 @@ class RolePermissionSeeder extends Seeder
             'create_director_messages',
             'list_director_messages',
             'edit_director_messages',
-            'delete_director_messages'
+            'delete_director_messages',
+            'create_demands',
+            'list_demands',
+            'edit_demands',
+            'delete_demands'
+
 
             // 'create_users',
             // 'list_users',

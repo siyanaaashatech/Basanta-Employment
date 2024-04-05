@@ -67,41 +67,7 @@
                         </ul>
                     </li>
 
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Test Prepration
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            @foreach ($testPreparationPosts as $post)
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('singlePost', ['slug' => $post->slug]) }}">
-                                        {{ $post->title }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Living Abroad
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            @foreach ($livingAbroadPosts as $post)
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('singlePost', ['slug' => $post->slug]) }}">
-                                        {{ $post->title }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-
-                    </li>
+                    <!-- Remove the "Living Abroad" dropdown section -->
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
@@ -129,8 +95,6 @@
                     <li class="nav-item">
                         <a class="nav-link text-primary" href="{{ route('Contact') }}">Contact</a>
                     </li>
-
-
 
                 </ul>
 

@@ -209,11 +209,24 @@
                                     </a>
                                 </li>
                             @endcan
+
+                            {{-- Demand --}}
+                            @can('list_demands')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'demands' ? 'active' : '' }}"
+                                        href="{{ route('admin.demands.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            Demand
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                     </li>
                 @endhasanyrole
                 {{-- End of Informations --}}
+
 
 
                 {{-- Beginning of Introduction --}}

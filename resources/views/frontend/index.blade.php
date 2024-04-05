@@ -1,35 +1,27 @@
 @extends('frontend.layouts.master')
-{{-- @dd($favicon); --}}
-
-
 
 @section('content')
     <section class="banner">
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-4 align-items-center">
                 <div class="col-lg-4 text-center pt-5">
-                    <img src="img/logo.jpg" width="250px" height="150px" alt="" />
-                    <h3>LUNAR OVERSEAS</h3>
-                    <p>
-                        Empowering Global Careers: <br />
-                        Where Opportunity Knows No <br />
-                        Borders
-                    </p>
+                    <!-- Get Logo from sitesetting -->
+                    <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" width="250px" height="150px"
+                        alt="" />
+                    <h3>{{ $sitesetting->office_name }}</h3>
+                    <p>{{ $sitesetting->slogan }}</p>
                     <button class="btn">CONTACT US</button>
                 </div>
 
                 <div class="col-lg-8">
                     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="2000">
-                                <img src="img/banner.png" class="d-block" width="100%" height="450px" alt="..." />
-                            </div>
-                            <div class="carousel-item" data-bs-interval="2000">
-                                <img src="img/banner4.jpg" class="d-block" width="100%" height="450px" alt="..." />
-                            </div>
-                            <div class="carousel-item" data-bs-interval="2000">
-                                <img src="img/banner3.jpg" class="d-block" width="100%" height="450px" alt="..." />
-                            </div>
+                            @foreach ($coverImages as $key => $coverImage)
+                                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
+                                    <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block"
+                                        width="100%" height="450px" alt="Cover Image" />
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -37,134 +29,31 @@
         </div>
     </section>
 
+    </section>
+
     <section class="country py-4">
         <div class="container swiper p-4">
             <div class="slide-container">
                 <div class="card-wrapper swiper-wrapper">
-                    <div class="card swiper-slide text-center ">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
+                    @foreach ($demands as $demand)
+                        <div class="card swiper-slide text-center ">
+                            <div class="img-box">
+                                <img class="p-3" src="{{ asset('uploads/demand/' . $demand->image) }}" alt="" />
+                            </div>
+                            <div class="profile-details">
+                                <h3 class="pt-3 pb-2">{{ $demand->title }}</h3>
+                                <h6>
+                                    {{ $demand->from_date }} - {{ $demand->to_date }} <br />
+                                    Vacancy: <span>{{ $demand->vacancy }}</span>
+                                </h6>
+                            </div>
                         </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide text-center">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
-                        </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide text-center">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
-                        </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide text-center">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
-                        </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide text-center">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
-                        </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide text-center">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
-                        </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide text-center">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
-                        </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide text-center">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
-                        </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide text-center">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
-                        </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide text-center">
-                        <div class="img-box">
-                            <img class="p-3" src="img/download.jpeg" alt="" />
-                        </div>
-                        <div class="profile-details">
-                            <h3 class="pt-3 pb-2">DUBAI</h3>
-                            <h6>
-                                2024/03/27 - 2024/04/04 <br />
-                                Vacancy: <span>11</span>
-                            </h6>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
+
 
 
     <section class="about ">
@@ -195,66 +84,28 @@
     </section>
 
     <!-- Experience -->
+    <!-- Experience -->
     <section class="experience py-4">
         <div class="container">
             <h2 class="text-center pb-3">MORE THAN 10 YEARS OF EXPERIENCE</h2>
             <div class="row py-4 g-4">
-                <div class="col-lg-4 col-md-4">
-                    <div class="Ebox1 ">
-                        <div>
-                            <img src="img/download.jpeg" alt="">
+                @foreach ($services as $service)
+                    <div class="col-lg-4 col-md-4">
+                        <div class="Ebox1">
+                            <div>
+                                <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Service Image">
+                            </div>
+                            <h3 class="text-center pt-3">{{ $service->name }}</h3>
                         </div>
-                        <h3 class="text-center pt-3">Service Sector</h3>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="Ebox1 ">
-                        <div>
-                            <img src="img/download.jpeg" alt="">
-                        </div>
-                        <h3 class="text-center pt-3">Security Sector</h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="Ebox1 ">
-                        <div>
-                            <img src="img/download.jpeg" alt="">
-                        </div>
-                        <h3 class="text-center pt-3">Production & Manufacture</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row py-4 g-4">
-                <div class="col-lg-4 col-md-4">
-                    <div class="Ebox1 ">
-                        <div>
-                            <img src="img/download.jpeg" alt="">
-                        </div>
-                        <h3 class="text-center pt-3">Service Sector</h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="Ebox1 ">
-                        <div>
-                            <img src="img/download.jpeg" alt="">
-                        </div>
-                        <h3 class="text-center pt-3">Security Sector</h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="Ebox1 ">
-                        <div>
-                            <img src="img/download.jpeg" alt="">
-                        </div>
-                        <h3 class="text-center pt-3">Production & Manufacture</h3>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
+
     <!-- Get in touch -->
-    <section class="Find-country">
+    {{-- <section class="Find-country">
         <div class="container py-5">
             <div class="row d-flex align-items-center">
                 <div class="col-lg-8">
@@ -267,7 +118,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="guiding py-5">
         <div class="container">
@@ -336,27 +187,18 @@
         <div class="container swiper mySwiper">
             <h2 class="text-center">TESTIMONIALS</h2>
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <h5 class="text-center pt-5">"This is the best human resource <br> solution in the town <br> and I am
-                        proud to be the part of it."</h5>
-                    <div class=" text-center">
-                        <i class="bi bi-person-circle test-user"></i>
+                @foreach ($testimonials as $testimonial)
+                    <div class="swiper-slide">
+                        <div class="text-center">
+                            <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}" alt="Testimonial Image"
+                                class="img-fluid" style="max-width: 200px;">
+                        </div>
+                        <h5 class="text-center pt-3">{{ $testimonial->description }}</h5>
+                        <div class=" text-center">
+                            <i class="bi bi-person-circle test-user"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <h5 class="text-center pt-5">"This is the best human resource <br> solution in the town <br> and I am
-                        proud to be the part of it."</h5>
-                    <div class="text-center">
-                        <i class="bi bi-person-circle test-user"></i>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <h5 class="text-center pt-5">"This is the best human resource <br> solution in the town <br> and I am
-                        proud to be the part of it."</h5>
-                    <div class="text-center">
-                        <i class="bi bi-person-circle test-user"></i>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="swiper-button-next arrow"></div>
             <div class="swiper-button-prev arrow"></div>
@@ -364,37 +206,26 @@
         </div>
     </section>
 
+
+
     <section class="blogs py-5">
         <div class="container">
             <h2 class="text-center pb-5">BLOGS</h2>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-4">
-                    <div class="Ebox1 ">
-                        <div>
-                            <img src="img/download.jpeg" alt="">
+                @foreach ($blogs as $category)
+                    <div class="col-lg-4 col-md-4">
+                        <div class="Ebox1">
+                            <div>
+                                <img src="{{ asset('uploads/blogpostcategory/' . $category->image) }}" alt="">
+                            </div>
+                            <h3 class="text-center pt-3">{{ $category->title }}</h3>
                         </div>
-                        <h3 class="text-center pt-3">Economic Growth of Nepal <br> Depends on Foreign <br> Employment</h3>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="Ebox1 ">
-                        <div>
-                            <img src="img/download.jpeg" alt="">
-                        </div>
-                        <h3 class="text-center pt-3">Economic Growth of Nepal <br> Depends on Foreign <br> Employment</h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="Ebox1 ">
-                        <div>
-                            <img src="img/download.jpeg" alt="">
-                        </div>
-                        <h3 class="text-center pt-3">Economic Growth of Nepal <br> Depends on Foreign <br> Employment</h3>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
+
 
     <section class="contact pt-3 pb-5">
         <div class="container ">
@@ -429,93 +260,14 @@
             </div>
         </div>
     </section>
-@stop
-
-{{-- @section('content')
-
-
-    <!-- Banner -->
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="box1 col-lg-5 col-md-6 col-sm-12">
-                    <div class="text-white">
-                        <h2><b>WANT TO STUDY ABROAD?</b></h2>
-                        <h5><b>Institutions We Represent from</b></h5>
-                        <h3><b class="text-uppercase">
-                                @foreach ($countries as $key => $country)
-                                    {{ $country->name }}
-                                    @if (!$loop->last)
-                                        @if ($loop->remaining == 1)
-                                            and
-                                        @else
-                                            ,
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </b></h3>
-                        <h3 class="lastword">"Explore Your Dreams"</b></h3>
-                    </div>
-                </div>
+@endsection
 
 
 
-                <div class="col-lg-7 col-md-6 col-sm-12">
-                    <div id="carouselExampleCaptions" class="carousel slide">
-                        <div class="carousel-indicators">
-                            @if (!$countries->isEmpty())
-                                @foreach ($countries as $key => $country)
-                                    <button type="button" data-bs-target="#carouselExampleCaptions"
-                                        data-bs-slide-to="{{ $key }}" class="{{ $key === 0 ? 'active' : '' }}"
-                                        aria-current="{{ $key === 0 ? 'true' : 'false' }}"
-                                        aria-label="Slide {{ $key + 1 }}"></button>
-                                @endforeach
-                            @endif
-                        </div>
-                        <div class="carousel-inner">
-                            @if (!$countries->isEmpty())
-                                @foreach ($countries as $key => $country)
-                                <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-
-                                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                                        <div class="image">
-                                            @if ($country->image)
-                                                <img src="{{ asset('uploads/country/' . $country->image) }}"
-                                                    class="d-block w-100" alt="{{ $country->name }}">
-                                            @else
-                                                <img src="{{ asset('image/default.jpg') }}" class="d-block w-100"
-                                                    alt="Default Image">
-                                            @endif
-                                        </div>
-                                        <div class="overlay"></div>
-                                        <div class="carousel-caption d-none d-md-block">
-                                                <h5>{{ $country->name }}</h5>
-                                            <p>{{ Str::limit(strip_tags($country->content), 200) }}</p>
-                                            {{-- <p>{{ $country->content ? Str::limit(strip_tags($country->content), 200) : 'No content available' }}
-                                        </p> --}}
-</div>
-</div>
-</a>
-@endforeach
-@endif
-</div>
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-</button>
-</div>
-</div>
-
-</div>
-</div>
-</div>
 
 
-<!-- flotbox -->
+
+{{-- <!-- flotbox -->
 <section class="secondSection">
     <div class="contain container">
         <div class="flexbox row justify-content-center m-0 column-gap-4 gap-4">
@@ -577,198 +329,7 @@
         </div>
     </div>
 </section>
-<!-- Slider -->
-<div class="container my-5">
-    <div class="slider row">
-        <div class="word col-lg-5">
-            <div class="text">
-                <h2>
-                    <p>
-                        @if ($sliderPost)
-                            <h2>{{ $sliderPost->title }}</h2>
-                            <p>{{ Str::limit(strip_tags($sliderPost->description), 600) }}</p>
-                        @else
-                            <p>No slider post available</p>
-                        @endif
-                    </p>
-                </h2>
-            </div>
 
-
-            <a href="{{ route('Countries') }}">
-                <button class="btn bg-primary text-white mt-5">SEE ALL COUNTRIES</button>
-            </a>
-
-
-
-        </div>
-
-        <div class="box2 col-lg-4 col-md-6 col-sm-12">
-            <div class="position-relative">
-                @foreach ($countries->take(3) as $country)
-                    @if ($country->image)
-                        <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-                            <div class="image{{ $loop->index + 1 }} position-absolute"
-                                style="height: 300px; width: 150px;">
-                                <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                    style="width: 100%; object-fit: cover; object-position: center; height: 100%">
-                            </div>
-                        </a>
-                    @endif
-                @endforeach
-            </div>
-        </div>
-
-        <div class="box3 col-lg-3 col-md-6 col-sm-12">
-            <div class="position-relative">
-                @foreach ($countries->slice(3, 2) as $country)
-                    @if ($country->image)
-                        <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-                            <div class="image{{ $loop->index + 4 }} position-absolute"
-                                style="height: 300px; width: 150px;">
-                                <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                    style="width: 100%; object-fit: cover; object-position: center; height: 100%">
-                            </div>
-                        </a>
-                    @endif
-                @endforeach
-
-                @if ($countries->count() < 5)
-                    @foreach ($countries->slice(5 - $countries->count()) as $country)
-                        @if ($country->image)
-                            <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-                                <div class="image{{ $loop->index + 5 }} position-absolute"
-                                    style="height: 300px; width: 150px;">
-                                    <img src="{{ asset('uploads/country/' . $country->image) }}" alt="Country Image"
-                                        style="width: 100%; object-fit: cover; object-position: center; height: 100%">
-                                </div>
-                            </a>
-                        @endif
-                    @endforeach
-                @endif
-            </div>
-        </div>
-
-
-
-
-    </div>
-</div>
-<!-- Enroll -->
-
-
-
-<div class="enroll"
-    style="background-image: url('{{ asset('image/convo.avif') }}'); background-size: cover; background-position: center;">
-
-    <div class="col-md-5 mx-5">
-        <div class="empty">.</div>
-        <div class="text mx-5 text-white">
-            <p>
-                @if ($enrollPost)
-                    <h2>{{ $enrollPost->title }}</h2>
-                    <p>{{ Str::limit(strip_tags($enrollPost->description), 600) }}</p>
-                    <!-- Add any other content or styling you need -->
-                @endif
-            </p>
-            {{-- <b> Calling All Artists K-12. Use your creativity to help sustain our world!</b> --}}
-            {{-- @foreach ($categories as $category)
-                    @if ($category->post)
-                        <h2>{{ $category->post->title }}</h2>
-                        <p>{{ Str::limit(strip_tags($category->post->description), 600) }}</p>
-                        <!-- Add any other content or styling you need -->
-                    @endif
-                @endforeach --}}
-        </div>
-
-        <div class="butt d-flex">
-            <div class="text-center my-5 mx-3">
-                <a href="{{ route('Contact') }}" class="btn bg-primary text-white">Contact Now</a>
-            </div>
-
-            <div class="text-center my-5 mx-1">
-                @if ($sliderPost)
-                    <a href="{{ route('SinglePost', ['slug' => $sliderPost->slug]) }}"
-                        class="btn bg-primary text-white">Read More</a>
-                @endif
-
-            </div>
-
-        </div>
-    </div>
-</div>
-<!-- Logo -->
-
-{{-- <div class="text-center my-5">
-        <h2>Institue we Represent</h2>
-        <h5 class="text-primary">We work with some of the best educational institutions around the globe</h5>
-    </div>
-    <div class="container">
-        <div class="logos row">
-            <div class="logo col-lg-3 col-md-3 col-sm-6">
-                <div class="image">
-                    <img src="image/rmit.png" class="img-fluid" alt="">
-                </div>
-            </div>
-            <div class="logo col-lg-3 col-md-3 col-sm-6">
-                <div class="image">
-                    <img src="image/boxhill.png" class="img-fluid" alt="">
-                </div>
-            </div>
-            <div class="logo col-lg-3  col-md-3 col-sm-6">
-                <div class="image">
-                    <img src="image/victorian.png" class="img-fluid" alt="">
-                </div>
-            </div>
-            <div class="logo col-lg-3 col-md-3 col-sm-6">
-                <div class="image">
-                    <img src="image/western.png" class="img-fluid" alt="">
-                </div>
-            </div>
-            <div class="logo col-lg-3  col-md-3 col-sm-6">
-                <div class="image">
-                    <img src="image/australia.png" class="img-fluid" alt="">
-                </div>
-            </div>
-            <div class="logo col-lg-3  col-md-3 col-sm-6">
-                <div class="image">
-                    <img src="image/icms.png" class="img-fluid" alt="">
-                </div>
-            </div>
-            <div class="logo col-lg-3  col-md-3 col-sm-6">
-                <div class="image">
-                    <img src="image/educo.png" class="img-fluid" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="text-center my-4"><button class="btn bg-primary text-white ">View all Universities</button></div>
-
-    </div> --}}
-
-
-<!-- Courses -->
-<div class="container">
-    <div class="cources my-5">
-        <h2 class="text-center">Popular courses for students like you</h2>
-        <div class="subjects row">
-            @foreach ($courses as $course)
-                <div class="subject1 col-md-4 col-sm-6">
-                    <div
-                        style="background-image: url('{{ asset('uploads/course/' . $course->image) }}'); background-size: cover; background-position: center; height: 200px;">
-                        <div class="text-center">
-                            <button class="btn bg-primary text-white">
-                                <a href="{{ route('singleCourse', ['slug' => $course->slug]) }}"
-                                    class="text-decoration-none text-white">{{ $course->title }}
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-<!-- Join -->
 <div class="join">
     <div class="text mt-5">
         <h2 class="text-center">Join students over 1000+ like you</h2>

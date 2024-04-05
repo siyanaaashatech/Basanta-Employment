@@ -76,6 +76,12 @@
                     <img id="side_logo_preview" src="#" alt="Side Logo Preview"
                         style="display: none; max-width: 200px; margin-top: 10px;">
                 </div>
+
+                <div class="form-group">
+                    <label for="slogan">Slogan</label>
+                    <input type="text" name="slogan" class="form-control" placeholder="Slogan" id="slogan">
+                </div>
+
                 <div class="form-group">
                     <label for="company_registered_date">Company Registered Date</label>
                     <input type="date" name="company_registered_date" class="form-control" id="company_registered_date"

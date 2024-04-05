@@ -89,6 +89,14 @@
                             <img id="side_preview" src="{{ asset('uploads/sitesetting/' . $sitesetting->side_logo) }}"
                                 style="max-width: 300px; max-height:300px" />
                         </div>
+
+
+                        <div class="form-group">
+                            <label for="slogan">Slogan</label>
+                            <input type="text" name="slogan" class="form-control" placeholder="Slogan" id="slogan"
+                                value="{{ $sitesetting->slogan }}">
+                        </div>
+
                         <div class="form-group">
                             <label for="facebook_link">Facebook URL</label>
                             <input name="facebook_link" class="form-control" placeholder="Facebook URL (https://)"

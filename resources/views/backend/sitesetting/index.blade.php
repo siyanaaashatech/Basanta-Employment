@@ -37,6 +37,7 @@
                 <th>Office Email</th>
                 <th>Office Contact</th>
                 <th>Office Logo</th>
+                <th>Slogan</th> <!-- Add this line for the Slogan field -->
                 <th>Action</th>
             </tr>
         </thead>
@@ -50,6 +51,7 @@
                     <td><img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}"
                             style="width: 150px; height:150px" /></td>
+                    <td>{{ $sitesetting->slogan ?? '' }}</td> <!-- Add this line for the Slogan field -->
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <a href="{{ route('admin.site-settings.edit', $sitesetting->id) }}"

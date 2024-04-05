@@ -67,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
             $categories = Category::all();
             $blogpostcategories = BlogPostsCategory::all();
             $testPreparationPosts = Category::where('title', 'Test Prepration')->first()->posts;
-            $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
+            // $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
             $sitesetting = SiteSetting::first();
 
             $view->with('countries', $countries);
@@ -76,7 +76,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', $categories);
             $view->with('blogpostcategories', $blogpostcategories);
             $view->with('testPreparationPosts', $testPreparationPosts);
-            $view->with('livingAbroadPosts', $livingAbroadPosts);
+            // $view->with('livingAbroadPosts', $livingAbroadPosts);
             $view->with('sitesetting', $sitesetting);
         });
 
@@ -86,7 +86,7 @@ class AppServiceProvider extends ServiceProvider
             $counsellingCategory = Category::where('title', 'Counselling')->first();
             $counsellingPosts = $counsellingCategory->posts()->take(2)->get();
             $newsCategory = Category::where('title', 'News')->first();
-            $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
+            // $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
             $services = Service::all();
             $courses = Course::all();
             $siteSettings = SiteSetting::first();
@@ -95,7 +95,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('sitesetting', $sitesetting);
             $view->with('counsellingPosts', $counsellingPosts);
             $view->with('newsCategory', $newsCategory);
-            $view->with('livingAbroadPosts', $livingAbroadPosts);
+            // $view->with('livingAbroadPosts', $livingAbroadPosts);
             $view->with('services', $services);
             $view->with('courses', $courses);
             $view->with('siteSettings', $siteSettings);

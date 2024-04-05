@@ -26,7 +26,8 @@
     }
 
     .footer-section {
-        background-image: linear-gradient(rgb(3, 18, 51), rgb(25, 37, 78));        /* background-color: var(--first); */
+        background-image: linear-gradient(rgb(3, 18, 51), rgb(25, 37, 78));
+        /* background-color: var(--first); */
         /* background: url('../img/topnav.png');
   background-size: cover;
   background-repeat: no-repeat;
@@ -275,12 +276,12 @@
                         </div>
                         <div class="footer-social-icon">
                             <span>Follow us</span>
-                            <a href="{{ $sitesetting->facebook_link }}" target="_blank"><i
-                                    class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                            <a href="{{ $sitesetting->facebook_link }}" target="_blank"><i class="fa-brands fa-facebook"
+                                    aria-hidden="true"></i></a>
                             <a href="{{ $sitesetting->instagram_link }}" target="_blank"><i
                                     class="fa-brands fa-instagram " aria-hidden="true"></i></a>
-                            <a href="{{ $sitesetting->linkedin_link }}" target="_blank"><i
-                                    class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="{{ $sitesetting->linkedin_link }}" target="_blank"><i class="fa-brands fa-linkedin"
+                                    aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -291,7 +292,7 @@
                             <h3>{{ __('Quick Links') }}</h3>
                         </div>
                         <ul>
-                            @foreach ($counsellingPosts as $post)
+                            {{-- @foreach ($counsellingPosts as $post)
                                 <li><a
                                         href="{{ route('singlePost', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
                                 </li>
@@ -307,7 +308,7 @@
                                 <li><a
                                         href="{{ route('SingleService', ['slug' => $service->slug]) }}">{{ $service->title }}</a>
                                 </li>
-                            @endforeach
+                            @endforeach --}}
 
 
                         </ul>
@@ -321,11 +322,11 @@
                         <ul class="quicknepal_link">
 
 
-                            @foreach ($courses as $course)
+                            {{-- @foreach ($courses as $course)
                                 <li><a
                                         href="{{ route('singleCourse', ['slug' => $course->slug]) }}">{{ $course->title }}</a>
                                 </li>
-                            @endforeach
+                            @endforeach --}}
 
                         </ul>
                     </div>
@@ -336,16 +337,20 @@
     <div class="copyright-area">
         <div class="container">
             <div class="row text-center">
-                
-                    <div class="copyright-text">
-                        <p>Copyright &copy; 2024, All Right Reserved {{ $sitesetting->office_name }}
-                            <br>
-                            <span class="text-center">Developed by <a href="https://aashatech.com">Aasha Tech</a></span>
-                        </p>
-                    </div>
-        
-                
+
+                <div class="copyright-text">
+                    <p>Copyright &copy; 2024, All Right Reserved {{ $sitesetting->office_name }}
+                        <br>
+                        <span class="text-center">Developed by <a href="https://aashatech.com">Aasha Tech</a></span>
+                    </p>
+                </div>
+
+
             </div>
         </div>
     </div>
 </footer>
+
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{{ asset('js/main.js') }}"></script>

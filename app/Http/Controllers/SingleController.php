@@ -9,14 +9,15 @@ use App\Models\Course;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Category;
+use App\Models\CoverImage;
 use App\Models\University;
 use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use App\Models\PhotoGallery;
 use App\Models\VideoGallery;
 use Illuminate\Http\Request;
-use App\Models\BlogPostsCategory;
 use App\Models\DirectorMessage;
+use App\Models\BlogPostsCategory;
 
 class SingleController extends Controller
 {
@@ -29,13 +30,15 @@ class SingleController extends Controller
         $sitesetting = SiteSetting::first();
         $about = About::first();
         $teams = Team::all();
-        $services = Service::latest()->get()->take(6);
+        $services = Service::where('experience_years', '>', 10)->take(6)->get();
         $posts = Post::with('category')->latest()->get()->take(3);
         $images = PhotoGallery::latest()->get();
         $listservices = Service::latest()->get()->take(5);
         $message = DirectorMessage::first();
+        $carouselImages = CoverImage::latest()->take(5)->get();
+        
 
-        return view('frontend.aboutus', compact('categories', 'sitesetting', 'about', 'teams', 'services', 'posts', 'images', 'listservices', 'message'));
+        return view('frontend.aboutus', compact('categories', 'sitesetting', 'about', 'teams', 'services', 'posts', 'images', 'listservices', 'message','carouselImages'));
 
     }
 
@@ -71,7 +74,7 @@ class SingleController extends Controller
 
     public function render_testimonial()
     {
-        $testimonials = Testimonial::all();
+        $testimonials = Testimonial::latest()->take(12)->get();
 
         return view('frontend.testimonials', compact('testimonials'));
     }
@@ -209,4 +212,5 @@ class SingleController extends Controller
         $googleMapsLink = SiteSetting::first()->google_maps_link;
         return view('frontend.contactpage', compact('page_title', 'googleMapsLink'));
     }
+    
 }

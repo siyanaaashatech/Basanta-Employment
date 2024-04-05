@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-
 use App\Http\Controllers\Controller;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
@@ -14,14 +12,15 @@ class SiteSettingController extends Controller
 {
     public function index()
     {
-        $sitesetting = SiteSetting::all();
-        return view('backend.sitesetting.index', ['sitesettings' => $sitesetting, 'page_title' => 'Site Settings']);
+        $sitesettings = SiteSetting::all();
+        return view('backend.sitesetting.index', ['sitesettings' => $sitesettings, 'page_title' => 'Site Settings']);
     }
+
     public function create()
     {
         return view('backend.sitesetting.create', ['page_title' => 'Create SiteSetting']);
-
     }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -36,8 +35,10 @@ class SiteSettingController extends Controller
             'facebook_link' => 'nullable|url',
             'instagram_link' => 'nullable|url',
             'linkedin_link' => 'nullable|url',
-            'google_maps_link' => 'nullable|url'
+            'google_maps_link' => 'nullable|url',
+            'slogan' => 'nullable|string', // New field: Slogan
         ]);
+
         try {
             if ($request->hasFile('main_logo')) {
                 $newMainLogo = time() . '.' . $request->main_logo->getClientOriginalName();
@@ -45,13 +46,13 @@ class SiteSettingController extends Controller
             } else {
                 $newMainLogo = "NoImage";
             }
+
             if ($request->hasFile('side_logo')) {
                 $newSideLogo = time() . '.' . $request->side_logo->getClientOriginalName();
                 $request->side_logo->move('uploads/sitesetting/', $newSideLogo);
             } else {
                 $newSideLogo = "NoImage";
             }
-
 
             $sitesetting = new SiteSetting;
             $sitesetting->office_name = $request->office_name;
@@ -66,6 +67,8 @@ class SiteSettingController extends Controller
             $sitesetting->instagram_link = $request->instagram_link ?? '';
             $sitesetting->linkedin_link = $request->linkedin_link ?? '';
             $sitesetting->google_maps_link = $request->google_maps_link ?? '';
+            $sitesetting->slogan = $request->slogan ?? ''; // New field: Slogan
+
             if ($sitesetting->save()) {
                 return redirect()->route('admin.site-settings.index')->with('success', 'Success !! SiteSetting Created');
             } else {
@@ -81,6 +84,7 @@ class SiteSettingController extends Controller
         $sitesetting = SiteSetting::find($id);
         return view('backend.sitesetting.update', ['sitesetting' => $sitesetting, 'page_title' => 'Update SiteSettings']);
     }
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -95,12 +99,13 @@ class SiteSettingController extends Controller
             'facebook_link' => 'nullable|url',
             'instagram_link' => 'nullable|url',
             'linkedin_link' => 'nullable|url',
-            'google_maps_link' => 'nullable|url'
-
+            'google_maps_link' => 'nullable|url',
+            'slogan' => 'nullable|string', // New field: Slogan
         ]);
+
         try {
-            // $sitesetting = SiteSetting::find($request->id);
             $sitesetting = SiteSetting::findOrFail($id);
+
             if ($request->hasFile('main_logo')) {
                 if ($sitesetting->main_logo && file_exists(public_path('uploads/sitesetting/' . $sitesetting->main_logo))) {
                     unlink(public_path('uploads/sitesetting/' . $sitesetting->main_logo));
@@ -109,6 +114,7 @@ class SiteSettingController extends Controller
                 $request->main_logo->move(public_path('uploads/sitesetting'), $newMainName);
                 $sitesetting->main_logo = $newMainName;
             }
+
             if ($request->hasFile('side_logo')) {
                 if ($sitesetting->side_logo && file_exists(public_path('uploads/sitesetting/' . $sitesetting->side_logo))) {
                     unlink(public_path('uploads/sitesetting/' . $sitesetting->side_logo));
@@ -128,6 +134,7 @@ class SiteSettingController extends Controller
             $sitesetting->instagram_link = $request->instagram_link ?? '';
             $sitesetting->linkedin_link = $request->linkedin_link ?? '';
             $sitesetting->google_maps_link = $request->google_maps_link ?? '';
+            $sitesetting->slogan = $request->slogan ?? ''; // New field: Slogan
 
             if ($sitesetting->save()) {
                 return redirect()->route('admin.site-settings.index')->with('success', 'Success !! SiteSetting Updated');
@@ -138,6 +145,7 @@ class SiteSettingController extends Controller
             return redirect()->back()->with('error', 'Error !! Something went wrong');
         }
     }
+
     public function destroy($id)
     {
         $sitesetting = SiteSetting::find($id);

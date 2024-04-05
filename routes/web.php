@@ -9,6 +9,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DemandController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\ContactController;
@@ -142,6 +143,10 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     //DirectorMessage Controller
 
     Route::resource('director_messages', DirectorMessageController::class);
+
+    // Demands
+    Route::resource('demands', DemandController::class);
+
 
 });
 
