@@ -1,10 +1,4 @@
-<style>
-    .nav-link.active,
-    .nav-link.current {
-        background-color: #666;
-        color: #000;
-    }
-</style>
+
 <!-- Header -->
 <div class="header">
     <nav class="navbar navbar-expand-lg">
@@ -41,13 +35,13 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Study Abroad
+                            Work Abroad
                         </a>
 
                         <ul class="dropdown-menu">
                             @foreach ($countries as $country)
                                 <li><a class="dropdown-item"
-                                        href="{{ route('singleCountry', ['slug' => $country->slug]) }}">Study in
+                                        href="{{ route('singleCountry', ['slug' => $country->slug]) }}">Work in
                                         {{ $country->name }}</a></li>
                             @endforeach
                         </ul>
@@ -56,7 +50,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Courses
+                            Employment
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($courses as $course)

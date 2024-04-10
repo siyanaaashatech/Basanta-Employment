@@ -60,18 +60,18 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="university_id">University</label>
+                <label for="university_id">Company</label>
                 <select name="university_id" class="form-control" id="university_id" required>
-                    <option value="">Select University</option>
+                    <option value="">Select Company</option>
                     @foreach ($universities as $university)
                         <option value="{{ $university->id }}">{{ $university->title }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <label for="course_id">Course</label>
+                <label for="course_id">Work Category</label>
                 <select name="course_id" class="form-control" id="course_id" required>
-                    <option value="">Select Course</option>
+                    <option value="">Select Work Category</option>
                     @foreach ($courses as $course)
                         <option value="{{ $course->id }}">{{ $course->title }}</option>
                     @endforeach
@@ -100,7 +100,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Create Student Details</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </div>
     </form>
 

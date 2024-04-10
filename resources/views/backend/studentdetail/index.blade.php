@@ -45,8 +45,8 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Country</th>
-                <th>University</th>
-                <th>Course</th>
+                <th>Company</th>
+                <th>Work Category</th>
                 <th>Intake Date</th>
                 <th>Image</th>
                 <th>Documents</th>
@@ -139,7 +139,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel{{ $studentDetail->id }}">Delete Student Detail
+                                <h5 class="modal-title" id="deleteModalLabel{{ $studentDetail->id }}">Delete Worker Detail
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>

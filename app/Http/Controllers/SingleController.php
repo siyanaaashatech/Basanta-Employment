@@ -26,19 +26,18 @@ class SingleController extends Controller
     public function render_about()
     {
         // $page_title = "About Us";
-        $categories = Category::latest()->get()->take(10);
-        $sitesetting = SiteSetting::first();
+   
         $about = About::first();
-        $teams = Team::all();
-        $services = Service::where('experience_years', '>', 10)->take(6)->get();
+        // $teams = Team::all();
+
         $posts = Post::with('category')->latest()->get()->take(3);
-        $images = PhotoGallery::latest()->get();
+     
         $listservices = Service::latest()->get()->take(5);
         $message = DirectorMessage::first();
-        $carouselImages = CoverImage::latest()->take(5)->get();
+  
         
 
-        return view('frontend.aboutus', compact('categories', 'sitesetting', 'about', 'teams', 'services', 'posts', 'images', 'listservices', 'message','carouselImages'));
+        return view('frontend.aboutus', compact('about', 'posts','listservices', 'message'));
 
     }
 

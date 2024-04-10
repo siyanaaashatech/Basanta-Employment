@@ -50,7 +50,7 @@
                         style="max-width: 150px; max-height:150px; margin-top:10px;">
                 </div>
                 <div class="form-group">
-                    <label for="title">Company Title</label>
+                    <label for="title">Title</label>
                     <input type="text" name="title" class="form-control" id="title" placeholder="University Title"
                         value="{{ $universities->title }}" required>
                 </div>

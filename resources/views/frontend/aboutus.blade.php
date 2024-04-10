@@ -5,31 +5,6 @@
         <h1 class="page_title">{{ __('About Us') }}</h1>
     </div>
 
-    {{-- <section class="about_page">
-        <div class="container">
-            <div class="row gap-5 mt-5">
-                <div class="col-md-5 col-lg-5 col-sm-12">
-                    <div class="image">
-                        @if ($about->image)
-                            <img class="about_page_img img-fluid shadow-lg p-3 mb-5 bg-body-tertiary rounded"
-                                src="{{ asset('uploads/about/' . $about->image) }}" alt="About Us">
-                        @else
-                            <p>No about information available</p>
-                        @endif
-                    </div>
-
-                </div>
-
-                <div class="col-md-7 col-lg-6 col-sm-12 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-            
-                    <div style="text-align: justify;">
-                        {!! $about->content !!}
-                    </div>
-                </div>
-            </div>
-    </section> --}}
-
-
 
 
     <section class="sample_image">
@@ -49,7 +24,7 @@
 
 
                 <div class="col-lg-4 col-md-4 col-sm-12 order-3 order-md-2 sample_page_list mt-2 mb-2 p-4">
-                    <h3 class="">Services</h3>
+                    <h3 class="">Experience in providing</h3>
                     <ul>
                         @foreach ($listservices as $service)
                             <li>

@@ -45,7 +45,7 @@
 
                 <div class="col-md-6 cform_right">
                     <form id="quick_contact" class="form-horizontal" method="POST" role="form"
-                        action="{{ route('Contact.store') }}" method="POST">
+                        action="{{ route('Contact.store') }}">
 
 
                         @csrf
@@ -88,7 +88,7 @@
 
 
 
-                        <input type="submit" value="Submit" id="submitBtn" class="btn bg-primary text-white mb-3">
+                        <input type="submit" value="Submit" id="submitBtn" class="btn">
                     </form>
                 </div>
                 {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}

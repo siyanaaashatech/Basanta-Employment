@@ -38,7 +38,7 @@
             <tr>
                 <th>S.N.</th>
                 <th>Logo</th>
-                <th>University Title</th>
+                <th>Company</th>
                 <th>Address</th>
                 <th>Country</th>
                 <th>Phone Number</th>

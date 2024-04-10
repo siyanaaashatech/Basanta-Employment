@@ -37,7 +37,6 @@ class AboutController extends Controller
                 'description' => 'required|string',
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
                 'content' => 'required|string',
-
             ]);
             $newImageName = time() . '-' . $request->image->getClientOriginalName();
             $request->image->move(public_path('uploads/about'), $newImageName);

@@ -26,7 +26,7 @@
     }
 
     .footer-section {
-        background-image: linear-gradient(rgb(3, 18, 51), rgb(25, 37, 78));
+        background: rgba(99, 2, 2, 0.8);
         /* background-color: var(--first); */
         /* background: url('../img/topnav.png');
   background-size: cover;
@@ -192,10 +192,8 @@
         text-decoration: none;
     }
 
-
-
     .copyright-area {
-        background-image: linear-gradient(rgb(8, 28, 71), rgb(19, 32, 74));
+        background: rgba(99, 2, 2, 0.8);
         padding: 25px 0;
     }
 
@@ -223,6 +221,8 @@
         color: #878787;
     }
 </style>
+
+
 
 {{-- For Footer --}}
 <footer class="footer-section">
@@ -270,7 +270,7 @@
                         </div>
                         <div class="footer-text">
                             <p>
-                                {{-- {{ Str::substr($about->description, 0, 300) }}... --}}
+                                {{ Str::limit(strip_tags($about->description), 400) }}
 
                             </p>
                         </div>
@@ -289,26 +289,15 @@
                     <div class="footer-widget">
 
                         <div class="footer-widget-heading">
-                            <h3>{{ __('Quick Links') }}</h3>
+                            <h3>{{ __('Experiences in Providing') }}</h3>
                         </div>
                         <ul>
-                            {{-- @foreach ($counsellingPosts as $post)
-                                <li><a
-                                        href="{{ route('singlePost', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
-                                </li>
-                            @endforeach
-                            <li><a
-                                    href="{{ route('singleCategory', ['slug' => $newsCategory->slug]) }}">{{ $newsCategory->title }}</a>
-                            </li>
-                            @foreach ($livingAbroadPosts as $post)
-                                <li><a href="{{ route('singlePost', ['slug' => $post->slug]) }}"
-                                        target="_blank">{{ $post->title }}</a></li>
-                            @endforeach
+                        
                             @foreach ($services as $service)
                                 <li><a
                                         href="{{ route('SingleService', ['slug' => $service->slug]) }}">{{ $service->title }}</a>
                                 </li>
-                            @endforeach --}}
+                            @endforeach 
 
 
                         </ul>
@@ -322,11 +311,11 @@
                         <ul class="quicknepal_link">
 
 
-                            {{-- @foreach ($courses as $course)
+                            @foreach ($categories as $category)
                                 <li><a
-                                        href="{{ route('singleCourse', ['slug' => $course->slug]) }}">{{ $course->title }}</a>
+                                        href="{{ route('singleCategory', ['slug' => $category->slug]) }}">{{ $category->title }}</a>
                                 </li>
-                            @endforeach --}}
+                            @endforeach
 
                         </ul>
                     </div>

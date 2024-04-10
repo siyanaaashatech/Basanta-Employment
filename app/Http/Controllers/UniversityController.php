@@ -13,14 +13,14 @@ class UniversityController extends Controller
     {
         // $universities = University::paginate(10);
         $universities = University::with('country')->paginate(10);
-        return view('backend.university.index', ['universities' => $universities, 'page_title' => 'University']);
+        return view('backend.university.index', ['universities' => $universities, 'page_title' => 'Company']);
 
 
     }
     public function create()
     {
         $countries = Country::all();
-        return view('backend.university.create', ['countries' => $countries, 'page_title' => 'Create University']);
+        return view('backend.university.create', ['countries' => $countries, 'page_title' => 'Create Company']);
     }
     public function store(Request $request)
 {
@@ -60,9 +60,9 @@ class UniversityController extends Controller
 
         // Save the university
         if ($university->save()) {
-            return redirect()->route('admin.universities.index')->with('success', 'Success! University created.');
+            return redirect()->route('admin.universities.index')->with('success', 'Success! Company created.');
         } else {
-            return redirect()->back()->with('error', 'Error! University not created.');
+            return redirect()->back()->with('error', 'Error! Company not created.');
         }
     } catch (\Exception $e) {
         return redirect()->back()->with('error', 'Error! Something went wrong.');
@@ -76,10 +76,10 @@ class UniversityController extends Controller
         $universities = University::with('country')->find($id);
 
         if (!$universities) {
-            return redirect()->route('admin.universities.index')->with('error', 'University not found.');
+            return redirect()->route('admin.universities.index')->with('error', 'Company not found.');
         }
 
-        return view('backend.university.update', ['universities' => $universities, 'countries' => $countries, 'page_title' => 'Update University']);
+        return view('backend.university.update', ['universities' => $universities, 'countries' => $countries, 'page_title' => 'Update Company']);
     }
     public function update(Request $request, $id)
     {
@@ -96,7 +96,7 @@ class UniversityController extends Controller
         try {
             $university = University::find($id);
             if (!$university) {
-                return redirect()->back()->with('error', 'University not found.');
+                return redirect()->back()->with('error', 'Company not found.');
             }
 
             if ($request->hasFile('logo')) {
@@ -113,9 +113,9 @@ class UniversityController extends Controller
             $university->website = $request->website;
 
             if ($university->save()) {
-                return redirect()->route('admin.universities.index')->with('success', 'University updated successfully.');
+                return redirect()->route('admin.universities.index')->with('success', 'Company updated successfully.');
             } else {
-                return redirect()->back()->with('error', 'Error! University not updated.');
+                return redirect()->back()->with('error', 'Error! Company not updated.');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error! Something went wrong: ' . $e->getMessage());
@@ -129,9 +129,9 @@ class UniversityController extends Controller
 
         if ($universities) {
             $universities->delete();
-            return redirect()->route('admin.universities.index')->with('success', 'Success !! University Deleted');
+            return redirect()->route('admin.universities.index')->with('success', 'Success !! Company Deleted');
         } else {
-            return redirect()->route('admin.universities.index')->with('error', 'University not found.');
+            return redirect()->route('admin.universities.index')->with('error', 'Company not found.');
         }
     }
 }

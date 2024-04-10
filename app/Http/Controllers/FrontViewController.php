@@ -36,11 +36,11 @@ class FrontViewController extends Controller
 
         // $countries = Country::latest()->get()->take(10);
 
+   // Fetch the first category
+   $firstCategory = Category::first();
 
-        $lastCategory = Category::find('5');
-        // $categoryId = $lastCategory->id;
-        // $countryUniversityCategory = Category::findOrFail($categoryId);
-        // $sliderPost = $countryUniversityCategory->posts()->latest()->first();
+   // Fetch posts related to the first category
+   $posts = $firstCategory->posts()->latest()->take(6)->get();
         // $enrollPost = $countryUniversityCategory->posts()->orderBy('id', 'desc')->skip(1)->first();
 
 
@@ -57,6 +57,9 @@ class FrontViewController extends Controller
             'coverImages',
             'demands',
             'about',
+            'posts',
+            'firstCategory'
+
             // 'countries',
             // 'sliderPost',
             // 'enrollPost'
@@ -71,15 +74,15 @@ class FrontViewController extends Controller
     }
 
 
-    public function about()
-    {
-        $serviceList = Service::latest()->get()->take(6);
-        $categories = Category::all();
-        $services = Service::latest()->get();
-        $sitesetting = SiteSetting::first();
-        $about = About::first();
-        $images = PhotoGallery::latest()->get();
+    // public function about()
+    // {
+    //     $serviceList = Service::latest()->get()->take(6);
+    //     $categories = Category::all();
+    //     $services = Service::latest()->get();
+    //     $sitesetting = SiteSetting::first();
+    //     $about = About::first();
+    //     $images = PhotoGallery::latest()->get();
 
-        return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about', 'services', 'images'));
-    }
+    //     return view('frontend.aboutus', compact('serviceList', 'categories', 'sitesetting', 'about', 'services', 'images'));
+    // }
 }

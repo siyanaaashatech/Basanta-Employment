@@ -11,11 +11,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['title' => 'Test Prepration'],
+            ['title' => 'Guiding Principles'],
             ['title' => 'Living Abroad'],
-            ['title' => 'Counselling'],
-            ['title' => 'News'],
-            ['title' => 'Country University']
+            // ['title' => 'Counselling'],
+            // ['title' => 'News'],
+            // ['title' => 'Country University']
         ];
         foreach ($categories as $category) {
             Category::create($category);

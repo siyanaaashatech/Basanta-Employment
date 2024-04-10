@@ -12,14 +12,14 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonial::with(['university', 'course'])->paginate(10);
-        return view('backend.testimonial.index', ['testimonials' => $testimonials, 'page_title' => 'Student Review']);
+        return view('backend.testimonial.index', ['testimonials' => $testimonials, 'page_title' => 'Testimonials']);
     }
 
     public function create()
     {
         $universities = University::all();
         $courses = Course::all();
-        return view('backend.testimonial.create', ['universities' => $universities, 'courses' => $courses, 'page_title' => 'Student Review']);
+        return view('backend.testimonial.create', ['universities' => $universities, 'courses' => $courses, 'page_title' => 'Testimonials']);
     }
 
     public function store(Request $request)
@@ -44,9 +44,9 @@ class TestimonialController extends Controller
             $testimonial->description = $request->description;
 
             $testimonial->save();
-            return redirect()->route('admin.testimonials.index')->with('success', 'Student Review created successfully.');
+            return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial created successfully.');
         } catch (\Exception $e) {
-            return back()->withInput()->with('error', 'An error occurred while creating the Student Review: ' . $e->getMessage());
+            return back()->withInput()->with('error', 'An error occurred while creating testimonial: ' . $e->getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ class TestimonialController extends Controller
     {
         $testimonials = Testimonial::find($id);
         if (!$testimonials) {
-            return redirect()->route('admin.testimonials.index')->with('error', 'Student Review not found.');
+            return redirect()->route('admin.testimonials.index')->with('error', 'Testimonial not found.');
         }
 
         $universities = University::all();
@@ -65,7 +65,7 @@ class TestimonialController extends Controller
             'testimonials' => $testimonials,
             'universities' => $universities,
             'courses' => $courses,
-            'page_title' => 'Update Student Review'
+            'page_title' => 'Update Testimonial'
         ]);
     }
 
@@ -82,7 +82,7 @@ class TestimonialController extends Controller
         try {
             $testimonial = Testimonial::find($id);
             if (!$testimonial) {
-                return back()->with('error', 'Student Review not found.');
+                return back()->with('error', 'Testimonial not found.');
             }
 
             // Check if a new image is uploaded
@@ -105,9 +105,9 @@ class TestimonialController extends Controller
             $testimonial->description = $request->description;
             $testimonial->save();
 
-            return redirect()->route('admin.testimonials.index')->with('success', 'Student Review updated successfully.');
+            return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial updated successfully.');
         } catch (\Exception $e) {
-            return back()->withInput()->with('error', 'An error occurred while updating the Student Review: ' . $e->getMessage());
+            return back()->withInput()->with('error', 'An error occurred while updating the Testimonial: ' . $e->getMessage());
         }
     }
 
@@ -117,13 +117,13 @@ class TestimonialController extends Controller
         try {
             $testimonials = Testimonial::find($id);
             if (!$testimonials) {
-                return back()->with('error', 'Student Review not found.');
+                return back()->with('error', 'Testimonial not found.');
             }
 
             $testimonials->delete();
-            return redirect()->route('admin.testimonials.index')->with('success', 'Student Review deleted successfully.');
+            return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial deleted successfully.');
         } catch (\Exception $e) {
-            return back()->with('error', 'An error occurred while deleting the Student Review: ' . $e->getMessage());
+            return back()->with('error', 'An error occurred while deleting Testimonial: ' . $e->getMessage());
         }
     }
 

@@ -20,7 +20,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.courses.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                Course</a>
+                </a>
             <a href="{{ url('admin') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
         <div class="col-sm-6">
@@ -90,13 +90,13 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel{{ $course->id }}">Delete Course</h5>
+                                <h5 class="modal-title" id="deleteModalLabel{{ $course->id }}">Delete</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Are you sure you want to delete this course?
+                                Are you sure you want to delete this work category?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

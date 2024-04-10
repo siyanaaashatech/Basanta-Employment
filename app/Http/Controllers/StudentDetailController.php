@@ -13,7 +13,7 @@ class StudentDetailController extends Controller
     public function index()
     {
         $studentDetails = StudentDetail::with(['country', 'university', 'course'])->paginate(10);
-        return view('backend.studentdetail.index', ['studentDetails' => $studentDetails, 'page_title' => 'Student Details']);
+        return view('backend.studentdetail.index', ['studentDetails' => $studentDetails, 'page_title' => 'Worker Details']);
     }
 
     public function create()
@@ -21,7 +21,7 @@ class StudentDetailController extends Controller
         $countries = Country::all();
         $universities = University::all();
         $courses = Course::all();
-        return view('backend.studentdetail.create', ['countries' => $countries, 'universities' => $universities, 'courses' => $courses, 'page_title' => 'Create Student Details']);
+        return view('backend.studentdetail.create', ['countries' => $countries, 'universities' => $universities, 'courses' => $courses, 'page_title' => 'Create Worker Details']);
     }
     public function store(Request $request)
     {
@@ -95,7 +95,7 @@ class StudentDetailController extends Controller
             'countries' => $countries,
             'universities' => $universities,
             'courses' => $courses,
-            'page_title' => 'Edit Student Details'
+            'page_title' => 'Edit Worker Details'
         ]);
     }
     public function update(Request $request, $id)
@@ -165,9 +165,9 @@ class StudentDetailController extends Controller
                 // 'image' is already set above
             ]);
 
-            return redirect()->route('admin.student-details.index')->with('success', 'Student Details updated successfully.');
+            return redirect()->route('admin.student-details.index')->with('success', 'Worker Details updated successfully.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error updating student details: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error updating Worker details: ' . $e->getMessage());
         }
     }
 
@@ -176,9 +176,9 @@ class StudentDetailController extends Controller
         try {
             $studentDetail = StudentDetail::findOrFail($id);
             $studentDetail->delete();
-            return redirect()->route('admin.student-details.index')->with('success', 'Student detail deleted successfully.');
+            return redirect()->route('admin.student-details.index')->with('success', 'Worker detail deleted successfully.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error deleting student detail: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error deleting Worker detail: ' . $e->getMessage());
         }
     }
 

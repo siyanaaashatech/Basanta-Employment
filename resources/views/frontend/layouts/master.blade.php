@@ -9,16 +9,12 @@
 
 @include('frontend.includes.head')
 
-<body data-home-page-title="Home" class="u-body u-xl-mode">
+<body>
 
     @include('frontend.includes.topnav')
 
 
 
-
-    
-
-    @include('frontend.includes.topnav')
     @include('frontend.includes.navbar')
 
 

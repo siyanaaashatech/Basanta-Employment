@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\About;
 use App\Models\Course;
 use App\Models\Country;
 use App\Models\Favicon;
@@ -35,26 +36,26 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        // $favicon = Favicon::latest()->first();
-        // View::share('favicon', $favicon);
-
-        //FAVICON for ALL PAGES
-        // $favicon = Favicon::first();
-        // View::share('favicon', $favicon);
-
-        //SITESETTING for ALL PAGES
-        // $sitesetting = SiteSetting::first();
-        // View::share('sitesetting', $sitesetting);
+        $favicon = Favicon::latest()->first();
+        View::share('favicon', $favicon);
 
 
+        $favicon = Favicon::first();
+        View::share('favicon', $favicon);
+
+  
+        $sitesetting = SiteSetting::first();
+        View::share('sitesetting', $sitesetting);
 
 
-        // View::composer('frontend.includes.topnav', function ($view) {
-        //     $sitesetting = SiteSetting::first();
 
-        //     $view->with('sitesetting', $sitesetting);
 
-        // });
+        View::composer('frontend.includes.topnav', function ($view) {
+            $sitesetting = SiteSetting::first();
+
+            $view->with('sitesetting', $sitesetting);
+
+        });
 
 
 
@@ -66,7 +67,6 @@ class AppServiceProvider extends ServiceProvider
             $courses = Course::all();
             $categories = Category::all();
             $blogpostcategories = BlogPostsCategory::all();
-            $testPreparationPosts = Category::where('title', 'Test Prepration')->first()->posts;
             // $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
             $sitesetting = SiteSetting::first();
 
@@ -75,7 +75,6 @@ class AppServiceProvider extends ServiceProvider
             $view->with('courses', $courses);
             $view->with('categories', $categories);
             $view->with('blogpostcategories', $blogpostcategories);
-            $view->with('testPreparationPosts', $testPreparationPosts);
             // $view->with('livingAbroadPosts', $livingAbroadPosts);
             $view->with('sitesetting', $sitesetting);
         });
@@ -83,22 +82,22 @@ class AppServiceProvider extends ServiceProvider
         ////Global variable for Footer
         view()->composer('frontend.includes.footer', function ($view) {
             $sitesetting = SiteSetting::first();
-            $counsellingCategory = Category::where('title', 'Counselling')->first();
-            $counsellingPosts = $counsellingCategory->posts()->take(2)->get();
-            $newsCategory = Category::where('title', 'News')->first();
-            // $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
+
             $services = Service::all();
+            $categories = Category::all();
             $courses = Course::all();
             $siteSettings = SiteSetting::first();
+            $about = About::first();
 
 
             $view->with('sitesetting', $sitesetting);
-            $view->with('counsellingPosts', $counsellingPosts);
-            $view->with('newsCategory', $newsCategory);
+
             // $view->with('livingAbroadPosts', $livingAbroadPosts);
             $view->with('services', $services);
             $view->with('courses', $courses);
             $view->with('siteSettings', $siteSettings);
+            $view->with('categories', $categories);
+            $view->with('about', $about);
         });
     }
 

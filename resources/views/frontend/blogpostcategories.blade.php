@@ -15,6 +15,7 @@
 
                 @foreach ($blogpostcategories as $blogpostcategory)
                     <div class="card col-lg-4">
+                        <a href="{{ route('SingleBlogpostcategory', ['slug' => $blogpostcategory->slug]) }}">
                         <div class="multi_post_image">
                             @if ($blogpostcategory->image)
                                 <img src="{{ asset('uploads/blogpostcategory/' . $blogpostcategory->image) }}"
@@ -30,12 +31,14 @@
                             <p class="card-text">
                                 {{ Str::limit(strip_tags($blogpostcategory->content), 250) }}
                             </p>
-                            <a href="{{ route('SingleBlogpostcategory', ['slug' => $blogpostcategory->slug]) }}">
+                            {{-- <a href="{{ route('SingleBlogpostcategory', ['slug' => $blogpostcategory->slug]) }}">
                                 <button class="btn bg-primary text-white">Read More &nbsp;&nbsp;<i
-                                        class="fa-solid fa-arrow-right"></i></button>
+                                        class="fa-solid fa-arrow-right"></i></button> --}}
                             </a>
                         </div>
+                    </a>
                     </div>
+
                 @endforeach
 
             </div>

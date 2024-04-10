@@ -9,7 +9,7 @@ class Demand extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['country_id', 'from_date', 'to_date', 'content','image'];
+    protected $fillable = ['country_id', 'from_date', 'to_date','vacancy', 'content','image'];
 
     // Define relationship with Country
     public function country()

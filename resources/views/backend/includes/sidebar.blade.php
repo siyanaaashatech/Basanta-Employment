@@ -189,7 +189,7 @@
                             {{-- University --}}
                             @can('list_universities')
                                 <li class="nav-item">
-                                    <a class="nav-link {{ Request::segment(2) == 'universities' ? 'active' : '' }}"
+                                    <a class="nav-link {{ Request::segment(2) == 'company' ? 'active' : '' }}"
                                         href="{{ route('admin.universities.index') }}">
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
                                             Company
@@ -201,10 +201,10 @@
                             {{-- Course --}}
                             @can('list_courses')
                                 <li class="nav-item">
-                                    <a class="nav-link {{ Request::segment(2) == 'courses' ? 'active' : '' }}"
+                                    <a class="nav-link {{ Request::segment(2) == 'work-category' ? 'active' : '' }}"
                                         href="{{ route('admin.courses.index') }}">
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
-                                            Course
+                                            Work Category
                                         </div>
                                     </a>
                                 </li>

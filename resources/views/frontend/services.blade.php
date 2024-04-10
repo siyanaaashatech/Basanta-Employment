@@ -16,6 +16,7 @@
 
                 @foreach ($services as $service)
                     <div class="card col-lg-4">
+                        <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
                         <div class="multi_post_image">
                             @if ($service->image)
                                 <img src="{{ asset('uploads/service/' . $service->image) }}" class="card-img-top"
@@ -31,10 +32,11 @@
                             <p class="card-text">
                                 {{ Str::limit(strip_tags($service->description), 250) }}
                             </p>
-                            <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
-                                <button class="btn bg-primary text-white">Read More &nbsp;&nbsp;<i
-                                        class="fa-solid fa-arrow-right"></i></button> </a>
+                            {{-- <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
+                                <button class="btn">Read More &nbsp;&nbsp;<i
+                                        class="fa-solid fa-arrow-right"></i></button> </a> --}}
                         </div>
+                        </a>
                     </div>
                 @endforeach
 

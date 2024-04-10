@@ -176,7 +176,7 @@
                         <div class="ag-courses-item_bg"></div>
 
                         <div class="ag-courses-item_title">
-                            Students
+                            Workers
                         </div>
 
                         <div class="ag-courses-item_date-box">

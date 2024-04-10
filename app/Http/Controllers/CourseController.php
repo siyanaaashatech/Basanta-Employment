@@ -16,7 +16,7 @@ class CourseController extends Controller
     {
         $courses = Course::paginate(10);
         $summernoteContent = new SummernoteContent();
-        return view('backend.course.index', ['courses' => $courses,'summernoteContent' => $summernoteContent, 'page_title' => 'Course']);
+        return view('backend.course.index', ['courses' => $courses,'summernoteContent' => $summernoteContent, 'page_title' => 'Work Category']);
 
 
     }

@@ -31,13 +31,17 @@ class DemandController extends Controller
             // Move the uploaded file to the desired location
             $newImageName = time() . '-' . $request->image->getClientOriginalName();
             $request->image->move(public_path('uploads/demands'), $newImageName);
-
+        } else {
+            // Handle case when no image is uploaded
+            return redirect()->back()->with('error', 'No image uploaded. Please upload an image.');
+        }
             // Create a new Demand instance and set its attributes
             $demand = new Demand;
             $demand->country_id = $request->country_id;
             $demand->from_date = $request->from_date;
             $demand->to_date = $request->to_date;
             $demand->content = $request->content;
+            $demand->vacancy = $request->vacancy;
             $demand->image = $newImageName; // Set the image attribute
 
             // Save the demand and check if it's saved successfully
@@ -46,14 +50,11 @@ class DemandController extends Controller
             } else {
                 return redirect()->back()->with('error', 'Error! Demand not created.');
             }
-        } else {
-            // Handle case when no image is uploaded
-            return redirect()->back()->with('error', 'No image uploaded. Please upload an image.');
-        }
+      
     } catch (\Exception $e) {
         // Log any errors that occur during the process
         Log::error('Error creating demand: ' . $e->getMessage());
-        return redirect()->back()->with('error', 'Error creating demand. Please try again.');
+        return redirect()->back()->with('error', 'Error creating demand. Please try again.' . $e->getMessage());
     }
 
 
@@ -68,6 +69,7 @@ class DemandController extends Controller
             'from_date' => 'required|date',
             'to_date' => 'required|date|after_or_equal:from_date',
             'content' => 'required',
+            'vacancy' => 'nullable',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

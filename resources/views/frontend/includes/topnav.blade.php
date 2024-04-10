@@ -28,10 +28,7 @@
                             <i class="fab fa-instagram"></i>
                         </span>
                     </a>
-                  
-
-
-                   
+  
                 </div>
 
 
@@ -49,10 +46,6 @@
 
                 
             </div>
-
-         
-
-
 
         </div>
 </section>

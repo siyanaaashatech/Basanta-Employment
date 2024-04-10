@@ -71,9 +71,9 @@
             </div>
             <!-- University -->
             <div class="form-group">
-                <label for="university_id">University</label>
+                <label for="university_id">Company</label>
                 <select name="university_id" class="form-control" id="university_id" required>
-                    <option value="">Select University</option>
+                    <option value="">Select Company</option>
                     @foreach ($universities as $university)
                         <option value="{{ $university->id }}"
                             {{ $studentDetail->university_id == $university->id ? 'selected' : '' }}>
@@ -83,9 +83,9 @@
             </div>
             <!-- Course -->
             <div class="form-group">
-                <label for="course_id">Course</label>
+                <label for="course_id">Work Category</label>
                 <select name="course_id" class="form-control" id="course_id" required>
-                    <option value="">Select Course</option>
+                    <option value="">Select Work Category</option>
                     @foreach ($courses as $course)
                         <option value="{{ $course->id }}"
                             {{ $studentDetail->course_id == $course->id ? 'selected' : '' }}>{{ $course->title }}

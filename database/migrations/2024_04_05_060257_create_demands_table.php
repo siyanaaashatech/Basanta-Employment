@@ -20,6 +20,7 @@ class CreateDemandsTable extends Migration
             $table->date('to_date');
             $table->text('content');
             $table->string('image');
+            $table->string('vacancy');
             $table->timestamps();
         });
     }
