@@ -58,9 +58,8 @@
                     <td> <img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/blogpostcategory/' . $category->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>
-                        {!! $summernoteContent->processContent($category->content) !!}
-                    </td>
+                            <td>{{ Str::limit(strip_tags($summernoteContent->processContent($category->content)), 200) }}</td>
+
                     <td>
                         <!-- Edit Button with Modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal"

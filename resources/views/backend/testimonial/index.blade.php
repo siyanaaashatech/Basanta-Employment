@@ -38,7 +38,7 @@
                 <th>S.N.</th>
                 <th>Name</th>
                 <th>Image</th>
-                <th>University</th>
+                <th>Company</th>
                 <th>Course</th>
                 <th>Description</th>
                 <th>Action</th>
@@ -52,9 +52,9 @@
                     <td> <img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>{{ $testimonial->university->title ?? 'No University' }}</td>
+                    <td>{{ $testimonial->company->title ?? 'No Company' }}</td>
                     <td>{{ $testimonial->course->title ?? 'No Course' }}</td>
-                    <td>{{ $testimonial->description ?? '' }}</td>
+                    <td>{{ Str::limit(strip_tags($testimonial->description), 200) }}</td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <!-- Edit Button -->

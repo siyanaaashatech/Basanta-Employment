@@ -19,8 +19,8 @@ return new class extends Migration {
             $table->string('phone_no');
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
-            $table->unsignedBigInteger('university_id');
-            $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 
             $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');

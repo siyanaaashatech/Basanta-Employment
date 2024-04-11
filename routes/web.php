@@ -19,7 +19,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\CoverImageController;
-use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VisitorBookController;
@@ -128,8 +128,8 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     // Countries
     Route::resource('countries', CountryController::class);
 
-    // Universities
-    Route::resource('universities', UniversityController::class);
+    // companies
+    Route::resource('companies', CompanyController::class);
 
     // Student details
     Route::resource('student-details', StudentDetailController::class);
