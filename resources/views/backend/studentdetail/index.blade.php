@@ -61,7 +61,7 @@
                     <td>{{ $studentDetail->email ?? '' }}</td>
                     <td>{{ $studentDetail->phone_no ?? '' }}</td>
                     <td>{{ $studentDetail->country->name ?? 'No Country' }}</td>
-                    <td>{{ $studentDetail->university->title ?? 'No University' }}</td>
+                    <td>{{ $studentDetail->company->title ?? 'No Company' }}</td>
                     <td>{{ $studentDetail->course->title ?? 'No Course' }}</td>
                     <td>{{ $studentDetail->intake_month_year ?? '' }}</td>
                     <td>

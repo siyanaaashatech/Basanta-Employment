@@ -35,7 +35,7 @@
 
 
 
-    <form id="quickForm" method="POST" action="{{ route('admin.universities.store') }}" enctype="multipart/form-data">
+    <form id="quickForm" method="POST" action="{{ route('admin.companies.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -45,8 +45,8 @@
                 <img id="preview" style="max-width: 150px; max-height:150px; margin-top:10px;">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">University Title</label>
-                <input type="text" name="title" class="form-control" placeholder="University Title" required>
+                <label for="exampleInputEmail1">Company Title</label>
+                <input type="text" name="title" class="form-control" placeholder="Company Title" required>
             </div>
             <div class="form-group">
                 <label for="address">Address</label>
@@ -82,7 +82,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Create University</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </div>
     </form>
 

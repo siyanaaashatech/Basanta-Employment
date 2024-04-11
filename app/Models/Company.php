@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class University extends Model
+class Company extends Model
 {
     use HasFactory, Sluggable;
     protected $fillable = ['logo', 'title', 'slug', 'country_id', 'phone_no', 'email', 'website'];

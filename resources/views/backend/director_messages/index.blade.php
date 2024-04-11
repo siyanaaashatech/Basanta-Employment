@@ -55,7 +55,7 @@
                         <td> <img id="preview{{ $loop->iteration }}"
                                 src="{{ asset('uploads/director_messages/' . $directorMessage->image) }}"
                                 style="width: 150px; height:150px" /></td>
-                        <td>{!! $directorMessage->message !!}</td>
+                          <td>      {{ Str::limit(strip_tags($directorMessage->message), 200) }}</td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
                                 <a href="{{ route('admin.director_messages.edit', $directorMessage->id) }}"
