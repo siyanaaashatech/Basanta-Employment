@@ -53,10 +53,10 @@
                             Employment
                         </a>
                         <ul class="dropdown-menu">
-                            @foreach ($courses as $course)
+                            @foreach ($workcategories as $workcategory)
                                 <li><a class="dropdown-item"
-                                        href="{{ route('singleCourse', ['slug' => $course->slug]) }}">
-                                        {{ $course->title }}</a></li>
+                                        href="{{ route('singleCourse', ['slug' => $workcategory->slug]) }}">
+                                        {{ $workcategory->title }}</a></li>
                             @endforeach
                         </ul>
                     </li>

@@ -20,7 +20,7 @@
             <div class="col-sm-6">
                 <h1 class="m-0">{{ $page_title }}</h1>
                 <a href="{{ route('admin.photo-galleries.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>
-                    Add Photo</a>
+                    Add </a>
                 <!-- Use url()->previous() to go back to the previous page -->
                 <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
             </div>

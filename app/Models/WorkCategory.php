@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Course extends Model
+class WorkCategory extends Model
 {
     use HasFactory, Sluggable;
     protected $fillable = ['title', 'slug', 'description', 'image'];

@@ -26,7 +26,7 @@
                 <!-- Add more role options if needed -->
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Create User</button>
+        <button type="submit" class="btn btn-primary">Create </button>
     </form>
 </div>
 @endsection

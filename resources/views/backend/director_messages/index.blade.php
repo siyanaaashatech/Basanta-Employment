@@ -19,7 +19,7 @@
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.director_messages.create') }}"><button class="btn btn-primary btn-sm"><i
                         class="fa fa-plus"></i>Add
-                    Director Message</button></a>
+                  </button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>

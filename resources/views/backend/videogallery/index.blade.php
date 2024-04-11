@@ -20,7 +20,7 @@
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.video-galleries.create') }}">
                 <button class="btn btn-primary btn-sm">
-                    <i class="fa fa-plus"></i> Add Video
+                    <i class="fa fa-plus"></i> Add
                 </button>
             </a>
             <a href="{{ url('admin') }}">

@@ -19,7 +19,7 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.courses.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
+            <a href="{{ route('admin.work_categories.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
                 </a>
             <a href="{{ url('admin') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
@@ -43,31 +43,31 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($courses as $course)
+            @foreach ($work_categories as $work_category)
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
-                    <td>{{ $course->title ?? '' }}</td>
-                    <td><img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/course/' . $course->image) }}"
+                    <td>{{ $work_category->title ?? '' }}</td>
+                    <td><img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/workcategory/' . $work_category->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>{{ Str::limit(strip_tags($course->description), 200) }}</td>
+                    <td>{{ Str::limit(strip_tags($work_category->description), 200) }}</td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <button class="btn btn-warning btn-sm" data-toggle="modal"
-                                data-target="#editModal{{ $course->id }}" style="margin-right: 5px;"><i
+                                data-target="#editModal{{ $work_category->id }}" style="margin-right: 5px;"><i
                                     class="fas fa-edit"></i> Edit</button>
                             <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal{{ $course->id }}"><i class="fas fa-trash"></i> Delete</button>
+                                data-target="#deleteModal{{ $work_category->id }}"><i class="fas fa-trash"></i> Delete</button>
                         </div>
                     </td>
                 </tr>
 
                 <!-- Edit Modal -->
-                <div class="modal fade" id="editModal{{ $course->id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="editModalLabel{{ $course->id }}" aria-hidden="true">
+                <div class="modal fade" id="editModal{{ $work_category->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editModalLabel{{ $work_category->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel{{ $course->id }}">Edit Course</h5>
+                                <h5 class="modal-title" id="editModalLabel{{ $work_category->id }}">Edit Work Category</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -78,19 +78,19 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('admin.work_categories.edit', $work_category->id) }}" class="btn btn-primary">Edit</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Delete Modal -->
-                <div class="modal fade" id="deleteModal{{ $course->id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="deleteModalLabel{{ $course->id }}" aria-hidden="true">
+                <div class="modal fade" id="deleteModal{{ $work_category->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteModalLabel{{ $work_category->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel{{ $course->id }}">Delete</h5>
+                                <h5 class="modal-title" id="deleteModalLabel{{ $work_category->id }}">Delete</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -100,8 +100,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <form id="deleteForm{{ $course->id }}"
-                                    action="{{ route('admin.courses.destroy', $course->id) }}" method="POST">
+                                <form id="deleteForm{{ $work_category->id }}"
+                                    action="{{ route('admin.work_categories.destroy', $work_category->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>

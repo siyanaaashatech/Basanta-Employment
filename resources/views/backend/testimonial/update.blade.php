@@ -63,12 +63,12 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="course_id">Course</label>
-                <select name="course_id" class="form-control" id="course_id" required>
-                    <option value="">Select Course</option>
-                    @foreach ($courses as $course)
-                        <option value="{{ $course->id }}"
-                            {{ $testimonials->course_id == $course->id ? 'selected' : '' }}>{{ $course->title }}</option>
+                <label for="work_category_id">Course</label>
+                <select name="work_category_id" class="form-control" id="work_category_id" required>
+                    <option value="">Select Work Category</option>
+                    @foreach ($work_categories as $work_category)
+                        <option value="{{ $work_category->id }}"
+                            {{ $testimonials->course_id == $work_category->id ? 'selected' : '' }}>{{ $work_category->title }}</option>
                     @endforeach
                 </select>
             </div>
@@ -79,7 +79,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Update Testimonial</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </form>
     <script>

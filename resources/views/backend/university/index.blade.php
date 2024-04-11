@@ -19,7 +19,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.universities.create') }}">
-                <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Company</button>
+                <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add </button>
             </a>
             <a href="{{ url('admin') }}">
                 <button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</button>
@@ -91,7 +91,7 @@
                             <div class="modal-body">
                                 <!-- Redirect to edit page -->
                                 <a href="{{ route('admin.universities.edit', $university->id) }}" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i> Edit Company
+                                    <i class="fas fa-edit"></i> Edit 
                                 </a>
                             </div>
                             <div class="modal-footer">

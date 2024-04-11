@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\About;
-use App\Models\Course;
+use App\Models\WorkCategory;
 use App\Models\Country;
 use App\Models\Favicon;
 use App\Models\Service;
@@ -64,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('frontend.includes.navbar', function ($view) {
             $countries = Country::all();
             $testimonials = Testimonial::all();
-            $courses = Course::all();
+            $workcategories = WorkCategory::all();
             $categories = Category::all();
             $blogpostcategories = BlogPostsCategory::all();
             // $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
@@ -72,7 +72,7 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('countries', $countries);
             $view->with('testimonials', $testimonials);
-            $view->with('courses', $courses);
+            $view->with('workcategories', $workcategories);
             $view->with('categories', $categories);
             $view->with('blogpostcategories', $blogpostcategories);
             // $view->with('livingAbroadPosts', $livingAbroadPosts);
@@ -85,7 +85,7 @@ class AppServiceProvider extends ServiceProvider
 
             $services = Service::all();
             $categories = Category::all();
-            $courses = Course::all();
+            $workcategories = WorkCategory::all();
             $siteSettings = SiteSetting::first();
             $about = About::first();
 
@@ -94,7 +94,7 @@ class AppServiceProvider extends ServiceProvider
 
             // $view->with('livingAbroadPosts', $livingAbroadPosts);
             $view->with('services', $services);
-            $view->with('courses', $courses);
+            $view->with('workcategories', $workcategories);
             $view->with('siteSettings', $siteSettings);
             $view->with('categories', $categories);
             $view->with('about', $about);

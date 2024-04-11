@@ -69,11 +69,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="course_id">Work Category</label>
-                <select name="course_id" class="form-control" id="course_id" required>
+                <label for="work_category_id">Work Category</label>
+                <select name="work_category_id" class="form-control" id="work_category_id" required>
                     <option value="">Select Work Category</option>
-                    @foreach ($courses as $course)
-                        <option value="{{ $course->id }}">{{ $course->title }}</option>
+                    @foreach ($work_categories as $work_category)
+                        <option value="{{ $work_category->id }}">{{ $work_category->title }}</option>
                     @endforeach
                 </select>
             </div>

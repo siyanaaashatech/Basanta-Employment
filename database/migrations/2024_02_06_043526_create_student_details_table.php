@@ -22,8 +22,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('university_id');
             $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');
 
-            $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->unsignedBigInteger('work_category_id');
+            $table->foreign('work_category_id')->references('id')->on('work_categories')->onDelete('cascade');
 
             $table->date('intake_month_year');
             $table->string('image')->nullable();

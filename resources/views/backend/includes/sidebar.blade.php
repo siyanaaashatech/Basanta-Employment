@@ -199,10 +199,10 @@
                             @endcan
 
                             {{-- Course --}}
-                            @can('list_courses')
+                            @can('list_work_categories')
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'work-category' ? 'active' : '' }}"
-                                        href="{{ route('admin.courses.index') }}">
+                                        href="{{ route('admin.work_categories.index') }}">
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
                                             Work Category
                                         </div>

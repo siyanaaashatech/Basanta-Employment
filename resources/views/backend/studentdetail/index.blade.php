@@ -20,7 +20,7 @@
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.student-details.create') }}">
                 <button class="btn btn-primary btn-sm">
-                    <i class="fa fa-plus"></i> Add Worker Detail
+                    <i class="fa fa-plus"></i> Add
                 </button>
             </a>
             <a href="{{ url('admin') }}">
@@ -62,7 +62,7 @@
                     <td>{{ $studentDetail->phone_no ?? '' }}</td>
                     <td>{{ $studentDetail->country->name ?? 'No Country' }}</td>
                     <td>{{ $studentDetail->university->title ?? 'No University' }}</td>
-                    <td>{{ $studentDetail->course->title ?? 'No Course' }}</td>
+                    <td>{{ $studentDetail->work_category->title ?? 'No Work Category' }}</td>
                     <td>{{ $studentDetail->intake_month_year ?? '' }}</td>
                     <td>
                         <img id="preview{{ $loop->iteration }}"

@@ -83,12 +83,12 @@
             </div>
             <!-- Course -->
             <div class="form-group">
-                <label for="course_id">Work Category</label>
-                <select name="course_id" class="form-control" id="course_id" required>
+                <label for="work_category_id">Work Category</label>
+                <select name="work_category_id" class="form-control" id="work_category_id" required>
                     <option value="">Select Work Category</option>
-                    @foreach ($courses as $course)
-                        <option value="{{ $course->id }}"
-                            {{ $studentDetail->course_id == $course->id ? 'selected' : '' }}>{{ $course->title }}
+                    @foreach ($work_categories as $work_category)
+                        <option value="{{ $work_category->id }}"
+                            {{ $studentDetail->work_category == $work_category->id ? 'selected' : '' }}>{{ $work_category->title }}
                         </option>
                     @endforeach
                 </select>
@@ -131,7 +131,7 @@
 
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Update Worker Details</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </div>
     </form>
 

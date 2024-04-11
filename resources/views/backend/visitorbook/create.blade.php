@@ -71,7 +71,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Create Visitor Book</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </div>
     </form>
 
