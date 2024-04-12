@@ -60,11 +60,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="university_id">Company</label>
-                <select name="university_id" class="form-control" id="university_id" required>
+                <label for="company_id">Company</label>
+                <select name="company_id" class="form-control" id="company_id" required>
                     <option value="">Select Company</option>
-                    @foreach ($universities as $university)
-                        <option value="{{ $university->id }}">{{ $university->title }}</option>
+                    @foreach ($companies as $company)
+                        <option value="{{ $company->id }}">{{ $company->title }}</option>
                     @endforeach
                 </select>
             </div>

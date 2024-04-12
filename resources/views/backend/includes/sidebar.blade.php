@@ -186,11 +186,11 @@
                                 </li>
                             @endcan
 
-                            {{-- University --}}
-                            @can('list_universities')
+                            {{-- Company --}}
+                            @can('list_companies')
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'company' ? 'active' : '' }}"
-                                        href="{{ route('admin.universities.index') }}">
+                                        href="{{ route('admin.companies.index') }}">
                                         <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
                                             Company
                                         </div>
