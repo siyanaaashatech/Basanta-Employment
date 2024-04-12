@@ -14,7 +14,7 @@
                 <label for="answer">Answer</label>
                 <textarea class="form-control" id="answer" name="answer" rows="5" required>{{ $faq->answer }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Update FAQ</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 @endsection

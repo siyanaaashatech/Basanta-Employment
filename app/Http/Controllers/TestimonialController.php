@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
-use App\Models\Course;
+use App\Models\WorkCategory;
 
 class TestimonialController extends Controller
 {
@@ -18,8 +18,8 @@ class TestimonialController extends Controller
     public function create()
     {
         $companies = Company::all();
-        $courses = Course::all();
-        return view('backend.testimonial.create', ['companies' => $companies, 'courses' => $courses, 'page_title' => 'Testimonials']);
+        $work_categories = WorkCategory::all();
+        return view('backend.testimonial.create', ['universities' => $universities, 'courses' => $courses, 'page_title' => 'Testimonials']);
     }
 
     public function store(Request $request)
@@ -27,7 +27,7 @@ class TestimonialController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'company_id' => 'required|exists:universities,id',
-            'course_id' => 'required|exists:courses,id',
+            'work_category_id' => 'required|exists:work_categories,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
             'description' => 'required|string',
         ]);
@@ -64,7 +64,7 @@ class TestimonialController extends Controller
         return view('backend.testimonial.update', [
             'testimonials' => $testimonials,
             'companies' => $companies,
-            'courses' => $courses,
+            'work_categories' => $work_categories,
             'page_title' => 'Update Testimonial'
         ]);
     }
@@ -74,7 +74,7 @@ class TestimonialController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'company_id' => 'required|exists:companies,id',
-            'course_id' => 'required|exists:courses,id',
+            'work_category_id' => 'required|exists:work_categories,id',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,avif,webp|nullable|max:2048',
             'description' => 'required|string',
         ]);

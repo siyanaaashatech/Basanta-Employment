@@ -14,9 +14,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::latest()->get();
+        
         $page_title = "Categories";
-        return view('backend.category.index', compact('categories','page_title'));
+        
+        return view('backend.category.index', compact('categories', 'page_title'));
     }
 
     /**
