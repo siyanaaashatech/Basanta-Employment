@@ -43,6 +43,9 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $serialNumber=1;
+            @endphp
             @foreach ($work_categories as $work_category)
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
