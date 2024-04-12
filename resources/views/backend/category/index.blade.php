@@ -44,9 +44,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $serialNumber = 1;
+                    @endphp
                     @foreach ($categories as $category)
                         <tr>
-                            <td>{{ $category->id }}</td>
+                            <td>{{ $serialNumber++ }}</td>
                             <td>{{ $category->title }}</td>
                             <td>
                                 <!-- Add action buttons here -->

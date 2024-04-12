@@ -44,9 +44,12 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                        $serialNumber = 1;
+                    @endphp
                 @foreach ($gallery as $image)
                     <tr>
-                        <td>{{ $image->id }}</td>
+                        <td>{{ $serialNumber++ }}</td>
                         <td>{{ $image->title }}</td>
                         <td>{{ $image->img_desc ?? '' }}</td>
                         <td>

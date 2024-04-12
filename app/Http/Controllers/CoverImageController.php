@@ -10,7 +10,7 @@ class CoverImageController extends Controller
 {
     public function index()
     {
-        $coverimages = CoverImage::paginate(10);
+        $coverimages = CoverImage::latest()->get();
 
         return view('backend.coverimage.index', ['coverimages' => $coverimages, 'page_title' => 'Cover Image']);
     }

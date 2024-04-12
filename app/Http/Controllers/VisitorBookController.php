@@ -10,7 +10,7 @@ class VisitorBookController extends Controller
 {
     public function index()
     {
-        $visitorBooks = VisitorBook::with('country')->get();
+        $visitorBooks = VisitorBook::with('country')->latest()->paginate(10);
         return view('backend.visitorbook.index', ['visitorBooks' => $visitorBooks, 'page_title' => 'Visitor Books']);
     }
 
