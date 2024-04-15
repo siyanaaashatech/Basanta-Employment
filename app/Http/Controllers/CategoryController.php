@@ -14,9 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        $page_title = "Categories";
-        return view('backend.category.index', compact('categories','page_title'));
+        $categories = Category::paginate(10); // Paginate with 10 items per page
+        return view('backend.category.index', compact('categories'))->with('page_title', 'Categories');
     }
 
     /**

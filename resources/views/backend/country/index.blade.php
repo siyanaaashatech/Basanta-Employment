@@ -140,4 +140,29 @@
             @endif
         </tbody>
     </table>
+    
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                @if ($countries->onFirstPage())
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $countries->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                @endif
+
+                @foreach ($countries->getUrlRange(1, $countries->lastPage()) as $page => $url)
+                    @if ($page == $countries->currentPage())
+                        <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                    @else
+                        <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                    @endif
+                @endforeach
+
+                @if ($countries->hasMorePages())
+                    <li class="page-item"><a class="page-link" href="{{ $countries->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                @else
+                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                @endif
+            </ul>
+        </nav>
 @endsection

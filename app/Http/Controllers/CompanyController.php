@@ -12,7 +12,7 @@ class CompanyController extends Controller
     public function index()
     {
         // $companies = Company::paginate(10);
-        $companies = Company::with('country')->paginate(10);
+        $companies = Company::paginate(10);
         return view('backend.company.index', ['companies' => $companies, 'page_title' => 'Company']);
 
 

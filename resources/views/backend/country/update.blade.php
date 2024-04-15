@@ -38,7 +38,7 @@
         @method('PUT')
         <!-- Form content goes here -->
     </form>
-    Spoofing a PUT request -->
+   
     <div class="card-body">
         <div class="form-group">
             <label for="name">Name</label><span style="color:red; font-size:large"> *</span>
