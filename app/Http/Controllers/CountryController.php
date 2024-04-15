@@ -19,7 +19,7 @@ class CountryController extends Controller
 {
     public function index()
     {
-        $countries = Country::latest()->get();
+        $countries = Country::latest()->paginate(5);
         $summernoteContent = new SummernoteContent(); // Instantiate SummernoteContent model
         return view('backend.country.index', ['countries' => $countries, 'summernoteContent' => $summernoteContent, 'page_title' => 'Country']);
     }

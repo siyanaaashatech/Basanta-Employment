@@ -44,10 +44,13 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($posts as $post)
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                        <td width="5%">{{ $loop->iteration }}</td>
+            <tbody> @php
+                $serialNumber = ($posts->currentPage() - 1) * $posts->perPage() + 1;
+            @endphp
+            
+            @foreach ($posts as $post)
+                <tr data-widget="expandable-table" aria-expanded="false">
+                    <td width="5%">{{ $serialNumber }}</td>
                         <td>{{ $post->title ?? '' }}</td>
                         <td>{{ Str::limit(strip_tags($post->description), 200) }}</td>
                         <td>{{ $post->category->title ?? 'No Category' }}</td>
@@ -69,6 +72,9 @@
                             </div>
                         </td>
                     </tr>
+                    @php
+        $serialNumber++;
+    @endphp
 
                     <!-- Edit Post Modal -->
                     <div class="modal fade" id="editPostModal{{ $post->id }}" tabindex="-1" role="dialog"
@@ -134,5 +140,31 @@
                 @endforeach
             </tbody>
         </table>
+        <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ($posts->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $posts->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
+            @if ($page == $posts->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ($posts->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $posts->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
+
+        
     </div>
 @endsection

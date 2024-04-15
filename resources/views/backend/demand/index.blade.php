@@ -42,9 +42,13 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $serialNumber = ($demands->currentPage() - 1) * $demands->perPage() + 1;
+            @endphp
+
             @foreach ($demands as $demand)
                 <tr data-widget="expandable-table" aria-expanded="false">
-                    <td>{{ $loop->iteration }}</td>
+                    <td width="5%">{{ $serialNumber }}</td>
                     <td>{{ $demand->country->name }}</td>
                     <td>{{ $demand->from_date }}</td>
                     <td>{{ $demand->to_date }}</td>
@@ -63,6 +67,9 @@
                         </div>
                     </td>
                 </tr>
+                @php
+        $serialNumber++;
+    @endphp
 
                 <!-- Edit Modal -->
                 <div class="modal fade" id="editModal{{ $demand->id }}" tabindex="-1" role="dialog"
@@ -114,6 +121,30 @@
             @endforeach
         </tbody>
     </table>
+     <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ($demands->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $demands->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ($demands->getUrlRange(1, $demands->lastPage()) as $page => $url)
+            @if ($page == $demands->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ($demands->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $demandss->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
 
     <script>
         const previewImage = e => {

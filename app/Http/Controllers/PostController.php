@@ -14,7 +14,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('category')->latest()->paginate(10);
+        $posts = Post::with('category')->latest()->paginate(5);
         $summernoteContent = new SummernoteContent();
         $post = $summernoteContent;
         return view('backend.post.index', compact('posts', 'summernoteContent'));
