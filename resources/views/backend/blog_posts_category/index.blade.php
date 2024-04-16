@@ -134,4 +134,5 @@
             @endforeach
         </tbody>
     </table>
+    
 @endsection
