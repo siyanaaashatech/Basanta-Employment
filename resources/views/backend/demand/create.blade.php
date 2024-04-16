@@ -61,7 +61,7 @@
 
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Create Demand</button>
+                                <button type="submit" class="btn btn-primary">Create</button>
                             </div>
                         </form>
                     </div>

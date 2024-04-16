@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Models\WorkCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
@@ -10,19 +10,19 @@ use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Models\SummernoteContent;
 
-class CourseController extends Controller
+class WorkCategoryController extends Controller
 {
     public function index()
     {
-        $courses = Course::paginate(10);
+        $work_categories = WorkCategory::latest()->get();
         $summernoteContent = new SummernoteContent();
-        return view('backend.course.index', ['courses' => $courses,'summernoteContent' => $summernoteContent, 'page_title' => 'Work Category']);
+        return view('backend.work_category.index', ['work_categories' => $work_categories,'summernoteContent' => $summernoteContent, 'page_title' => 'Work Category']);
 
 
     }
     public function create()
     {
-        return view('backend.course.create', ['page_title' => 'Create Course']);
+        return view('backend.work_category.create', ['page_title' => 'Work Category']);
 
     }
     public function store(Request $request)
@@ -41,18 +41,18 @@ class CourseController extends Controller
 
 
             $newImageName = time() . '-' . $request->image->getClientOriginalName();
-            $request->image->move(public_path('uploads/course'), $newImageName);
+            $request->image->move(public_path('uploads/workcategory'), $newImageName);
 
-            $about = new Course;
+            $about = new WorkCategory;
             $about->title = $request->title;
             $about->description = $processedDescription;
-            $about->slug = SlugService::createSlug(Course::class, 'slug', $request->title);
+            $about->slug = SlugService::createSlug(WorkCategory::class, 'slug', $request->title);
             $about->image = $newImageName;
 
             if ($about->save()) {
-                return redirect()->route('admin.courses.index')->with('success', 'Success! Course created.');
+                return redirect()->route('admin.work_categories.index')->with('success', 'Success! Work Category created.');
             } else {
-                return redirect()->back()->with('error', 'Error! Course  not created.');
+                return redirect()->back()->with('error', 'Error! Work Category  not created.');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error! Something went wrong.');
@@ -60,8 +60,8 @@ class CourseController extends Controller
     }
     public function edit($id)
     {
-        $courses = Course::find($id);
-        return view('backend.course.update', ['courses' => $courses, 'page_title' => 'Update Course']);
+        $work_categories = WorkCategory::find($id);
+        return view('backend.work_category.update', ['work_categories' => $work_categories, 'page_title' => 'Update Work Category']);
 
     }
     public function update(Request $request, $id)
@@ -73,29 +73,29 @@ class CourseController extends Controller
                 'description' => 'required|string',
             ]);
 
-            $course = Course::find($id);
-            if (!$course) {
-                return redirect()->back()->with('error', 'Error! Course not found.');
+            $work_category = WorkCategory::find($id);
+            if (!$work_category) {
+                return redirect()->back()->with('error', 'Error! Work Category not found.');
             }
 
             if ($request->hasFile('image')) {
                 $newImageName = time() . '-' . $request->image->getClientOriginalName();
-                $request->image->move(public_path('uploads/course'), $newImageName);
-                $course->image = $newImageName;
+                $request->image->move(public_path('uploads/workcategory'), $newImageName);
+                $work_category->image = $newImageName;
             }
 
             // Process Summernote content using the SummernoteContent model
             $summernoteContent = new SummernoteContent();
             $processedDescription = $summernoteContent->processContent($request->description);
-            $course->description = $processedDescription; 
+            $work_category->description = $processedDescription; 
 
-            $course->title = $request->title;
-            $course->description = $request->description;
+            $work_category->title = $request->title;
+            $work_category->description = $request->description;
 
-            if ($course->save()) {
-                return redirect()->route('admin.courses.index')->with('success', 'Success! Course updated.');
+            if ($work_category->save()) {
+                return redirect()->route('admin.work_categories.index')->with('success', 'Success! Work Category updated.');
             } else {
-                return redirect()->back()->with('error', 'Error! Course not updated.');
+                return redirect()->back()->with('error', 'Error! Work Category not updated.');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error! Something went wrong: ' . $e->getMessage());
@@ -105,13 +105,13 @@ class CourseController extends Controller
 
     public function destroy($id)
     {
-        $courses = Course::find($id);
+        $work_categories = WorkCategory::find($id);
 
-        if ($courses) {
-            $courses->delete();
-            return redirect()->route('admin.courses.index')->with('success', 'Success !! Course Deleted');
+        if ($work_categories) {
+            $work_categories->delete();
+            return redirect()->route('admin.work_categories.index')->with('success', 'Success !! Work Category Deleted');
         } else {
-            return redirect()->route('admin.courses.index')->with('error', 'Course  not found.');
+            return redirect()->route('admin.work_categories.index')->with('error', 'Work Category  not found.');
         }
     }
 }

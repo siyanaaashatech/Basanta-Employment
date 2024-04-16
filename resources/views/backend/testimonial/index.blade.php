@@ -20,7 +20,7 @@
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.testimonials.create') }}"><button class="btn btn-primary btn-sm"><i
                         class="fa fa-plus"></i>Add
-                Testimonial</button></a>
+     </button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -38,7 +38,7 @@
                 <th>S.N.</th>
                 <th>Name</th>
                 <th>Image</th>
-                <th>University</th>
+                <th>Company</th>
                 <th>Course</th>
                 <th>Description</th>
                 <th>Action</th>
@@ -56,9 +56,9 @@
                     <td> <img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>{{ $testimonial->university->title ?? 'No University' }}</td>
+                    <td>{{ $testimonial->company->title ?? 'No Company' }}</td>
                     <td>{{ $testimonial->course->title ?? 'No Course' }}</td>
-                    <td>{{ $testimonial->description ?? '' }}</td>
+                    <td>{{ Str::limit(strip_tags($testimonial->description), 200) }}</td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <!-- Edit Button -->
@@ -83,7 +83,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel{{ $testimonial->id }}">Edit Testimonial</h5>
+                                <h5 class="modal-title" id="editModalLabel{{ $testimonial->id }}">Edit</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -94,7 +94,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <a href="{{ route('admin.testimonials.edit', $testimonial->id) }}"
-                                    class="btn btn-primary">Edit Testimonial</a>
+                                    class="btn btn-primary">Edit</a>
                             </div>
                         </div>
                     </div>

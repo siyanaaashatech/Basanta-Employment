@@ -19,7 +19,7 @@
                 <h1 class="m-0">{{ $page_title }}</h1>
                 <a href="{{ route('admin.blog-posts-categories.create') }}">
                     <button class="btn btn-primary btn-sm">
-                        <i class="fa fa-plus"></i> Add Blog Post Category
+                        <i class="fa fa-plus"></i> Add
                     </button>
                 </a>
                 <a href="http://127.0.0.1:8000/admin/blog-posts-categories">
@@ -58,9 +58,8 @@
                     <td> <img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/blogpostcategory/' . $category->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>
-                        {!! $summernoteContent->processContent($category->content) !!}
-                    </td>
+                            <td>{{ Str::limit(strip_tags($summernoteContent->processContent($category->content)), 200) }}</td>
+
                     <td>
                         <!-- Edit Button with Modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal"

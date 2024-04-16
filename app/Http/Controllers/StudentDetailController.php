@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Models\WorkCategory;
 use App\Models\Country;
-use App\Models\University;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\StudentDetail;
 
@@ -12,16 +12,16 @@ class StudentDetailController extends Controller
 {
     public function index()
     {
-        $studentDetails = StudentDetail::with(['country', 'university', 'course'])->paginate(10);
+        $studentDetails = StudentDetail::with(['country', 'company', 'course'])->paginate(10);
         return view('backend.studentdetail.index', ['studentDetails' => $studentDetails, 'page_title' => 'Worker Details']);
     }
 
     public function create()
     {
         $countries = Country::all();
-        $universities = University::all();
-        $courses = Course::all();
-        return view('backend.studentdetail.create', ['countries' => $countries, 'universities' => $universities, 'courses' => $courses, 'page_title' => 'Create Worker Details']);
+        $companies = Company::all();
+        $work_categories = WorkCategory::all();
+        return view('backend.studentdetail.create', ['countries' => $countries, 'companies' => $companies, 'work_categories' => $work_categories, 'page_title' => 'Create Worker Details']);
     }
     public function store(Request $request)
     {
@@ -31,8 +31,8 @@ class StudentDetailController extends Controller
             'email' => 'required|email',
             'phone_no' => 'required',
             'country_id' => 'required|exists:countries,id',
-            'university_id' => 'required|exists:universities,id',
-            'course_id' => 'required|exists:courses,id',
+            'company_id' => 'required|exists:companies,id',
+            'work_category_id' => 'required|exists:work_categories,id',
             'intake_month_year' => 'required|date',
             'image' => 'nullable|image',
             'documents' => 'nullable|array',
@@ -69,8 +69,8 @@ class StudentDetailController extends Controller
             $studentdetail->email = $request->email;
             $studentdetail->phone_no = $request->phone_no;
             $studentdetail->country_id = $request->country_id;
-            $studentdetail->university_id = $request->university_id;
-            $studentdetail->course_id = $request->course_id;
+            $studentdetail->company_id = $request->company_id;
+            $studentdetail->work_category_id = $request->work_category_id;
             $studentdetail->intake_month_year = $request->intake_month_year;
             $studentdetail->documents = json_encode($documentPaths);
 
@@ -88,12 +88,12 @@ class StudentDetailController extends Controller
     {
         $studentDetail = StudentDetail::findOrFail($id);
         $countries = Country::all();
-        $universities = University::all();
+        $companies = Company::all();
         $courses = Course::all();
         return view('backend.studentdetail.update', [
             'studentDetail' => $studentDetail,
             'countries' => $countries,
-            'universities' => $universities,
+            'companies' => $companies,
             'courses' => $courses,
             'page_title' => 'Edit Worker Details'
         ]);
@@ -105,8 +105,8 @@ class StudentDetailController extends Controller
             'email' => 'required|email',
             'phone_no' => 'required',
             'country_id' => 'required|exists:countries,id',
-            'university_id' => 'required|exists:universities,id',
-            'course_id' => 'required|exists:courses,id',
+            'company_id' => 'required|exists:companies,id',
+            'work_category_id' => 'required|exists:work_categories,id',
             'intake_month_year' => 'required|date',
             'image' => 'nullable|image',
             'documents' => 'nullable|array',
@@ -158,8 +158,8 @@ class StudentDetailController extends Controller
                 'email' => $validated['email'],
                 'phone_no' => $validated['phone_no'],
                 'country_id' => $validated['country_id'],
-                'university_id' => $validated['university_id'],
-                'course_id' => $validated['course_id'],
+                'company_id' => $validated['company_id'],
+                'work_category_id' => $validated['work_category_id'],
                 'intake_month_year' => $validated['intake_month_year'],
                 'documents' => json_encode($documentPaths),
                 // 'image' is already set above

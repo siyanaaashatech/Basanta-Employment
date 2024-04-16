@@ -19,7 +19,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.services.create') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                    Services</button></a>
+                    </button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -131,29 +131,29 @@
             @endforeach
         </tbody>
     </table>
-    <!-- Pagination -->
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        @if ( $services->onFirstPage())
-            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
-        @else
-            <li class="page-item"><a class="page-link" href="{{  $services->previousPageUrl() }}" rel="prev">&laquo;</a></li>
-        @endif
+    
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                @if ($services->onFirstPage())
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $services->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                @endif
 
-        @foreach ( $services->getUrlRange(1,  $services->lastPage()) as $page => $url)
-            @if ($page ==  $services->currentPage())
-                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
-            @else
-                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
-            @endif
-        @endforeach
+                @foreach ($services->getUrlRange(1, $services->lastPage()) as $page => $url)
+                    @if ($page == $services->currentPage())
+                        <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                    @else
+                        <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                    @endif
+                @endforeach
 
-        @if ( $services->hasMorePages())
-            <li class="page-item"><a class="page-link" href="{{  $services->nextPageUrl() }}" rel="next">&raquo;</a></li>
-        @else
-            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
-        @endif
-    </ul>
-</nav>
-
+                @if ($services->hasMorePages())
+                    <li class="page-item"><a class="page-link" href="{{ $services->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                @else
+                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                @endif
+            </ul>
+        </nav>
 @endsection

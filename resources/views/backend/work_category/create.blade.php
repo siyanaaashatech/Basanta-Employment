@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <form id="quickForm" method="POST" action="{{ route('admin.courses.store') }}" enctype="multipart/form-data">
+    <form id="quickForm" method="POST" action="{{ route('admin.work_categories.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -54,7 +54,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Create Course</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </div>
     </form>
 

@@ -49,20 +49,20 @@
             </div>
             <img id="preview1" style="max-width: 200px; max-height:500px" />
             <div class="form-group">
-                <label for="university_id">University</label>
-                <select name="university_id" class="form-control" id="university_id" required>
-                    <option value="">Select University</option>
-                    @foreach ($universities as $university)
-                        <option value="{{ $university->id }}">{{ $university->title }}</option>
+                <label for="company_id">Company</label>
+                <select name="company_id" class="form-control" id="company_id" required>
+                    <option value="">Select Company</option>
+                    @foreach ($companies as $company)
+                        <option value="{{ $company->id }}">{{ $company->title }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <label for="course_id">Course</label>
-                <select name="course_id" class="form-control" id="course_id" required>
+                <label for="work_category_id">Work Category</label>
+                <select name="work_category_id" class="form-control" id="work_category_id" required>
                     <option value="">Select Course</option>
-                    @foreach ($courses as $course)
-                        <option value="{{ $course->id }}">{{ $course->title }}</option>
+                    @foreach ($work_categories as $work_category)
+                        <option value="{{ $coursework_category_id }}">{{ $work_category->title }}</option>
                     @endforeach
                 </select>
             </div>
@@ -73,7 +73,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Create Student Review</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </div>
     </form>
 

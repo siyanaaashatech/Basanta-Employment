@@ -19,8 +19,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0">Posts</h1>
-                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                    Post</a>
+                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add</a>
                 <!-- Use url()->previous() to go back to the previous page -->
                 <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
             </div>
@@ -83,7 +82,7 @@
                             <div class="modal-content">
                                 <!-- Modal header -->
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="editPostModalLabel{{ $post->id }}">Edit Post</h5>
+                                    <h5 class="modal-title" id="editPostModalLabel{{ $post->id }}">Edit </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -114,7 +113,7 @@
                             <div class="modal-content">
                                 <!-- Modal header -->
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="deletePostModalLabel{{ $post->id }}">Delete Post</h5>
+                                    <h5 class="modal-title" id="deletePostModalLabel{{ $post->id }}">Delete </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

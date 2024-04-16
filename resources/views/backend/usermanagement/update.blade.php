@@ -22,7 +22,7 @@
                 <!-- Add more role options if needed -->
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Update User</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
 @endsection

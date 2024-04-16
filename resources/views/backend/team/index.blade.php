@@ -19,7 +19,7 @@
             <div class="col-sm-6">
                 <h1 class="m-0">Team Members</h1>
                 <a href="{{ route('admin.teams.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                    Team</a>
+                    </a>
                 <a href="{{ url('admin') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
             </div>
             <div class="col-sm-6">
