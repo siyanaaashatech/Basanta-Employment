@@ -14,7 +14,7 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $faqs = Faq::all();
+        $faqs = Faq::latest()->get();
         return view('backend.faq.index', compact('faqs'));
     }
 

@@ -36,53 +36,37 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+    // Check if Laravel is running in the console
+    if (!app()->runningInConsole()) {
         $favicon = Favicon::latest()->first();
         View::share('favicon', $favicon);
 
-
-        $favicon = Favicon::first();
-        View::share('favicon', $favicon);
-
-  
         $sitesetting = SiteSetting::first();
         View::share('sitesetting', $sitesetting);
 
-
-
-
-        View::composer('frontend.includes.topnav', function ($view) {
-            $sitesetting = SiteSetting::first();
-
-            $view->with('sitesetting', $sitesetting);
-
-        });
-
-
-
-
-        //Global variable for Navbar
+        // Other view composers can be added here in the same way
         View::composer('frontend.includes.navbar', function ($view) {
             $countries = Country::all();
             $testimonials = Testimonial::all();
             $workcategories = WorkCategory::all();
             $categories = Category::all();
             $blogpostcategories = BlogPostsCategory::all();
-            // $livingAbroadPosts = Category::where('title', 'Living Abroad')->first()->posts;
             $sitesetting = SiteSetting::first();
 
-            $view->with('countries', $countries);
-            $view->with('testimonials', $testimonials);
-            $view->with('workcategories', $workcategories);
-            $view->with('categories', $categories);
-            $view->with('blogpostcategories', $blogpostcategories);
-            // $view->with('livingAbroadPosts', $livingAbroadPosts);
-            $view->with('sitesetting', $sitesetting);
+
+            $view->with([
+                'countries' => $countries,
+                'testimonials' => $testimonials,
+                'courses' => $courses,
+                'categories' => $categories,
+                'blogpostcategories' => $blogpostcategories,
+                'sitesetting' => $sitesetting
+            ]);
+
         });
 
-        ////Global variable for Footer
         view()->composer('frontend.includes.footer', function ($view) {
-            $sitesetting = SiteSetting::first();
-
             $services = Service::all();
             $categories = Category::all();
             $workcategories = WorkCategory::all();
@@ -90,15 +74,17 @@ class AppServiceProvider extends ServiceProvider
             $about = About::first();
 
 
-            $view->with('sitesetting', $sitesetting);
+            $view->with([
+                'services' => $services,
+                'courses' => $courses,
+                'siteSettings' => $siteSettings,
+                'categories' => $categories,
+                'about' => $about,
+                'sitesetting' => SiteSetting::first(),
+            ]);
 
-            // $view->with('livingAbroadPosts', $livingAbroadPosts);
-            $view->with('services', $services);
-            $view->with('workcategories', $workcategories);
-            $view->with('siteSettings', $siteSettings);
-            $view->with('categories', $categories);
-            $view->with('about', $about);
         });
+    }
     }
 
 }

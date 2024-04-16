@@ -44,9 +44,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                    $perPage = $categories->perPage(); // the number of results per page
+                    $currentPage = $categories->currentPage(); // current page number
+                    $serialNumber = ($currentPage - 1) * $perPage + 1; // calculate the starting serial number for the current page
+                @endphp
                     @foreach ($categories as $category)
                         <tr>
-                            <td>{{ $category->id }}</td>
+                            <td>{{ $serialNumber++ }}</td>
                             <td>{{ $category->title }}</td>
                             <td>
                                 <!-- Add action buttons here -->
@@ -65,6 +70,30 @@
                     @endforeach
                 </tbody>
             </table>
+            <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                @if ($categories->onFirstPage())
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $categories->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                @endif
+
+                @foreach ($categories->getUrlRange(1, $categories->lastPage()) as $page => $url)
+                    @if ($page == $categories->currentPage())
+                        <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                    @else
+                        <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                    @endif
+                @endforeach
+
+                @if ($categories->hasMorePages())
+                    <li class="page-item"><a class="page-link" href="{{ $categories->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                @else
+                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                @endif
+            </ul>
+        </nav>
         @endif
     </div>
 @endsection

@@ -12,7 +12,7 @@ class DemandController extends Controller
 {
     public function index()
     {
-        $demands = Demand::all();
+        $demands = Demand::latest()->paginate(5);
         $page_title = 'Demands';
         return view('backend.demand.index', compact('demands','page_title'));
     }

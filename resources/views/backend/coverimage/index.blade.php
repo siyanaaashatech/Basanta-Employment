@@ -41,6 +41,9 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $serialNumber = ($coverimages->currentPage() - 1) * $coverimages->perPage() + 1;
+            @endphp
             @foreach ($coverimages as $coverimage)
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
@@ -142,4 +145,5 @@
             };
         };
     </script>
+    
 @endsection

@@ -14,7 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teamMembers = Team::all();
+        $teamMembers = Team::latest()->get();
         
         // Return the teams to a view for display
         return view('backend.team.index', compact('teamMembers'));
