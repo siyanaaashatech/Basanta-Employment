@@ -24,6 +24,7 @@ class WorkCategoryController extends Controller
     {
         return view('backend.work_category.create', ['page_title' => 'Work Category']);
 
+        
     }
     public function store(Request $request)
     {
