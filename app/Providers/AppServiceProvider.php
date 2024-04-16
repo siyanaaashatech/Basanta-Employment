@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'countries' => $countries,
                 'testimonials' => $testimonials,
-                'courses' => $courses,
+                'workcategories' => $workcategories,
                 'categories' => $categories,
                 'blogpostcategories' => $blogpostcategories,
                 'sitesetting' => $sitesetting
@@ -76,7 +76,7 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with([
                 'services' => $services,
-                'courses' => $courses,
+                'workcategories' => $workcategories,
                 'siteSettings' => $siteSettings,
                 'categories' => $categories,
                 'about' => $about,
