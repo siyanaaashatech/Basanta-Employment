@@ -2,29 +2,29 @@
 
 namespace App\Models;
 
-use App\Models\Course;
+use App\Models\WorkCategory;
 use App\Models\Country;
-use App\Models\University;
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class StudentDetail extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'phone_no', 'email', 'country_id', 'university_id', 'course_id', 'intake_month_year', 'image', 'documents'];
+    protected $fillable = ['name', 'phone_no', 'email', 'country_id', 'company_id', 'work_category_id', 'intake_month_year', 'image', 'documents'];
 
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
     }
 
-    public function university()
+    public function company()
     {
-        return $this->belongsTo(University::class, 'university_id');
+        return $this->belongsTo(Company::class, 'company_id');
     }
 
-    public function course()
+    public function work_category()
     {
-        return $this->belongsTo(Course::class, 'course_id');
+        return $this->belongsTo(WorkCategory::class, 'work_category_id');
     }
 }

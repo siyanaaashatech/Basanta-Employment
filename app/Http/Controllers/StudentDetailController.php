@@ -12,7 +12,7 @@ class StudentDetailController extends Controller
 {
     public function index()
     {
-        $studentDetails = StudentDetail::with(['country', 'company', 'course'])->paginate(10);
+        $studentDetails = StudentDetail::with(['country', 'company', 'worker_category'])->paginate(10);
         return view('backend.studentdetail.index', ['studentDetails' => $studentDetails, 'page_title' => 'Worker Details']);
     }
 
@@ -89,12 +89,12 @@ class StudentDetailController extends Controller
         $studentDetail = StudentDetail::findOrFail($id);
         $countries = Country::all();
         $companies = Company::all();
-        $courses = Course::all();
+        $work_categories = WorkCategory::all();
         return view('backend.studentdetail.update', [
             'studentDetail' => $studentDetail,
             'countries' => $countries,
             'companies' => $companies,
-            'courses' => $courses,
+            'work_categories' => $work_categories,
             'page_title' => 'Edit Worker Details'
         ]);
     }
