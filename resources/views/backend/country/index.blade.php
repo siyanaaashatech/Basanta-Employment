@@ -39,6 +39,7 @@
                 <th>Image</th>
                 <th>Content</th>
                 <th>Action</th>
+                
             </tr>
         </thead>
         <tbody>
