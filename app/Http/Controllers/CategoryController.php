@@ -15,13 +15,12 @@ class CategoryController extends Controller
     public function index()
     {
 
-        $categories = Category::latest()->paginate(5);
+        $categories = Category::paginate(10); // Paginate with 10 items per page
 
         $page_title = "Categories";
         
         return view('backend.category.index', compact('categories', 'page_title'));
     }
-    
 
     /**
      * Show the form for creating a new resource.

@@ -48,6 +48,9 @@
             </tr>
         </thead>
         <tbody>
+            @php 
+                $serialNumber=1;
+            @endphp
             @foreach ($companies as $company)
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
@@ -55,6 +58,7 @@
                         <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/company/' . $company->logo) }}"
                             style="width: 150px; height:150px" />
                     </td>
+                    <td>{{$serialNumber++}}</td>
                     <td>{{ $company->title ?? '' }}</td>
                     <td>{{ $company->address ?? '' }}</td>
                     <td>{{ $company->country->name ?? 'No Country' }}</td>
