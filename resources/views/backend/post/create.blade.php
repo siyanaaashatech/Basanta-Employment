@@ -28,7 +28,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Create Post</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
         <script>
             $(document).ready(function() {

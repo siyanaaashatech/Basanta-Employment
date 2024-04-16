@@ -18,7 +18,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">FAQs</h1>
             <a href="{{ route('admin.faqs.create') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add
-                    FAQ</button></a>
+                    </button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>

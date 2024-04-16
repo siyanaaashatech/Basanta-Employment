@@ -18,7 +18,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.countries.create') }}"><button class="btn btn-primary btn-sm"><i
-                        class="fa fa-plus"></i>Add Country</button></a>
+                        class="fa fa-plus"></i>Add</button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -42,9 +42,13 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $serialNumber = ($countries->currentPage() - 1) * $countries->perPage() + 1;
+            @endphp
             @if ($countries && count($countries) > 0)
                 @foreach ($countries as $country)
                     <tr data-widget="expandable-table" aria-expanded="false">
+                        <td width="5%">{{ $serialNumber }}</td>
                         <td width="5%">{{ $loop->iteration }}</td>
                         <td>{{ $country->name }}</td>
                         <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/country/' . $country->image) }}"
@@ -69,6 +73,10 @@
                             </div>
                         </td>
                     </tr>
+                    @php
+                    $serialNumber++;
+                @endphp
+
 
                     <!-- Edit Modal -->
                     <div class="modal fade" id="editModal{{ $country->id }}" tabindex="-1" role="dialog"
@@ -140,29 +148,28 @@
             @endif
         </tbody>
     </table>
-    
-        <!-- Pagination -->
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                @if ($countries->onFirstPage())
-                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
-                @else
-                    <li class="page-item"><a class="page-link" href="{{ $countries->previousPageUrl() }}" rel="prev">&laquo;</a></li>
-                @endif
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if ($countries->onFirstPage())
+                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $countries ->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+            @endif
 
-                @foreach ($countries->getUrlRange(1, $countries->lastPage()) as $page => $url)
-                    @if ($page == $countries->currentPage())
-                        <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
-                    @else
-                        <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
-                    @endif
-                @endforeach
-
-                @if ($countries->hasMorePages())
-                    <li class="page-item"><a class="page-link" href="{{ $countries->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            @foreach ($countries ->getUrlRange(1, $countries ->lastPage()) as $page => $url)
+                @if ($page == $countries ->currentPage())
+                    <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
                 @else
-                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                    <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
                 @endif
-            </ul>
-        </nav>
+            @endforeach
+
+            @if ($countries ->hasMorePages())
+                <li class="page-item"><a class="page-link" href="{{ $countries->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            @else
+                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+            @endif
+        </ul>
+    </nav>
 @endsection

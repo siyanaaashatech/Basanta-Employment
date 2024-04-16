@@ -19,7 +19,7 @@
                 <h1 class="m-0">{{ $page_title }}</h1>
                 <a href="{{ route('admin.blog-posts-categories.create') }}">
                     <button class="btn btn-primary btn-sm">
-                        <i class="fa fa-plus"></i> Add Blog Post Category
+                        <i class="fa fa-plus"></i> Add
                     </button>
                 </a>
                 <a href="http://127.0.0.1:8000/admin/blog-posts-categories">

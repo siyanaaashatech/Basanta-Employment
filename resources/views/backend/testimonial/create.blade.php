@@ -58,11 +58,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="course_id">Course</label>
-                <select name="course_id" class="form-control" id="course_id" required>
+                <label for="work_category_id">Work Category</label>
+                <select name="work_category_id" class="form-control" id="work_category_id" required>
                     <option value="">Select Course</option>
-                    @foreach ($courses as $course)
-                        <option value="{{ $course->id }}">{{ $course->title }}</option>
+                    @foreach ($work_categories as $work_category)
+                        <option value="{{ $coursework_category_id }}">{{ $work_category->title }}</option>
                     @endforeach
                 </select>
             </div>
@@ -73,7 +73,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Create Student Review</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </div>
     </form>
 

@@ -8,7 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\WorkCategoryController;
 use App\Http\Controllers\DemandController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SingleController;
@@ -117,7 +117,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     Route::resource('blog-posts-categories', BlogPostsCategoryController::class);
 
     // Courses
-    Route::resource('courses', CourseController::class);
+    Route::resource('work_categories', WorkCategoryController::class);
 
     // Teams
     Route::resource('teams', TeamController::class);

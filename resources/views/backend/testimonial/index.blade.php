@@ -20,7 +20,7 @@
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.testimonials.create') }}"><button class="btn btn-primary btn-sm"><i
                         class="fa fa-plus"></i>Add
-                Testimonial</button></a>
+     </button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -77,7 +77,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel{{ $testimonial->id }}">Edit Testimonial</h5>
+                                <h5 class="modal-title" id="editModalLabel{{ $testimonial->id }}">Edit</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -88,7 +88,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <a href="{{ route('admin.testimonials.edit', $testimonial->id) }}"
-                                    class="btn btn-primary">Edit Testimonial</a>
+                                    class="btn btn-primary">Edit</a>
                             </div>
                         </div>
                     </div>

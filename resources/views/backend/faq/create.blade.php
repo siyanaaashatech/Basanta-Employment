@@ -13,7 +13,7 @@
                 <label for="answer">Answer</label>
                 <textarea class="form-control" id="answer" name="answer" rows="5" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Create FAQ</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </div>
 @endsection
