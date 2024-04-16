@@ -88,7 +88,8 @@
                     <option value="">Select Work Category</option>
                     @foreach ($work_categories as $work_category)
                         <option value="{{ $work_category->id }}"
-                            {{ $studentDetail->work_category == $work_category->id ? 'selected' : '' }}>{{ $work_category->title }}
+                            {{ $studentDetail->work_category_id == $work_category->id ? 'selected' : '' }}>
+                            {{ $work_category->title }}
                         </option>
                     @endforeach
                 </select>

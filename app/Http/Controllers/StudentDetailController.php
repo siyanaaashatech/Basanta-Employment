@@ -12,7 +12,7 @@ class StudentDetailController extends Controller
 {
     public function index()
     {
-        $studentDetails = StudentDetail::with(['country', 'company', 'worker_category'])->paginate(10);
+        $studentDetails = StudentDetail::with(['country', 'company', 'work_category'])->paginate(10);
         return view('backend.studentdetail.index', ['studentDetails' => $studentDetails, 'page_title' => 'Worker Details']);
     }
 
