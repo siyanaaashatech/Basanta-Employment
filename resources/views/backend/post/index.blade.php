@@ -163,7 +163,6 @@
         @endif
     </ul>
 </nav>
-
-        
+  
     </div>
 @endsection

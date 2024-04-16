@@ -10,7 +10,7 @@ class VideoGalleryController extends Controller
 {
     public function index()
     {
-        $videos = VideoGallery::latest()->get();
+        $videos = VideoGallery::latest()->paginate(5);
         
         return view('backend.videogallery.index', ['videos' => $videos, 'page_title' => 'Video Gallery']);
     }

@@ -43,9 +43,12 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $serialNumber = ($services->currentPage() - 1) * $services->perPage() + 1;
+            @endphp
             @foreach ($services as $service)
                 <tr data-widget="expandable-table" aria-expanded="false">
-                    <td width="5%">{{ $loop->iteration }}</td>
+                    <td width="5%">{{ $serialNumber }}</td>
                     <td>{{ $service->title ?? '' }}</td>
                     <td> <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/service/' . $service->image) }}"
                             style="width: 150px; height:150px" /></td>
@@ -65,6 +68,9 @@
                         </div>
                     </td>
                 </tr>
+                @php
+                $serialNumber++;
+            @endphp
 
                 <!-- Edit Modal -->
 
