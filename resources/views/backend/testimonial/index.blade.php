@@ -45,9 +45,13 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $serialNumber = ($testimonials->currentPage() - 1) * $testimonials->perPage() + 1;
+            @endphp
+
             @foreach ($testimonials as $testimonial)
                 <tr data-widget="expandable-table" aria-expanded="false">
-                    <td width="5%">{{ $loop->iteration }}</td>
+                    <td width="5%">{{ $serialNumber }}</td>
                     <td>{{ $testimonial->name ?? '' }}</td>
                     <td> <img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
@@ -70,7 +74,9 @@
                         </div>
                     </td>
                 </tr>
-
+                @php
+                $serialNumber++;
+            @endphp
                 <!-- Edit Modal -->
                 <div class="modal fade" id="editModal{{ $testimonial->id }}" tabindex="-1" role="dialog"
                     aria-labelledby="editModalLabel{{ $testimonial->id }}" aria-hidden="true">
@@ -136,4 +142,29 @@
             };
         };
     </script>
+    <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ( $testimonials->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{  $testimonials->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ( $testimonials->getUrlRange(1, $testimonials->lastPage()) as $page => $url)
+            @if ($page ==  $testimonials->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ( $testimonials->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{  $testimonials->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
+
 @endsection

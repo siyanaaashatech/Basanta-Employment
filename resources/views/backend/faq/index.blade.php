@@ -32,6 +32,10 @@
 
     <div class="container">
         <div class="accordion" id="faqAccordion">
+            @php
+            $serialNumber = ($faqs->currentPage() - 1) * $faqs->perPage() + 1;
+        @endphp
+        
             @foreach ($faqs as $faq)
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading{{ $faq->id }}">
@@ -60,4 +64,29 @@
             @endforeach
         </div>
     </div>
+    <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ($faqs->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $faqs->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ($faqs->getUrlRange(1, $faqs->lastPage()) as $page => $url)
+            @if ($page == $faqs->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ($faqs->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $faqs->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
+  
 @endsection

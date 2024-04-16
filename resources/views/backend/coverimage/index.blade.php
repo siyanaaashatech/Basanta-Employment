@@ -46,7 +46,7 @@
             @endphp
             @foreach ($coverimages as $coverimage)
                 <tr data-widget="expandable-table" aria-expanded="false">
-                    <td width="5%">{{ $loop->iteration }}</td>
+                    <td width="5%">{{ $serialNumber }}</td>
                     <td>{{ $coverimage->title ?? '' }}</td>
                     <td> <img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/coverimage/' . $coverimage->image) }}"
@@ -66,6 +66,9 @@
                         </div>
                     </td>
                 </tr>
+                @php
+        $serialNumber++;
+    @endphp
 
                 <!-- Edit Cover Image Modal -->
                 <div class="modal fade" id="editCoverImageModal{{ $coverimage->id }}" tabindex="-1" role="dialog"
@@ -134,7 +137,31 @@
         </tbody>
 
     </table>
+    
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if ($coverimages->onFirstPage())
+                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $coverimages->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+            @endif
 
+            @foreach ($coverimages->getUrlRange(1, $coverimages->lastPage()) as $page => $url)
+                @if ($page == $coverimages->currentPage())
+                    <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                @endif
+            @endforeach
+
+            @if ($coverimages->hasMorePages())
+                <li class="page-item"><a class="page-link" href="{{ $coverimages->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            @else
+                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+            @endif
+        </ul>
+    </nav>
     <script>
         const previewImage1 = e => {
             const reader = new FileReader();
