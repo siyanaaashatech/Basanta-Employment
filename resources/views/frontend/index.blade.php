@@ -240,7 +240,7 @@
             <div class="swiper-slide  p-5">
                 <a href="{{ route('Testimonial') }}">
                     <h5 class="text-center pt-3">{{ $testimonial->description }}</h5>
-                    <div class=" text-center">
+                    <div class=" text-center text-img">
                         <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}" alt="Testimonial Image" style="width: 100px;">
                     </div>
                 </a>
