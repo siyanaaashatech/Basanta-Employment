@@ -12,7 +12,7 @@ class TestimonialController extends Controller
     public function index()
     {
 
-        $testimonials = Testimonial::with(['university', 'course'])->latest()->paginate(10);
+        $testimonials = Testimonial::with(['company', 'work_category'])->latest()->paginate(10);
 
         return view('backend.testimonial.index', ['testimonials' => $testimonials, 'page_title' => 'Testimonials']);
     }
@@ -21,14 +21,14 @@ class TestimonialController extends Controller
     {
         $companies = Company::all();
         $work_categories = WorkCategory::all();
-        return view('backend.testimonial.create', ['universities' => $universities, 'courses' => $courses, 'page_title' => 'Testimonials']);
+        return view('backend.testimonial.create', ['companies' => $companies, 'work_categories' => $work_categories, 'page_title' => 'Testimonials']);
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'company_id' => 'required|exists:universities,id',
+            'company_id' => 'required|exists:companies,id',
             'work_category_id' => 'required|exists:work_categories,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
             'description' => 'required|string',
@@ -41,7 +41,7 @@ class TestimonialController extends Controller
             $testimonial = new Testimonial();
             $testimonial->name = $request->name;
             $testimonial->company_id = $request->company_id;
-            $testimonial->course_id = $request->course_id;
+            $testimonial->work_category_id = $request->work_category_id;
             $testimonial->image = $newImageName;
             $testimonial->description = $request->description;
 
@@ -62,7 +62,7 @@ class TestimonialController extends Controller
         }
 
         $companies = Company::all();
-        $courses = Course::all();
+        $work_categories = WorkCategory::all();
         return view('backend.testimonial.update', [
             'testimonials' => $testimonials,
             'companies' => $companies,
@@ -103,7 +103,7 @@ class TestimonialController extends Controller
             // Update the testimonial with the new data
             $testimonial->name = $request->name;
             $testimonial->company_id = $request->company_id;
-            $testimonial->course_id = $request->course_id;
+            $testimonial->work_category_id = $request->work_category_id;
             $testimonial->description = $request->description;
             $testimonial->save();
 
