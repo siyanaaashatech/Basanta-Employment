@@ -100,7 +100,7 @@
                     <div class="col-lg-4 col-md-4">
                         <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
                             <div class="Ebox1">
-                                <div>
+                                <div class="E-B-img">
                                     <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Service Image">
                                 </div>
                                 <h3 class="text-center pt-3">{{ $service->title }}</h3>
@@ -239,7 +239,7 @@
             <div class="row g-4 contact-det">
                 <div class="col-lg-6">
                     <iframe class="w-100 h-100"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28265.03230483077!2d85.33114880000001!3d27.682406399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1711949263172!5m2!1sen!2snp"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28265.03230483077!2d85.33114880000001!3d27.682406399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1711949263172!5m2!1sen!2snp" height="600px"
                         style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
@@ -283,10 +283,6 @@
     </section>
 
 
-
-
-
-
     <section class="blogs py-5">
         <div class="container">
             <h2 class="text-center pb-5">BLOGS</h2>
@@ -295,7 +291,7 @@
                     <div class="col-lg-4 col-md-4">
                         <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
                             <div class="Ebox1">
-                                <div>
+                                <div class="E-B-img" >
                                     <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}" alt="">
                                 </div>
                                 <h3 class="text-center pt-3">{{ $blog->title }}</h3>
@@ -417,12 +413,7 @@
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
-
-
-
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>

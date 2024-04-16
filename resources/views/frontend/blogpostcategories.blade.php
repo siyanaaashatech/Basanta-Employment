@@ -14,7 +14,7 @@
             <div class="multi_poster row justify-content-center">
 
                 @foreach ($blogpostcategories as $blogpostcategory)
-                    <div class="card col-lg-4">
+                    <div class="card col-lg-3">
                         <a href="{{ route('SingleBlogpostcategory', ['slug' => $blogpostcategory->slug]) }}">
                         <div class="multi_post_image">
                             @if ($blogpostcategory->image)
