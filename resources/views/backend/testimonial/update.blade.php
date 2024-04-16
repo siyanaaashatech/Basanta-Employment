@@ -51,24 +51,24 @@
                     style="max-width: 300px; max-height:300px" />
             </div>
             <div class="form-group">
-                <label for="university_id">University</label>
-                <select name="university_id" class="form-control" id="university_id" required>
-                    <option value="">Select University</option>
-                    @foreach ($universities as $university)
-                        <option value="{{ $university->id }}"
-                            {{ $testimonials->university_id == $university->id ? 'selected' : '' }}>
-                            {{ $university->title }}
+                <label for="company_id">Company</label>
+                <select name="company_id" class="form-control" id="company_id" required>
+                    <option value="">Select Company</option>
+                    @foreach ($companies as $company)
+                        <option value="{{ $company->id }}"
+                            {{ $testimonials->company_id == $company->id ? 'selected' : '' }}>
+                            {{ $company->title }}
                         </option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <label for="work_category_id">Course</label>
+                <label for="work_category_id">Work Category</label>
                 <select name="work_category_id" class="form-control" id="work_category_id" required>
                     <option value="">Select Work Category</option>
                     @foreach ($work_categories as $work_category)
                         <option value="{{ $work_category->id }}"
-                            {{ $testimonials->course_id == $work_category->id ? 'selected' : '' }}>{{ $work_category->title }}</option>
+                            {{ $testimonials->work_category_id == $work_category->id ? 'selected' : '' }}>{{ $work_category->title }}</option>
                     @endforeach
                 </select>
             </div>

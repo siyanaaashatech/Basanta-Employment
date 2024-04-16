@@ -8,7 +8,7 @@ use App\Models\Country;
 use App\Models\Favicon;
 use App\Models\Service;
 use App\Models\Category;
-use App\Models\University;
+use App\Models\Company;
 use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use App\Models\BlogPostsCategory;

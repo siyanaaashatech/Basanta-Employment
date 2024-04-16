@@ -60,10 +60,10 @@
             <div class="form-group">
                 <label for="work_category_id">Work Category</label>
                 <select name="work_category_id" class="form-control" id="work_category_id" required>
-                    <option value="">Select Course</option>
+                    <option value="">Select Work Category</option>
                     @foreach ($work_categories as $work_category)
-                        <option value="{{ $coursework_category_id }}">{{ $work_category->title }}</option>
-                    @endforeach
+                    <option value="{{ $work_category->id }}">{{ $work_category->title }}</option>
+                @endforeach
                 </select>
             </div>
             <div class="form-group">
