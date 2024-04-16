@@ -9,7 +9,7 @@
                 <label for="title">Category Title:</label>
                 <input type="text" class="form-control" id="title" name="title" required>
             </div>
-            <button type="submit" class="btn btn-primary">Create Category</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </div>
 

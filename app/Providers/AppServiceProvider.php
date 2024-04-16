@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\About;
-use App\Models\Course;
+use App\Models\WorkCategory;
 use App\Models\Country;
 use App\Models\Favicon;
 use App\Models\Service;
@@ -49,10 +49,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer('frontend.includes.navbar', function ($view) {
             $countries = Country::all();
             $testimonials = Testimonial::all();
-            $courses = Course::all();
+            $workcategories = WorkCategory::all();
             $categories = Category::all();
             $blogpostcategories = BlogPostsCategory::all();
             $sitesetting = SiteSetting::first();
+
 
             $view->with([
                 'countries' => $countries,
@@ -62,14 +63,16 @@ class AppServiceProvider extends ServiceProvider
                 'blogpostcategories' => $blogpostcategories,
                 'sitesetting' => $sitesetting
             ]);
+
         });
 
         view()->composer('frontend.includes.footer', function ($view) {
             $services = Service::all();
             $categories = Category::all();
-            $courses = Course::all();
+            $workcategories = WorkCategory::all();
             $siteSettings = SiteSetting::first();
             $about = About::first();
+
 
             $view->with([
                 'services' => $services,
@@ -79,6 +82,7 @@ class AppServiceProvider extends ServiceProvider
                 'about' => $about,
                 'sitesetting' => SiteSetting::first(),
             ]);
+
         });
     }
     }

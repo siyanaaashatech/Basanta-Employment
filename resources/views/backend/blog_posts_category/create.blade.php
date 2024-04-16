@@ -31,7 +31,7 @@
                 <label for="content">Content:</label>
                 <textarea class="form-control summernote" id="content" name="content" rows="10" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Create Blog Post Category</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
         <script>
             $(document).ready(function() {

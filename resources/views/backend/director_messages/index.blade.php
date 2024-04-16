@@ -19,7 +19,7 @@
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.director_messages.create') }}"><button class="btn btn-primary btn-sm"><i
                         class="fa fa-plus"></i>Add
-                    Director Message</button></a>
+                  </button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -55,7 +55,7 @@
                         <td> <img id="preview{{ $loop->iteration }}"
                                 src="{{ asset('uploads/director_messages/' . $directorMessage->image) }}"
                                 style="width: 150px; height:150px" /></td>
-                        <td>{!! $directorMessage->message !!}</td>
+                          <td>      {{ Str::limit(strip_tags($directorMessage->message), 200) }}</td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
                                 <a href="{{ route('admin.director_messages.edit', $directorMessage->id) }}"

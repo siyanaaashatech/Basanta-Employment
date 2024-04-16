@@ -52,7 +52,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn-primary">Create Gallery</button>
+            <button type="submit" class="btn-primary">Create</button>
         </div>
     </form>
 

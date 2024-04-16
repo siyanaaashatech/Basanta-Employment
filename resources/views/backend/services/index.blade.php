@@ -19,7 +19,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.services.create') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                    Services</button></a>
+                    </button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>

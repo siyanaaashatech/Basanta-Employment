@@ -48,8 +48,8 @@
                     <td>{{ $about->subtitle ?? '' }}</td>
                     <td><img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/about/' . $about->image) }}"
                             style="width: 150px; height:150px" /></td>
-                    <td>{!! $about->description ?? '' !!}</td>
-                    <td>{!! $about->content ?? '' !!}</td>
+                    <td>{{ Str::limit(strip_tags($about->description), 200) }}</td>
+                    <td>{{ Str::limit(strip_tags($about->content), 200) }}</td>
 
                     <td>
                         <div style="display: flex; flex-direction:row;">
