@@ -21,7 +21,7 @@
                         @endif
                     </div>
 
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                         <h5 class="card-title">{{ $post->title }}</h5>
                         <p class="card-text">
                             {{ Str::limit(strip_tags($post->description), 250) }}
@@ -29,7 +29,7 @@
                         <a href="{{ route('singlePost', ['slug' => $post->slug]) }}">
                             <button class="btn bg-primary text-white">Read More &nbsp;&nbsp;<i
                                 class="fa-solid fa-arrow-right"></i></button>                        </a>
-                    </div>
+                    </div> -->
                 </div>
                 @endforeach
 

@@ -36,7 +36,7 @@
                 <label for="content">Content:</label>
                 <textarea class="form-control summernote" id="content" name="content" rows="5" required>{{ $blogPostsCategory->content }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Update Category</button>
+            <button type="submit" class="btn btn-primary">Update</button>
             <!-- Update the back button to redirect to the index route -->
 
         </form>

@@ -19,7 +19,7 @@
             <div class="col-sm-6">
                 <h1 class="m-0">Team Members</h1>
                 <a href="{{ route('admin.teams.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                    Team</a>
+                    </a>
                 <a href="{{ url('admin') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
             </div>
             <div class="col-sm-6">
@@ -43,10 +43,13 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody>@php
+                $serialNumber = ($teamMembers->currentPage() - 1) * $teamMembers->perPage() + 1;
+            @endphp
+
                 @foreach ($teamMembers as $member)
                     <tr data-widget="expandable-table" aria-expanded="false">
-                        <td width="5%">{{ $loop->iteration }}</td>
+                        <td width="5%">{{ $serialNumber }}</td>
                         <td>{{ $member->name }}</td>
                         <td>{{ $member->position }}</td>
                         <td>{{ $member->phone_no }}</td>
@@ -66,6 +69,9 @@
                             </div>
                         </td>
                     </tr>
+                    @php
+                    $serialNumber++;
+                @endphp
 
                     <!-- Edit Modal -->
                     <div class="modal fade" id="editModal{{ $member->id }}" tabindex="-1" role="dialog"
@@ -121,5 +127,29 @@
             </tbody>
 
         </table>
+         <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ($teamMembers->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $teamMembers->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ($teamMembers->getUrlRange(1, $teamMembers->lastPage()) as $page => $url)
+            @if ($page == $teamMembers->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ($teamMembers->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $teamMembers->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
     </div>
 @endsection

@@ -14,7 +14,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::paginate(10);
+        $services = Service::latest()->paginate(5);
         $summernoteContent = new SummernoteContent();
         return view('backend.services.index', ['services' => $services, 'summernoteContent' => $summernoteContent, 'page_title' => 'Services']);
     }

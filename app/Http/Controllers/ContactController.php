@@ -13,7 +13,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $contacts = Contact::latest()->get();
+        $contacts = Contact::latest()->paginate(5);
         return view('backend.contact.index', [
             'contacts' => $contacts,
             'page_title' => 'Contact Us'

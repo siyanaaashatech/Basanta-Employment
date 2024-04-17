@@ -15,7 +15,7 @@ class PhotoGalleryController extends Controller
     public function index()
     {
         //
-        $gallery = PhotoGallery::paginate(50);
+        $gallery = PhotoGallery::latest()->paginate(5);
         return view('backend.photogallery.index', ['gallery' => $gallery, 'page_title' => 'Photo Gallery',]);
     }
     public function create()

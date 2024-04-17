@@ -12,19 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('universities', function (Blueprint $table) {
+        Schema::create('work_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('logo');
             $table->string('title');
-            $table->string('address');
-
-            $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
-
             $table->string('slug')->unique();
-            $table->string('phone_no')->nullable();
-            $table->string('email')->nullable();
-            $table->string('website')->nullable();
+            $table->text('description');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('universities');
+        Schema::dropIfExists('workcategories');
     }
 };

@@ -20,7 +20,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.visitors-book.create') }}"><button class="btn btn-primary btn-sm"><i
-                        class="fa fa-plus"></i>Add Visitors Book</button></a>
+                        class="fa fa-plus"></i>Add </button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -44,10 +44,13 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($visitorBooks as $visitorBook)
-                <tr data-widget="expandable-table" aria-expanded="false">
-                    <td width="5%">{{ $loop->iteration }}</td>
+        <tbody>@php
+            $serialNumber = ($visitorBooks->currentPage() - 1) * $visitorBooks->perPage() + 1;
+        @endphp
+        
+        @foreach ($visitorBooks as $visitorBook)
+            <tr data-widget="expandable-table" aria-expanded="false">
+                <td width="5%">{{ $serialNumber }}</td>
                     <td>{{ $visitorBook->name ?? '' }}</td>
                     <td>{{ $visitorBook->phone_no ?? '' }}</td>
                     <td>{{ $visitorBook->email ?? '' }}</td>
@@ -70,6 +73,9 @@
                         </div>
                     </td>
                 </tr>
+                @php
+        $serialNumber++;
+    @endphp
 
                 <!-- Edit Modal -->
                 <div class="modal fade" id="editModal{{ $visitorBook->id }}" tabindex="-1" role="dialog"
@@ -133,6 +139,32 @@
         </tbody>
     </table>
 
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if ( $visitorBooks->onFirstPage())
+                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{  $visitorBooks->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+            @endif
+
+            @foreach ( $visitorBooks->getUrlRange(1,  $visitorBooks->lastPage()) as $page => $url)
+                @if ($page ==  $visitorBooks->currentPage())
+                    <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                @endif
+            @endforeach
+
+            @if ( $visitorBooks->hasMorePages())
+                <li class="page-item"><a class="page-link" href="{{  $visitorBooks->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            @else
+                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+            @endif
+        </ul>
+    </nav>
+    {{-- @endif --}}
+
     <!-- Main row -->
 
     {{-- <script>
@@ -145,4 +177,5 @@
             };
         };
     </script> --}}
+
 @endsection

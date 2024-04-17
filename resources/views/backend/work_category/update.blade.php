@@ -16,7 +16,7 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.courses.index') }}"><button class="btn btn-primary btn-sm"><i
+            <a href="{{ route('admin.work_categories.index') }}"><button class="btn btn-primary btn-sm"><i
                 class="fa fa-arrow-left"></i>
             Back</button></a>
         </div>
@@ -31,30 +31,30 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form id="quickForm" method="POST" action="{{ route('admin.courses.update', $courses->id) }}"
+            <form id="quickForm" method="POST" action="{{ route('admin.work_categories.update', $work_categories->id) }}"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <input type="hidden" name="id" value="{{ $courses->id }}">
+                <input type="hidden" name="id" value="{{ $work_categories->id }}">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" name="title" class="form-control" id="title"
-                        value="{{ $courses->title ?? '' }}">
+                        value="{{ $work_categories->title ?? '' }}">
                 </div>
                 <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
-                    <img id="preview1" src="{{ asset('uploads/course/' . $courses->image) }}"
+                    <img id="preview1" src="{{ asset('uploads/workcategory/' . $work_categories->image) }}"
                         style="max-width: 300px; max-height:300px" />
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Description</label>
                     <textarea style="width: 100%; min-height: 150px;;" type="text" class="form-control" name="description"
-                        id="description" placeholder="Add Description" value="{{ old('description') }}">{{ $courses->description ?? '' }}</textarea>
+                        id="description" placeholder="Add Description" value="{{ old('description') }}">{{ $work_categories->description ?? '' }}</textarea>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Update Course</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div>

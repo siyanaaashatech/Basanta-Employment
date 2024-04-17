@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Team;
 use App\Models\About;
-use App\Models\Course;
+use App\Models\WorkCategory;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Category;
 use App\Models\CoverImage;
-use App\Models\University;
+use App\Models\Company;
 use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use App\Models\PhotoGallery;
@@ -124,17 +124,17 @@ class SingleController extends Controller
         return view('frontend.single', compact('country', 'recommendedCountries'));
     }
 
-    public function render_singleUniversity($slug)
+    public function render_singleCompany($slug)
     {
-        $university = University::where('slug', $slug)->firstOrFail();
-        return view('frontend.university', compact('university'));
+        $company = Company::where('slug', $slug)->firstOrFail();
+        return view('frontend.company', compact('company'));
     }
 
-    public function render_singleCourse($slug)
+    public function render_singleworkCategory($slug)
     {
-        $course = Course::where('slug', $slug)->firstOrFail();
-        $listcourse = Course::latest()->get()->take(4);
-        return view('frontend.course', compact('course', 'listcourse'));
+        $work_category = WorkCategory::where('slug', $slug)->firstOrFail();
+        $listwork_category = WorkCategory::latest()->get()->take(4);
+        return view('frontend.work_category', compact('work_category', 'listwork_category'));
     }
 
 

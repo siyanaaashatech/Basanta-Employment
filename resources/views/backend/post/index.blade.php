@@ -19,8 +19,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0">Posts</h1>
-                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                    Post</a>
+                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add</a>
                 <!-- Use url()->previous() to go back to the previous page -->
                 <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
             </div>
@@ -44,10 +43,13 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($posts as $post)
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                        <td width="5%">{{ $loop->iteration }}</td>
+            <tbody> @php
+                $serialNumber = ($posts->currentPage() - 1) * $posts->perPage() + 1;
+            @endphp
+            
+            @foreach ($posts as $post)
+                <tr data-widget="expandable-table" aria-expanded="false">
+                    <td width="5%">{{ $serialNumber }}</td>
                         <td>{{ $post->title ?? '' }}</td>
                         <td>{{ Str::limit(strip_tags($post->description), 200) }}</td>
                         <td>{{ $post->category->title ?? 'No Category' }}</td>
@@ -69,6 +71,9 @@
                             </div>
                         </td>
                     </tr>
+                    @php
+        $serialNumber++;
+    @endphp
 
                     <!-- Edit Post Modal -->
                     <div class="modal fade" id="editPostModal{{ $post->id }}" tabindex="-1" role="dialog"
@@ -77,7 +82,7 @@
                             <div class="modal-content">
                                 <!-- Modal header -->
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="editPostModalLabel{{ $post->id }}">Edit Post</h5>
+                                    <h5 class="modal-title" id="editPostModalLabel{{ $post->id }}">Edit </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -108,7 +113,7 @@
                             <div class="modal-content">
                                 <!-- Modal header -->
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="deletePostModalLabel{{ $post->id }}">Delete Post</h5>
+                                    <h5 class="modal-title" id="deletePostModalLabel{{ $post->id }}">Delete </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -134,5 +139,30 @@
                 @endforeach
             </tbody>
         </table>
+        <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ($posts->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $posts->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
+            @if ($page == $posts->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ($posts->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $posts->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
+  
     </div>
 @endsection

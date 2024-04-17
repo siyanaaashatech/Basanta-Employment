@@ -8,7 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\WorkCategoryController;
 use App\Http\Controllers\DemandController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SingleController;
@@ -19,7 +19,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontViewController;
 use App\Http\Controllers\CoverImageController;
-use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VisitorBookController;
@@ -64,8 +64,8 @@ Route::prefix('/')->group(function () {
     Route::get('/video', [SingleController::class, 'render_videos'])->name('Video');
     Route::get('/countries', [SingleController::class, 'render_Countries'])->name('Countries');
     Route::get('/singlecountry/{slug}', [SingleController::class, 'render_singleCountry'])->name('singleCountry');
-    Route::get('/singleuniversity/{slug}', [SingleController::class, 'render_singleUniversity'])->name('singleUniversity');
-    Route::get('/singlecourse/{slug}', [SingleController::class, 'render_singleCourse'])->name('singleCourse');
+    Route::get('/singlecompany/{slug}', [SingleController::class, 'singleCompany'])->name('singleCompany');
+    Route::get('/singleworkcategory/{slug}', [SingleController::class, 'render_singleworkCategory'])->name('singleworkCategory');
     Route::get('/singlecategory/{slug}', [SingleController::class, 'render_singleCategory'])->name('singleCategory');
     Route::get('/singlepost/{slug}', [SingleController::class, 'render_singlePost'])->name('singlePost');
     Route::get('/gallerys/{slug}', [SingleController::class, 'render_singleImage'])->name('singleImage');
@@ -118,7 +118,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     Route::resource('blog-posts-categories', BlogPostsCategoryController::class);
 
     // Courses
-    Route::resource('courses', CourseController::class);
+    Route::resource('work_categories', WorkCategoryController::class);
 
     // Teams
     Route::resource('teams', TeamController::class);
@@ -129,8 +129,8 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
     // Countries
     Route::resource('countries', CountryController::class);
 
-    // Universities
-    Route::resource('universities', UniversityController::class);
+    // companies
+    Route::resource('companies', CompanyController::class);
 
     // Student details
     Route::resource('student-details', StudentDetailController::class);

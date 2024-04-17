@@ -70,7 +70,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn-primary">Update Gallery</button>
+                    <button type="submit" class="btn-primary">Update </button>
                 </div>
             </form>
         </div>

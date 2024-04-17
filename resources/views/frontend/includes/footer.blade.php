@@ -277,6 +277,7 @@
 
                             </p>
                         </div>
+
                         <div class="footer-social-icon">
                             <h4 class="text-light pt-4 pb-2">Follow us</h4>
                             <div class="social-buttons">
@@ -306,6 +307,7 @@
                     </a>
                     </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 mb-30 mt-3">

@@ -18,7 +18,7 @@
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.cover-images.create') }}"><button class="btn btn-primary btn-sm"><i
-                        class="fa fa-plus"></i>Add Cover Image</button></a>
+                        class="fa fa-plus"></i>Add</button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
                     Back</button></a>
         </div>
@@ -41,9 +41,12 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $serialNumber = ($coverimages->currentPage() - 1) * $coverimages->perPage() + 1;
+            @endphp
             @foreach ($coverimages as $coverimage)
                 <tr data-widget="expandable-table" aria-expanded="false">
-                    <td width="5%">{{ $loop->iteration }}</td>
+                    <td width="5%">{{ $serialNumber }}</td>
                     <td>{{ $coverimage->title ?? '' }}</td>
                     <td> <img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/coverimage/' . $coverimage->image) }}"
@@ -63,6 +66,9 @@
                         </div>
                     </td>
                 </tr>
+                @php
+        $serialNumber++;
+    @endphp
 
                 <!-- Edit Cover Image Modal -->
                 <div class="modal fade" id="editCoverImageModal{{ $coverimage->id }}" tabindex="-1" role="dialog"
@@ -71,7 +77,7 @@
                         <div class="modal-content">
                             <!-- Modal header -->
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editCoverImageModalLabel{{ $coverimage->id }}">Edit Cover
+                                <h5 class="modal-title" id="editCoverImageModalLabel{{ $coverimage->id }}">Edit 
                                     Image</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -131,7 +137,31 @@
         </tbody>
 
     </table>
+    
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if ($coverimages->onFirstPage())
+                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $coverimages->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+            @endif
 
+            @foreach ($coverimages->getUrlRange(1, $coverimages->lastPage()) as $page => $url)
+                @if ($page == $coverimages->currentPage())
+                    <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                @endif
+            @endforeach
+
+            @if ($coverimages->hasMorePages())
+                <li class="page-item"><a class="page-link" href="{{ $coverimages->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            @else
+                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+            @endif
+        </ul>
+    </nav>
     <script>
         const previewImage1 = e => {
             const reader = new FileReader();
@@ -142,4 +172,5 @@
             };
         };
     </script>
+    
 @endsection

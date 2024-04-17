@@ -12,7 +12,7 @@ class BlogPostsCategoryController extends Controller
 {
     public function index()
     {
-        $categories = BlogPostsCategory::paginate(10);
+        $categories = BlogPostsCategory::latest()->get();
         $summernoteContent = new SummernoteContent();
         return view('backend.blog_posts_category.index', ['categories' => $categories, 'summernoteContent' => $summernoteContent, 'page_title' => 'Blog Post Category']);
     }

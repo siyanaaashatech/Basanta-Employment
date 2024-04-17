@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="col-md-6 cform_right">
-                    <form id="quick_contact" class="form-horizontal" method="POST" role="form"
+                    <form id="loginForm" class="form-horizontal" method="POST" role="form"
                         action="{{ route('Contact.store') }}">
 
 
@@ -83,7 +83,7 @@
 
 
                         <!-- Add reCAPTCHA field -->
-                        <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
+                         <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div> 
 
 
 
@@ -93,7 +93,37 @@
                 </div>
                 {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
                 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                {{-- <script>
+
+                <!-- reCAPTCHA initialization -->
+                <script type="text/javascript">
+                    var onloadCallback = function() {
+                        grecaptcha.render('html_element', {
+                            'sitekey' : '6LdJRrspAAAAAMHgf6vvqik5fcTUD2ZKCZtG9Vaf',
+                            'callback': verifyCallback,
+                            'expired-callback': recaptchaExpired
+                        });
+                    };
+
+                    function verifyCallback(response) {
+                        // If reCAPTCHA is ticked, enable form submission
+                        document.getElementById("loginForm").submit();
+                    }
+
+                    function recaptchaExpired() {
+                        // Handle expired reCAPTCHA here if needed
+                    }
+
+                    // Form submission with reCAPTCHA validation
+                    document.getElementById("loginForm").addEventListener("submit", function(event) {
+                        var response = grecaptcha.getResponse();
+                        if(response.length == 0) { // reCAPTCHA not verified
+                            event.preventDefault(); // Prevent form submission
+                            alert("Please tick the reCAPTCHA box before submitting.");
+                        }
+                    });
+
+                </script>
+                 {{-- <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById('quick_contact').addEventListener('submit', function(event) {
                             event.preventDefault();
@@ -141,7 +171,7 @@
                             });
                         });
                     });
-                </script> --}}
+                </script>  --}}
 
             </div>
     </section>

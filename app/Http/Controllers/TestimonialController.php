@@ -2,32 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\University;
+use App\Models\Company;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
-use App\Models\Course;
+use App\Models\WorkCategory;
 
 class TestimonialController extends Controller
 {
     public function index()
     {
-        $testimonials = Testimonial::with(['university', 'course'])->paginate(10);
+
+        $testimonials = Testimonial::with(['company', 'work_category'])->latest()->paginate(10);
+
         return view('backend.testimonial.index', ['testimonials' => $testimonials, 'page_title' => 'Testimonials']);
     }
 
     public function create()
     {
-        $universities = University::all();
-        $courses = Course::all();
-        return view('backend.testimonial.create', ['universities' => $universities, 'courses' => $courses, 'page_title' => 'Testimonials']);
+        $companies = Company::all();
+        $work_categories = WorkCategory::all();
+        return view('backend.testimonial.create', ['companies' => $companies, 'work_categories' => $work_categories, 'page_title' => 'Testimonials']);
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'university_id' => 'required|exists:universities,id',
-            'course_id' => 'required|exists:courses,id',
+            'company_id' => 'required|exists:companies,id',
+            'work_category_id' => 'required|exists:work_categories,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
             'description' => 'required|string',
         ]);
@@ -38,8 +40,8 @@ class TestimonialController extends Controller
 
             $testimonial = new Testimonial();
             $testimonial->name = $request->name;
-            $testimonial->university_id = $request->university_id;
-            $testimonial->course_id = $request->course_id;
+            $testimonial->company_id = $request->company_id;
+            $testimonial->work_category_id = $request->work_category_id;
             $testimonial->image = $newImageName;
             $testimonial->description = $request->description;
 
@@ -59,12 +61,12 @@ class TestimonialController extends Controller
             return redirect()->route('admin.testimonials.index')->with('error', 'Testimonial not found.');
         }
 
-        $universities = University::all();
-        $courses = Course::all();
+        $companies = Company::all();
+        $work_categories = WorkCategory::all();
         return view('backend.testimonial.update', [
             'testimonials' => $testimonials,
-            'universities' => $universities,
-            'courses' => $courses,
+            'companies' => $companies,
+            'work_categories' => $work_categories,
             'page_title' => 'Update Testimonial'
         ]);
     }
@@ -73,8 +75,8 @@ class TestimonialController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'university_id' => 'required|exists:universities,id',
-            'course_id' => 'required|exists:courses,id',
+            'company_id' => 'required|exists:companies,id',
+            'work_category_id' => 'required|exists:work_categories,id',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,avif,webp|nullable|max:2048',
             'description' => 'required|string',
         ]);
@@ -100,8 +102,8 @@ class TestimonialController extends Controller
 
             // Update the testimonial with the new data
             $testimonial->name = $request->name;
-            $testimonial->university_id = $request->university_id;
-            $testimonial->course_id = $request->course_id;
+            $testimonial->company_id = $request->company_id;
+            $testimonial->work_category_id = $request->work_category_id;
             $testimonial->description = $request->description;
             $testimonial->save();
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\About;
-use App\Models\Course;
+use App\Models\WorkCategory;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Category;
@@ -45,7 +45,7 @@ class SearchController extends Controller
             ->orWhere('content', 'like', "%$searchTerm%")
             ->get();
 
-        $courses = Course::where('title', 'like', "%$searchTerm%")
+        $work_categories = WorkCategory::where('title', 'like', "%$searchTerm%")
             ->orWhere('description', 'like', "%$searchTerm%")
             ->get();
 
@@ -60,6 +60,6 @@ class SearchController extends Controller
         $studentDetails = StudentDetail::where('name', 'like', "%$searchTerm%")
             ->get();
 
-        return view('frontend.search-results', compact('posts', 'abouts', 'services', 'categories', 'contacts', 'countries', 'courses', 'testimonials', 'blogCategories', 'studentDetails'));
+        return view('frontend.search-results', compact('posts', 'abouts', 'services', 'categories', 'contacts', 'countries', 'work_categories', 'testimonials', 'blogCategories', 'studentDetails'));
     }
 }

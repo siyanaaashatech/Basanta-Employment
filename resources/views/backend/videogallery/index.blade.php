@@ -20,7 +20,7 @@
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ route('admin.video-galleries.create') }}">
                 <button class="btn btn-primary btn-sm">
-                    <i class="fa fa-plus"></i> Add Video
+                    <i class="fa fa-plus"></i> Add
                 </button>
             </a>
             <a href="{{ url('admin') }}">
@@ -48,9 +48,12 @@
             </tr>
         </thead>
         <tbody>
+            @php
+            $serialNumber = ($videos->currentPage() - 1) * $videos->perPage() + 1;
+        @endphp
             @foreach ($videos as $video)
                 <tr>
-                    <td width="5%">{{ $loop->iteration }}</td>
+                    <td width="5%">{{ $serialNumber }}</td>
                     <td>{{ $video->title ?? '' }}</td>
                     <td>
                         <iframe width="100" height="100" src="https://www.youtube.com/embed/{{ $video->url }}"
@@ -70,6 +73,10 @@
                         </div>
                     </td>
                 </tr>
+                @php
+        $serialNumber++;
+    @endphp
+
             @endforeach
         </tbody>
     </table>
@@ -107,4 +114,29 @@
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ($videos->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $videos->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ($videos->getUrlRange(1, $videos->lastPage()) as $page => $url)
+            @if ($page == $videos->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ($videos->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $videos->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
+
 @endsection

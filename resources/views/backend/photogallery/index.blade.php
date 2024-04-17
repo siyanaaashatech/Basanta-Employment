@@ -20,7 +20,7 @@
             <div class="col-sm-6">
                 <h1 class="m-0">{{ $page_title }}</h1>
                 <a href="{{ route('admin.photo-galleries.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>
-                    Add Photo</a>
+                    Add </a>
                 <!-- Use url()->previous() to go back to the previous page -->
                 <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
             </div>
@@ -44,9 +44,14 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $perPage = $gallery->perPage(); // the number of results per page
+                    $currentPage = $gallery->currentPage(); // current page number
+                    $serialNumber = ($currentPage - 1) * $perPage + 1; // calculate the starting serial number for the current page
+                @endphp
                 @foreach ($gallery as $image)
                     <tr>
-                        <td>{{ $image->id }}</td>
+                        <td>{{ $serialNumber++ }}</td>
                         <td>{{ $image->title }}</td>
                         <td>{{ $image->img_desc ?? '' }}</td>
                         <td>
@@ -57,7 +62,7 @@
                                             id="preview{{ $loop->parent->iteration }}{{ $index }}"
                                             src="{{ asset($imagePath) }}"
                                             style="width: 100px; height:100px; margin-right: 5px;" />
-                                    @endforeach
+                 @endforeach
                                 </div>
                             @else
                                 <img id="preview{{ $loop->iteration }}" src="{{ asset($image->img) }}"
@@ -136,5 +141,30 @@
                 @endforeach
             </tbody>
         </table>
+        <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ($gallery->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $gallery->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ($gallery->getUrlRange(1, $gallery->lastPage()) as $page => $url)
+            @if ($page == $gallery->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ($gallery->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $gallery->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
+
     </div>
 @endsection

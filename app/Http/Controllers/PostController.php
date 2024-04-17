@@ -14,7 +14,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('category')->paginate(10);
+        $posts = Post::with('category')->latest()->paginate(5);
         $summernoteContent = new SummernoteContent();
         $post = $summernoteContent;
         return view('backend.post.index', compact('posts', 'summernoteContent'));
@@ -22,7 +22,7 @@ class PostController extends Controller
 
     public function create()
     {
-        $categories = Category::all(); // Fetch all categories
+        $categories = Category::latest()->get(); // Fetch all categories
         return view('backend.post.create', compact('categories'));
     }
     public function store(Request $request)

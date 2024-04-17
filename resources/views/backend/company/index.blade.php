@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
 
@@ -19,9 +18,12 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.courses.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add
-                </a>
-            <a href="{{ url('admin') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
+            <a href="{{ route('admin.companies.create') }}">
+                <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add</button>
+            </a>
+            <a href="{{ url('admin') }}">
+                <button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</button>
+            </a>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -31,77 +33,96 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 
-
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>S.N.</th>
-                <th>Title</th>
-                <th>Image</th>
-                <th>Description</th>
+                <th>Logo</th>
+                <th>Company</th>
+                <th>Address</th>
+                <th>Country</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Website</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($courses as $course)
+            @php 
+                $serialNumber=1;
+            @endphp
+            @foreach ($companies as $company)
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
-                    <td>{{ $course->title ?? '' }}</td>
-                    <td><img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/course/' . $course->image) }}"
-                            style="width: 150px; height:150px" /></td>
-                    <td>{{ Str::limit(strip_tags($course->description), 200) }}</td>
+                    <td>
+                        <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/company/' . $company->logo) }}"
+                            style="width: 150px; height:150px" />
+                    </td>
+                    <td>{{$serialNumber++}}</td>
+                    <td>{{ $company->title ?? '' }}</td>
+                    <td>{{ $company->address ?? '' }}</td>
+                    <td>{{ $company->country->name ?? 'No Country' }}</td>
+                    <td>{{ $company->phone_no ?? '' }}</td>
+                    <td>{{ $company->email ?? '' }}</td>
+                    <td>{{ $company->website ?? '' }}</td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
-                            <button class="btn btn-warning btn-sm" data-toggle="modal"
-                                data-target="#editModal{{ $course->id }}" style="margin-right: 5px;"><i
-                                    class="fas fa-edit"></i> Edit</button>
-                            <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteModal{{ $course->id }}"><i class="fas fa-trash"></i> Delete</button>
+                            <!-- Edit Button -->
+                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                data-target="#editModal{{ $company->id }}">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <!-- Delete Button -->
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteModal{{ $company->id }}">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
                         </div>
                     </td>
                 </tr>
 
                 <!-- Edit Modal -->
-                <div class="modal fade" id="editModal{{ $course->id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="editModalLabel{{ $course->id }}" aria-hidden="true">
+                <div class="modal fade" id="editModal{{ $company->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editModalLabel{{ $company->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel{{ $course->id }}">Edit Course</h5>
+                                <h5 class="modal-title" id="editModalLabel{{ $company->id }}">Edit Company</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <!-- Your edit form content here -->
-                                <p>Edit form content goes here</p>
+                                <!-- Redirect to edit page -->
+                                <a href="{{ route('admin.companies.edit', $company->id) }}" class="btn btn-warning">
+                                    <i class="fas fa-edit"></i> Edit Company
+                                </a>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-primary">Edit</a>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
                 <!-- Delete Modal -->
-                <div class="modal fade" id="deleteModal{{ $course->id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="deleteModalLabel{{ $course->id }}" aria-hidden="true">
+                <div class="modal fade" id="deleteModal{{ $company->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteModalLabel{{ $company->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel{{ $course->id }}">Delete</h5>
+                                <h5 class="modal-title" id="deleteModalLabel{{ $company->id }}">Delete Company</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Are you sure you want to delete this work category?
+                                <p>Are you sure you want to delete this company?</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <form id="deleteForm{{ $course->id }}"
-                                    action="{{ route('admin.courses.destroy', $course->id) }}" method="POST">
+                                <form action="{{ route('admin.companies.destroy', $company->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -114,6 +135,7 @@
         </tbody>
     </table>
 
+    <!-- Main row -->
     <script>
         const previewImage = e => {
             const reader = new FileReader();

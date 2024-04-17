@@ -53,10 +53,10 @@
                             Employment
                         </a>
                         <ul class="dropdown-menu">
-                            @foreach ($courses as $course)
+                            @foreach ($workcategories as $workcategory)
                                 <li><a class="dropdown-item"
-                                        href="{{ route('singleCourse', ['slug' => $course->slug]) }}">
-                                        {{ $course->title }}</a></li>
+                                        href="{{ route('singleworkCategory', ['slug' => $workcategory->slug]) }}">
+                                        {{ $workcategory->title }}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -142,4 +142,5 @@
           document.querySelector('.header').classList.remove('n');
         }
       });
+
 </script>
