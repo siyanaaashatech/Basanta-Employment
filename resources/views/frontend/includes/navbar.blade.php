@@ -7,7 +7,7 @@
                 <div class="image">
                     @if ($sitesetting->main_logo)
                         <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" alt="Main Logo"
-                            height="50">
+                            height="100">
                     @else
                         <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
                     @endif
@@ -93,6 +93,13 @@
                 </ul>
 
             </div>
+            <div class="">
+                <!-- <p class="mt-3">{{ $sitesetting->office_contact }}</p> -->
+                <form action="{{ route('search') }}" method="GET" class="search-form">
+                    <input type="text" name="search" placeholder="Search..." required />
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>  
+            </div>
         </div>
     </nav>
 </div>
@@ -124,6 +131,7 @@
             link.classList.add('active');
         });
     });
+
     // Make the navbar logo and navbar big when the site opens and when scrolled make it small like now and with the logo add Company name and slogan.
 
     window.addEventListener('scroll', function () {

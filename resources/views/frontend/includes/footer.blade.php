@@ -113,20 +113,20 @@
         line-height: 28px;
     }
 
-    .footer-social-icon span {
+    /* .footer-social-icon span {
         color: #fff;
         display: block;
         font-size: 20px;
         font-weight: 700;
         font-family: 'Poppins', sans-serif;
         margin-bottom: 20px;
-    }
+    } */
 
-    .footer-social-icon a {
+    /* .footer-social-icon a {
         color: #fff;
         font-size: 20px;
         margin-right: 15px;
-    }
+    } */
 
     .footer-social-icon i {
         height: 40px;
@@ -135,6 +135,9 @@
         line-height: 38px;
         border-radius: 50%;
 
+    }
+    .footer-social-icon .social-buttons .social-button__inner{
+        margin: left 5px;
     }
 
     .facebook-bg {
@@ -274,31 +277,37 @@
 
                             </p>
                         </div>
-                        <div >
-                            <span class="text-white">Follow us</span></div>
+
+                        <div class="footer-social-icon">
+                            <h4 class="text-light pt-4 pb-2">Follow us</h4>
                             <div class="social-buttons">
-                            <a href="{{ $sitesetting->facebook_link }}" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
-                                <span class="social-button__inner">
-                                    <i class="fab fa-facebook-f"></i>
-                                </span>
-                            </a>
-                            <a href="{{ $sitesetting->linkedin_link }}" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
-                                <span class="social-button__inner">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </span>
-                            </a>
-                            <a href="{{ $sitesetting->instagram_link }}" target="_blank" class="social-buttons__button social-button social-button--instagram" aria-label="InstaGram">
-                                <span class="social-button__inner">
-                                    <i class="fab fa-instagram"></i>
-                                </span>
-                            </a>
-                            <a href="{{ $sitesetting->snapchat_link }}" target="_blank" class="social-buttons__button social-button social-button--snapchat" aria-label=SnapChat">
-                                <span class="social-button__inner">
-                                    <i class="fab fa-snapchat"></i>
-                                </span>
-                            </a>
-                            </div>
-                        
+                            <a href="{{ $sitesetting->facebook_link }}"
+                        class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+                        <span class="social-button__inner">
+                            <i class="fab fa-facebook-f"></i>
+                        </span>
+                    </a>
+                    <a href="{{ $sitesetting->linkedin_link }}"
+                        class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+                        <span class="social-button__inner">
+                            <i class="fab fa-linkedin-in"></i>
+                        </span>
+                    </a>
+                    <a href="{{ $sitesetting->instagram_link }}" target="_blank"
+                        class="social-buttons__button social-button social-button--instagram" aria-label="InstaGram">
+                        <span class="social-button__inner">
+                            <i class="fab fa-instagram"></i>
+                        </span>
+                    </a>
+                    <a href="{{ $sitesetting->instagram_link }}" target="_blank"
+                        class="social-buttons__button social-button social-button--snapchat" aria-label="Snapchat">
+                        <span class="social-button__inner">
+                        <i class="fa-brands fa-snapchat"></i>
+                        </span>
+                    </a>
+                    </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 mb-30 mt-3">

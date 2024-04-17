@@ -4,14 +4,29 @@
 
 
 
-<section class="banner">
-    <div class="container">
-            <div class="carousel-box">
-                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        @foreach ($coverImages as $key => $coverImage)
-                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
-                            <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block" width="100%" height="450px" alt="Cover Image" />
+
+    <section class="banner " >
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <!-- <div class="col-lg-4 text-center pt-5 order-lg-1 order-md-2 order-sm-2 order-xs-2">
+                    
+                    <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" width="250px" height="150px"
+                        alt="" />
+                    <h3>{{ $sitesetting->office_name }}</h3>
+                    <p>{{ $sitesetting->slogan }}</p>
+                    <a href="{{ route('Contact') }}"><button class="btn">CONTACT US</button></a>
+                </div> -->
+
+                <div class="col-lg-12 ">
+                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach ($coverImages as $key => $coverImage)
+                                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
+                                    <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block"
+                                        width="100%" height="550px" alt="Cover Image" />
+                                </div>
+                            @endforeach
+
                         </div>
                         @endforeach
                     </div>
@@ -76,26 +91,25 @@
                 </div>
             </div>
         </div>
-    </section> -->
-<!-- About Us -->
-<section class="about-us mb-5">
-    <div class="container">
-        <div class="container-box">
-            <div class="left position-relative">
-                <div class="img position-relative">
-                    <img src="{{ asset('uploads/about/' . $about->image) }}" alt="">
-                </div>
-                <div class="cr-1 position-absolute bottom-0 start-0"></div>
-            </div>
-            <div class="right  position-relative">
-                <div class="cr-2 position-absolute top-0 end-0"></div>
-                <div class="content ">
-                    <div class="right-box">
-                        <h2 class="py-3">{{ $about->title }}</h2>
-                        <p>{{ Str::limit(strip_tags($about->description), 400) }}
-                        </p>
-                        <a href="{{ route('About') }}" class="btn">Read More<i class="fa-solid fa-arrow-right mx-2"></i></a>
-                    </div>
+
+    </section>
+
+    <!-- Experience -->
+    <!-- Experience -->
+    <section class="experience py-4">
+        <div class="container">
+            <h2 class="text-center pb-3">MORE THAN 10 YEARS OF EXPERIENCE</h2>
+            <div class="row py-4 g-4">
+                @foreach ($services as $service)
+                    <div class="col-lg-4 col-md-4">
+                        <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
+                            <div class="Ebox1">
+                                <div class="E-B-img">
+                                    <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Service Image">
+                                </div>
+                                <h3 class="text-center pt-3">{{ $service->title }}</h3>
+                            </div>
+
 
                 </div>
 
@@ -246,6 +260,18 @@
 
 
 
+    <section class="contact pt-3 pb-5">
+        <div class="container ">
+            <h2 class="text-center pb-5">CONTACT</h2>
+            <div class="row g-4 contact-det">
+                <div class="col-lg-6">
+                    <iframe class="w-100 h-100"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28265.03230483077!2d85.33114880000001!3d27.682406399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1711949263172!5m2!1sen!2snp" height="600px"
+                        style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+
 <section class="contact pt-3 pb-5">
     <div class="container ">
         <h2 class="text-center pb-5">CONTACT</h2>
@@ -293,23 +319,20 @@
 
 
 
-
-
-
-<section class="blogs py-5">
-    <div class="container">
-        <h2 class="text-center pb-5">BLOGS</h2>
-        <div class="row g-5 ">
-            @foreach ($blogs as $blog)
-            <div class="col-lg-4 col-md-4 blog-box ">
-                <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
-                    <div class="Ebox1">
-                        <div class="img">
-                            <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}" alt="">
-                        </div>
-                        <div class="blog-text">
-                            <h3 class="text-center blog-text-box">{{ $blog->title }}</h3>
-                        </div>
+    <section class="blogs py-5">
+        <div class="container">
+            <h2 class="text-center pb-5">BLOGS</h2>
+            <div class="row g-4">
+                @foreach ($blogs as $blog)
+                    <div class="col-lg-4 col-md-4">
+                        <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
+                            <div class="Ebox1">
+                                <div class="E-B-img" >
+                                    <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}" alt="">
+                                </div>
+                                <h3 class="text-center pt-3">{{ $blog->title }}</h3>
+                            </div>
+                        </a>
 
                     </div>
                 </a>
@@ -425,13 +448,11 @@
                     </div>
                 </div>
                 @endforeach
-
-
             </div>
 
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="prev">
 
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
