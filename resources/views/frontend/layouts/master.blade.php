@@ -11,7 +11,7 @@
 
 <body>
 
-    @include('frontend.includes.topnav')
+    <!-- @include('frontend.includes.topnav') -->
 
 
 
