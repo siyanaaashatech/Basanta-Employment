@@ -124,4 +124,15 @@
             link.classList.add('active');
         });
     });
+    // Make the navbar logo and navbar big when the site opens and when scrolled make it small like now and with the logo add Company name and slogan.
+
+    window.addEventListener('scroll', function () {
+        var a = window.scrollY;
+        if (a > 200) {
+          document.querySelector('.header').classList.add('n');
+        } else {
+          document.querySelector('.header').classList.remove('n');
+        }
+      });
+
 </script>

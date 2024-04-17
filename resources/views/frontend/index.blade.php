@@ -6,16 +6,7 @@
 
 <section class="banner">
     <div class="container">
-        <div class="row g-4 align-items-center">
-            <div class="col-lg-4 text-center pt-5 order-lg-1 order-md-2 order-sm-2">
-                <!-- Get Logo from sitesetting -->
-                <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" width="250px" height="150px" alt="" />
-                <h3>{{ $sitesetting->office_name }}</h3>
-                <p>{{ $sitesetting->slogan }}</p>
-                <a href="{{ route('Contact') }}"><button class="btn">CONTACT US</button></a>
-            </div>
-
-            <div class="col-lg-8 order-lg-2 order-md-1 order-sm-1">
+            <div class="carousel-box">
                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($coverImages as $key => $coverImage)
@@ -26,7 +17,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </section>
 

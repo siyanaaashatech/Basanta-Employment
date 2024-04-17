@@ -7,35 +7,18 @@
 
 
             <div class="col-md-6 text-left col-sm-12">
+                <div class="footer-social-icon">
+                    <a href="{{ $sitesetting->facebook_link }}" target="_blank"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                    <a href="{{ $sitesetting->instagram_link }}" target="_blank"><i class="fa-brands fa-instagram " aria-hidden="true"></i></a>
+                    <a href="{{ $sitesetting->linkedin_link }}" target="_blank"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="{{ $sitesetting->snapchat_link }}" target="_blank"><i class="fa-brands fa-square-snapchat"></i></a>
 
-
-                <div class="social-buttons">
-                    <a href="{{ $sitesetting->facebook_link }}"
-                        class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
-                        <span class="social-button__inner">
-                            <i class="fab fa-facebook-f"></i>
-                        </span>
-                    </a>
-                    <a href="{{ $sitesetting->linkedin_link }}"
-                        class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
-                        <span class="social-button__inner">
-                            <i class="fab fa-linkedin-in"></i>
-                        </span>
-                    </a>
-                    <a href="{{ $sitesetting->instagram_link }}" target="_blank"
-                        class="social-buttons__button social-button social-button--instagram" aria-label="InstaGram">
-                        <span class="social-button__inner">
-                            <i class="fab fa-instagram"></i>
-                        </span>
-                    </a>
-  
                 </div>
-
 
             </div>
 
 
-            <div class="col-md-6 col-sm-12 top_right">
+         <div class="col-md-6 col-sm-12 top_right">
                 
                 <p class="mt-3">{{ $sitesetting->office_contact }}</p>
 
@@ -44,8 +27,7 @@
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
 
-                
-            </div>
+            
 
         </div>
 </section>

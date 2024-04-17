@@ -274,15 +274,31 @@
 
                             </p>
                         </div>
-                        <div class="footer-social-icon">
-                            <span>Follow us</span>
-                            <a href="{{ $sitesetting->facebook_link }}" target="_blank"><i class="fa-brands fa-facebook"
-                                    aria-hidden="true"></i></a>
-                            <a href="{{ $sitesetting->instagram_link }}" target="_blank"><i
-                                    class="fa-brands fa-instagram " aria-hidden="true"></i></a>
-                            <a href="{{ $sitesetting->linkedin_link }}" target="_blank"><i class="fa-brands fa-linkedin"
-                                    aria-hidden="true"></i></a>
-                        </div>
+                        <div >
+                            <span class="text-white">Follow us</span></div>
+                            <div class="social-buttons">
+                            <a href="{{ $sitesetting->facebook_link }}" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+                                <span class="social-button__inner">
+                                    <i class="fab fa-facebook-f"></i>
+                                </span>
+                            </a>
+                            <a href="{{ $sitesetting->linkedin_link }}" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+                                <span class="social-button__inner">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </span>
+                            </a>
+                            <a href="{{ $sitesetting->instagram_link }}" target="_blank" class="social-buttons__button social-button social-button--instagram" aria-label="InstaGram">
+                                <span class="social-button__inner">
+                                    <i class="fab fa-instagram"></i>
+                                </span>
+                            </a>
+                            <a href="{{ $sitesetting->snapchat_link }}" target="_blank" class="social-buttons__button social-button social-button--snapchat" aria-label=SnapChat">
+                                <span class="social-button__inner">
+                                    <i class="fab fa-snapchat"></i>
+                                </span>
+                            </a>
+                            </div>
+                        
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 mb-30 mt-3">
