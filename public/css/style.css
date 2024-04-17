@@ -115,12 +115,15 @@ li {
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
+  gap: 15px;
   /* justify-content: center; */
   /* margin-top: -10px; */
 }
-.social-buttons__button {
-  margin: 5px;
-}
+
+/* .social-buttons__button {
+  margin-right: 16px;
+} */
+
 .social-button {
   border-radius: 50%;
   position: relative;
@@ -128,8 +131,8 @@ li {
   justify-content: end;
   align-items: center;
   outline: none;
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   text-decoration: none;
 }
 .social-icons {
@@ -215,15 +218,34 @@ li {
   background: #e4405f;
 }
 
+.social-button--snapchat{
+  color: #000;
+  
+}
+.social-button--snapchat::after {
+  background: #F7F300;
+}
+
 
 .header {
   position: sticky;
   top: 0;
   background-color: #eeedf3;
   z-index: 1000; /* adjust z-index as needed */
-  padding: 10px 0;
+  padding: 30px 0;
+  width: 100%;
+  transition: 0.9s;
 }
+.n {
+  padding: 0px;
+  .image{
+    img{
+      height: 100px;
+    }
+    
+  }
 
+}
 .header .navbar .collapse ul li:hover {
   background: #d4d0d0;
 }
@@ -355,7 +377,7 @@ li {
          .about-left{
              position: relative;
              width: 300px;
-          /* //    height: 500px; */
+            height: 500px;
              .about-img{
                  width: 300px;
                  height: 250px;
@@ -397,7 +419,7 @@ li {
                  position: absolute;
                  top: 50px;
                  z-index: 2;
-                 line-height: 30px;               
+                 line-height: 30px;              
              }
              .box2{
                  width: 100px;

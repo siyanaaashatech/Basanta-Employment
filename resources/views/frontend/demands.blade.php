@@ -11,11 +11,11 @@
 
                 @foreach ($demands as $demand)
                     <div class="card col-lg-4">
-                        <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
+                        <a href="{{ route('SingleDemand', ['slug' => $demand->slug]) }}">
                         <div class="multi_post_image">
                             @if ($demand->image)
-                                <img src="{{ asset('uploads/service/' . $service->image) }}" class="card-img-top"
-                                    alt="Post Image">
+                                <img src="{{ asset('uploads/demand/' . $demand->image) }}" class="card-img-top"
+                                    alt="Demand Image">
                             @else
                                 <img src="https://plus.unsplash.com/premium_photo-1705091309202-5838aeedd653?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
                                     class="card-img-top" alt="Post Image">

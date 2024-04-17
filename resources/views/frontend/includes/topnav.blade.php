@@ -1,14 +1,8 @@
-<section class="topheader">
+<!-- <section class="topheader">
     <div class="container">
 
         <div class="row">
-
-
-
-
             <div class="col-md-6 text-left col-sm-12">
-
-
                 <div class="social-buttons">
                     <a href="{{ $sitesetting->facebook_link }}"
                         class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
@@ -48,4 +42,4 @@
             </div>
 
         </div>
-</section>
+</section> -->
