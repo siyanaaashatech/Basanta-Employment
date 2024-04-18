@@ -86,9 +86,14 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
+    
 
     'locale' => 'en',
-
+     
+    'available_locales' => [
+        'en'=> 'en', 
+        'ne'=> 'ne'
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="banner ">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row g-4 align-items-center">
-                <div class="col-lg-4 text-center pt-5 order-lg-1 order-md-2 order-sm-2 order-xs-2">
+                {{-- <div class="col-lg-4 text-center pt-5 order-lg-1 order-md-2 order-sm-2 order-xs-2">
                         
                         <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" width="250px" height="150px"
                             alt="" />
@@ -13,25 +13,38 @@
                         <a href="{{ route('Contact') }}"><button class="btn">CONTACT US</button></a>
                 </div> 
 
-                <div class="col-lg-12 ">
-                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @foreach ($coverImages as $key => $coverImage)
-                                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
-                                    <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block"
-                                        width="100%" height="550px" alt="Cover Image" />
+                <div class="col-lg-12 "> --}}
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach ($coverImages as $key => $coverImage)
+                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
+                                <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block"
+                                    width="100%" height="550px" alt="Cover Image" />
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ $coverImage->title }}</h5>
                                 </div>
-                            @endforeach
+                            </div>
+                        @endforeach
 
-                        </div>
-                       
                     </div>
+
+
+                    <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                    
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>
     </section>
 
- 
+
 
     <section class="country py-4">
         <div class="container swiper p-4">
@@ -49,7 +62,7 @@
                                     Vacancy:
                                     <span>
                                         {{ $demand->vacancy }}
-                                     
+
                                     </span>
                                 </h6>
                             </div>
@@ -62,39 +75,39 @@
 
 
 
-   <section class="about ">
-            <div class="container about-content text-center">
-                <div class="about-box">
-                    <div class="about-left">
-                        <div class="about-img">
-                            <img src="{{ asset('uploads/about/' . $about->image) }}" width="100%" height="100%"
-                                alt="">
-                        </div>
-                        <div class=" box1"></div>
+    <section class="about ">
+        <div class="container about-content text-center">
+            <div class="about-box">
+                <div class="about-left">
+                    <div class="about-img">
+                        <img src="{{ asset('uploads/about/' . $about->image) }}" width="100%" height="100%"
+                            alt="">
                     </div>
-                    <div class="about-right ">
-                        <div class="box2"></div>
-                        <div class="about-us p-5">
-                            <h2 class="py-3">{{ $about->title }}</h2>
+                    <div class=" box1"></div>
+                </div>
+                <div class="about-right ">
+                    <div class="box2"></div>
+                    <div class="about-us p-5">
+                        <h2 class="py-3 section_title">{{ $about->title }}</h2>
 
-                            <p>{{ Str::limit(strip_tags($about->description), 400) }}
-                            </p>
-                            <div class="pt-3">
-                                <a href="{{ route('About') }}" class="btn">Read More<i
-                                        class="fa-solid fa-arrow-right mx-2"></i></a>
-                            </div>
+                        <p>{{ Str::limit(strip_tags($about->description), 400) }}
+                        </p>
+                        <div class="pt-3">
+                            <a href="{{ route('About') }}" class="btn">Read More<i
+                                    class="fa-solid fa-arrow-right mx-2"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-        </section>
+    </section>
 
 
     <!-- Experience -->
-    <section class="experience py-4">
+    {{-- <section class="experience py-4">
         <div class="container">
-            <h2 class="text-center pb-3">MORE THAN 10 YEARS OF EXPERIENCE</h2>
+            <h2 class="text-center pb-3 section_title">MORE THAN 10 YEARS OF EXPERIENCE</h2>
             <div class="row py-4 g-4">
                 @foreach ($services as $service)
                     <div class="col-lg-4 col-md-4">
@@ -105,20 +118,18 @@
                                 </div>
                                 <h3 class="text-center pt-3">{{ $service->title }}</h3>
                             </div>
-
-
                     </div>
                 @endforeach
             </div>
 
         </div>
         
-    </section>
+    </section> --}}
 
     <!-- Experience -->
-    {{-- <section class="experience py-4">
+    <section class="experience py-4">
         <div class="container">
-            <h2 class="text-center pb-3">MORE THAN 10 YEARS OF EXPERIENCE</h2>
+            <h2 class="text-center pb-3 section_title">MORE THAN 10 YEARS OF EXPERIENCE</h2>
             <div class="row py-4 g-4">
                 @foreach ($services as $service)
                     <div class="col-lg-4 col-md-4 Ebox-wrap">
@@ -134,7 +145,7 @@
                 @endforeach
             </div>
         </div>
-    </section> --}}
+    </section>
 
 
     <!-- Get in touch -->
@@ -157,12 +168,10 @@
 
     <section class="guiding py-5">
         <div class="container">
-            <h2 class="text-center ">Our {{ $firstCategory->title }}</h2>
+            <h2 class="text-center section_title">Our {{ $firstCategory->title }}</h2>
             <div class="row pb-4">
 
                 @foreach ($posts as $post)
-
-
                     <div class="col-lg-4 col-md-6 col-sm-6 pt-3">
                         <a href="{{ route('singlePost', ['slug' => $post->slug]) }}">
                             <div class="d-flex gap-4 align-items-center">
@@ -179,19 +188,17 @@
                             </div>
                         </a>
                     </div>
-
                 @endforeach
-                
+
             </div>
         </div>
     </section>
 
     <section class="testimonial">
         <div class="container swiper mySwiper">
-            <h2 class="text-center">TESTIMONIALS</h2>
+            <h2 class="text-center section_title">TESTIMONIALS</h2>
             <div class="swiper-wrapper">
                 @foreach ($testimonials as $testimonial)
-
                     <div class="swiper-slide  p-5">
                         <a href="{{ route('Testimonial') }}">
                             <h5 class="text-center pt-3">{{ $testimonial->description }}</h5>
@@ -201,7 +208,6 @@
                             </div>
                         </a>
                     </div>
-
                 @endforeach
             </div>
             <div class="swiper-button-next arrow"></div>
@@ -217,7 +223,7 @@
 
     <section class="contact pt-3 pb-5">
         <div class="container ">
-            <h2 class="text-center pb-5">CONTACT</h2>
+            <h2 class="text-center section_title">CONTACT</h2>
             <div class="row g-4 contact-det">
                 <div class="col-lg-6">
                     <iframe class="w-100 h-100"
@@ -268,7 +274,7 @@
 
     <section class="blogs py-5">
         <div class="container">
-            <h2 class="text-center pb-5">BLOGS</h2>
+            <h2 class="text-center section_title">BLOGS</h2>
             <div class="row g-4">
                 @foreach ($blogs as $blog)
                     <div class="col-lg-4 col-md-4">
@@ -282,13 +288,10 @@
                         </a>
 
                     </div>
-               
                 @endforeach
             </div>
         </div>
     </section>
-
-
 @endsection
 
 

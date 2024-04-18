@@ -48,12 +48,13 @@
             </tr>
         </thead>
         <tbody>
-            @php 
-                $serialNumber=1;
-            @endphp
+            @php
+            $serialNumber = ($companies->currentPage() - 1) * $companies->perPage() + 1;
+        @endphp
+        
             @foreach ($companies as $company)
                 <tr data-widget="expandable-table" aria-expanded="false">
-                    <td width="5%">{{ $loop->iteration }}</td>
+                    <td width="5%">{{ $serialNumber }}</td>
                     <td>
                         <img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/company/' . $company->logo) }}"
                             style="width: 150px; height:150px" />
@@ -146,4 +147,28 @@
             };
         };
     </script>
+    <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ($companies->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $companies->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ($companies->getUrlRange(1, $companies->lastPage()) as $page => $url)
+            @if ($page == $companies->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ($companies->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $companies->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
 @endsection
