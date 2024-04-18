@@ -25,29 +25,46 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav m-auto navbar-nav-scroll" style="--bs-scroll-height: 500px;">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Introduction
+
+
+                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ trans('messages.Introduction') }}
+
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('About') }}">About us</a></li>
-                            <li><a class="dropdown-item" href="{{ route('Team') }}">Our Teams</a></li>
-                            <li><a class="dropdown-item" href="{{ route('Service') }}">Services</a></li>
+                            <li><a class="dropdown-item" href="{{ route('About') }}"> {{ trans('messages.About Us') }}
+                                </a></li>
+                            <li><a class="dropdown-item" href="{{ route('Team') }}"> {{ trans('messages.Our Teams') }}
+                                </a></li>
+                            <li><a class="dropdown-item" href="{{ route('Service') }}"> {{ trans('messages.Services') }}
+                                </a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Work Abroad
+
+                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ trans('messages.WorkAbroad') }}
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($countries as $country)
-                            <li><a class="dropdown-item" href="{{ route('singleCountry', ['slug' => $country->slug]) }}">Work in
-                                    {{ $country->name }}</a></li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
+                                        {{ trans('messages.' . $country->slug) }}
+                                    </a>
+                                </li>
+
                             @endforeach
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Employment
+
+                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ trans('messages.Employment') }}
+
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($workcategories as $workcategory)
@@ -58,26 +75,54 @@
                     </li>
                     <!-- Remove the "Living Abroad" dropdown section -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Gallery
+
+                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ trans('messages.Gallery') }}
+
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('Gallery') }}">
-                                    Photo Gallery</a></li>
+                                    {{ trans('messages.Photo Gallery') }} </a></li>
                             <li><a class="dropdown-item" href="{{ route('Video') }}">
-                                    Video Gallery</a></li>
+                                    {{ trans('messages.Video Gallery') }} </a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Testimonial') }}">Reviews</a>
+                        <a class="nav-link text-primary" href="{{ route('Testimonial') }}">
+                            {{ trans('messages.Reviews') }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">Blogs</a>
+                        <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">
+                            {{ trans('messages.Blogs') }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Contact') }}">Contact</a>
+                        <a class="nav-link text-primary" href="{{ route('Contact') }}">
+                            {{ trans('messages.Contact') }} </a>
                     </li>
                 </ul>
+                <!-- Language Switcher -->
+                {{-- <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Language
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="{{ url()->current()}}?locale=en">English</a></li>
+                        <li><a class="dropdown-item" href="{{ url()->current()}}?locale=ne">नेपाली</a></li>
+                    </ul>
+                </div> --}}
+
+
+                <div class="en_ne">
+                    <a class="btn_en {{ app()->getLocale() === 'en' ? 'active' : '' }}"
+                        href="{{ url()->current() }}?locale=en">en</a>
+                    <a class="btn_en {{ app()->getLocale() === 'ne' ? 'active' : '' }}"
+                        href="{{ url()->current() }}?locale=ne">ne</a>
+                </div>
+
+
+
             </div>
         </div>
     </nav>
@@ -115,4 +160,6 @@
             document.querySelector('.header').classList.remove('n');
         }
     });
+
 </script>
+
