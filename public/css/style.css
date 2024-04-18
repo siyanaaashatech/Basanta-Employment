@@ -80,9 +80,9 @@ li {
 .en_ne{
   height:20px;
   width: 5px;
-  position: absolute;
+  /* position: absolute;
   top: 1%; 
-  right: 3%;
+  right: 3%; */
   transition: 0.1s all;
 }
 .en_ne:hover{
@@ -301,12 +301,11 @@ li {
 }
 
  .n .image img{
-  
-
       height: 50px;
-
     }
-    
+ .n .slogon, .n .c-name{
+  display: none;
+ }   
 
 .header .navbar .collapse ul li:hover {
   background: #d4d0d0;
@@ -456,6 +455,9 @@ li {
   }
 }
 @media(min-width:300px) and (max-width:799px){
+  .header .slogon, .header .c-name{
+    display: none;
+  }
   .about{
       margin-bottom: 0 !important;
       padding-bottom: 0 !important;
