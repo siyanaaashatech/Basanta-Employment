@@ -6,7 +6,7 @@
                 <div class="image">
                     @if ($sitesetting->main_logo)
                         <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" alt="Main Logo"
-                            height="50">
+                            height="100">
                     @else
                         <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
                     @endif
@@ -110,9 +110,9 @@
     window.addEventListener('scroll', function () {
         var a = window.scrollY;
         if (a > 200) {
-          document.querySelector('.header').classList.add('n');
+          document.querySelector('.header').classList.add('nav-small');
         } else {
-          document.querySelector('.header').classList.remove('n');
+          document.querySelector('.header').classList.remove('nav-small');
         }
       });
 </script>

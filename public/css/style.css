@@ -244,15 +244,12 @@ li {
   transition: 0.9s;
 
 }
-.n {
+.nav-small {
   padding: 0px;
 }
 
- .n .image img{
-  
-
-      height: 100px;
-
+.nav-small .image img{
+   height: 60px;
     }
     
 
