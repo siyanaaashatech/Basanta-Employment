@@ -14,7 +14,7 @@ class WorkCategoryController extends Controller
 {
     public function index()
     {
-        $work_categories = WorkCategory::latest()->get();
+        $work_categories = WorkCategory::latest()->paginate(5);
         $summernoteContent = new SummernoteContent();
         return view('backend.work_category.index', ['work_categories' => $work_categories,'summernoteContent' => $summernoteContent, 'page_title' => 'Work Category']);
 

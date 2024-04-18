@@ -1,4 +1,3 @@
-
 <!-- Header -->
 <div class="header">
     <nav class="navbar navbar-expand-lg">
@@ -7,50 +6,49 @@
                 <div class="image">
                     @if ($sitesetting->main_logo)
                         <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" alt="Main Logo"
-                            height="100">
+                            height="50">
                     @else
                         <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
                     @endif
                 </div>
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav m-auto navbar-nav-scroll" style="--bs-scroll-height: 500px;">
                     <li class="nav-item dropdown">
+                        
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Introduction
+                           {{trans('messages.Introduction')}} 
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('About') }}">About us</a></li>
-                            <li><a class="dropdown-item" href="{{ route('Team') }}">Our Teams</a></li>
-                            <li><a class="dropdown-item" href="{{ route('Service') }}">Services</a></li>
+                            <li><a class="dropdown-item" href="{{ route('About') }}"> {{trans('messages.About Us')}} </a></li>
+                            <li><a class="dropdown-item" href="{{ route('Team') }}"> {{trans('messages.Our Teams')}} </a></li>
+                            <li><a class="dropdown-item" href="{{ route('Service') }}"> {{trans('messages.Services')}} </a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Work Abroad
+                           {{trans('messages.WorkAbroad')}} 
                         </a>
-
                         <ul class="dropdown-menu">
                             @foreach ($countries as $country)
-                                <li><a class="dropdown-item"
-                                        href="{{ route('singleCountry', ['slug' => $country->slug]) }}">Work in
-                                        {{ $country->name }}</a></li>
-                            @endforeach
+                       <li>
+                      <a class="dropdown-item" href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
+                     {{ trans('messages.' . $country->slug) }}
+                  </a>
+               </li>
+@endforeach 
                         </ul>
-
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Employment
+                            {{trans('messages.Employment')}} 
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($workcategories as $workcategory)
@@ -60,59 +58,60 @@
                             @endforeach
                         </ul>
                     </li>
-
                     <!-- Remove the "Living Abroad" dropdown section -->
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Gallery
+                            {{trans('messages.Gallery')}} 
                         </a>
                         <ul class="dropdown-menu">
-
                             <li><a class="dropdown-item" href="{{ route('Gallery') }}">
-                                    Photo Gallery</a></li>
+                                {{trans('messages.Photo Gallery')}} </a></li>
                             <li><a class="dropdown-item" href="{{ route('Video') }}">
-                                    Video Gallery</a></li>
-
+                                {{trans('messages.Video Gallery')}} </a></li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Testimonial') }}">Reviews</a>
+                        <a class="nav-link text-primary" href="{{ route('Testimonial') }}"> {{trans('messages.Reviews')}} </a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">Blogs</a>
+                        <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}"> {{trans('messages.Blogs')}} </a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Contact') }}">Contact</a>
+                        <a class="nav-link text-primary" href="{{ route('Contact') }}"> {{trans('messages.Contact')}} </a>
                     </li>
-
                 </ul>
+                <!-- Language Switcher -->
+                {{-- <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Language
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="{{ url()->current()}}?locale=en">English</a></li>
+                        <li><a class="dropdown-item" href="{{ url()->current()}}?locale=ne">नेपाली</a></li>
+                    </ul>
+                </div> --}}
 
-            </div>
-            <div class="">
-                <!-- <p class="mt-3">{{ $sitesetting->office_contact }}</p> -->
-                <form action="{{ route('search') }}" method="GET" class="search-form">
-                    <input type="text" name="search" placeholder="Search..." required />
-                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>  
+
+                <div class="en_ne">
+                    <a class="btn_en {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="{{ url()->current() }}?locale=en">en</a>
+                    <a class="btn_en {{ app()->getLocale() === 'ne' ? 'active' : '' }}" href="{{ url()->current() }}?locale=ne">ne</a>
+                </div>
+                
+
+
             </div>
         </div>
     </nav>
 </div>
-
 {{-- Highlight the active/current (pressed) button --}}
 <script>
     const navLinks = document.querySelectorAll('.nav-link');
     const currentURL = window.location.href.split('#')[0];
-
     navLinks.forEach(link => {
         if (link.nextElementSibling && link.nextElementSibling.classList.contains('dropdown-menu')) {
             const subLinks = link.nextElementSibling.querySelectorAll('.dropdown-item');
-
             subLinks.forEach(subLink => {
                 if (subLink.href && subLink.href.split('#')[0] === currentURL) {
                     link.classList.add('active');
@@ -125,15 +124,12 @@
                 link.classList.add('active');
             }
         }
-
         link.addEventListener('click', () => {
             navLinks.forEach(otherLink => otherLink.classList.remove('active'));
             link.classList.add('active');
         });
     });
-
     // Make the navbar logo and navbar big when the site opens and when scrolled make it small like now and with the logo add Company name and slogan.
-
     window.addEventListener('scroll', function () {
         var a = window.scrollY;
         if (a > 200) {
@@ -142,5 +138,4 @@
           document.querySelector('.header').classList.remove('n');
         }
       });
-
 </script>
