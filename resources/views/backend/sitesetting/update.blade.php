@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <div class="row mb-2">
+    <div class="row mb-0"> 
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
@@ -43,18 +43,31 @@
                                 id="office_name" value="{{ $sitesetting->office_name }}">
                         </div>
 
-                        <div class="form-group">
-                            <label for="office_address">Office Address</label>
-                            <input type="text" name="office_address" class="form-control" placeholder="Address"
-                                id="office_address" value="{{ $sitesetting->office_address }}">
+                        <div class="form-group" id="office_addresses_container">
+                            <label for="office_address">Office Addresses</label>
+                            @foreach(json_decode($sitesetting->office_address) as $address)
+                                <div class="input-group mb-3">
+                                    <input type="text" name="office_address[]" class="form-control" placeholder="Address" value="{{ $address }}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary remove-address" type="button">-</button>
+                                        <button class="btn btn-outline-secondary add-address" type="button">+</button>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-
-                        <div class="form-group">
-                            <label for="office_contact">Office Contact</label>
-                            <input type="text" name="office_contact" class="form-control" placeholder="Office Contact"
-                                id="office_contact" value="{{ $sitesetting->office_contact }}">
+        
+                        <div class="form-group" id="office_contacts_container">
+                            <label for="office_contact">Office Contacts</label>
+                            @foreach(json_decode($sitesetting->office_contact) as $contact)
+                                <div class="input-group mb-3">
+                                    <input type="text" name="office_contact[]" class="form-control" placeholder="Office Contact" value="{{ $contact }}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary remove-contact" type="button">-</button>
+                                        <button class="btn btn-outline-secondary add-contact" type="button">+</button>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-
                         <div class="form-group">
                             <label for="office_email">Office Email</label>
                             <input type="email" name="office_email" class="form-control" placeholder="Email"
@@ -107,6 +120,13 @@
                             <input name="instagram_link" class="form-control" placeholder="Insta URL (https://)"
                                 id="instagram_link" value="{{ $sitesetting->instagram_link }}">
                         </div>
+
+                        <div class="form-group">
+                            <label for="snapchat_link">Snapchat URL</label>
+                            <input name="snapchat_link" class="form-control" placeholder="Snapchat URL (https://)"
+                                id="snapchat_link" value="{{ $sitesetting->snapchat_link }}">
+                        </div>
+
                         <div class="form-group">
                             <label for="linkedin_link">Linkedin URL</label>
                             <input name="linkedin_link" class="form-control" placeholder="LinkedIn URL (https://)"
@@ -149,5 +169,40 @@
                 preview.src = reader.result;
             };
         };
+        
+        $(document).ready(function() {
+            // Add new address input field
+            $(".add-address").click(function() {
+                $("#office_addresses_container").append('<div class="input-group mb-3">' +
+                    '<input type="text" name="office_address[]" class="form-control" placeholder="Address">' +
+                    '<div class="input-group-append">' +
+                    '<button class="btn btn-outline-secondary remove-address" type="button">-</button>' +
+                    '<button class="btn btn-outline-secondary add-address" type="button">+</button>' +
+                    '</div>' +
+                    '</div>');
+            });
+
+            // Remove address input field
+            $(document).on("click", ".remove-address", function() {
+                $(this).parents(".input-group").remove();
+            });
+
+            // Add new contact input field
+            $(".add-contact").click(function() {
+                $("#office_contacts_container").append('<div class="input-group mb-3">' +
+                    '<input type="text" name="office_contact[]" class="form-control" placeholder="Office Contact">' +
+                    '<div class="input-group-append">' +
+                    '<button class="btn btn-outline-secondary remove-contact" type="button">-</button>' +
+                    '<button class="btn btn-outline-secondary add-contact" type="button">+</button>' +
+                    '</div>' +
+                    '</div>');
+            });
+
+            // Remove contact input field
+            $(document).on("click", ".remove-contact", function() {
+                $(this).parents(".input-group").remove();
+            });
+        });
+
     </script>
-@endsection
+    @endsection
