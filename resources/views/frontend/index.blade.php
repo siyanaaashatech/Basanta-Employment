@@ -4,8 +4,7 @@
     <section class="banner ">
         <div class="container-fluid">
             <div class="row g-4 align-items-center">
-                {{-- <div class="col-lg-4 text-center pt-5 order-lg-1 order-md-2 order-sm-2 order-xs-2">
-                        
+                {{-- <div class="col-lg-4 text-center pt-5 order-lg-1 order-md-2 order-sm-2 order-xs-2"> 
                         <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" width="250px" height="150px"
                             alt="" />
                         <h3>{{ $sitesetting->office_name }}</h3>
@@ -46,6 +45,9 @@
 
 
 
+
+
+
     <section class="country py-4">
         <div class="container swiper p-4">
             <div class="slide-container">
@@ -75,33 +77,30 @@
 
 
 
-    <section class="about ">
-        <div class="container about-content text-center">
-            <div class="about-box">
-                <div class="about-left">
-                    <div class="about-img">
-                        <img src="{{ asset('uploads/about/' . $about->image) }}" width="100%" height="100%"
-                            alt="">
-                    </div>
-                    <div class=" box1"></div>
-                </div>
-                <div class="about-right ">
-                    <div class="box2"></div>
-                    <div class="about-us p-5">
-                        <h2 class="py-3 section_title">{{ $about->title }}</h2>
-
-                        <p>{{ Str::limit(strip_tags($about->description), 400) }}
-                        </p>
-                        <div class="pt-3">
-                            <a href="{{ route('About') }}" class="btn">Read More<i
-                                    class="fa-solid fa-arrow-right mx-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
+<section class="about-us">
+  <div class="container">
+      <div class="container-box">
+          <div class="left position-relative">
+              <div class="img position-relative">
+                  <img src="{{ asset('uploads/about/' . $about->image) }}" alt="">
+              </div>
+              <div class="cr-1 position-absolute bottom-0 start-0"></div>
+          </div>
+          <div class="right  position-relative">
+              <div class="cr-2 position-absolute top-0 end-0"></div>
+              <div class="content ">
+                  <div class="right-box">
+                      <h1 class="section_title">{{ $about->title }}</h1>
+                      <p>{{ Str::limit(strip_tags($about->description), 400) }}</p>
+                      <a href="{{ route('About') }}" class="btn">Read More<i
+                            class="fa-solid fa-arrow-right mx-2"></i></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</section>
 
 
     <!-- Experience -->
