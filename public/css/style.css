@@ -77,6 +77,54 @@ li {
 
 /* For Tap Navbar */
 
+.en_ne{
+  height:20px;
+  width: 5px;
+  position: absolute;
+  top: 1%; 
+  right: 3%;
+  transition: 0.1s all;
+}
+.en_ne:hover{
+  font-weight: 800;
+
+}
+
+.btn_en{
+  padding: 3px;
+  width: fit-content;
+  color: #000;
+  background: var(--first);
+  /* margin-bottom: 5px; */
+  transition: 0.2s all;
+  font-size: 12px;
+  font-weight: 500;
+}
+.btn_en:hover{
+  color: var(--first);
+  background: var(--white);
+  font-weight: 700;
+}
+
+.btn_en.active{
+  color:#fff;
+  background-color: red;
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+
+  .en_ne{
+    height:80px;
+    width: 15px;
+    margin-top: 0;
+    transition: 0.1s all;
+    display: inline-block;
+  }
+  
+  }
 /* For Top Navbar */
 
 
@@ -389,6 +437,24 @@ li {
   z-index: 1;
 
 }
+
+
+@media(min-width: 1400px) and  (max-width:1449px){
+  .about-left{
+      margin-left: 20%; 
+  }
+  .about-right{
+      margin-left: 20%;
+
+  }
+} 
+@media (min-width: 1450px) {
+  .about-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
 @media(min-width:300px) and (max-width:799px){
   .about{
       margin-bottom: 0 !important;
@@ -479,22 +545,7 @@ li {
       margin-left: 15%;
   }
 }
-@media(min-width: 1400px) and  (max-width:1449px){
-  .about-left{
-      margin-left: 20%; 
-  }
-  .about-right{
-      margin-left: 20%;
 
-  }
-} 
-@media (min-width: 1450px) {
-  .about-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
  /* about */
  
  

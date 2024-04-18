@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="col-md-6 cform_right">
-                    <form id="loginForm" class="form-horizontal" method="POST" role="form"
+                    <form id="contactForm" class="form-horizontal" method="POST" role="form"
                         action="{{ route('Contact.store') }}">
 
 
@@ -106,7 +106,7 @@
 
                     function verifyCallback(response) {
                         // If reCAPTCHA is ticked, enable form submission
-                        document.getElementById("loginForm").submit();
+                        document.getElementById("contactForm").submit();
                     }
 
                     function recaptchaExpired() {
@@ -114,7 +114,7 @@
                     }
 
                     // Form submission with reCAPTCHA validation
-                    document.getElementById("loginForm").addEventListener("submit", function(event) {
+                    document.getElementById("contactForm").addEventListener("submit", function(event) {
                         var response = grecaptcha.getResponse();
                         if(response.length == 0) { // reCAPTCHA not verified
                             event.preventDefault(); // Prevent form submission
