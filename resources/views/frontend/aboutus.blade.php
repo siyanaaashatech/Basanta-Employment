@@ -40,7 +40,7 @@
     </section>
 
 
-    <section class="testimonial_page">
+     {{-- <section class="testimonial_page">
         <div class="container">
 
             <h1 class="section_title text-center"><span>Message From the Managing Director</span></h1>
@@ -67,5 +67,5 @@
             </div>
 
         </div>
-    </section>
+    </section>  --}}
 @endsection

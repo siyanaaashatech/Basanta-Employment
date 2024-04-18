@@ -59,12 +59,13 @@ Route::prefix('/')->group(function () {
     Route::get('/team', [SingleController::class, 'render_team'])->name('Team');
     Route::get('/services', [SingleController::class, 'render_service'])->name('Service');
     Route::get('/singleservice/{slug}', [SingleController::class, 'render_singleService'])->name('SingleService');
+    Route::get('/singledemand/{slug}', [SingleController::class, 'render_singleDemand'])->name('SingleDemand');
     Route::get('/gallery', [SingleController::class, 'render_gallery'])->name('Gallery');
     Route::get('/video', [SingleController::class, 'render_videos'])->name('Video');
     Route::get('/countries', [SingleController::class, 'render_Countries'])->name('Countries');
     Route::get('/singlecountry/{slug}', [SingleController::class, 'render_singleCountry'])->name('singleCountry');
-    Route::get('/singleuniversity/{slug}', [SingleController::class, 'render_singleUniversity'])->name('singleUniversity');
-    Route::get('/singlecourse/{slug}', [SingleController::class, 'render_singleCourse'])->name('singleCourse');
+    Route::get('/singlecompany/{slug}', [SingleController::class, 'singleCompany'])->name('singleCompany');
+    Route::get('/singleworkcategory/{slug}', [SingleController::class, 'render_singleworkCategory'])->name('singleworkCategory');
     Route::get('/singlecategory/{slug}', [SingleController::class, 'render_singleCategory'])->name('singleCategory');
     Route::get('/singlepost/{slug}', [SingleController::class, 'render_singlePost'])->name('singlePost');
     Route::get('/gallerys/{slug}', [SingleController::class, 'render_singleImage'])->name('singleImage');

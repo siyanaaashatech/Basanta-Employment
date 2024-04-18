@@ -1,13 +1,8 @@
-<section class="topheader">
+<!-- <section class="topheader">
     <div class="container">
 
         <div class="row">
-
-
-
-
             <div class="col-md-6 text-left col-sm-12">
-
 
                 <div class="social-buttons">
                     <a href="{{ $sitesetting->facebook_link }}"
@@ -29,13 +24,13 @@
                         </span>
                     </a>
   
-                </div>
 
+                </div>
 
             </div>
 
 
-            <div class="col-md-6 col-sm-12 top_right">
+         <div class="col-md-6 col-sm-12 top_right">
                 
                 <p class="mt-3">{{ $sitesetting->office_contact }}</p>
 
@@ -44,8 +39,9 @@
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
 
-                
-            </div>
+            
 
         </div>
+
 </section>
+

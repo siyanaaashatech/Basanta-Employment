@@ -7,7 +7,7 @@
                 <div class="image">
                     @if ($sitesetting->main_logo)
                         <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" alt="Main Logo"
-                            height="50">
+                            height="100">
                     @else
                         <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
                     @endif
@@ -55,7 +55,7 @@
                         <ul class="dropdown-menu">
                             @foreach ($workcategories as $workcategory)
                                 <li><a class="dropdown-item"
-                                        href="{{ route('singleCourse', ['slug' => $workcategory->slug]) }}">
+                                        href="{{ route('singleworkCategory', ['slug' => $workcategory->slug]) }}">
                                         {{ $workcategory->title }}</a></li>
                             @endforeach
                         </ul>
@@ -93,6 +93,13 @@
                 </ul>
 
             </div>
+            <div class="">
+                <!-- <p class="mt-3">{{ $sitesetting->office_contact }}</p> -->
+                <form action="{{ route('search') }}" method="GET" class="search-form">
+                    <input type="text" name="search" placeholder="Search..." required />
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>  
+            </div>
         </div>
     </nav>
 </div>
@@ -124,4 +131,16 @@
             link.classList.add('active');
         });
     });
+
+    // Make the navbar logo and navbar big when the site opens and when scrolled make it small like now and with the logo add Company name and slogan.
+
+    window.addEventListener('scroll', function () {
+        var a = window.scrollY;
+        if (a > 200) {
+          document.querySelector('.header').classList.add('n');
+        } else {
+          document.querySelector('.header').classList.remove('n');
+        }
+      });
+
 </script>

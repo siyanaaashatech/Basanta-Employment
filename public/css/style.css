@@ -17,6 +17,13 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Quicksand", sans-serif;
 }
+h2{
+
+  font-size: 34px;
+  font-weight: 600px;
+  text-transform: uppercase;
+}
+
 
 h3 {
   font-size: 20px;
@@ -41,10 +48,8 @@ li {
 }
 
 .btn {
-
   color: #C92028;
-  border: 1px solid #C92028;
- 
+  border: 1px solid #C92028; 
   border-radius: 23px;
   padding: 5px 15px;
   transition: 0.3s linear;
@@ -67,7 +72,6 @@ li {
 .insta {
   color: #E04E4D;
 }
-
 
 
 /* For Tap Navbar */
@@ -112,12 +116,15 @@ li {
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
+  gap: 15px;
   /* justify-content: center; */
   /* margin-top: -10px; */
 }
-.social-buttons__button {
-  margin: 5px;
-}
+
+/* .social-buttons__button {
+  margin-right: 16px;
+} */
+
 .social-button {
   border-radius: 50%;
   position: relative;
@@ -125,8 +132,8 @@ li {
   justify-content: end;
   align-items: center;
   outline: none;
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   text-decoration: none;
 }
 .social-icons {
@@ -186,6 +193,12 @@ li {
 .social-button--facebook::after {
   background: #3b5999;
 }
+.social-button--snapchat {
+  color: #f0cc00;
+}
+.social-button--snapchat::after {
+  background:  #f0cc00;
+}
 .social-button--linkedin {
   color: #0077b5;
 }
@@ -213,14 +226,36 @@ li {
 }
 
 
+.social-button--snapchat{
+  color: #000;
+  
+}
+.social-button--snapchat::after {
+  background: #F7F300;
+}
+
 .header {
   position: sticky;
   top: 0;
   background-color: #eeedf3;
   z-index: 1000; /* adjust z-index as needed */
-  padding: 10px 0;
-}
+  padding: 30px 0;
+  width: 100%;
+  transition: 0.9s;
 
+}
+/* .n {
+  padding: 0px;
+  .image{
+    img{
+
+      height: 100px;
+
+    }
+    
+  }
+
+} */
 .header .navbar .collapse ul li:hover {
   background: #d4d0d0;
 }
@@ -266,12 +301,6 @@ li {
 }
 }
 
-
-
-
-
-
-
 .card {
   background: #fff;
   border-radius: 20px;
@@ -292,7 +321,7 @@ li {
   border-radius: 35px;
 }
 
-.about {
+/* .about {
   margin-bottom: 100px;
   padding-top: 80px;
 }
@@ -350,22 +379,246 @@ li {
   left: 520px;
   top: 30;
   z-index: 1;
+
+}
+@media(min-width:300px) and (max-width:799px){
+  .about{
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+         .about-left{
+             position: relative;
+             width: 300px;
+            height: 500px;
+             .about-img{
+                 width: 300px;
+                 height: 250px;
+                 left: 80px;
+                 position: absolute;
+                 z-index: 2;
+                 img{
+                     width: 100%;
+                     height: 100%;
+                     border-radius: 30px;
+                 }
+             }
+             .box1{
+                 width: 100px;
+                 height: 100px;
+                 border-radius: 50%;
+                 background:#C92028;
+                 position: absolute;
+                 top: 200px;
+                 left: 20px;
+                 z-index: 1;
+             }
+         }
+         .about-right{
+             width: 500px;
+             /* height: 700px; */
+             position: relative;
+             top: -220px;
+             right: -100px;
+             
+             .about-us{
+                 background: #fff;
+                 border-radius: 30px;
+                 width: 300px;
+                 height: 450px;
+                 font-size: 14px !important;
+                 padding: 0 !important;
+                 box-shadow: 8px 8px 8px rgb(142, 142, 142);
+                 position: absolute;
+                 top: 50px;
+                 z-index: 2;
+                 line-height: 30px;              
+             }
+             .box2{
+                 width: 100px;
+                 height: 100px;
+                 border-radius: 50%;
+                 background:#C92028;
+                 position: absolute;
+                 left: 250px;
+              /*    top: 30; */
+                 z-index: 1;
+             }
+         }
+     }
 }
 
-@media (max-width: 1449px) {
-  .about-box {
-    display: none;
+@media(min-width: 800px) and  (max-width:989px){
+  .about-right{
+      margin-left: -15%;
   }
 }
-@media (min-width: 1450px) {
+@media(min-width: 990px) and  (max-width:1199px){
+  .about-left{
+      margin-left: 8%; 
+  }
+  .about-right{
+      margin-left: 8%;
+  }
+}
+@media(min-width: 1200px) and  (max-width:1399px){
+  .about-left{
+      margin-left:15%; 
+  }
+  .about-right{
+      margin-left: 15%;
+  }
+}
+@media(min-width: 1400px) and  (max-width:1449px){
+  .about-left{
+      margin-left: 20%; 
+  }
+  .about-right{
+      margin-left: 20%;
+
+  }
+} */
+/* @media (min-width: 1450px) {
   .about-box {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
+} */
+ /* about */
+ .about-us{
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-box{
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.left{
+  width: 50%;
+  
+}
+.left .cr-1{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: red;
+  margin-left: -70px;
+  margin-bottom: -60px;
+  z-index: 0;
+}
+.right .cr-2{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: red;
+  margin-right: -70px;
+  margin-top: -70px;
+  z-index: -1;
+}
+.left .img{
+  height: 400px;
+  z-index: 1;
+}
+.img img{
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+.right{
+  width: 50%;
+  margin-left: -100px;
+  margin-bottom: -200px;
+  z-index: 4;
+}
+.content{
+  min-height: 400px;
+  padding: 30px;
+  border-radius: 8px;
+  color: rgb(12, 12, 12);
+  background-color: rgb(243, 239, 243);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.right h1{
+  font-size: 40px;
+  font-weight: lighter;
+}
+.right p{
+  margin: 20px;
+  font-weight: 500;
+  line-height: 25px;
+}
+.right a{
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 20px 30px;
+  display: inline-block;
+  letter-spacing: 2px;
+}
+@media only screen and (max-width:992px){
+  .container-box{
+      flex-direction: column;
+      
+  }
+  .left{
+      width: 100%;
+    
+  }
+  .right{
+      margin: 0;
+      margin-top: 70px;
+      width: 100%;
+      
+  }
+ 
+}
+@media only screen and (max-width:611px){
+  .container-box{
+      flex-direction: column;
+      
+  }
+  .left{
+      width: 60%;
+    
+  }
+  .right{
+      margin: 0;
+      margin-top: 70px;
+      width: 60%;
+      
+  }
+  .left .cr-1{
+      height: 100px;
+      width: 100px;
+  }
+  .right .cr-2{
+      height: 100px;
+      width: 100px;
+  }
+ 
 }
 .experience .Ebox1, .blogs .Ebox1 {
   border: 1px solid gray;
+}
+
+.Ebox1{
+  height: 320px;
+}
+
+.experience .E-B-img, .blogs .E-B-img{
+ height: 250px;
+ object-fit: cover;
+
+  
 }
 .experience img, .blogs img {
   width: 100%;
@@ -373,10 +626,29 @@ li {
 }
 
 
+/* blogs */
+/* @media(min-width:768px) and (max-width:999px){
+  .experience .Ebox1,.blogs .Ebox1{
+    height: 250px;
+  }
+}
+@media(min-width:1000px) and (max-width:1399px){
+  .experience .Ebox1,.blogs .Ebox1{
+    height: 300px;
+  }
+}
+@media(min-width:1400px){
+  .experience .Ebox1,.blogs .Ebox1{
+    height: 400px;
+  }
+} */
+
+
+
 /* For General */
 .Find-country {
 
-  background-image: url('../image/candidate3.jpg');
+  background-image: url('../image/plane22.png');
 
 
 
@@ -384,9 +656,9 @@ li {
 max-height: 400px; */
 
 /* center and scale the image */
-background-position: top;
+background-position: center;
 background-repeat: no-repeat;
-background-size: 100% 100%;
+background-size: cover;
 
 
 /* use the following only if if you are able to scroll past the image to see a white area (this is the <body> peeking out) above or below the image */
@@ -444,13 +716,27 @@ a.btn2:hover {
 
 
 
-.guiding img {
-  width: 70px;
+
+
+.guiding .guiding-img {
+  width: 100px;
+  height: 50px;
 }
 
+.guiding img {
+  width: 100%;
+  height: 100%;
+}
 .testimonial .arrow {
   color: #C92028;
 }
+.testimonial img{
+  height: 100px;
+  width: 100px;
+  object-fit: fill;
+  border-radius: 50%;
+}
+
 .testimonial .test-user {
   font-size: 60px;
 }
@@ -531,7 +817,7 @@ footer li a {
 /* For General */
 .background {
 
-    background-image: url('../image/candidate3.jpg');
+    background-image: url('../image/planeback.png');
 
 
 
@@ -540,9 +826,9 @@ max-height: 400px;
 
 
 
-background-position: top;
+background-position: center;
 background-repeat: no-repeat;
-background-size: 100% 100%;
+background-size: cover;
 
 
 /* use the following only if if you are able to scroll past the image to see a white area (this is the <body> peeking out) above or below the image */
@@ -559,7 +845,7 @@ position: relative;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(94, 1, 5, 0.8);
+  background: rgba(94, 1, 5, 0.9);
   /* height: 200px; */
 }
 
@@ -845,9 +1131,10 @@ background-position: center bottom;
 
 .multi_post .card{
   border: 0;
+  margin:70px 30px 30px ;
 }
 .multi_post .multi_post_image{
-  height: 300px;
+  height:250px;
   object-fit: contain;
  }
  .multi_post .multi_post_image img{

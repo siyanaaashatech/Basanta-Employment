@@ -11,7 +11,7 @@
                         $categories->isNotEmpty() ||
                         $contacts->isNotEmpty() ||
                         $countries->isNotEmpty() ||
-                        $courses->isNotEmpty() ||
+                        $work_categories->isNotEmpty() ||
                         $testimonials->isNotEmpty() ||
                         $blogCategories->isNotEmpty() ||
                         $studentDetails->isNotEmpty())
