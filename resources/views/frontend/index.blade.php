@@ -246,7 +246,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" method="POST" role="form" action="{{ route('Contact.store') }}">
+                    <form id="contactForm" class="form-horizontal" method="POST" role="form" action="{{ route('Contact.store') }}">
                         @csrf
                         <div class="inp">
                             <input type="text" name="" id="" placeholder="ENTER YOUR NAME">
@@ -261,10 +261,48 @@
                         <div class="inp">
                             <textarea name="" id="" rows="3" placeholder="ENTER YOUR MESSAGE"></textarea>
                         </div>
-                        <div class="pt-5 mb-5">
-                            <button class="btn">SUBMIT</button>
-                        </div>
+                               <!-- Add reCAPTCHA field -->
+                               <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div> 
+
+                               <div class="pt-5 mb-5">
+                                <button class="btn">SUBMIT</button>
+                            </div>
+                    
+                           </form>
+                       </div>          
                     </form>
+
+                    {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <!-- reCAPTCHA initialization -->
+                    <script type="text/javascript">
+                        var onloadCallback = function() {
+                            grecaptcha.render('html_element', {
+                                'sitekey' : '6LdJRrspAAAAAMHgf6vvqik5fcTUD2ZKCZtG9Vaf',
+                                'callback': verifyCallback,
+                                'expired-callback': recaptchaExpired
+                            });
+                        };
+    
+                        function verifyCallback(response) {
+                            // If reCAPTCHA is ticked, enable form submission
+                            document.getElementById("lcontactForm").submit();
+                        }
+    
+                        function recaptchaExpired() {
+                            // Handle expired reCAPTCHA here if needed
+                        }
+    
+                        // Form submission with reCAPTCHA validation
+                        document.getElementById("contactForm").addEventListener("submit", function(event) {
+                            var response = grecaptcha.getResponse();
+                            if(response.length == 0) { // reCAPTCHA not verified
+                                event.preventDefault(); // Prevent form submission
+                                alert("Please tick the reCAPTCHA box before submitting.");
+                            }
+                        });
+    
+                    </script>
                 </div>
             </div>
         </div>
