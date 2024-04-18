@@ -45,38 +45,29 @@
 
                         <div class="form-group" id="office_addresses_container">
                             <label for="office_address">Office Addresses</label>
-                            @if ($sitesetting && $sitesetting->office_address)
-                                @foreach(json_decode($sitesetting->office_address) as $address)
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="office_address[]" class="form-control" placeholder="Address" value="{{ $address }}">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary remove-address" type="button">-</button>
-                                            <button class="btn btn-outline-secondary add-address" type="button">+</button>
-                                        </div>
+                            @foreach(json_decode($sitesetting->office_address) as $address)
+                                <div class="input-group mb-3">
+                                    <input type="text" name="office_address[]" class="form-control" placeholder="Address" value="{{ $address }}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary remove-address" type="button">-</button>
+                                        <button class="btn btn-outline-secondary add-address" type="button">+</button>
                                     </div>
-                                @endforeach
-                            @else
-                                <p>No office addresses found.</p>
-                            @endif
+                                </div>
+                            @endforeach
                         </div>
-                        
+        
                         <div class="form-group" id="office_contacts_container">
                             <label for="office_contact">Office Contacts</label>
-                            @if ($sitesetting && $sitesetting->office_contact)
-                                @foreach(json_decode($sitesetting->office_contact) as $contact)
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="office_contact[]" class="form-control" placeholder="Office Contact" value="{{ $contact }}">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary remove-contact" type="button">-</button>
-                                            <button class="btn btn-outline-secondary add-contact" type="button">+</button>
-                                        </div>
+                            @foreach(json_decode($sitesetting->office_contact) as $contact)
+                                <div class="input-group mb-3">
+                                    <input type="text" name="office_contact[]" class="form-control" placeholder="Office Contact" value="{{ $contact }}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary remove-contact" type="button">-</button>
+                                        <button class="btn btn-outline-secondary add-contact" type="button">+</button>
                                     </div>
-                                @endforeach
-                            @else
-                                <p>No office contacts found.</p>
-                            @endif
+                                </div>
+                            @endforeach
                         </div>
-                        
                         <div class="form-group">
                             <label for="office_email">Office Email</label>
                             <input type="email" name="office_email" class="form-control" placeholder="Email"

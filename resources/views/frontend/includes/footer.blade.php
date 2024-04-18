@@ -237,7 +237,18 @@
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <div class="cta-text">
                             <h4>Find us</h4>
-                            <span>{{ $sitesetting->office_address }}</span>
+                            <span>@if (!empty($sitesetting->office_address))
+                                @php
+                                    $officeAddresses = json_decode($sitesetting->office_address, true);
+                                @endphp
+                                @if (is_array($officeAddresses))
+                                    @foreach ($officeAddresses as $address)
+                                        {{ $address }} <br>
+                                    @endforeach
+                                @else
+                                    {{ $sitesetting->office_address }} <br>
+                                @endif
+                            @endif</span>
                         </div>
                     </div>
                 </div>
@@ -246,7 +257,20 @@
                         <i class="fa fa-mobile" aria-hidden="true"></i>
                         <div class="cta-text">
                             <h4>Call us</h4>
-                            <span>{{ $sitesetting->office_contact }}</span>
+                            <span>
+                                @if (!empty($sitesetting->office_contact))
+                                @php
+                                    $officeContacts = json_decode($sitesetting->office_contact, true);
+                                @endphp
+                                @if (is_array($officeContacts))
+                                    @foreach ($officeContacts as $contact)
+                                        {{ $contact }} <br>
+                                    @endforeach
+                                @else
+                                    {{ $sitesetting->office_contact }} <br>
+                                @endif
+                            @endif
+                                </span>
                         </div>
                     </div>
                 </div>
