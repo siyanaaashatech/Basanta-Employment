@@ -19,36 +19,40 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav m-auto navbar-nav-scroll" style="--bs-scroll-height: 500px;">
                     <li class="nav-item dropdown">
-                        
+
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                           {{trans('messages.Introduction')}} 
+                            {{ trans('messages.Introduction') }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('About') }}"> {{trans('messages.About Us')}} </a></li>
-                            <li><a class="dropdown-item" href="{{ route('Team') }}"> {{trans('messages.Our Teams')}} </a></li>
-                            <li><a class="dropdown-item" href="{{ route('Service') }}"> {{trans('messages.Services')}} </a></li>
+                            <li><a class="dropdown-item" href="{{ route('About') }}"> {{ trans('messages.About Us') }}
+                                </a></li>
+                            <li><a class="dropdown-item" href="{{ route('Team') }}"> {{ trans('messages.Our Teams') }}
+                                </a></li>
+                            <li><a class="dropdown-item" href="{{ route('Service') }}"> {{ trans('messages.Services') }}
+                                </a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                           {{trans('messages.WorkAbroad')}} 
+                            {{ trans('messages.WorkAbroad') }}
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($countries as $country)
-                       <li>
-                      <a class="dropdown-item" href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-                     {{ trans('messages.' . $country->slug) }}
-                  </a>
-               </li>
-@endforeach 
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
+                                        {{ trans('messages.' . $country->slug) }}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            {{trans('messages.Employment')}} 
+                            {{ trans('messages.Employment') }}
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($workcategories as $workcategory)
@@ -62,23 +66,26 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            {{trans('messages.Gallery')}} 
+                            {{ trans('messages.Gallery') }}
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('Gallery') }}">
-                                {{trans('messages.Photo Gallery')}} </a></li>
+                                    {{ trans('messages.Photo Gallery') }} </a></li>
                             <li><a class="dropdown-item" href="{{ route('Video') }}">
-                                {{trans('messages.Video Gallery')}} </a></li>
+                                    {{ trans('messages.Video Gallery') }} </a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Testimonial') }}"> {{trans('messages.Reviews')}} </a>
+                        <a class="nav-link text-primary" href="{{ route('Testimonial') }}">
+                            {{ trans('messages.Reviews') }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}"> {{trans('messages.Blogs')}} </a>
+                        <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">
+                            {{ trans('messages.Blogs') }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Contact') }}"> {{trans('messages.Contact')}} </a>
+                        <a class="nav-link text-primary" href="{{ route('Contact') }}">
+                            {{ trans('messages.Contact') }} </a>
                     </li>
                 </ul>
                 <!-- Language Switcher -->
@@ -95,10 +102,12 @@
 
 
                 <div class="en_ne">
-                    <a class="btn_en {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="{{ url()->current() }}?locale=en">en</a>
-                    <a class="btn_en {{ app()->getLocale() === 'ne' ? 'active' : '' }}" href="{{ url()->current() }}?locale=ne">ne</a>
+                    <a class="btn_en {{ app()->getLocale() === 'en' ? 'active' : '' }}"
+                        href="{{ url()->current() }}?locale=en">en</a>
+                    <a class="btn_en {{ app()->getLocale() === 'ne' ? 'active' : '' }}"
+                        href="{{ url()->current() }}?locale=ne">ne</a>
                 </div>
-                
+
 
 
             </div>
@@ -130,12 +139,12 @@
         });
     });
     // Make the navbar logo and navbar big when the site opens and when scrolled make it small like now and with the logo add Company name and slogan.
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function() {
         var a = window.scrollY;
         if (a > 200) {
-          document.querySelector('.header').classList.add('n');
+            document.querySelector('.header').classList.add('n');
         } else {
-          document.querySelector('.header').classList.remove('n');
+            document.querySelector('.header').classList.remove('n');
         }
-      });
+    });
 </script>

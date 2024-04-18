@@ -80,9 +80,9 @@ li {
 .en_ne{
   height:20px;
   width: 5px;
-  position: absolute;
+  /* position: absolute;
   top: 1%; 
-  right: 3%;
+  right: 3%; */
   transition: 0.1s all;
 }
 .en_ne:hover{
