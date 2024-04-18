@@ -9,7 +9,7 @@ return [
     'Contact' => 'Contact',
     'About Us' => 'About Us',
     'Our Teams' => 'Our Teams' ,
-    'Services' => 'Services',
+    'Services' => 'Our Services',
     'dubai' => 'Work in Dubai',
     'qatar' => 'Work in Qatar',
     'malaysia' => 'Work in Malaysia',
@@ -17,5 +17,7 @@ return [
     'europe' => 'Work in Europe',
     'Photo Gallery' => 'Photo Gallery',
     'Video Gallery' => 'Video Gallery',
+    'about-content' => ':content',
+   
     // Add more translations as needed...
 ];

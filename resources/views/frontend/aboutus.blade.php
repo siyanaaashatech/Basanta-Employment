@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="col-lg-12 col-md-12 col-sm-12 order-2 order-md-3 sample_page_content">
-                    {!! $about->content !!}
+                    {{ trans($about->content) }}
                 </div>
 
 

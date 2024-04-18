@@ -33,13 +33,14 @@ class SetLocale
             App::setLocale($language);
         }
         return $next($request);
+
+
         // if(! $request->user()) {
         //     return $next($request);
         // }
  
         // $language = $request->segment(2);
         
- 
         // if (isset($language)) {
         //     dd($language);
         //     if (in_array($language, config('app.available_locales'))) {

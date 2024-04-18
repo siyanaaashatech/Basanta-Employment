@@ -160,3 +160,8 @@ Route::get('/news', [FrontViewController::class, 'news'])->name('news.index');
 
 Route::get('/courses/{slug}', 'FrontViewController@viewCourse');
 
+Route::get('/lang{lang}',function ($lang){
+    app()->setLocale($lang);
+    session()->put('locale',$lang);
+    return redirect()->route('fronted.index');
+});
