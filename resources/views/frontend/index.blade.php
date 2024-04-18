@@ -266,7 +266,7 @@
 
     <section class="blogs py-5">
         <div class="container">
-            <h2 class="text-center pb-5 section_title">BLOGS</h2>
+            <h2 class="text-center section_title">BLOGS</h2>
             <div class="row g-4">
                 @foreach ($blogs as $blog)
                     <div class="col-lg-4 col-md-4">
