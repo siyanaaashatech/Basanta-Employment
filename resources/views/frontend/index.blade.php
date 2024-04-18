@@ -13,22 +13,69 @@
                 </div> 
 
                 <div class="col-lg-12 "> --}}
-                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @foreach ($coverImages as $key => $coverImage)
-                                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
-                                    <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block"
-                                        width="100%" height="550px" alt="Cover Image" />
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach ($coverImages as $key => $coverImage)
+                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
+                                <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block"
+                                    width="100%" height="550px" alt="Cover Image" />
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ $coverImage->title }}</h5>
                                 </div>
-                            @endforeach
+                            </div>
+                        @endforeach
 
-                        </div>
-                       
+                    </div>
+
+
+                    <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                    
                     {{-- </div> --}}
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
+
+
+    <section class="country py-4">
+        <div class="container swiper p-4">
+            <div class="slide-container">
+                <div class="card-wrapper swiper-wrapper">
+                    @foreach ($demands as $demand)
+                        <div class="card swiper-slide text-center ">
+                            <div class="img-box">
+                                <img class="" src="{{ asset('uploads/demands/' . $demand->image) }}" alt="" />
+                            </div>
+                            <div class="profile-details">
+                                <h3 class="pb-2">{{ $demand->country->name }}</h3>
+                                <h6>
+                                    {{ $demand->from_date }} - {{ $demand->to_date }} <br />
+                                    Vacancy:
+                                    <span>
+                                        {{ $demand->vacancy }}
+
+                                    </span>
+                                </h6>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
 <section class="about-us">
   <div class="container">
@@ -54,42 +101,6 @@
   </div>
   </div>
 </section>
-
-
-    <section class="country py-4">
-        <div class="container swiper p-4">
-            <div class="slide-container">
-                <div class="card-wrapper swiper-wrapper">
-                    @foreach ($demands as $demand)
-                        <div class="card swiper-slide text-center ">
-                            <div class="img-box">
-                                <img class="" src="{{ asset('uploads/demands/' . $demand->image) }}" alt="" />
-                            </div>
-                            <div class="profile-details">
-                                <h3 class="pb-2">{{ $demand->country->name }}</h3>
-                                <h6>
-                                    {{ $demand->from_date }} - {{ $demand->to_date }} <br />
-                                    Vacancy:
-                                    <span>
-                                        {{ $demand->vacancy }}
-                                     
-                                    </span>
-                                </h6>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
 
 
     <!-- Experience -->
@@ -160,8 +171,6 @@
             <div class="row pb-4">
 
                 @foreach ($posts as $post)
-
-
                     <div class="col-lg-4 col-md-6 col-sm-6 pt-3">
                         <a href="{{ route('singlePost', ['slug' => $post->slug]) }}">
                             <div class="d-flex gap-4 align-items-center">
@@ -178,9 +187,8 @@
                             </div>
                         </a>
                     </div>
-
                 @endforeach
-                
+
             </div>
         </div>
     </section>
@@ -190,7 +198,6 @@
             <h2 class="text-center section_title">TESTIMONIALS</h2>
             <div class="swiper-wrapper">
                 @foreach ($testimonials as $testimonial)
-
                     <div class="swiper-slide  p-5">
                         <a href="{{ route('Testimonial') }}">
                             <h5 class="text-center pt-3">{{ $testimonial->description }}</h5>
@@ -200,7 +207,6 @@
                             </div>
                         </a>
                     </div>
-
                 @endforeach
             </div>
             <div class="swiper-button-next arrow"></div>
@@ -239,7 +245,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" method="POST" role="form" action="{{ route('Contact.store') }}">
+                    <form id="contactForm" class="form-horizontal" method="POST" role="form" action="{{ route('Contact.store') }}">
                         @csrf
                         <div class="inp">
                             <input type="text" name="" id="" placeholder="ENTER YOUR NAME">
@@ -254,10 +260,48 @@
                         <div class="inp">
                             <textarea name="" id="" rows="3" placeholder="ENTER YOUR MESSAGE"></textarea>
                         </div>
-                        <div class="pt-5 mb-5">
-                            <button class="btn">SUBMIT</button>
-                        </div>
+                               <!-- Add reCAPTCHA field -->
+                               <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div> 
+
+                               <div class="pt-5 mb-5">
+                                <button class="btn">SUBMIT</button>
+                            </div>
+                    
+                           </form>
+                       </div>          
                     </form>
+
+                    {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <!-- reCAPTCHA initialization -->
+                    <script type="text/javascript">
+                        var onloadCallback = function() {
+                            grecaptcha.render('html_element', {
+                                'sitekey' : '6LdJRrspAAAAAMHgf6vvqik5fcTUD2ZKCZtG9Vaf',
+                                'callback': verifyCallback,
+                                'expired-callback': recaptchaExpired
+                            });
+                        };
+    
+                        function verifyCallback(response) {
+                            // If reCAPTCHA is ticked, enable form submission
+                            document.getElementById("lcontactForm").submit();
+                        }
+    
+                        function recaptchaExpired() {
+                            // Handle expired reCAPTCHA here if needed
+                        }
+    
+                        // Form submission with reCAPTCHA validation
+                        document.getElementById("contactForm").addEventListener("submit", function(event) {
+                            var response = grecaptcha.getResponse();
+                            if(response.length == 0) { // reCAPTCHA not verified
+                                event.preventDefault(); // Prevent form submission
+                                alert("Please tick the reCAPTCHA box before submitting.");
+                            }
+                        });
+    
+                    </script>
                 </div>
             </div>
         </div>
@@ -281,13 +325,10 @@
                         </a>
 
                     </div>
-               
                 @endforeach
             </div>
         </div>
     </section>
-
-
 @endsection
 
 

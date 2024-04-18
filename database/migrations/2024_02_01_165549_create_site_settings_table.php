@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->date('company_registered_date');
             $table->string('facebook_link')->nullable();
             $table->string('instagram_link')->nullable();
+            $table->string('snapchat_link')->nullable();
             $table->string('linkedin_link')->nullable();
             $table->text('google_maps_link')->nullable();
             $table->string('slogan')->nullable(); // Added slogan field

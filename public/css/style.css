@@ -77,6 +77,54 @@ li {
 
 /* For Tap Navbar */
 
+.en_ne{
+  height:20px;
+  width: 5px;
+  /* position: absolute;
+  top: 1%; 
+  right: 3%; */
+  transition: 0.1s all;
+}
+.en_ne:hover{
+  font-weight: 800;
+
+}
+
+.btn_en{
+  padding: 3px;
+  width: fit-content;
+  color: #000;
+  background: var(--first);
+  /* margin-bottom: 5px; */
+  transition: 0.2s all;
+  font-size: 12px;
+  font-weight: 500;
+}
+.btn_en:hover{
+  color: var(--first);
+  background: var(--white);
+  font-weight: 700;
+}
+
+.btn_en.active{
+  color:#fff;
+  background-color: red;
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+
+  .en_ne{
+    height:80px;
+    width: 15px;
+    margin-top: 0;
+    transition: 0.1s all;
+    display: inline-block;
+  }
+  
+  }
 /* For Top Navbar */
 
 
@@ -249,10 +297,14 @@ li {
   padding: 0px;
 }
 
+
 .nav-small .image img{
    height: 60px;
+
     }
-    
+ .n .slogon, .n .c-name{
+  display: none;
+ }   
 
 .header .navbar .collapse ul li:hover {
   background: #d4d0d0;
@@ -386,9 +438,11 @@ li {
   align-items: center;
   
 }
+
 .about-us .right h1{
   font-size: 40px;
   font-weight: lighter;
+
 }
 .about-us .right p{
   margin: 20px;
@@ -419,6 +473,7 @@ li {
   }
  
 }
+
 @media only screen and (max-width:611px){
     .about-us .container-box{
       flex-direction: column;

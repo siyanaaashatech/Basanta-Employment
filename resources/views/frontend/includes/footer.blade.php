@@ -237,7 +237,18 @@
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <div class="cta-text">
                             <h4>Find us</h4>
-                            <span>{{ $sitesetting->office_address }}</span>
+                            <span>@if (!empty($sitesetting->office_address))
+                                @php
+                                    $officeAddresses = json_decode($sitesetting->office_address, true);
+                                @endphp
+                                @if (is_array($officeAddresses))
+                                    @foreach ($officeAddresses as $address)
+                                        {{ $address }} <br>
+                                    @endforeach
+                                @else
+                                    {{ $sitesetting->office_address }} <br>
+                                @endif
+                            @endif</span>
                         </div>
                     </div>
                 </div>
@@ -246,7 +257,20 @@
                         <i class="fa fa-mobile" aria-hidden="true"></i>
                         <div class="cta-text">
                             <h4>Call us</h4>
-                            <span>{{ $sitesetting->office_contact }}</span>
+                            <span>
+                                @if (!empty($sitesetting->office_contact))
+                                @php
+                                    $officeContacts = json_decode($sitesetting->office_contact, true);
+                                @endphp
+                                @if (is_array($officeContacts))
+                                    @foreach ($officeContacts as $contact)
+                                        {{ $contact }} <br>
+                                    @endforeach
+                                @else
+                                    {{ $sitesetting->office_contact }} <br>
+                                @endif
+                            @endif
+                                </span>
                         </div>
                     </div>
                 </div>
@@ -299,7 +323,7 @@
                             <i class="fab fa-instagram"></i>
                         </span>
                     </a>
-                    <a href="{{ $sitesetting->instagram_link }}" target="_blank"
+                    <a href="{{ $sitesetting->snapchat_link }}" target="_blank"
                         class="social-buttons__button social-button social-button--snapchat" aria-label="Snapchat">
                         <span class="social-button__inner">
                         <i class="fa-brands fa-snapchat"></i>
