@@ -37,21 +37,36 @@
                 <th>Office Email</th>
                 <th>Office Contact</th>
                 <th>Office Logo</th>
-                <th>Slogan</th> <!-- Add this line for the Slogan field -->
+                <th>Slogan</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($sitesettings as $sitesetting)
+            @forelse ($sitesettings as $sitesetting)
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
                     <td>{{ $sitesetting->office_name ?? '' }}</td>
                     <td>{{ $sitesetting->office_email ?? '' }}</td>
-                    <td>{{ $sitesetting->office_contact ?? '' }}</td>
-                    <td><img id="preview{{ $loop->iteration }}"
+                    <td>
+                        @if (!empty($sitesetting->office_contact))
+                            @php
+                                $officeContacts = json_decode($sitesetting->office_contact, true);
+                            @endphp
+                            @if (is_array($officeContacts))
+                                @foreach ($officeContacts as $contact)
+                                    {{ $contact }} <br>
+                                @endforeach
+                            @else
+                                {{ $sitesetting->office_contact }} <br>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        <img id="preview{{ $loop->iteration }}"
                             src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}"
-                            style="width: 150px; height:150px" /></td>
-                    <td>{{ $sitesetting->slogan ?? '' }}</td> <!-- Add this line for the Slogan field -->
+                            style="width: 150px; height:150px" />
+                    </td>
+                    <td>{{ $sitesetting->slogan ?? '' }}</td>
                     <td>
                         <div style="display: flex; flex-direction:row;">
                             <a href="{{ route('admin.site-settings.edit', $sitesetting->id) }}"
@@ -61,20 +76,12 @@
                         </div>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="7">No data available</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 
-
-
-    <script>
-        const previewImage = e => {
-            const reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onload = () => {
-                const preview = document.getElementById('preview');
-                preview.src = reader.result;
-            };
-        };
-    </script>
 @endsection
