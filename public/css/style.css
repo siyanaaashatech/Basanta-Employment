@@ -244,7 +244,7 @@ li {
   transition: 0.9s;
 
 }
-.n {
+/* .n {
   padding: 0px;
   .image{
     img{
@@ -255,7 +255,7 @@ li {
     
   }
 
-}
+} */
 .header .navbar .collapse ul li:hover {
   background: #d4d0d0;
 }
@@ -648,7 +648,7 @@ li {
 /* For General */
 .Find-country {
 
-  background-image: url('../image/candidate3.jpg');
+  background-image: url('../image/plane22.png');
 
 
 
@@ -656,9 +656,9 @@ li {
 max-height: 400px; */
 
 /* center and scale the image */
-background-position: top;
+background-position: center;
 background-repeat: no-repeat;
-background-size: 100% 100%;
+background-size: cover;
 
 
 /* use the following only if if you are able to scroll past the image to see a white area (this is the <body> peeking out) above or below the image */
@@ -817,7 +817,7 @@ footer li a {
 /* For General */
 .background {
 
-    background-image: url('../image/candidate3.jpg');
+    background-image: url('../image/planeback.png');
 
 
 
@@ -826,9 +826,9 @@ max-height: 400px;
 
 
 
-background-position: top;
+background-position: center;
 background-repeat: no-repeat;
-background-size: 100% 100%;
+background-size: cover;
 
 
 /* use the following only if if you are able to scroll past the image to see a white area (this is the <body> peeking out) above or below the image */
@@ -845,7 +845,7 @@ position: relative;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(94, 1, 5, 0.8);
+  background: rgba(94, 1, 5, 0.9);
   /* height: 200px; */
 }
 
