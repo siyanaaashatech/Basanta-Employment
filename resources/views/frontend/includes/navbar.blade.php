@@ -82,7 +82,7 @@
                     </li>
                 </ul>
                 <!-- Language Switcher -->
-                <div class="dropdown">
+                {{-- <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Language
@@ -91,7 +91,16 @@
                         <li><a class="dropdown-item" href="{{ url()->current()}}?locale=en">English</a></li>
                         <li><a class="dropdown-item" href="{{ url()->current()}}?locale=ne">नेपाली</a></li>
                     </ul>
+                </div> --}}
+
+
+                <div class="en_ne">
+                    <a class="btn_en {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="{{ url()->current() }}?locale=en">en</a>
+                    <a class="btn_en {{ app()->getLocale() === 'ne' ? 'active' : '' }}" href="{{ url()->current() }}?locale=ne">ne</a>
                 </div>
+                
+
+
             </div>
         </div>
     </nav>
