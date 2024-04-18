@@ -17,7 +17,7 @@ class SitesettingSeeder extends Seeder
     {
         DB::table('site_settings')->insert([
             'office_name' => 'Lunar Overseas',
-            'office_address' => json_encode(['Sinamangal', 'Kathmandu']), 
+            'office_address' => json_encode(['Sinamangal ,Kathmandu']), 
             'office_contact' => json_encode(['9779851071224', '+971 56 834 8300']),
             'office_email' => 'info.aashatech@gmail.com',
             'whatsapp_number' => '9779851071224',
