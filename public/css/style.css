@@ -244,6 +244,9 @@ li {
   transition: 0.9s;
 
 }
+.header .image img{
+  height: 100px;
+}
 .n {
   padding: 0px;
 }
@@ -251,7 +254,7 @@ li {
  .n .image img{
   
 
-      height: 100px;
+      height: 50px;
 
     }
     
