@@ -40,7 +40,7 @@ class TestimonialController extends Controller
 
             $testimonial = new Testimonial();
             $testimonial->name = $request->name;
-            $testimonial->company_id = $request->company_id;
+             $testimonial->company_id = $request->company_id;
             $testimonial->work_category_id = $request->work_category_id;
             $testimonial->image = $newImageName;
             $testimonial->description = $request->description;

@@ -62,6 +62,7 @@ Route::prefix('/')->group(function () {
     Route::get('/team', [SingleController::class, 'render_team'])->name('Team');
     Route::get('/services', [SingleController::class, 'render_service'])->name('Service');
     Route::get('/singleservice/{slug}', [SingleController::class, 'render_singleService'])->name('SingleService');
+    Route::get('/singledemand/{slug}', [SingleController::class, 'render_singleDemand'])->name('SingleDemand');
     Route::get('/gallery', [SingleController::class, 'render_gallery'])->name('Gallery');
     Route::get('/video', [SingleController::class, 'render_videos'])->name('Video');
     Route::get('/countries', [SingleController::class, 'render_Countries'])->name('Countries');

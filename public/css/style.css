@@ -10,6 +10,7 @@
 
 
 
+
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -18,8 +19,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Quicksand", sans-serif;
 }
 h2{
+
+  font-size: 34px;
+  font-weight: 600px;
   text-transform: uppercase;
 }
+
+
 h3 {
   font-size: 20px;
   font-weight: bold;
@@ -43,10 +49,8 @@ li {
 }
 
 .btn {
-
   color: #C92028;
-  border: 1px solid #C92028;
- 
+  border: 1px solid #C92028; 
   border-radius: 23px;
   padding: 5px 15px;
   transition: 0.3s linear;
@@ -69,7 +73,6 @@ li {
 .insta {
   color: #E04E4D;
 }
-
 
 
 /* For Tap Navbar */
@@ -114,12 +117,15 @@ li {
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
+  gap: 15px;
   /* justify-content: center; */
   /* margin-top: -10px; */
 }
-.social-buttons__button {
-  margin: 5px;
-}
+
+/* .social-buttons__button {
+  margin-right: 16px;
+} */
+
 .social-button {
   border-radius: 50%;
   position: relative;
@@ -127,8 +133,8 @@ li {
   justify-content: end;
   align-items: center;
   outline: none;
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   text-decoration: none;
 }
 .social-icons {
@@ -188,6 +194,12 @@ li {
 .social-button--facebook::after {
   background: #3b5999;
 }
+.social-button--snapchat {
+  color: #f0cc00;
+}
+.social-button--snapchat::after {
+  background:  #f0cc00;
+}
 .social-button--linkedin {
   color: #0077b5;
 }
@@ -215,13 +227,38 @@ li {
 }
 
 
+.social-button--snapchat{
+  color: #000;
+  
+}
+.social-button--snapchat::after {
+  background: #F7F300;
+}
+
 .header {
   position: sticky;
   top: 0;
   background-color: #eeedf3;
   z-index: 1000; /* adjust z-index as needed */
-  padding: 10px 0;
+  padding: 30px 0;
+  width: 100%;
+  transition: 0.9s;
+
 }
+.header .image img{
+  height: 100px;
+}
+.n {
+  padding: 0px;
+}
+
+ .n .image img{
+  
+
+      height: 50px;
+
+    }
+    
 
 .header .navbar .collapse ul li:hover {
   background: #d4d0d0;
@@ -268,12 +305,6 @@ li {
 }
 }
 
-
-
-
-
-
-
 .card {
   background: #fff;
   border-radius: 20px;
@@ -294,7 +325,11 @@ li {
   border-radius: 35px;
 }
 
-/* .about {
+
+/* For About Us section in the Index Page */
+
+
+.about {
   margin-bottom: 100px;
   padding-top: 80px;
 }
@@ -352,22 +387,118 @@ li {
   left: 520px;
   top: 30;
   z-index: 1;
-} */
 
-/* @media (max-width: 1449px) {
-  .about-box {
-    display: none;
+}
+@media(min-width:300px) and (max-width:799px){
+  .about{
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
   }
-} */
-/* @media (min-width: 1450px) {
+         .about .about-left{
+             position: relative;
+             width: 300px;
+            height: 500px;
+          }
+          .about .about-img{
+                 width: 300px;
+                 height: 250px;
+                 left: 80px;
+                 position: absolute;
+                 z-index: 2;
+                }
+                 .about .about-img img{
+                     width: 100%;
+                     height: 100%;
+                     border-radius: 30px;
+                 }
+             
+             .box1{
+                 width: 100px;
+                 height: 100px;
+                 border-radius: 50%;
+                 background:#C92028;
+                 position: absolute;
+                 top: 200px;
+                 left: 20px;
+                 z-index: 1;
+             }
+     
+         .about-right{
+             width: 500px;
+             /* height: 700px;  */
+             position: relative;
+             top: -220px;
+             right: -100px;
+
+         }
+             
+             .about-right .about-us{
+                 background: #fff;
+                 border-radius: 30px;
+                 width: 300px;
+                 height: 450px;
+                 font-size: 14px !important;
+                 padding: 0 !important;
+                 box-shadow: 8px 8px 8px rgb(142, 142, 142);
+                 position: absolute;
+                 top: 50px;
+                 z-index: 2;
+                 line-height: 30px;              
+             }
+             .about-right .box2{
+                 width: 100px;
+                 height: 100px;
+                 border-radius: 50%;
+                 background:#C92028;
+                 position: absolute;
+                 left: 250px;
+              /*    top: 30; */
+                 z-index: 1;
+             }
+    
+}
+
+@media(min-width: 800px) and  (max-width:989px){
+  .about-right{
+      margin-left: -15%;
+  }
+}
+@media(min-width: 990px) and  (max-width:1199px){
+  .about-left{
+      margin-left: 8%; 
+  }
+  .about-right{
+      margin-left: 8%;
+  }
+}
+@media(min-width: 1200px) and  (max-width:1399px){
+  .about-left{
+      margin-left:15%; 
+  }
+  .about-right{
+      margin-left: 15%;
+  }
+}
+@media(min-width: 1400px) and  (max-width:1449px){
+  .about-left{
+      margin-left: 20%; 
+  }
+  .about-right{
+      margin-left: 20%;
+
+  }
+} 
+@media (min-width: 1450px) {
   .about-box {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-} */
+}
  /* about */
- .about-us{
+ 
+ 
+ /* .about-us{
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -488,33 +619,50 @@ li {
       width: 100px;
   }
  
-}
+} */
 .experience .Ebox1, .blogs .Ebox1 {
   border: 1px solid gray;
 }
-.experience .Ebox1 img{
-  height: auto;
-  max-height: 200px;
-  object-fit: cover;
+
+.Ebox1{
+  height: 320px;
 }
-.blogs .Ebox1 {
-  height: 270px;
+
+.experience .E-B-img, .blogs .E-B-img{
+ height: 250px;
+ object-fit: cover;
+
   
 }
 .experience img, .blogs img {
   width: 100%;
   height: 100%;
 }
-.blogs .img {
-  height: 190px;
+
+
+/* blogs */
+/* @media(min-width:768px) and (max-width:999px){
+  .experience .Ebox1,.blogs .Ebox1{
+    height: 250px;
+  }
 }
-.blogs .blog-text .blog-text-box {
-  margin-top: 15px;
+@media(min-width:1000px) and (max-width:1399px){
+  .experience .Ebox1,.blogs .Ebox1{
+    height: 300px;
+  }
 }
+@media(min-width:1400px){
+  .experience .Ebox1,.blogs .Ebox1{
+    height: 400px;
+  }
+} */
+
+
+
 /* For General */
 .Find-country {
 
-  background-image: url('../image/candidate3.jpg');
+  background-image: url('../image/plane22.png');
 
 
 
@@ -522,9 +670,9 @@ li {
 max-height: 400px; */
 
 /* center and scale the image */
-background-position: top;
+background-position: center;
 background-repeat: no-repeat;
-background-size: 100% 100%;
+background-size: cover;
 
 
 /* use the following only if if you are able to scroll past the image to see a white area (this is the <body> peeking out) above or below the image */
@@ -583,10 +731,12 @@ a.btn2:hover {
 
 
 
+
 .guiding .guiding-img {
   width: 100px;
   height: 50px;
 }
+
 .guiding img {
   width: 100%;
   height: 100%;
@@ -681,7 +831,7 @@ footer li a {
 /* For General */
 .background {
 
-    background-image: url('../image/candidate3.jpg');
+    background-image: url('../image/planeback.png');
 
 
 
@@ -690,9 +840,9 @@ max-height: 400px;
 
 
 
-background-position: top;
+background-position: center;
 background-repeat: no-repeat;
-background-size: 100% 100%;
+background-size: cover;
 
 
 /* use the following only if if you are able to scroll past the image to see a white area (this is the <body> peeking out) above or below the image */
@@ -709,7 +859,7 @@ position: relative;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(94, 1, 5, 0.8);
+  background: rgba(94, 1, 5, 0.9);
   /* height: 200px; */
 }
 
@@ -728,12 +878,12 @@ position: relative;
    white-space:wrap;
    padding-bottom:13px;
    position: relative;
-   font-family: var(--firstfont);
+   /* font-family: var(--firstfont); */
    margin: 20px auto;
-   color: #070842;
+   color: #000000;
 }
 .section_title:before{
-  background-color: #070842;
+  background-color: #C92028;
   content: '';
   display: block;
   height: 3px;
@@ -741,7 +891,7 @@ position: relative;
   margin-bottom: 5px;
 }
 .section_title:after{
-  background-color:#070842;
+  background-color:#C92028;
   content: '';
   display: block;
   position:absolute;
@@ -995,6 +1145,7 @@ background-position: center bottom;
 
 .multi_post .card{
   border: 0;
+  margin:70px 30px 30px ;
 }
 .multi_post .multi_post_image{
   height:250px;
