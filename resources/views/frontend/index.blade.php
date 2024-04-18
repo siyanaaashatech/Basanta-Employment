@@ -105,8 +105,6 @@
                                 </div>
                                 <h3 class="text-center pt-3">{{ $service->title }}</h3>
                             </div>
-
-
                     </div>
                 @endforeach
             </div>

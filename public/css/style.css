@@ -414,10 +414,12 @@ li {
          }
          .about-right{
              width: 500px;
-             /* height: 700px; */
+             /* height: 700px; 
              position: relative;
              top: -220px;
              right: -100px;
+
+             */
              
              .about-us{
                  background: #fff;
