@@ -38,6 +38,7 @@
                 <th>From Date</th>
                 <th>To Date</th>
                 <th>Content</th>
+                <th>Image</th>
                 <th>Action</th>
             </tr>
         </thead>

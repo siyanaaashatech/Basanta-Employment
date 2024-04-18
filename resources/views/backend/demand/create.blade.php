@@ -45,14 +45,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="vacancy">Demands</label>
+                                <label for="vacancy">Vacancy</label>
                                 <input type="text" name="vacancy" id="vacancy" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label for="image">Image</label>
-                                <input type="file" name="image" id="image" class="form-control-file">
+                                <input type="file" name="image" id="image" class="form-control-file" onchange="previewImage(event)">
+                                <div id="imagePreview"></div>
                             </div>
+                           
 
                             <div class="form-group">
                                 <label for="content">Content</label>
@@ -70,6 +72,30 @@
         </div>
     </div>
     <script>
+
+function previewImage(event) {
+                var input = event.target;
+                var preview = document.getElementById('imagePreview');
+
+                while (preview.firstChild) {
+                    preview.removeChild(preview.firstChild); // Clear previous preview
+                }
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        var img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.maxWidth = '200px'; // Adjust the maximum width as needed
+                        img.style.maxHeight = '200px'; // Adjust the maximum height as needed
+                        preview.appendChild(img);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
         $(document).ready(function() {
             $('.summernote').summernote({
                 height: 200, // Set the height of the editor
