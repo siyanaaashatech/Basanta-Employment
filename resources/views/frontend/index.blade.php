@@ -14,24 +14,37 @@
                 </div> 
 
                 <div class="col-lg-12 "> --}}
-                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @foreach ($coverImages as $key => $coverImage)
-                                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
-                                    <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block"
-                                        width="100%" height="550px" alt="Cover Image" />
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach ($coverImages as $key => $coverImage)
+                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
+                                <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block"
+                                    width="100%" height="550px" alt="Cover Image" />
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ $coverImage->title }}</h5>
                                 </div>
-                            @endforeach
+                            </div>
+                        @endforeach
 
-                        </div>
-                       
+                    </div>
+
+
+                    <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                    
                     {{-- </div> --}}
                 </div>
             </div>
         </div>
     </section>
 
- 
+
 
     <section class="country py-4">
         <div class="container swiper p-4">
@@ -49,7 +62,7 @@
                                     Vacancy:
                                     <span>
                                         {{ $demand->vacancy }}
-                                     
+
                                     </span>
                                 </h6>
                             </div>
@@ -62,33 +75,33 @@
 
 
 
-   <section class="about ">
-            <div class="container about-content text-center">
-                <div class="about-box">
-                    <div class="about-left">
-                        <div class="about-img">
-                            <img src="{{ asset('uploads/about/' . $about->image) }}" width="100%" height="100%"
-                                alt="">
-                        </div>
-                        <div class=" box1"></div>
+    <section class="about ">
+        <div class="container about-content text-center">
+            <div class="about-box">
+                <div class="about-left">
+                    <div class="about-img">
+                        <img src="{{ asset('uploads/about/' . $about->image) }}" width="100%" height="100%"
+                            alt="">
                     </div>
-                    <div class="about-right ">
-                        <div class="box2"></div>
-                        <div class="about-us p-5">
-                            <h2 class="py-3 section_title">{{ $about->title }}</h2>
+                    <div class=" box1"></div>
+                </div>
+                <div class="about-right ">
+                    <div class="box2"></div>
+                    <div class="about-us p-5">
+                        <h2 class="py-3 section_title">{{ $about->title }}</h2>
 
-                            <p>{{ Str::limit(strip_tags($about->description), 400) }}
-                            </p>
-                            <div class="pt-3">
-                                <a href="{{ route('About') }}" class="btn">Read More<i
-                                        class="fa-solid fa-arrow-right mx-2"></i></a>
-                            </div>
+                        <p>{{ Str::limit(strip_tags($about->description), 400) }}
+                        </p>
+                        <div class="pt-3">
+                            <a href="{{ route('About') }}" class="btn">Read More<i
+                                    class="fa-solid fa-arrow-right mx-2"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-        </section>
+    </section>
 
 
     <!-- Experience -->
@@ -159,8 +172,6 @@
             <div class="row pb-4">
 
                 @foreach ($posts as $post)
-
-
                     <div class="col-lg-4 col-md-6 col-sm-6 pt-3">
                         <a href="{{ route('singlePost', ['slug' => $post->slug]) }}">
                             <div class="d-flex gap-4 align-items-center">
@@ -177,9 +188,8 @@
                             </div>
                         </a>
                     </div>
-
                 @endforeach
-                
+
             </div>
         </div>
     </section>
@@ -189,7 +199,6 @@
             <h2 class="text-center section_title">TESTIMONIALS</h2>
             <div class="swiper-wrapper">
                 @foreach ($testimonials as $testimonial)
-
                     <div class="swiper-slide  p-5">
                         <a href="{{ route('Testimonial') }}">
                             <h5 class="text-center pt-3">{{ $testimonial->description }}</h5>
@@ -199,7 +208,6 @@
                             </div>
                         </a>
                     </div>
-
                 @endforeach
             </div>
             <div class="swiper-button-next arrow"></div>
@@ -280,13 +288,10 @@
                         </a>
 
                     </div>
-               
                 @endforeach
             </div>
         </div>
     </section>
-
-
 @endsection
 
 
