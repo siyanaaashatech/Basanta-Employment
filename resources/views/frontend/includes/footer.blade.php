@@ -279,7 +279,19 @@
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                         <div class="cta-text">
                             <h4>Mail us</h4>
-                            <span>{{ $sitesetting->office_email }}</span>
+                            <span>  
+                                @if (!empty($sitesetting->office_email))
+                                @php
+                                    $officeEmails = json_decode($sitesetting->office_email, true);
+                                @endphp
+                                @if (is_array($officeEmails))
+                                    @foreach ($officeEmails as $email)
+                                        {{ $email }} <br>
+                                    @endforeach
+                                @else
+                                    {{ $sitesetting->office_email }} <br>
+                                @endif
+                            @endif</span>
                         </div>
                     </div>
                 </div>

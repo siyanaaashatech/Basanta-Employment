@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="form-group" id="office_addresses_container">
-                    <label for="office_address">Office Addresses</label>
+                    <label for="office_address">Office Address</label>
                     <div class="input-group mb-3">
                         <input type="text" name="office_address[]" class="form-control" placeholder="Address">
                         <div class="input-group-append">
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group" id="office_contacts_container">
-                    <label for="office_contact">Office Contacts</label>
+                    <label for="office_contact">Office Contact</label>
                     <div class="input-group mb-3">
                         <input type="text" name="office_contact[]" class="form-control" placeholder="Office Contact">
                         <div class="input-group-append">
@@ -55,10 +55,16 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="office_emails_container">
                     <label for="office_email">Office Email</label>
-                    <input type="email" name="office_email" class="form-control" placeholder="office_email" id="office_email">
+                    <div class="input-group mb-3">
+                        <input type="email" name="office_email[]" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary add-email" type="button">+</button>
+                        </div>
+                    </div>
                 </div>
+                
 
                 <div class="form-group">
                     <label for="whatsapp_number">Whatsapp Number</label>
@@ -163,6 +169,22 @@
 
             // Remove contact input field
             $(document).on("click", ".remove-contact", function() {
+                $(this).parents(".input-group").remove();
+            });
+
+            // Add new email input field
+            $(".add-email").click(function() {
+                $("#office_emails_container").append('<div class="input-group mb-3">' +
+                    '<input type="text" name="office_email[]" class="form-control" placeholder="Office Email">' +
+                    '<div class="input-group-append">' +
+                    '<button class="btn btn-outline-secondary remove-email" type="button">-</button>' +
+                    '<button class="btn btn-outline-secondary add-email" type="button">+</button>' +
+                    '</div>' +
+                    '</div>');
+            });
+
+            // Remove email input field
+            $(document).on("click", ".remove-email", function() {
                 $(this).parents(".input-group").remove();
             });
         });

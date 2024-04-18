@@ -28,7 +28,7 @@ class SiteSettingController extends Controller
         'office_name' => 'required|string',
         'office_address.*' => 'required|string', // Validate each address in the array
         'office_contact.*' => 'required|string', // Validate each contact in the array
-        'office_email' => 'required|string',
+        'office_email.*' => 'required|string',
         'whatsapp_number' => 'required|string',
         'main_logo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
         'side_logo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
@@ -58,7 +58,6 @@ class SiteSettingController extends Controller
 
         $sitesetting = new SiteSetting;
         $sitesetting->office_name = $request->office_name;
-        $sitesetting->office_email = $request->office_email;
         $sitesetting->whatsapp_number = $request->whatsapp_number;
         $sitesetting->main_logo = $newMainLogo;
         $sitesetting->side_logo = $newSideLogo ?? '';
@@ -75,6 +74,9 @@ class SiteSettingController extends Controller
 
         // Save contacts
         $sitesetting->office_contact = json_encode($request->office_contact);
+
+         // Save email
+         $sitesetting->office_email = json_encode($request->office_email);
 
         if ($sitesetting->save()) {
             return redirect()->route('admin.site-settings.index')->with('success', 'Success !! SiteSetting Created');
@@ -99,7 +101,7 @@ class SiteSettingController extends Controller
         'office_name' => 'required|string',
         'office_address.*' => 'required|string', // Validate each address in the array
         'office_contact.*' => 'required|string', // Validate each contact in the array
-        'office_email' => 'required|string',
+        'office_email.*' => 'required|string',
         'whatsapp_number' => 'required|string',
         'main_logo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
         'side_logo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
@@ -137,7 +139,6 @@ class SiteSettingController extends Controller
 
         // Update other fields
         $sitesetting->office_name = $request->office_name;
-        $sitesetting->office_email = $request->office_email;
         $sitesetting->whatsapp_number = $request->whatsapp_number;
         $sitesetting->company_registered_date = $request->company_registered_date;
         $sitesetting->facebook_link = $request->facebook_link ?? '';
@@ -150,6 +151,7 @@ class SiteSettingController extends Controller
         // Encode the array data before saving
         $sitesetting->office_address = json_encode($request->office_address);
         $sitesetting->office_contact = json_encode($request->office_contact);
+          $sitesetting->office_email = json_encode($request->office_email);
 
         if ($sitesetting->save()) {
             return redirect()->route('admin.site-settings.index')->with('success', 'SiteSetting Updated Successfully');
