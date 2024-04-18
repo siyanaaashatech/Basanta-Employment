@@ -44,11 +44,12 @@
         </thead>
         <tbody>
             @php
-                $serialNumber=1;
+                $serialNumber = ($work_categories->currentPage() - 1) * $work_categories->perPage() + 1;
             @endphp
+            
             @foreach ($work_categories as $work_category)
                 <tr data-widget="expandable-table" aria-expanded="false">
-                    <td width="5%">{{ $loop->iteration }}</td>
+                    <td width="5%">{{ $serialNumber }}</td>
                     <td>{{ $work_category->title ?? '' }}</td>
                     <td><img id="preview{{ $loop->iteration }}" src="{{ asset('uploads/workcategory/' . $work_category->image) }}"
                             style="width: 150px; height:150px" /></td>
@@ -63,6 +64,9 @@
                         </div>
                     </td>
                 </tr>
+                @php
+        $serialNumber++;
+    @endphp
 
                 <!-- Edit Modal -->
                 <div class="modal fade" id="editModal{{ $work_category->id }}" tabindex="-1" role="dialog"
@@ -127,4 +131,28 @@
             };
         };
     </script>
+    <!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if ($work_categories->onFirstPage())
+            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{ $work_categories->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+        @endif
+
+        @foreach ($work_categories->getUrlRange(1, $work_categories->lastPage()) as $page => $url)
+            @if ($page == $work_categories->currentPage())
+                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+            @endif
+        @endforeach
+
+        @if ($work_categories->hasMorePages())
+            <li class="page-item"><a class="page-link" href="{{ $work_categories->nextPageUrl() }}" rel="next">&raquo;</a></li>
+        @else
+            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        @endif
+    </ul>
+</nav>
 @endsection

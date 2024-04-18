@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        
 
     // Check if Laravel is running in the console
     if (!app()->runningInConsole()) {

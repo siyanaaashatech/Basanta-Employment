@@ -30,6 +30,9 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\DirectorMessageController;
 use App\Http\Controllers\BlogPostsCategoryController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,3 +158,4 @@ Route::get('/blogs', [FrontViewController::class, 'blogs'])->name('blogs.index')
 Route::get('/news', [FrontViewController::class, 'news'])->name('news.index');
 
 Route::get('/courses/{slug}', 'FrontViewController@viewCourse');
+
