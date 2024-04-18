@@ -75,7 +75,7 @@
                     <div class="about-right ">
                         <div class="box2"></div>
                         <div class="about-us p-5">
-                            <h2 class="py-3">{{ $about->title }}</h2>
+                            <h2 class="py-3 section_title">{{ $about->title }}</h2>
 
                             <p>{{ Str::limit(strip_tags($about->description), 400) }}
                             </p>
@@ -92,9 +92,9 @@
 
 
     <!-- Experience -->
-    <section class="experience py-4">
+    {{-- <section class="experience py-4">
         <div class="container">
-            <h2 class="text-center pb-3">MORE THAN 10 YEARS OF EXPERIENCE</h2>
+            <h2 class="text-center pb-3 section_title">MORE THAN 10 YEARS OF EXPERIENCE</h2>
             <div class="row py-4 g-4">
                 @foreach ($services as $service)
                     <div class="col-lg-4 col-md-4">
@@ -111,12 +111,12 @@
 
         </div>
         
-    </section>
+    </section> --}}
 
     <!-- Experience -->
-    {{-- <section class="experience py-4">
+    <section class="experience py-4">
         <div class="container">
-            <h2 class="text-center pb-3">MORE THAN 10 YEARS OF EXPERIENCE</h2>
+            <h2 class="text-center pb-3 section_title">MORE THAN 10 YEARS OF EXPERIENCE</h2>
             <div class="row py-4 g-4">
                 @foreach ($services as $service)
                     <div class="col-lg-4 col-md-4 Ebox-wrap">
@@ -132,7 +132,7 @@
                 @endforeach
             </div>
         </div>
-    </section> --}}
+    </section>
 
 
     <!-- Get in touch -->
@@ -155,7 +155,7 @@
 
     <section class="guiding py-5">
         <div class="container">
-            <h2 class="text-center ">Our {{ $firstCategory->title }}</h2>
+            <h2 class="text-center section_title">Our {{ $firstCategory->title }}</h2>
             <div class="row pb-4">
 
                 @foreach ($posts as $post)
@@ -186,7 +186,7 @@
 
     <section class="testimonial">
         <div class="container swiper mySwiper">
-            <h2 class="text-center">TESTIMONIALS</h2>
+            <h2 class="text-center section_title">TESTIMONIALS</h2>
             <div class="swiper-wrapper">
                 @foreach ($testimonials as $testimonial)
 
@@ -215,7 +215,7 @@
 
     <section class="contact pt-3 pb-5">
         <div class="container ">
-            <h2 class="text-center pb-5">CONTACT</h2>
+            <h2 class="text-center section_title">CONTACT</h2>
             <div class="row g-4 contact-det">
                 <div class="col-lg-6">
                     <iframe class="w-100 h-100"
@@ -266,7 +266,7 @@
 
     <section class="blogs py-5">
         <div class="container">
-            <h2 class="text-center pb-5">BLOGS</h2>
+            <h2 class="text-center pb-5 section_title">BLOGS</h2>
             <div class="row g-4">
                 @foreach ($blogs as $blog)
                     <div class="col-lg-4 col-md-4">

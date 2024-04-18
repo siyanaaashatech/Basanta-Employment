@@ -10,6 +10,7 @@
 
 
 
+
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -874,12 +875,12 @@ position: relative;
    white-space:wrap;
    padding-bottom:13px;
    position: relative;
-   font-family: var(--firstfont);
+   /* font-family: var(--firstfont); */
    margin: 20px auto;
-   color: #070842;
+   color: #000000;
 }
 .section_title:before{
-  background-color: #070842;
+  background-color: #C92028;
   content: '';
   display: block;
   height: 3px;
@@ -887,7 +888,7 @@ position: relative;
   margin-bottom: 5px;
 }
 .section_title:after{
-  background-color:#070842;
+  background-color:#C92028;
   content: '';
   display: block;
   position:absolute;
