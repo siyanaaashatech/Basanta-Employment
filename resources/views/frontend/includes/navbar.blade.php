@@ -35,9 +35,9 @@
 
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('About') }}"> {{ trans('messages.About Us') }}
+                            <li><a class="dropdown-item" href="{{ route('About') }}"> {{ trans('messages.AboutUs') }}
                                 </a></li>
-                            <li><a class="dropdown-item" href="{{ route('Team') }}"> {{ trans('messages.Our Teams') }}
+                            <li><a class="dropdown-item" href="{{ route('Team') }}"> {{ trans('messages.OurTeams') }}
                                 </a></li>
                             <li><a class="dropdown-item" href="{{ route('Service') }}"> {{ trans('messages.Services') }}
                                 </a></li>
@@ -51,16 +51,15 @@
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($countries as $country)
-                                <li>
-                                    <a class="dropdown-item"
-                                        href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-                                        {{ trans('messages.' . $country->slug) }}
-                                    </a>
-                                </li>
-
-                            @endforeach
+                      <li>
+                      <a class="dropdown-item" href="{{ route('singleCountry', ['slug' => ucfirst($country->slug)]) }}">
+                {{ trans('messages.' . ucfirst($country->slug)) }}
+                    </a>
+                        </li>
+                 @endforeach
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
@@ -75,7 +74,7 @@
                             @endforeach
                         </ul>
                     </li>
-                    <!-- Remove the "Living Abroad" dropdown section -->
+                    
                     <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
@@ -85,9 +84,9 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('Gallery') }}">
-                                    {{ trans('messages.Photo Gallery') }} </a></li>
+                                    {{ trans('messages.PhotoGallery') }} </a></li>
                             <li><a class="dropdown-item" href="{{ route('Video') }}">
-                                    {{ trans('messages.Video Gallery') }} </a></li>
+                                    {{ trans('messages.VideoGallery') }} </a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -103,18 +102,6 @@
                             {{ trans('messages.Contact') }} </a>
                     </li>
                 </ul>
-                <!-- Language Switcher -->
-                {{-- <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Language
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="{{ url()->current()}}?locale=en">English</a></li>
-                        <li><a class="dropdown-item" href="{{ url()->current()}}?locale=ne">नेपाली</a></li>
-                    </ul>
-                </div> --}}
-
 
                 <span class="en_ne">
                     <a class="btn_en {{ app()->getLocale() === 'en' ? 'active' : '' }}"

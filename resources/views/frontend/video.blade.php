@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">Video Gallery</h1>
+        <h1 class="page_title">{{ trans('messages.VideoGallery') }}</h1>
     </div>
 
     <section class="single_page">

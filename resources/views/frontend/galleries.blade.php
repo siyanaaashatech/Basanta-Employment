@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ 'Gallery' }}</h1>
+        <h1 class="page_title">{{ trans('messages.PhotoGallery') }}
+        </h1>
     </div>
 
 

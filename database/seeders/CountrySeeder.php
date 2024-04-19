@@ -26,7 +26,7 @@ class CountrySeeder extends Seeder
                 'content' => 'This is the content'
             ],
             [
-                'name' => 'QATAR',
+                'name' => 'Qatar',
                 'image' => json_encode([
                     'uploads/country/USA_1.webp',
                     'uploads/country/USA_2.webp',

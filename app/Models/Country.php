@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\University;
+use App\Models\Company;
 use App\Models\VisitorBook;
 use App\Models\StudentDetail;
 use Illuminate\Database\Eloquent\Model;
@@ -22,9 +22,9 @@ class Country extends Model
             ]
         ];
     }
-    public function universities()
+    public function companies()
     {
-        return $this->hasMany(University::class, 'country_id');
+        return $this->hasMany(Company::class, 'country_id');
     }
 
     public function visitorBooks()
