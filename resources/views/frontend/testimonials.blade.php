@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __('Testimonials') }}</h1>
+        <h1 class="page_title">{{ trans('messages.Testimonials') }}</h1>
     </div>
 
 

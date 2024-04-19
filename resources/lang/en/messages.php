@@ -7,17 +7,27 @@ return [
     'Reviews' => 'Reviews',
     'Blogs' => 'Blogs',
     'Contact' => 'Contact',
-    'About Us' => 'About Us',
-    'Our Teams' => 'Our Teams' ,
+    'AboutUs' => 'About Us',
+    'OurTeams' => 'Our Teams' ,
     'Services' => 'Our Services',
-    'dubai' => 'Work in Dubai',
-    'qatar' => 'Work in Qatar',
-    'malaysia' => 'Work in Malaysia',
-    'kuwait' => 'Work in Kuwait',
-    'europe' => 'Work in Europe',
-    'Photo Gallery' => 'Photo Gallery',
-    'Video Gallery' => 'Video Gallery',
-    'about-content' => ':content',
+    'Dubai' => 'Work in Dubai',
+    'Qatar' => 'Work in Qatar',
+    'Malaysia' => 'Work in Malaysia',
+    'Kuwait' => 'Work in Kuwait',
+    'Europe' => 'Work in Europe',
+    'PhotoGallery' => 'Photo Gallery',
+    'VideoGallery' => 'Video Gallery',
+    'ExperienceInProviding' => 'Experience In Providing',
+    'FindUs' => 'Find Us',
+    'CallUs' => 'Call Us',
+    'MailUs' => 'Mail Us',
+    'ImportantLinks' => 'Important Links',
+    'FollowUs' => 'Follow Us',
+    'Testimonials' => 'Testimonials',
+    'RecommendedCountries' => 'Recommended Countries'
+    
+    
+    
    
     // Add more translations as needed...
 ];

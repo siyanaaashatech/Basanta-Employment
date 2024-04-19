@@ -24,7 +24,7 @@
     </style>
 
     <div class="background">
-        <h1 class="page_title">{{ __('Contact Us') }}</h1>
+        <h1 class="page_title">{{ trans('messages.Contact') }}</h1>
     </div>
 
     <section class="contact_form">

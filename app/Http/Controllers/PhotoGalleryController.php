@@ -14,13 +14,12 @@ class PhotoGalleryController extends Controller
 {
     public function index()
     {
-        //
         $gallery = PhotoGallery::latest()->paginate(5);
-        return view('backend.photogallery.index', ['gallery' => $gallery, 'page_title' => 'Photo Gallery',]);
+        return view('backend.photogallery.index', ['gallery' => $gallery, 'page_title' => 'Photo Gallery']);
     }
+
     public function create()
     {
-        //
         return view('backend.photogallery.create', ['page_title' => 'Create Photo Gallery']);
     }
 
@@ -29,36 +28,35 @@ class PhotoGalleryController extends Controller
         $this->validate($request, [
             'title' => 'required|string',
             'img_desc' => 'nullable|string',
-            'img' => 'required|array',
-            'img.*' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048' // maximum file size of 2 MB
+            'img' => 'required|array', // Ensure at least one image is uploaded
+            'img.*' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048' // Maximum file size of 2 MB
         ]);
-        try {
-            $images = $request->file('img');
-            $path = 'uploads/photogallery/';
-            $convertedImages = [];
-            foreach ($images as $image) {
-                $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path($path), $imageName);
-                $convertedImages[] = $path . $imageName;
-            }
 
+        try {
             $gallery = new PhotoGallery;
             $gallery->title = $request->title;
             $gallery->img_desc = $request->img_desc;
             $gallery->slug = SlugService::createSlug(PhotoGallery::class, 'slug', $request->title);
-            $gallery->img = $convertedImages;
+            
+            // Save each uploaded image
+            $convertedImages = [];
+            foreach ($request->file('img') as $image) {
+                $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('uploads/photogallery/'), $imageName);
+                $convertedImages[] = 'uploads/photogallery/' . $imageName;
+            }
 
+            $gallery->img = $convertedImages;
             $gallery->save();
+            
             return redirect()->route('admin.photo-galleries.index')->with(['success' => 'Success!! Gallery Created']);
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => 'Error creating gallery. Please try again.']);
         }
     }
 
-
     public function edit($id)
     {
-        //
         $gallery = PhotoGallery::find($id);
         return view('backend.photogallery.update', ['gallery' => $gallery, 'page_title' => 'Update Photo Gallery']);
     }
@@ -68,22 +66,24 @@ class PhotoGalleryController extends Controller
         $this->validate($request, [
             'title' => 'required|string',
             'img_desc' => 'nullable|string',
-            'img' => 'nullable|array',
-            'img.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // maximum file size of 2 MB
+            'img' => 'nullable|array', // Allow null or array (for single or multiple photo updates)
+            'img.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048' // Maximum file size of 2 MB
         ]);
 
         try {
             $gallery = PhotoGallery::findOrFail($id);
-
             $gallery->title = $request->title;
             $gallery->img_desc = $request->img_desc;
             $gallery->slug = SlugService::createSlug(PhotoGallery::class, 'slug', $request->title);
 
             // Check if new images are uploaded
             if ($request->hasFile('img')) {
-                $images = $request->file('img');
-                $path = 'uploads/photogallery/';
-                $convertedImages = ImageConverter::convertImages($images, $path);
+                $convertedImages = [];
+                foreach ($request->file('img') as $image) {
+                    $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                    $image->move(public_path('uploads/photogallery/'), $imageName);
+                    $convertedImages[] = 'uploads/photogallery/' . $imageName;
+                }
                 $gallery->img = $convertedImages;
             }
 
@@ -96,14 +96,16 @@ class PhotoGalleryController extends Controller
 
     public function destroy($id)
     {
-        //
         $gallery = PhotoGallery::find($id);
         if ($gallery) {
+            // Delete images associated with the gallery
+            foreach ($gallery->img as $image) {
+                File::delete(public_path($image));
+            }
             $gallery->delete();
             return redirect()->route('admin.photo-galleries.index')->with('success', 'Success !! Photo Gallery Deleted');
         } else {
             return redirect()->route('admin.photo-galleries.index')->with('error', 'Photo Gallery not found.');
         }
-
     }
 }

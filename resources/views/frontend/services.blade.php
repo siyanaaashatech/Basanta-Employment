@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __('Our Services') }}</h1>
+        <h1 class="page_title">{{ trans('messages.Services') }}</h1>
     </div>
 
     <section class="multi_post">
