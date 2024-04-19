@@ -90,7 +90,7 @@
               <div class="cr-2 position-absolute top-0 end-0"></div>
               <div class="content ">
                   <div class="right-box">
-                      <h1 class="section_title">{{ $about->title }}</h1>
+                      <h2 class="section_title">{{ $about->title }}</h2>
                       <p>{{ Str::limit(strip_tags($about->description), 400) }}</p>
                       <a href="{{ route('About') }}" class="btn">Read More<i
                             class="fa-solid fa-arrow-right mx-2"></i></a>

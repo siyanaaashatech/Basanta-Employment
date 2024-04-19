@@ -6,17 +6,17 @@
                 <div class="image">
                     @if ($sitesetting->main_logo)
 
-                    <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" alt="Main Logo" height="50">
+                    <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" alt="Main Logo" height="100">
 
                     @else
-                    <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
+                    <img src="{{ asset('image/header-image.png') }}" alt="" height="100">
                     @endif
                     <div class="c-name">
                         <h3>{{ $sitesetting->office_name }}</h3>
                     </div>
-                    <div class="slogon">
+                    {{-- <div class="slogon">
                         <h6>{{ $sitesetting->slogan }}</h6>
-                    </div>
+                    </div> --}}
                 </div>
 
             </a>
@@ -116,12 +116,12 @@
                 </div> --}}
 
 
-                <div class="en_ne">
+                <span class="en_ne">
                     <a class="btn_en {{ app()->getLocale() === 'en' ? 'active' : '' }}"
                         href="{{ url()->current() }}?locale=en">en</a>
                     <a class="btn_en {{ app()->getLocale() === 'ne' ? 'active' : '' }}"
                         href="{{ url()->current() }}?locale=ne">ne</a>
-                </div>
+                </span>
 
 
 
@@ -153,6 +153,7 @@
             link.classList.add('active');
         });
     });
+    
     // Make the navbar logo and navbar big when the site opens and when scrolled make it small like now and with the logo add Company name and slogan.
     window.addEventListener('scroll', function() {
         var a = window.scrollY;

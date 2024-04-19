@@ -46,7 +46,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        /* background-image: url('../img/topnav.png'); */
+        /* background-image: url('../image/plane22.png'); */
         background-size: cover;
         background-repeat: no-repeat;
         background-position: top;

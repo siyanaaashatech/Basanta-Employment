@@ -78,7 +78,7 @@ li {
 /* For Tap Navbar */
 
 .en_ne{
-  height:20px;
+  /* height:20px; */
   width: 5px;
   /* position: absolute;
   top: 1%; 
@@ -302,7 +302,7 @@ li {
    height: 60px;
 
     }
- .n .slogon, .n .c-name{
+ .nav-small .slogon, .nav-small .c-name{
   display: none;
  }   
 
@@ -439,6 +439,10 @@ li {
   
 }
 
+
+.about-us .content .right-box{
+  text-align: center;
+}
 .about-us .right h1{
   font-size: 40px;
   font-weight: lighter;
@@ -446,16 +450,13 @@ li {
 }
 .about-us .right p{
   margin: 20px;
-  font-weight: 500;
+  /* font-weight: 500; */
+  /* text-align: justify; */
   line-height: 25px;
 }
-.about-us .right a{
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 20px 30px;
-  display: inline-block;
-  letter-spacing: 2px;
-}
+
+
+
 @media only screen and (max-width:992px){
     .about-us .container-box{
       flex-direction: column;
@@ -769,14 +770,14 @@ a.btn2:hover {
   outline: none;
   border-bottom: 1px solid gray;
   background: transparent;
-  padding: 20px 240px 10px 4px;
+  padding: 20px 200px 10px 4px;
 }
 .contact form textarea {
   border: none;
   outline: none;
   border-bottom: 1px solid gray;
   background: transparent;
-  padding: 20px 240px 10px 4px;
+  padding: 20px 200px 10px 4px;
 }
 
 footer {
