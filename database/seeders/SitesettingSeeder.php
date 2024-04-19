@@ -19,7 +19,7 @@ class SitesettingSeeder extends Seeder
             'office_name' => 'Lunar Overseas',
             'office_address' => json_encode(['Sinamangal ,Kathmandu']), 
             'office_contact' => json_encode(['9779851071224', '+971 56 834 8300']),
-            'office_email' => 'info.aashatech@gmail.com',
+            'office_email' => json_encode(['info.aashatech@gmail.com']),
             'whatsapp_number' => '9779851071224',
             'main_logo' => 'uploads/sitesetting/main_logo.png',
             'side_logo' => 'uploads/sitesetting/side_logo.png',

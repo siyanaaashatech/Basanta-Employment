@@ -46,7 +46,18 @@
                 <tr data-widget="expandable-table" aria-expanded="false">
                     <td width="5%">{{ $loop->iteration }}</td>
                     <td>{{ $sitesetting->office_name ?? '' }}</td>
-                    <td>{{ $sitesetting->office_email ?? '' }}</td>
+                    <td> @if (!empty($sitesetting->office_email))
+                        @php
+                            $officeEmails = json_decode($sitesetting->office_email, true);
+                        @endphp
+                        @if (is_array($officeEmails))
+                            @foreach ($officeEmails as $email)
+                                {{ $email }} <br>
+                            @endforeach
+                        @else
+                            {{ $sitesetting->office_email }} <br>
+                        @endif
+                    @endif</td>
                     <td>
                         @if (!empty($sitesetting->office_contact))
                             @php

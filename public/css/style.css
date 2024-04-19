@@ -78,7 +78,7 @@ li {
 /* For Tap Navbar */
 
 .en_ne{
-  height:20px;
+  /* height:20px; */
   width: 5px;
   /* position: absolute;
   top: 1%; 
@@ -293,17 +293,16 @@ li {
   transition: 0.9s;
 
 }
-.header .image img{
-  height: 100px;
-}
-.n {
+.nav-small {
   padding: 0px;
 }
 
- .n .image img{
-      height: 50px;
+
+.nav-small .image img{
+   height: 60px;
+
     }
- .n .slogon, .n .c-name{
+ .nav-small .slogon, .nav-small .c-name{
   display: none;
  }   
 
@@ -372,185 +371,140 @@ li {
   border-radius: 35px;
 }
 
+/* For ABout Us Section in the homepage */
 
-/* For About Us section in the Index Page */
-
-
-.about {
-  margin-bottom: 100px;
-  padding-top: 80px;
-}
-.about .about-left {
-  position: relative;
-  width: 500px;
-  height: 500px;
-}
-.about .about-left .about-img {
-  width: 600px;
-  height: 450px;
-  left: 80px;
-  position: absolute;
-  z-index: 2;
-}
-.about .about-left .about-img img {
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-}
-.about .about-left .box1 {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: #C92028;
-  position: absolute;
-  top: 365px;
-  z-index: 1;
-}
-.about .about-right {
-  width: 500px;
-  height: 500px;
-  position: relative;
-  top: -35px;
-  right: -100px;
-}
-.about .about-right .about-us {
-  background: #fff;
-  border-radius: 30px;
-  width: 600px;
-  height: 450px;
-  -webkit-box-shadow: 8px 8px 8px rgb(142, 142, 142);
-          box-shadow: 8px 8px 8px rgb(142, 142, 142);
-  position: absolute;
-  top: 100px;
-  z-index: 2;
-  line-height: 30px;
-}
-.about .about-right .box2 {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: #C92028;
-  position: absolute;
-  left: 520px;
-  top: 30;
-  z-index: 1;
-
-}
-
-
-@media(min-width: 1400px) and  (max-width:1449px){
-  .about-left{
-      margin-left: 20%; 
-  }
-  .about-right{
-      margin-left: 20%;
-
-  }
-} 
-@media (min-width: 1450px) {
-  .about-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
-@media(min-width:300px) and (max-width:799px){
-  .header .slogon, .header .c-name{
-    display: none;
-  }
-  .about{
-      margin-bottom: 0 !important;
-      padding-bottom: 0 !important;
-  }
-         .about .about-left{
-             position: relative;
-             width: 300px;
-            height: 500px;
-          }
-          .about .about-img{
-                 width: 300px;
-                 height: 250px;
-                 left: 80px;
-                 position: absolute;
-                 z-index: 2;
-                }
-                 .about .about-img img{
-                     width: 100%;
-                     height: 100%;
-                     border-radius: 30px;
-                 }
-             
-             .box1{
-                 width: 100px;
-                 height: 100px;
-                 border-radius: 50%;
-                 background:#C92028;
-                 position: absolute;
-                 top: 200px;
-                 left: 20px;
-                 z-index: 1;
-             }
-     
-         .about-right{
-             width: 500px;
-             /* height: 700px;  */
-             position: relative;
-             top: -220px;
-             right: -100px;
-
-         }
-             
-             .about-right .about-us{
-                 background: #fff;
-                 border-radius: 30px;
-                 width: 300px;
-                 height: 450px;
-                 font-size: 14px !important;
-                 padding: 0 !important;
-                 box-shadow: 8px 8px 8px rgb(142, 142, 142);
-                 position: absolute;
-                 top: 50px;
-                 z-index: 2;
-                 line-height: 30px;              
-             }
-             .about-right .box2{
-                 width: 100px;
-                 height: 100px;
-                 border-radius: 50%;
-                 background:#C92028;
-                 position: absolute;
-                 left: 250px;
-              /*    top: 30; */
-                 z-index: 1;
-             }
     
+.about-us{
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-us .container-box{
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.about-us .left{
+  width: 50%;
+  
+}
+.about-us .left .cr-1{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: red;
+  margin-left: -70px;
+  margin-bottom: -60px;
+  z-index: 0;
+}
+.about-us .right .cr-2{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: red;
+  margin-right: -70px;
+  margin-top: -70px;
+  z-index: -1;
+}
+.about-us .left .img{
+  height: 400px;
+  z-index: 1;
+}
+.about-us .img img{
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+.about-us .right{
+  width: 50%;
+  margin-left: -100px;
+  margin-bottom: -200px;
+  z-index: 4;
+}
+.about-us .content{
+  min-height: 400px;
+  padding: 30px;
+  border-radius: 8px;
+  color: rgb(12, 12, 12);
+  background-color: rgb(243, 240, 245);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
-@media(min-width: 800px) and  (max-width:989px){
-  .about-right{
-      margin-left: -15%;
-  }
+
+.about-us .content .right-box{
+  text-align: center;
 }
-@media(min-width: 990px) and  (max-width:1199px){
-  .about-left{
-      margin-left: 8%; 
-  }
-  .about-right{
-      margin-left: 8%;
-  }
+.about-us .right h1{
+  font-size: 40px;
+  font-weight: lighter;
+
 }
-@media(min-width: 1200px) and  (max-width:1399px){
-  .about-left{
-      margin-left:15%; 
-  }
-  .about-right{
-      margin-left: 15%;
-  }
+.about-us .right p{
+  margin: 20px;
+  /* font-weight: 500; */
+  /* text-align: justify; */
+  line-height: 25px;
 }
+
+
+
+@media only screen and (max-width:992px){
+    .about-us .container-box{
+      flex-direction: column;
+      
+  }
+  .about-us .left{
+      width: 100%;
+    
+  }
+  .about-us .right{
+      margin: 0;
+      margin-top: 70px;
+      width: 100%;
+      
+  }
+ 
+}
+
+@media only screen and (max-width:611px){
+    .about-us .container-box{
+      flex-direction: column;
+      
+  }
+  .about-us .left{
+      width: 60%;
+    
+  }
+  .about-us .right{
+      margin: 0;
+      margin-top: 70px;
+      width: 60%;
+      
+  }
+  .about-us .left .cr-1{
+      height: 100px;
+      width: 100px;
+  }
+  .about-us .right .cr-2{
+      height: 100px;
+      width: 100px;
+    }
+}
+
+
+
+
 
  /* about */
- 
- 
  /* .about-us{
   min-height: 100vh;
   width: 100%;
@@ -816,14 +770,14 @@ a.btn2:hover {
   outline: none;
   border-bottom: 1px solid gray;
   background: transparent;
-  padding: 20px 240px 10px 4px;
+  padding: 20px 200px 10px 4px;
 }
 .contact form textarea {
   border: none;
   outline: none;
   border-bottom: 1px solid gray;
   background: transparent;
-  padding: 20px 240px 10px 4px;
+  padding: 20px 200px 10px 4px;
 }
 
 footer {
