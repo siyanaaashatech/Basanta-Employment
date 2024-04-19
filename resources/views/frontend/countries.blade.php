@@ -27,11 +27,11 @@
 
                     <div class="card-body">
                         <h5 class="card-title">{{ $country->name }}</h5>
-                        <p class="card-text">
+                        <p class="card-text pb-4">
                             {{ Str::limit(strip_tags($country->content), 250) }}
                         </p>
                         <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-                            <button class="btn bg-primary text-white">Read More &nbsp;&nbsp;<i
+                            <button class="btn  text-white">Read More &nbsp;&nbsp;<i
                                 class="fa-solid fa-arrow-right"></i></button>                        </a>
                     </div>
                 </div>
