@@ -61,31 +61,44 @@ class DemandController extends Controller
 
 
 }
+public function edit($id)
+{
+    $demand = Demand::findOrFail($id); // Fetch the demand with the provided ID
+    $countries = Country::all(); // Fetch all countries
 
-    public function update(Request $request, Demand $demand)
-    {
-        $request->validate([
-            'country_id' => 'required',
-            'from_date' => 'required|date',
-            'to_date' => 'required|date|after_or_equal:from_date',
-            'content' => 'required',
-            'vacancy' => 'nullable',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+    return view('backend.demand.update', compact('demand', 'countries'));
+}
 
-        // Process image upload if a new image is provided
-        if ($request->hasFile('image')) {
-            $newImageName = time() . '-' . $request->image->getClientOriginalName();
-            $request->image->move(public_path('uploads/demands'), $newImageName);
-            $demand->image = $newImageName;
-        }
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'country_id' => 'required',
+        'from_date' => 'required|date',
+        'to_date' => 'required|date',
+        'vacancy' => 'required',
+        'content' => 'required',
+        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // adjust validation rules as needed
+    ]);
 
-        $demand->update($request->all());
+    $demand = Demand::findOrFail($id);
+    $demand->country_id = $request->country_id;
+    $demand->from_date = $request->from_date;
+    $demand->to_date = $request->to_date;
+    $demand->vacancy = $request->vacancy;
+    $demand->content = $request->content;
 
-        return redirect()->route('admin.demands.index')
-                         ->with('success','Demand updated successfully');
+    // Handle image upload
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('uploads/demands'), $imageName);
+        $demand->image = $imageName;
     }
 
+    $demand->save();
+
+    return redirect()->route('admin.demands.index')->with('success', 'Demand updated successfully.');
+}
     public function destroy(Demand $demand)
     {
         $demand->delete();

@@ -69,5 +69,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon/' . $favicon->favicon_ico) }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('uploads/favicon/' . $favicon->apple_touch_icon) }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ asset('uploads/favicon/' . $favicon->favicon_thirtyTwo) }}">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ asset('uploads/favicon/' . $favicon->favicon_sixteen) }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/favicon/' . $favicon->favicon_ico) }}">
+    <link rel="manifest" href="{{ asset('uploads/favicon/file' . $favicon->file) }}">
+    <link rel="manifest" href="{{ asset('uploads/favicon/file' . $favicon->site_webmanifest) }}">
 
 </head>

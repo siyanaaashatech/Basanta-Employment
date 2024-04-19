@@ -13,8 +13,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.demands.update', $demand->id) }}"
-                            enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.demands.update', $demand->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -22,8 +21,8 @@
                                 <label for="country_id">Country</label>
                                 <select name="country_id" id="country_id" class="form-control">
                                     @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}"
-                                            {{ $demand->country_id == $country->id ? 'selected' : '' }}>{{ $country->name }}
+                                        <option value="{{ $country->id }}" {{ $demand->country_id == $country->id ? 'selected' : '' }}>
+                                            {{ $country->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -31,36 +30,29 @@
 
                             <div class="form-group">
                                 <label for="from_date">From Date</label>
-                                <input type="date" name="from_date" id="from_date" class="form-control"
-                                    value="{{ $demand->from_date }}">
+                                <input type="date" name="from_date" id="from_date" class="form-control" value="{{ $demand->from_date }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="to_date">To Date</label>
-                                <input type="date" name="to_date" id="to_date" class="form-control"
-                                    value="{{ $demand->to_date }}">
+                                <input type="date" name="to_date" id="to_date" class="form-control" value="{{ $demand->to_date }}">
                             </div>
 
                             <div class="form-group">
-                                <label for="vacancy">Demands</label>
-                                <input type="text" name="vacancy" id="vacancy" class="form-control"
-                                value="{{ $demand->vacancy }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="content">Content</label>
-                                <textarea name="content" id="content" class="form-control" rows="5">{{ $demand->content }}</textarea>
+                                <label for="vacancy">Vacancy</label>
+                                <input type="text" name="vacancy" id="vacancy" class="form-control" value="{{ $demand->vacancy }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="image">Image</label>
-                                <input type="file" name="image" id="image" class="form-control-file"
-                                    onchange="previewImage(event)">
+                                <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
+                                <img id="preview1" src="{{ asset('uploads/demands/' . $demand->image) }}" style="max-width: 300px; max-height:300px" />
                             </div>
+                            <div id="imagePreview" class="mt-2"></div>
 
                             <div class="form-group">
-                                <img id="preview" src="{{ asset('storage/' . $demand->image) }}" alt="Current Image"
-                                    style="max-width: 200px;">
+                                <label for="content">Content:</label>
+                                <textarea class="form-control summernote" id="content" name="content" rows="5" required>{{ $demand->content }}</textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Update</button>
@@ -72,11 +64,17 @@
     </div>
 
     <script>
-        const previewImage = e => {
+        $('#content').summernote({
+            placeholder: 'Enter message here...',
+            tabsize: 2,
+            height: 100
+        });
+        
+       const previewImage = e => {
             const reader = new FileReader();
             reader.readAsDataURL(e.target.files[0]);
             reader.onload = () => {
-                const preview = document.getElementById('preview');
+                const preview = document.getElementById('preview1');
                 preview.src = reader.result;
             };
         };

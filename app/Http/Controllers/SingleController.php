@@ -18,6 +18,7 @@ use App\Models\VideoGallery;
 use Illuminate\Http\Request;
 use App\Models\DirectorMessage;
 use App\Models\BlogPostsCategory;
+use App\Models\Demand;
 
 class SingleController extends Controller
 {
@@ -210,6 +211,18 @@ class SingleController extends Controller
         $page_title = 'Contact Us';
         $googleMapsLink = SiteSetting::first()->google_maps_link;
         return view('frontend.contactpage', compact('page_title', 'googleMapsLink'));
+    }
+
+    public function render_demand($slug)
+    {
+        $demand = Demand::where('slug', $slug)->firstOrFail();
+        return view('frontend.demand', compact('demand'));
+    }
+
+    public function render_demands()
+    {
+        $demands = Demand::all();
+        return view('frontend.demands', compact('demands'));
     }
     
 }
