@@ -7,10 +7,10 @@
 
     <section class="multi_post">
         <div class="container">
-            <div class="multi_poster row justify-content-center">
+            <div class="multi_poster row justify-content-center  gap-5">
 
                 @foreach ($services as $service)
-                    <div class="card col-lg-4">
+                    <div class="card col-lg-3">
                         <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
                         <div class="multi_post_image">
                             @if ($service->image)

@@ -13,21 +13,19 @@
                 </div> 
 
                 <div class="col-lg-12 "> --}}
+                    
                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($coverImages as $key => $coverImage)
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
-                                <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block"
+                                <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block banners-imgs"
                                     width="100%" height="550px" alt="Cover Image" />
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>{{ $coverImage->title }}</h5>
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
-
-
                     <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
