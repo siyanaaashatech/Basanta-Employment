@@ -54,7 +54,7 @@
                             style="width: 150px; height:150px" /></td>
                     <td>
                         <!-- Displaying Summernote content -->
-                        {!! $summernoteContent->processContent($service->description) !!}
+                        {{ Str::limit(strip_tags($summernoteContent->processContent($service->description)), 200) }}
                     </td>
 
 
