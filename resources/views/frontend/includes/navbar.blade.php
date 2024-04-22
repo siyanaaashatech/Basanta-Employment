@@ -1,6 +1,6 @@
 <!-- Header -->
 <div class="header">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" id="navbar">
         <div class="container">
             <a class="navbar-brand" href="{{ route('index') }}">
                 <div class="image">
@@ -144,18 +144,29 @@
     });
     
     // Make the navbar logo and navbar big when the site opens and when scrolled make it small like now and with the logo add Company name and slogan.
+    // window.addEventListener('scroll', function() {
+    //     var a = window.scrollY;
+    //     if (a > 0) {
+
+    //       document.querySelector('.header').classList.add('nav-small');
+    //     } else {
+    //       document.querySelector('.header').classList.remove('nav-small');
+
+    //     }
+    // });
+
+
     window.addEventListener('scroll', function() {
-        var a = window.scrollY;
-        if (a > 0) {
+        var scrollY = window.scrollY;
+        var threshold = 0; // Adjust this value as needed
+        var header = document.querySelector('.header');
 
-          document.querySelector('.header').classList.add('nav-small');
+        if (scrollY > threshold) {
+            header.classList.add('nav-small');
         } else {
-          document.querySelector('.header').classList.remove('nav-small');
-
+            header.classList.remove('nav-small');
         }
     });
-
-
 
  
 

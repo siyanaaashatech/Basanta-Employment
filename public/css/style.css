@@ -300,11 +300,14 @@ li {
   top: 0;
   background-color: #eeedf3;
   z-index: 1000; /* adjust z-index as needed */
-  padding: 30px 0;
+  padding: 20px 0;
   width: 100%;
-  /* transition: 0.9s; */
+  transition: 0.5s;
+  will-change: transform; /* Apply will-change property */
+  transform: translateZ(0); 
 
 }
+
 .nav-small {
   padding: 0px;
 }
@@ -588,25 +591,13 @@ li {
 /* For General */
 .Find-country {
 
-  background-image: url('../image/plane22.png');
+
+  background: rgba(94, 1, 5, 0.8);
 
 
 
-/* min-height: 120px;
-max-height: 400px; */
-
-/* center and scale the image */
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-
-
-/* use the following only if if you are able to scroll past the image to see a white area (this is the <body> peeking out) above or below the image */
-/* overflow: hidden;
-display: grid;
-place-items: center; */
 position: relative;
-z-index: -1;
+/* z-index: -1; */
 color: #fff;
 }
 
@@ -617,13 +608,15 @@ top: 0;
 right: 0;
 bottom: 0;
 left: 0;
-background: rgba(94, 1, 5, 0.8);
+background-image: url('../image/plane22.png');
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 z-index: -1;
- /* Set z-index to -1 so that it's behind the text */
 }
 
 /* Ensure text appears above the background overlay */
-.Find-country .find-count-row {
+.Find-country .find-count-row a.btn2{
     position: relative;
     z-index: 1; /* Set z-index higher than the background overlay */
 }
