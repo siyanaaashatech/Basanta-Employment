@@ -26,6 +26,7 @@
                             <h3>{{ $testimonial->name }}</h3>
                             <h5>{{ $testimonial->company->title }}</h5>
                             <h6>({{ $testimonial->work_category->title }})</h6>
+                            <hr>
 
                         </div>
 

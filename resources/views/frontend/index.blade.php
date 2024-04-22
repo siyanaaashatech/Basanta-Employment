@@ -164,9 +164,9 @@
 
                 </div>
                 <div class="col-lg-4">
-
-                    <a href="{{ route('Contact') }}" class="btn2">GET IN TOUCH</a>
+                    <a href="{{ route('Contact')}}" class="btn2">GET IN TOUCH</a>
                 </div>
+                
             </div>
         </div>
     </section>
@@ -210,6 +210,10 @@
                             <div class=" text-center text-img">
                                 <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
                                     alt="Testimonial Image" style="width: 100px;">
+                                    <h3>{{ $testimonial->name }}</h3>
+                                    <h5>{{ $testimonial->company->title }}</h5>
+                                    <h6>({{ $testimonial->work_category->title }})</h6>
+                                    
                             </div>
                         </a>
                     </div>
