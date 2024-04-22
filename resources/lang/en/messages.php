@@ -38,11 +38,20 @@ return [
     'Living Abroad' => 'Living Abroad',
     'Strategic Planning' => 'Strategic Planning',
     'Training and Development' => 'Training and Development',
+    'Post-Employment Support'=>'Post-Employment Support',
+    'Visa and Documentation Assistance'=>'Visa and Documentation Assistance',
     'Recruitment and Staffing' => 'Recruitment and Staffing',
     'Vacancy' => 'Vacancy',
     'AboutDescription' => 'Lunar Overseas is a pioneer organization in overseas employment. The organization is recognized by various overseas companies and a large number of workers who have been successfully placed in different companies all over the globe',
 
+    'Transparency and Communication' => 'Transparency and Communication',
+    'Innovation and Adaptability' => 'Innovation and Adaptability',
+    'Integrity' => 'Integrity',
     
+    'Choose Qatar For Employment' => 'Choose Qatar For Employment',
+    'Why Work In Kuwait' => 'Why Work In Kuwait',
+    'Opportunities In Nepal Vs Abroad'  => 'Opportunities In Nepal Vs Abroad',
+
      'WorkCategoryTitle' =>  [
         'Construction' => 'Construction',
         'Cleaner' => 'Cleaner',

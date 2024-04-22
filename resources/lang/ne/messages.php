@@ -24,6 +24,8 @@ return [
     'MailUs' => 'हाम्राे मेल',
     'ImportantLinks' => 'महत्वपुर्ण लिंकहरू',
     'FollowUs' => 'फलो गर्नुहोस्',
+    'Duubai' => 'युएइ',
+    'Kathmandu' => 'काठमाडौँ',
     'Testimonials' => 'प्रतिक्रिया',
     'RecommendedCountries' => 'रोजगारी गर्ने देशहरू',
     'Lunar Overseas' => 'लुनार ओभरसिज',
@@ -39,9 +41,22 @@ return [
     'Living Abroad' => 'विदेशी जिवन',
     'Strategic Planning' => 'याेजना विकास',
     'Training and Development' => 'प्रशिक्षण र विकास',
+    'Post-Employment Support'=>'पोस्ट-रोजगार समर्थन',
+    'Visa and Documentation Assistance'=>'भिसा र कागजात सहायता',
+    'Recruitment and Staffing' => 'भर्ती तथा स्टाफ',
+    
+
     'Recruitment and Staffing' => 'कर्मचारी खाेजी',
     'Vacancy' => 'भ्याकेन्सी',
     'AboutDescription' => 'लुनार ओभरसीज वैदेशिक रोजगारीका लागी अग्रगामी संस्था हो। संस्थालाई विभिन्न विदेशी कम्पनीहरू र विश्वभरका विभिन्न कम्पनीहरूमा सफलतापूर्वक राखिएका कामदारहरूको ठूलो संख्याद्वारा मान्यता प्राप्त छ।',
+
+    'Transparency and Communication' => 'पारदर्शिता र सञ्चार',
+    'Innovation and Adaptability' => 'नवीनता र अनुकूलन क्षमता',
+    'Integrity' => 'निष्ठा',
+    
+    'Choose Qatar For Employment' =>'रोजगारीका लागि कतार छान्नुहोस्',
+    'Why Work In Kuwait' => 'कुवेतमा किन काम गर्ने',
+    'Opportunities In Nepal Vs Abroad'  =>'नेपाल विदेशमा अवसरहरू',
 
 
     'WorkCategoryTitle' => [
