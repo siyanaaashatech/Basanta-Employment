@@ -40,7 +40,14 @@ return [
     'Training and Development' => 'Training and Development',
     'Recruitment and Staffing' => 'Recruitment and Staffing',
     'Vacancy' => 'Vacancy',
-    'AboutDescription' => 'Lunar Overseas is a pioneer organization in overseas employment. The organization is recognized by various overseas companies and a large number of workers who have been successfully placed in different companies all over the globe'
+    'AboutDescription' => 'Lunar Overseas is a pioneer organization in overseas employment. The organization is recognized by various overseas companies and a large number of workers who have been successfully placed in different companies all over the globe',
+
+    
+     'WorkCategoryTitle' =>  [
+        'Construction' => 'Construction',
+        'Cleaner' => 'Cleaner',
+        'Hospitality' => 'Hospitality',
+    ]
 
     // Add more translations as needed...
 ];
