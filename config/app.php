@@ -88,7 +88,7 @@ return [
     */
     
 
-    'locale' => 'ne',
+    'locale' => 'en',
      
     'available_locales' => [
         'en'=> 'en', 

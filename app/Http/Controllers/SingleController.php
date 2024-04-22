@@ -213,10 +213,11 @@ class SingleController extends Controller
         return view('frontend.contactpage', compact('page_title', 'googleMapsLink'));
     }
 
-    public function render_demand($slug)
+    public function render_demand($id)
     {
-        $demand = Demand::where('slug', $slug)->firstOrFail();
-        return view('frontend.demand', compact('demand'));
+        $demand = Demand::where('id', $id)->firstOrFail();
+        $listdemands = Demand::where('id', '!=', $id)->get();
+        return view('frontend.demand', compact('demand','listdemands'));
     }
 
     public function render_demands()

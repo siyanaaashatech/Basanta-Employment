@@ -356,7 +356,7 @@
                         
                             @foreach ($services as $service)
                                 <li><a
-                                        href="{{ route('SingleService', ['slug' => $service->slug]) }}">{{ $service->title }}</a>
+                                        href="{{ route('SingleService', ['slug' => $service->slug]) }}">{{ trans('messages.' .($service->title)) }}</a>
                                 </li>
                             @endforeach 
 
@@ -374,7 +374,7 @@
 
                             @foreach ($categories as $category)
                                 <li><a
-                                        href="{{ route('singleCategory', ['slug' => $category->slug]) }}">{{ $category->title }}</a>
+                                        href="{{ route('singleCategory', ['slug' => $category->slug]) }}">{{ trans('messages.' .($category->title)) }}</a>
                                 </li>
                             @endforeach
 

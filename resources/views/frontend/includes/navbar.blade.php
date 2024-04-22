@@ -12,7 +12,9 @@
                     <img src="{{ asset('image/header-image.png') }}" alt="" height="100">
                     @endif
                     <div class="c-name">
-                        <h3>{{ $sitesetting->office_name }}</h3>
+                        <h3>
+                            {{ trans('messages.' . ucfirst($sitesetting->office_name)) }}
+                            {{-- {{ $sitesetting->office_name }}</h3> --}}
                     </div>
                     {{-- <div class="slogon">
                         <h6>{{ $sitesetting->slogan }}</h6>
@@ -53,7 +55,7 @@
                             @foreach ($countries as $country)
                       <li>
                       <a class="dropdown-item" href="{{ route('singleCountry', ['slug' => ucfirst($country->slug)]) }}">
-                {{ trans('messages.' . ucfirst($country->slug)) }}
+                        {{ trans('messages.' . ucfirst($country->name)) }}
                     </a>
                         </li>
                  @endforeach
@@ -144,7 +146,7 @@
     // Make the navbar logo and navbar big when the site opens and when scrolled make it small like now and with the logo add Company name and slogan.
     window.addEventListener('scroll', function() {
         var a = window.scrollY;
-        if (a > 200) {
+        if (a > 0) {
 
           document.querySelector('.header').classList.add('nav-small');
         } else {
@@ -153,5 +155,12 @@
         }
     });
 
+
+
+ 
+
 </script>
+
+<style>
+</style>
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ $service->title }}</h1>
+        <h1 class="page_title">{{ trans('messages.' . ucfirst($service->title)) }}</h1>
     </div>
     <section class="sample_page">
         <div class="container">
@@ -18,18 +18,18 @@
                     {!! $service->description !!}
                 </div>
 
-                {{-- <div class="col-lg-4 col-md-4 col-sm-12 order-3 order-md-2 sample_page_list mt-2 mb-2 p-4">
-                    <h3 class="">Services</h3>
+                <div class="col-lg-4 col-md-4 col-sm-12 order-3 order-md-2 sample_page_list mt-2 mb-2 p-4">
+                    <h3 class="">{{ trans('messages.Services') }}</h3>
                     <ul>
                         @foreach ($listservices as $service)
                             <li>
                                 <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
-                                  {{ $service->title }}
+                                  {{ trans('messages.' . ($service->title)) }}
                                 </a>
                             </li>
                         @endforeach
                     </ul>
-                </div> --}}
+                </div>
 
 
             </div>

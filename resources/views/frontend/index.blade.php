@@ -21,7 +21,7 @@
                                 <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block banners-imgs"
                                     width="100%" height="550px" alt="Cover Image" />
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{ $coverImage->title }}</h5>
+                                    <h2>{{ $coverImage->title }}</h2>
                                 </div>
                             </div>
                         @endforeach
@@ -51,22 +51,28 @@
             <div class="slide-container">
                 <div class="card-wrapper swiper-wrapper">
                     @foreach ($demands as $demand)
+                   
                         <div class="card swiper-slide text-center ">
+                            <a href="{{ route('SingleDemand',['id' => $demand->id]) }}">
                             <div class="img-box">
+                               
                                 <img class="" src="{{ asset('uploads/demands/' . $demand->image) }}" alt="" />
+                           
                             </div>
                             <div class="profile-details">
                                 <h3 class="pb-2">{{ $demand->country->name }}</h3>
                                 <h6>
                                     {{ $demand->from_date }} - {{ $demand->to_date }} <br />
-                                    Vacancy:
+                                    {{ trans('messages.Vacancy') }}:
                                     <span>
                                         {{ $demand->vacancy }}
 
                                     </span>
                                 </h6>
                             </div>
+                        </a>
                         </div>
+                  
                     @endforeach
                 </div>
             </div>
@@ -88,9 +94,11 @@
               <div class="cr-2 position-absolute top-0 end-0"></div>
               <div class="content ">
                   <div class="right-box">
-                      <h2 class="section_title">{{ $about->title }}</h2>
-                      <p>{{ Str::limit(strip_tags($about->description), 400) }}</p>
-                      <a href="{{ route('About') }}" class="btn">Read More<i
+                      <h2 class="section_title">{{ trans('messages.' . ucfirst($about->title)) }}
+                        
+                     </h2>
+                      <p>{{ trans('messages.AboutDescription') }}</p>
+                      <a href="{{ route('About') }}" class="btn">{{ trans('messages.ReadMore') }}<i
                             class="fa-solid fa-arrow-right mx-2"></i></a>
                   </div>
               </div>
@@ -126,7 +134,7 @@
     <!-- Experience -->
     <section class="experience py-4">
         <div class="container">
-            <h2 class="text-center pb-3 section_title">MORE THAN 10 YEARS OF EXPERIENCE</h2>
+            <h2 class="text-center pb-3 section_title">{{ trans('messages.SeviceSectionTitle') }}</h2>
             <div class="row py-4 g-4">
                 @foreach ($services as $service)
                     <div class="col-lg-4 col-md-4 Ebox-wrap">
@@ -135,7 +143,7 @@
                                 <div class="Ebox-img">
                                     <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Service Image">
                                 </div>
-                                <h3 class="text-center pt-3 Ebox-text">{{ $service->title }}</h3>
+                                <h3 class="text-center pt-3 Ebox-text">{{ trans('messages.' .($service->title)) }}</h3>
                             </div>
                         </a>
                     </div>
@@ -150,8 +158,8 @@
         <div class="container py-5">
             <div class="row d-flex align-items-center find-count-row">
                 <div class="col-lg-8">
-                    <h2 class="fw-bold">LET'S FIND A PERFECT COUNTRY FOR YOU</h2>
-                    <h5 class="pt-3">Find the perfect solution for your needs <br> 100% satisfaction guranteed
+                    <h2 class="fw-bold">{{ trans('messages.BestCountry') }}</h2>
+                    <h5 class="pt-3">{{ trans('messages.BestCountryLineOne') }}<br> {{ trans('messages.BestCountryLineTwo') }}
                     </h5>
 
                 </div>
@@ -165,8 +173,8 @@
 
     <section class="guiding py-5">
         <div class="container">
-            <h2 class="text-center section_title">Our {{ $firstCategory->title }}</h2>
-            <div class="row pb-4">
+            <h2 class="text-center section_title pb-3">{{ trans('messages.Our') }} {{ trans('messages.' . ucfirst($firstCategory->title)) }}</h2>
+            <div class="row">
 
                 @foreach ($posts as $post)
                     <div class="col-lg-4 col-md-6 col-sm-6 pt-3">
@@ -193,7 +201,7 @@
 
     <section class="testimonial">
         <div class="container swiper mySwiper">
-            <h2 class="text-center section_title">TESTIMONIALS</h2>
+            <h2 class="text-center section_title pb-3">{{ trans('messages.Testimonials') }}</h2>
             <div class="swiper-wrapper">
                 @foreach ($testimonials as $testimonial)
                     <div class="swiper-slide  p-5">
@@ -218,9 +226,9 @@
 
 
 
-    <section class="contact pt-3 pb-5">
+    <section class="contact">
         <div class="container ">
-            <h2 class="text-center section_title">CONTACT</h2>
+            <h2 class="text-center section_title pb-3">{{ trans('messages.Contact') }}</h2>
             <div class="row g-4 contact-det">
                 <div class="col-lg-6">
                     <iframe class="w-100 h-100"
@@ -246,17 +254,17 @@
                     <form id="contactForm" class="form-horizontal" method="POST" role="form" action="{{ route('Contact.store') }}">
                         @csrf
                         <div class="inp">
-                            <input type="text" name="" id="" placeholder="ENTER YOUR NAME">
+                            <input type="text" name="name" id="" placeholder="ENTER YOUR NAME">
                         </div>
                         <div class="inp">
-                            <input type="email" name="" id=""
+                            <input type="email" name="email" id=""
                                 placeholder="ENTER A VALID EMAIL ADDRESS">
                         </div>
                         <div class="inp">
-                            <input type="tel" name="" id="" placeholder="ENTER YOUR PHONE NO.">
+                            <input type="tel" name="phone_no" id="" placeholder="ENTER YOUR PHONE NO.">
                         </div>
                         <div class="inp">
-                            <textarea name="" id="" rows="3" placeholder="ENTER YOUR MESSAGE"></textarea>
+                            <textarea name="message" id="" rows="3" placeholder="ENTER YOUR MESSAGE"></textarea>
                         </div>
                                <!-- Add reCAPTCHA field -->
                                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div> 
@@ -309,7 +317,7 @@
 
     <section class="blogs py-5">
         <div class="container">
-            <h2 class="text-center section_title">BLOGS</h2>
+            <h2 class="text-center section_title pb-3">{{ trans('messages.Blogs') }}</h2>
             <div class="row g-4">
                 @foreach ($blogs as $blog)
                     <div class="col-lg-4 col-md-4">

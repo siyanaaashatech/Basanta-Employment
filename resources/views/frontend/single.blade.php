@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">  {{ trans('messages.' . ucfirst($country->slug)) }}</h1>
+        <h1 class="page_title">  {{ trans('messages.' . ucfirst($country->name)) }}</h1>
     </div>
 
 
@@ -34,7 +34,7 @@
                         @foreach ($recommendedCountries as $recommendedCountry)
                             <li>
                                 <a href="{{ route('singleCountry', ['slug' => $recommendedCountry->slug]) }}">
-                                    {{ trans('messages.' . ucfirst($recommendedCountry->slug)) }}
+                                    {{ trans('messages.' . ucfirst($recommendedCountry->name)) }}
                                 </a>
                             </li>
                         @endforeach

@@ -18,7 +18,7 @@ class CountrySeeder extends Seeder
     {
         $countries = [
             [
-                'name' => 'Dubai',
+                'name' => 'Work in UAE',
                 'image' => json_encode([
                     'uploads/country/Australia_1.webp',
                     'uploads/country/Australia_2.webp',
@@ -26,7 +26,7 @@ class CountrySeeder extends Seeder
                 'content' => 'This is the content'
             ],
             [
-                'name' => 'Qatar',
+                'name' => 'Work in Qatar',
                 'image' => json_encode([
                     'uploads/country/USA_1.webp',
                     'uploads/country/USA_2.webp',
@@ -34,7 +34,7 @@ class CountrySeeder extends Seeder
                 'content' => 'This is the content'
             ],
             [
-                'name' => 'Malaysia',
+                'name' => 'Work in Malaysia',
                 'image' => json_encode([
                     'uploads/country/Canada_1.webp',
                     'uploads/country/Canada_2.webp',
@@ -42,7 +42,7 @@ class CountrySeeder extends Seeder
                 'content' => 'This is the content'
             ],
             [
-                'name' => 'Kuwait',
+                'name' => 'Work in Kuwait',
                 'image' => json_encode([
                     'uploads/country/UK_1.webp',
                     'uploads/country/UK_2.webp',
@@ -50,7 +50,7 @@ class CountrySeeder extends Seeder
                 'content' => 'This is the content'
             ],
             [
-                'name' => 'Europe',
+                'name' => 'Work in Europe',
                 'image' => json_encode([
                     'uploads/country/Europe_1.webp',
                     'uploads/country/Europe_2.webp',

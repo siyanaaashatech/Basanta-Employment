@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&family=Roboto:wght@300;400;500;700;900&display=swap");
 
 @import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Mukta:wght@200;300;400;500;600;700;800&family=Truculenta:opsz,wght@12..72,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
+
 *,
 *:before,
 *:after {
@@ -11,13 +15,21 @@
 
 
 
-body {
+*[lang='en'] body {
   font-family: "Roboto", sans-serif;
 }
+*[lang='ne'] body {
+  font-family: "Mukta", sans-serif;
+}
 
-h1, h2, h3, h4, h5, h6 {
+*[lang='en'] h1,*[lang='en'] h2,*[lang='en'] h3,*[lang='en'] h4,*[lang='en'] h5,*[lang='en'] h6 {
   font-family: "Quicksand", sans-serif;
 }
+
+*[lang='ne'] h1,*[lang='ne'] h2,*[lang='ne'] h3,*[lang='ne'] h4,*[lang='ne'] h5,*[lang='ne'] h6{
+  font-family: "Mukta", sans-serif;
+}
+
 h2{
 
   font-size: 34px;
@@ -316,7 +328,14 @@ li {
   font-size: 16px;
   text-transform: uppercase;
 }
+*[lang='ne'] .navbar-nav .nav-link{
+  font-size: 18px;
+}
 
+
+*[lang='ne'] .navbar-nav .nav-item{
+  padding-right: 25px;
+}
 
 .navbar-nav .nav-link.active{
   /* background-color: #070842 !important; */
@@ -351,8 +370,11 @@ li {
 }
 }
 
+
+
+
 .banners-imgs{
-  
+  object-fit: cover;
 }
 
 .card {
@@ -419,11 +441,13 @@ li {
 .about-us .left .img{
   height: 400px;
   z-index: 1;
+ 
 }
 .about-us .img img{
   height: 100%;
   width: 100%;
   border-radius: 8px;
+  object-fit: cover;
 }
 .about-us .right{
   width: 50%;
@@ -504,7 +528,7 @@ li {
   .about-us .right .cr-2{
       height: 100px;
       width: 100px;
-    }
+    }
 .about-us .right .content .right-box p{
   overflow: hidden;
   display: -webkit-box;
@@ -519,6 +543,8 @@ li {
   border: 1px solid gray;
 }
 
+
+
 .Ebox1{
   height: 320px;
 }
@@ -529,7 +555,12 @@ li {
 
   
 }
-.experience img, .blogs img {
+.experience img{
+  width: 100%;
+  height: 270px;
+}
+
+.blogs img{
   width: 100%;
   height: 100%;
 }
