@@ -28,6 +28,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title">{{ $blogpostcategory->title }}</h5>
+                           
                             <p class="card-text pb-4">
                                 {{ Str::limit(strip_tags($blogpostcategory->content), 250) }}
                             </p>

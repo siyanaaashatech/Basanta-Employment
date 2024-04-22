@@ -60,7 +60,7 @@
                            
                             </div>
                             <div class="profile-details">
-                                <h3 class="pb-2">{{ $demand->country->name }}</h3>
+                                <h3 class="pb-2">{{ trans('messages.' . $demand->country->name) }}</h3>
                                 <h6>
                                     {{ $demand->from_date }} - {{ $demand->to_date }} <br />
                                     {{ trans('messages.Vacancy') }}:
@@ -185,7 +185,7 @@
                                 </div>
 
                                 <div>
-                                    <h3 class="pt-3 pb-2">{{ $post->title }}</h3>
+                                    <h3 class="pt-3 pb-2">{{ trans('messages.' . $post->title) }}</h3>
                                     <h5>
                                         {{ Str::limit(strip_tags($post->description), 100) }}...
                                     </h5>
@@ -320,18 +320,20 @@
             <h2 class="text-center section_title pb-3">{{ trans('messages.Blogs') }}</h2>
             <div class="row g-4">
                 @foreach ($blogs as $blog)
-                    <div class="col-lg-4 col-md-4">
-                        <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
-                            <div class="Ebox1">
-                                <div class="E-B-img">
-                                    <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}" alt="">
-                                </div>
-                                <h3 class="text-center pt-3">{{ $blog->title }}</h3>
+                <div class="col-lg-4 col-md-4">
+                    <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
+                        <div class="Ebox1">
+                            <div class="E-B-img">
+                                <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}" alt="">
                             </div>
-                        </a>
+                            {{-- <h3 class="text-center pt-3">{{ trans('messages.' . $blog->title) }}</h3> --}}
+                            <h3 class="text-center pt-3">{{ $blog->title}}</h3>
 
-                    </div>
-                @endforeach
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+            
             </div>
         </div>
     </section>
