@@ -31,7 +31,7 @@
                             {{ Str::limit(strip_tags($country->content), 250) }}
                         </p>
                         <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-                            <button class="btn  text-white">Read More &nbsp;&nbsp;<i
+                            <button class="btn  text-white">{{ trans('messages.ReadMore') }} &nbsp;&nbsp;<i
                                 class="fa-solid fa-arrow-right"></i></button>                        </a>
                     </div>
                 </div>

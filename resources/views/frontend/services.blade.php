@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __('Our Services') }}</h1>
+        <h1 class="page_title">{{ trans('messages.Services') }}</h1>
     </div>
 
     <section class="multi_post">
@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">{{ $service->title }}</h5>
+                            <h5 class="card-title">{{ trans('messages.' .($service->title)) }}</h5>
                             <p class="card-text">
                                 {{ Str::limit(strip_tags($service->description), 250) }}
                             </p>

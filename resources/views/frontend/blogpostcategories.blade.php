@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="background">
-        <h1 class="page_title">{{ __('Blogs') }}</h1>
+        <h1 class="page_title"> {{ trans('messages.Blogs') }} </h1>
     </div>
 
 
@@ -28,11 +28,12 @@
 
                         <div class="card-body">
                             <h5 class="card-title">{{ $blogpostcategory->title }}</h5>
+                           
                             <p class="card-text pb-4">
                                 {{ Str::limit(strip_tags($blogpostcategory->content), 250) }}
                             </p>
                             <a href="{{ route('SingleBlogpostcategory', ['slug' => $blogpostcategory->slug]) }}">
-                                <button class="btn text-white">Read More &nbsp;&nbsp;<i
+                                <button class="btn text-white">{{ trans('messages.ReadMore') }} &nbsp;&nbsp;<i
                                         class="fa-solid fa-arrow-right"></i></button>
                             </a>
                         </div>

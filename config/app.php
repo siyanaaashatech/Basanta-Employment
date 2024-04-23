@@ -90,7 +90,7 @@ return [
 
     'locale' => 'en',
      
-    'available_locales' => [
+    'available_locales' => [  
         'en'=> 'en', 
         'ne'=> 'ne'
     ],
@@ -118,7 +118,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------

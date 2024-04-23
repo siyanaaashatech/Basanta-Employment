@@ -1,6 +1,6 @@
 <!-- Header -->
 <div class="header">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" id="navbar">
         <div class="container">
             <a class="navbar-brand" href="{{ route('index') }}">
                 <div class="image">
@@ -12,7 +12,9 @@
                     <img src="{{ asset('image/header-image.png') }}" alt="" height="100">
                     @endif
                     <div class="c-name">
-                        <h3>{{ $sitesetting->office_name }}</h3>
+                        <h3>
+                            {{ trans('messages.' . ucfirst($sitesetting->office_name)) }}
+                            {{-- {{ $sitesetting->office_name }}</h3> --}}
                     </div>
                     {{-- <div class="slogon">
                         <h6>{{ $sitesetting->slogan }}</h6>
@@ -35,9 +37,9 @@
 
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('About') }}"> {{ trans('messages.About Us') }}
+                            <li><a class="dropdown-item" href="{{ route('About') }}"> {{ trans('messages.AboutUs') }}
                                 </a></li>
-                            <li><a class="dropdown-item" href="{{ route('Team') }}"> {{ trans('messages.Our Teams') }}
+                            <li><a class="dropdown-item" href="{{ route('Team') }}"> {{ trans('messages.OurTeams') }}
                                 </a></li>
                             <li><a class="dropdown-item" href="{{ route('Service') }}"> {{ trans('messages.Services') }}
                                 </a></li>
@@ -51,16 +53,15 @@
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($countries as $country)
-                                <li>
-                                    <a class="dropdown-item"
-                                        href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-                                        {{ trans('messages.' . $country->slug) }}
-                                    </a>
-                                </li>
-
-                            @endforeach
+                      <li>
+                      <a class="dropdown-item" href="{{ route('singleCountry', ['slug' => ucfirst($country->slug)]) }}">
+                        {{ trans('messages.' . ucfirst($country->name)) }}
+                    </a>
+                        </li>
+                 @endforeach
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
@@ -70,12 +71,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             @foreach ($workcategories as $workcategory)
-                            <li><a class="dropdown-item" href="{{ route('singleworkCategory', ['slug' => $workcategory->slug]) }}">
-                                    {{ $workcategory->title }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('singleworkCategory', ['slug' => $workcategory->slug]) }}">
+                                    {{ trans('messages.WorkCategoryTitle.' . $workcategory->title) }}
+                                </a></li>
                             @endforeach
                         </ul>
                     </li>
-                    <!-- Remove the "Living Abroad" dropdown section -->
+                    
                     <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
@@ -85,9 +87,9 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('Gallery') }}">
-                                    {{ trans('messages.Photo Gallery') }} </a></li>
+                                    {{ trans('messages.PhotoGallery') }} </a></li>
                             <li><a class="dropdown-item" href="{{ route('Video') }}">
-                                    {{ trans('messages.Video Gallery') }} </a></li>
+                                    {{ trans('messages.VideoGallery') }} </a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -103,18 +105,6 @@
                             {{ trans('messages.Contact') }} </a>
                     </li>
                 </ul>
-                <!-- Language Switcher -->
-                {{-- <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Language
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="{{ url()->current()}}?locale=en">English</a></li>
-                        <li><a class="dropdown-item" href="{{ url()->current()}}?locale=ne">नेपाली</a></li>
-                    </ul>
-                </div> --}}
-
 
                 <span class="en_ne">
                     <a class="btn_en {{ app()->getLocale() === 'en' ? 'active' : '' }}"
@@ -155,16 +145,34 @@
     });
     
     // Make the navbar logo and navbar big when the site opens and when scrolled make it small like now and with the logo add Company name and slogan.
+    // window.addEventListener('scroll', function() {
+    //     var a = window.scrollY;
+    //     if (a > 0) {
+
+    //       document.querySelector('.header').classList.add('nav-small');
+    //     } else {
+    //       document.querySelector('.header').classList.remove('nav-small');
+
+    //     }
+    // });
+
+
     window.addEventListener('scroll', function() {
-        var a = window.scrollY;
-        if (a > 200) {
+        var scrollY = window.scrollY;
+        var threshold = 0; // Adjust this value as needed
+        var header = document.querySelector('.header');
 
-          document.querySelector('.header').classList.add('nav-small');
+        if (scrollY > threshold) {
+            header.classList.add('nav-small');
         } else {
-          document.querySelector('.header').classList.remove('nav-small');
-
+            header.classList.remove('nav-small');
         }
     });
 
+ 
+
 </script>
+
+<style>
+</style>
 

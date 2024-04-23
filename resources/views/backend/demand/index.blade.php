@@ -140,7 +140,7 @@
         @endforeach
 
         @if ($demands->hasMorePages())
-            <li class="page-item"><a class="page-link" href="{{ $demandss->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            <li class="page-item"><a class="page-link" href="{{ $demands->nextPageUrl() }}" rel="next">&raquo;</a></li>
         @else
             <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
         @endif

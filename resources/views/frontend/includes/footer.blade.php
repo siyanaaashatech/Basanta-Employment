@@ -236,7 +236,7 @@
                     <div class="single-cta">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <div class="cta-text">
-                            <h4>Find us</h4>
+                            <h4>{{ trans('messages.FindUs') }}</h4>
                             <span>@if (!empty($sitesetting->office_address))
                                 @php
                                     $officeAddresses = json_decode($sitesetting->office_address, true);
@@ -256,7 +256,7 @@
                     <div class="single-cta">
                         <i class="fa fa-mobile" aria-hidden="true"></i>
                         <div class="cta-text">
-                            <h4>Call us</h4>
+                            <h4>{{ trans('messages.CallUs') }}</h4>
                             <span>
                                 @if (!empty($sitesetting->office_contact))
                                 @php
@@ -278,7 +278,7 @@
                     <div class="single-cta">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                         <div class="cta-text">
-                            <h4>Mail us</h4>
+                            <h4>{{ trans('messages.MailUs') }}</h4>
                             <span>  
                                 @if (!empty($sitesetting->office_email))
                                 @php
@@ -315,7 +315,7 @@
                         </div>
 
                         <div class="footer-social-icon">
-                            <h4 class="text-light pt-4 pb-2">Follow us</h4>
+                            <h4 class="text-light pt-4 pb-2">{{ trans('messages.FollowUs') }}</h4>
                             <div class="social-buttons">
                             <a href="{{ $sitesetting->facebook_link }}"
                         class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
@@ -350,13 +350,13 @@
                     <div class="footer-widget">
 
                         <div class="footer-widget-heading">
-                            <h3>{{ __('Experiences in Providing') }}</h3>
+                            <h3>{{ trans('messages.ExperienceInProviding') }}</h3>
                         </div>
                         <ul>
                         
                             @foreach ($services as $service)
                                 <li><a
-                                        href="{{ route('SingleService', ['slug' => $service->slug]) }}">{{ $service->title }}</a>
+                                        href="{{ route('SingleService', ['slug' => $service->slug]) }}">{{ trans('messages.' .($service->title)) }}</a>
                                 </li>
                             @endforeach 
 
@@ -367,14 +367,14 @@
                 <div class="col-xl-4 col-lg-4 col-md-6 mb-50 mt-3">
                     <div class="footer-widget">
                         <div class="footer-widget-heading">
-                            <h3>{{ __('Important links') }}</h3>
+                            <h3>{{ trans('messages.ImportantLinks') }}</h3>
                         </div>
                         <ul class="quicknepal_link">
 
 
                             @foreach ($categories as $category)
                                 <li><a
-                                        href="{{ route('singleCategory', ['slug' => $category->slug]) }}">{{ $category->title }}</a>
+                                        href="{{ route('singleCategory', ['slug' => $category->slug]) }}">{{ trans('messages.' .($category->title)) }}</a>
                                 </li>
                             @endforeach
 

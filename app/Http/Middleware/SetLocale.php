@@ -18,28 +18,41 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next)
     {
-        if(! $request->user()) {
-            return $next($request);
-        }
- 
-        $language = $request->input('locale');;
- 
+
+        $language = $request->input('locale');
+
         if ($language) {
             Session::put('locale', $language);
             App::setLocale($language);
         } elseif (Session::has('locale')) {
-            // If a locale is stored in session, use it
             $language = Session::get('locale');
             App::setLocale($language);
         }
+    
         return $next($request);
+        // if(! $request->user()) {
+        //     return $next($request);
+        // }
+ 
+        // $language = $request->input('locale');;
+ 
+        // if ($language) {
+        //     Session::put('locale', $language);
+        //     App::setLocale($language);
+        // } elseif (Session::has('locale')) {
+       
+        //     $language = Session::get('locale');
+        //     App::setLocale($language);
+        // }
+        // return $next($request);
+
+
         // if(! $request->user()) {
         //     return $next($request);
         // }
  
         // $language = $request->segment(2);
         
- 
         // if (isset($language)) {
         //     dd($language);
         //     if (in_array($language, config('app.available_locales'))) {
