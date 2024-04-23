@@ -20,7 +20,7 @@
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
                                 <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block banners-imgs"
                                     width="100%" height="550px" alt="Cover Image" />
-                                <div class="carousel-caption d-none d-md-block">
+                                <div class="carousel-caption d-none d-md-block w-100">
                                     <h2>{{ $coverImage->title }}</h2>
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
                     </h5>
 
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 pt-4">
                     <a href="{{ route('Contact')}}" class="btn2">GET IN TOUCH</a>
                 </div>
                 
@@ -235,10 +235,8 @@
             <h2 class="text-center section_title pb-3">{{ trans('messages.Contact') }}</h2>
             <div class="row g-4 contact-det">
                 <div class="col-lg-6">
-                    <iframe class="w-100 h-100"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28265.03230483077!2d85.33114880000001!3d27.682406399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1711949263172!5m2!1sen!2snp"
-                        style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="{{ $sitesetting->google_maps_link }}" width="100%"  style="border:0;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <div class="col-lg-6 pt-5">
