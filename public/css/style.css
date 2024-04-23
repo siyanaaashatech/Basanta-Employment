@@ -39,7 +39,7 @@ h2{
 
 
 h3 {
-  font-size: 20px;
+  font-size: 23px;
   font-weight: bold;
 }
 
@@ -50,7 +50,9 @@ h6 span {
   font-size: 16px;
   font-weight: bold;
 }
-
+h5{
+  font-size: 16px;
+}
 a {
   text-decoration: none;
   color: #333;
@@ -373,13 +375,16 @@ li {
 }
 }
 
-
-
-
 .banners-imgs{
   object-fit: cover;
 }
-
+.carousel-caption{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
 .card {
   background: #fff;
   border-radius: 20px;
@@ -674,6 +679,10 @@ a.btn2:hover {
   font-size: 60px;
 }
 
+
+.contact iframe{
+  height: 450px;
+}
 .contact .contact-det {
   background-color: rgb(233, 230, 230);
 }
@@ -682,14 +691,17 @@ a.btn2:hover {
   outline: none;
   border-bottom: 1px solid gray;
   background: transparent;
-  padding: 20px 200px 10px 4px;
+  padding: 20px 0px 10px 4px;
+  padding-right: 40%;
+  
 }
 .contact form textarea {
   border: none;
   outline: none;
   border-bottom: 1px solid gray;
   background: transparent;
-  padding: 20px 200px 10px 4px;
+  padding: 20px 0px 10px 4px;
+  padding-right: 40%;
 }
 
 footer {

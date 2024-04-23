@@ -39,55 +39,31 @@
 
                 </div> --}}
                 <div class="col-md-6 cform_left">
-                    <iframe src="{{ $googleMapsLink }}" width="100%" height="450" style="border:0;" allowfullscreen=""
+                    <iframe src="{{ $googleMapsLink }}" width="100%"  style="border:0;" allowfullscreen=""
                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <div class="col-md-6 cform_right">
                     <form id="contactForm" class="form-horizontal" method="POST" role="form"
                         action="{{ route('Contact.store') }}">
-
-
                         @csrf
                         <div class="form-group">
-
                             <input type="text" class="form-control" id="name" placeholder="NAME" name="name"
                                 value="" required>
-
                         </div>
-
-
                         <div class="form-group">
-
                             <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email"
                                 value="" required>
-
                         </div>
-
-
-
                         <div class="form-group">
-
-
                             <input type="phone" name="phone_no" class="form-control" id="phone_no"
                                 placeholder="Phone No." required>
 
-
                         </div>
-
-
-
                         <textarea class="form-control message-box" rows="10" placeholder="MESSAGE" name="message" required></textarea>
-
-
-
 
                         <!-- Add reCAPTCHA field -->
                          <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div> 
-
-
-
-
                         <input type="submit" value="Submit" id="submitBtn" class="btn">
                     </form>
                 </div>
