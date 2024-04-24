@@ -20,7 +20,7 @@
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
                                 <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block banners-imgs"
                                     width="100%" height="550px" alt="Cover Image" />
-                                <div class="carousel-caption d-none d-md-block w-100">
+                                <div class="carousel-caption d-md-block w-100">
                                     <h2>{{ $coverImage->title }}</h2>
                                 </div>
                             </div>

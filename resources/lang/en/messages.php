@@ -56,6 +56,9 @@ return [
         'Construction' => 'Construction',
         'Cleaner' => 'Cleaner',
         'Hospitality' => 'Hospitality',
+        'Security Personnel' => 'Security Personnel',
+        'Health Workers'=>'Health Worker',
+        'Supermarket'=>'Supermarket'
     ]
 
     // Add more translations as needed...

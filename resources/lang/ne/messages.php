@@ -56,13 +56,16 @@ return [
     
     'Choose Qatar For Employment' =>'रोजगारीका लागि कतार छान्नुहोस्',
     'Why Work In Kuwait' => 'कुवेतमा किन काम गर्ने',
-    'Opportunities In Nepal Vs Abroad'  =>'नेपाल विदेशमा अवसरहरू',
+    'Opportunities In Nepal Vs Abroad'  =>'नेपाल तथा विदेशमा अवसरहरू',
 
 
     'WorkCategoryTitle' => [
         'Construction' => 'निर्माण',
         'Cleaner' => 'क्लीनर',
         'Hospitality' => 'आतिथ्य',
+        'Security Personnel'=> 'सुरक्षा गार्ड',
+        'Health Workers'=>'स्वास्थ्यकर्मी',
+        'Supermarket' =>'सुपरमार्केट'
     ]
     // Add more translations as needed...
 ];

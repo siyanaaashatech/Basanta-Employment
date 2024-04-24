@@ -34,7 +34,7 @@
                         @foreach ($listdemands as $demand)
                             <li>
                                 <a href="{{ route('SingleDemand', ['id' => $demand->id]) }}">
-                                  {{ $demand->country->name }}
+                                    {{ trans('messages.' . $demand->country->name) }}
                                 </a>
                             </li>
                         @endforeach

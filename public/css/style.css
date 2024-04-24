@@ -37,7 +37,9 @@ h2{
   text-transform: uppercase;
 }
 
-
+*[lang='ne'] h3{
+  font-size: 26px;
+}
 h3 {
   font-size: 23px;
   font-weight: bold;
@@ -50,8 +52,12 @@ h6 span {
   font-size: 16px;
   font-weight: bold;
 }
+
+*[lang='ne'] h5{
+  font-size: 22px;
+}
 h5{
-  font-size: 16px;
+  font-size: 20px;
 }
 a {
   text-decoration: none;
@@ -1731,7 +1737,7 @@ margin-bottom: 60px;
   line-height: 25px;
   word-wrap: break-word; /* Break long words to prevent overflow */
     overflow-wrap: break-word; /* Also handle non-ASCII characters */
-    white-space: pre-wrap; /* Wrap lines without collapsing spaces */
+    /* white-space: pre-wrap;  */
     max-width: 100%; /* Ensure content doesn't exceed container width */
     font-family: "Roboto", sans-serif !important;
 

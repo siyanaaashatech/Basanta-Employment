@@ -30,7 +30,7 @@
     <section class="contact_form">
         <div class="container">
 
-            <div class="row mt-3">
+            <div class="row mt-3 mb-3">
                 {{-- <div class="col-md-6 cform_left">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d113044.53605690929!2d85.26660755724599!3d27.697465314449445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d27.6986812!2d85.34900499999999!4m5!1s0x39eb19c077e257b1%3A0xe92e2047692bea14!2sShree%20Binayak%20Marg%209%2C%20Kathmandu%2044600!3m2!1d27.6975294!2d85.34893389999999!5e0!3m2!1sen!2snp!4v1703018704663!5m2!1sen!2snp"
@@ -39,7 +39,7 @@
 
                 </div> --}}
                 <div class="col-md-6 cform_left">
-                    <iframe src="{{ $googleMapsLink }}" width="100%"  style="border:0;" allowfullscreen=""
+                    <iframe src="{{ $googleMapsLink }}" width="100%" height="500" style="border:0;" allowfullscreen=""
                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
