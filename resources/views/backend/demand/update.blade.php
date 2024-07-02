@@ -39,8 +39,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="vacancy">Vacancy</label>
+                                <label for="vacancy">Vacancy (In English)</label>
                                 <input type="text" name="vacancy" id="vacancy" class="form-control" value="{{ $demand->vacancy }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="vacancy">Vacancy (In Nepali)</label>
+                                <input type="text" name="vacancy_ne" id="vacancy" class="form-control" value="{{ $demand->vacancy_ne }}">
                             </div>
 
                             <div class="form-group">

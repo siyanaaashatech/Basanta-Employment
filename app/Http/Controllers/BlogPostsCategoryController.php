@@ -31,7 +31,9 @@ class BlogPostsCategoryController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'title_ne' => 'required',
             'content' => 'required',
+            'content_ne' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // adjust max file size as needed
         ]);
 
@@ -44,8 +46,10 @@ class BlogPostsCategoryController extends Controller
 
             $category = new BlogPostsCategory();
             $category->title = $request->title;
+            $category->title_ne = $request->title_ne;
             $category->slug = SlugService::createSlug(BlogPostsCategory::class, 'slug', $request->input('title'));
             $category->content = $processedContent;
+            $category->content_ne = $processedContent;
             $category->image = $newImageName;
 
             if ($category->save()) {
@@ -68,7 +72,9 @@ class BlogPostsCategoryController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'title_ne' => 'required',
             'content' => 'required',
+            'content_ne' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         try {

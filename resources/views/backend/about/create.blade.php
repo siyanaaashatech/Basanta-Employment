@@ -55,6 +55,12 @@
             </div>
 
             <div class="form-group">
+                <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
+                <textarea style="width: 100%; min-height: 150px;" type="text" class="form-control" name="description_ne"
+                    id="description_ne" placeholder="Add Description">{{ old('description_ne') }}</textarea>
+            </div>
+
+            <div class="form-group">
                 <label for="summernote">Content</label><span style="color:red; font-size:large"> *</span>
                 <textarea style="width: 100%; min-height: 300px;" id="summernote" name="content">{{ old('content') }}</textarea>
             </div>

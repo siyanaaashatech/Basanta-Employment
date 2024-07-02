@@ -43,9 +43,14 @@
                 @method('PUT')
                 <input type="hidden" name="id" value="{{ $service->id }}">
                 <div class="form-group">
-                    <label for="title">Title</label>
+                    <label for="title">Title (In English)</label>
                     <input type="text" name="title" class="form-control" id="title"
                         value="{{ $service->title ?? '' }}">
+                </div>
+                <div class="form-group">
+                    <label for="title">Title (In Nepali)</label>
+                    <input type="text" name="title_ne" class="form-control" id="title_ne"
+                        value="{{ $service->title_ne ?? '' }}">
                 </div>
                 <div class="form-group">
                     <label for="image">Image</label>

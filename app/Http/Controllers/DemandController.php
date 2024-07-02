@@ -20,6 +20,7 @@ class DemandController extends Controller
     public function create()
     {
         $countries = Country::all();
+        
         return view('backend.demand.create', compact('countries'));
     }
 
@@ -42,6 +43,7 @@ class DemandController extends Controller
             $demand->to_date = $request->to_date;
             $demand->content = $request->content;
             $demand->vacancy = $request->vacancy;
+            $demand->vacancy_ne = $request->vacancy_ne;
             $demand->image = $newImageName; // Set the image attribute
 
             // Save the demand and check if it's saved successfully
@@ -76,6 +78,7 @@ public function update(Request $request, $id)
         'from_date' => 'required|date',
         'to_date' => 'required|date',
         'vacancy' => 'required',
+        'vacancy_ne' => 'required',
         'content' => 'required',
         'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // adjust validation rules as needed
     ]);
@@ -85,6 +88,7 @@ public function update(Request $request, $id)
     $demand->from_date = $request->from_date;
     $demand->to_date = $request->to_date;
     $demand->vacancy = $request->vacancy;
+    $demand->vacancy_ne = $request->vacancy_ne;
     $demand->content = $request->content;
 
     // Handle image upload

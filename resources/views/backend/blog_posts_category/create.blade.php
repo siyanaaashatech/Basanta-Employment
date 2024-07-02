@@ -19,8 +19,12 @@
         <form method="POST" action="{{ route('admin.blog-posts-categories.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="title">Title:</label>
+                <label for="title">Title (In English):</label>
                 <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="title_ne">Title (In Nepali):</label>
+                <input type="text" class="form-control" id="title_ne" name="title_ne" required>
             </div>
             <div class="form-group">
                 <label for="image">Image:</label>
@@ -28,8 +32,12 @@
                 <div id="imagePreview" class="mt-2"></div>
             </div>
             <div class="form-group">
-                <label for="content">Content:</label>
+                <label for="content">Content (In English):</label>
                 <textarea class="form-control summernote" id="content" name="content" rows="10" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="content_ne">Content (In Nepali):</label>
+                <textarea class="form-control summernote" id="content_ne" name="content_ne" rows="10" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>

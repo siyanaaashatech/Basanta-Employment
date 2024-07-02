@@ -24,6 +24,7 @@ use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VisitorBookController;
 use App\Http\Controllers\PhotoGalleryController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\VideoGalleryController;
 use App\Http\Controllers\StudentDetailController;
 use App\Http\Controllers\UserManagementController;
@@ -94,6 +95,9 @@ Route::prefix('/')->group(function () {
     Route::get('/services', [SingleController::class, 'render_service'])->name('Service');
     Route::get('/singleservice/{slug}', [SingleController::class, 'render_singleService'])->name('SingleService');
     Route::get('/demands', [SingleController::class, 'render_demands'])->name('Demand');
+    Route::get('/apply/{id}', [SingleController::class, 'showApplicationForm'])->name('apply');
+    Route::post('/apply/{id}', [SingleController::class, 'submitApplication'])->name('submitApplication');
+
 
     Route::get('/singledemand/{id}', [SingleController::class, 'render_demand'])->name('SingleDemand');
     Route::get('/gallery', [SingleController::class, 'render_gallery'])->name('Gallery');
@@ -192,3 +196,7 @@ Route::get('/blogs', [FrontViewController::class, 'blogs'])->name('blogs.index')
 Route::get('/news', [FrontViewController::class, 'news'])->name('news.index');
 
 Route::get('/courses/{slug}', 'FrontViewController@viewCourse');
+
+Route::post('/apply/{id}', [ApplicationController::class, 'store'])->name('apply.store');
+Route::get('/admin/applications', [ApplicationController::class, 'adminIndex'])->name('admin.applications.index');
+

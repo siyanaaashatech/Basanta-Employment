@@ -221,6 +221,18 @@
                                     </a>
                                 </li>
                             @endcan
+
+                             {{-- View Application --}}
+                             @can('list_applications')
+                             <li class="nav-item">
+                                 <a class="nav-link {{ Request::segment(2) == 'demands' ? 'active' : '' }}"
+                                     href="{{ route('admin.applications.index') }}">
+                                     <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                         Applications
+                                     </div>
+                                 </a>
+                             </li>
+                         @endcan
                         </ul>
                     </li>
                     </li>

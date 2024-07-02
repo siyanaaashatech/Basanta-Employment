@@ -225,5 +225,23 @@ class SingleController extends Controller
         $demands = Demand::latest()->get();
         return view('frontend.demands', compact('demands'));
     }
+
+    public function showApplicationForm($id)
+    {
+        $demand = Demand::findOrFail($id);
+        return view('frontend.apply', compact('demand'));
+    }
+
     
+   
 }
+
+
+
+
+
+
+
+
+
+

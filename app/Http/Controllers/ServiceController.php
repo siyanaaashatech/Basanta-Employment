@@ -32,6 +32,7 @@ class ServiceController extends Controller
     try {
         $this->validate($request, [
             'title' => 'required|string',
+            'title_ne' => 'required|string',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2536',
             'description' => 'required|string'
         ]);
@@ -45,6 +46,7 @@ class ServiceController extends Controller
 
         $service = new Service;
         $service->title = $request->title;
+        $service->title_ne = $request->title_ne;
         $service->slug = SlugService::createSlug(Service::class, 'slug', $request->title);
         $service->image = $newImageName;
         $service->description = $processedDescription;
@@ -73,6 +75,7 @@ class ServiceController extends Controller
     {
         $validate = $request->validate([
             'title' => 'required|string',
+            'title_ne' => 'required|string',
             'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:1536',
             'description' => 'required|string',
 
@@ -93,6 +96,7 @@ class ServiceController extends Controller
             }
 
             $service->title = $request->title;
+            $service->title_ne= $request->title_ne;
             $service->description = $request->description;
             $service->slug = SlugService::createSlug(Service::class, 'slug', $request->title);
 

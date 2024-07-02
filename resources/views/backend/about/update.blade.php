@@ -53,9 +53,15 @@
                         style="max-width: 300px; max-height:300px" />
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Description</label>
+                    <label for="exampleInputEmail1">Description (In English):</label>
                     <textarea style="width: 100%; min-height: 150px;" type="text" class="form-control" name="description"
                         id="description" placeholder="Add Description">{{ $about->description ?? '' }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Description (In Nepali)</label>
+                    <textarea style="width: 100%; min-height: 150px;" type="text" class="form-control" name="description_ne"
+                        id="description_ne" placeholder="Add Description">{{ $about->description_ne ?? '' }}</textarea>
                 </div>
 
                 <div class="form-group">
