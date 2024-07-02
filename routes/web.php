@@ -45,6 +45,37 @@ use Illuminate\Http\Request;
 |
 */
 
+
+// Route::get('/lang/{lang}',function ($lang){
+//     app()->setLocale($lang);
+//     session()->put('locale',$lang);
+//     return redirect()->route('fronted.index');
+// });
+
+
+Route::get('/lang/{lang}', function ($lang) {
+    // Validate the provided locale
+    $supportedLocales = config('app.available_locales');
+    if (!in_array($lang, array_keys($supportedLocales))) {
+        // Invalid locale provided, handle error (e.g., redirect to default locale)
+        return redirect()->route('fronted.index'); // Redirect to homepage
+    }
+
+    // Set the application locale
+    app()->setLocale($lang);
+
+    // Store the locale in the session
+    session()->put('locale', $lang);
+
+    // Redirect to the homepage or landing page
+    return redirect()->route('fronted.index');
+});
+
+
+
+
+
+
 // Frontend routes
 
 Route::get('/', [FrontViewController::class, 'index'])->name('index');
@@ -62,6 +93,8 @@ Route::prefix('/')->group(function () {
     Route::get('/team', [SingleController::class, 'render_team'])->name('Team');
     Route::get('/services', [SingleController::class, 'render_service'])->name('Service');
     Route::get('/singleservice/{slug}', [SingleController::class, 'render_singleService'])->name('SingleService');
+    Route::get('/demands', [SingleController::class, 'render_demands'])->name('Demand');
+
     Route::get('/singledemand/{id}', [SingleController::class, 'render_demand'])->name('SingleDemand');
     Route::get('/gallery', [SingleController::class, 'render_gallery'])->name('Gallery');
     Route::get('/video', [SingleController::class, 'render_videos'])->name('Video');
@@ -159,9 +192,3 @@ Route::get('/blogs', [FrontViewController::class, 'blogs'])->name('blogs.index')
 Route::get('/news', [FrontViewController::class, 'news'])->name('news.index');
 
 Route::get('/courses/{slug}', 'FrontViewController@viewCourse');
-
-Route::get('/lang/{lang}',function ($lang){
-    app()->setLocale($lang);
-    session()->put('locale',$lang);
-    return redirect()->route('fronted.index');
-});

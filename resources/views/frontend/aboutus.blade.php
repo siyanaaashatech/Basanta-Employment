@@ -20,7 +20,9 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-12 order-2 order-md-3 sample_page_content">
                     {{-- {{ trans($about->content) }} --}}
-                    {!!$about->content!!}
+                    {{-- {{ $strippedText = strip_tags($about->content); }}
+                    {{ $strippedText }} --}}
+                    {{ trans('messages.AboutDescription') }}
                 </div>
 
 

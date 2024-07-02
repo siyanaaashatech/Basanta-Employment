@@ -222,7 +222,7 @@ class SingleController extends Controller
 
     public function render_demands()
     {
-        $demands = Demand::all();
+        $demands = Demand::latest()->get();
         return view('frontend.demands', compact('demands'));
     }
     

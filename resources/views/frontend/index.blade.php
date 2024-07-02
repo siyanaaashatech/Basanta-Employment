@@ -21,7 +21,7 @@
                                 <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block banners-imgs"
                                     width="100%" height="550px" alt="Cover Image" />
                                 <div class="carousel-caption d-md-block w-100">
-                                    <h2>{{ $coverImage->title }}</h2>
+                                    <h2>{{ trans('messages.' . $coverImage->title) }}</h2>
                                 </div>
                             </div>
                         @endforeach
@@ -97,7 +97,10 @@
                       <h2 class="section_title">{{ trans('messages.' . ucfirst($about->title)) }}
                         
                      </h2>
-                      <p>{{ trans('messages.AboutDescription') }}</p>
+                      <p>
+                        {{-- {{ trans('messages.AboutDescription') }} --}}
+                        {{ Str::limit(trans('messages.AboutDescription'), 400) }}
+                    </p>
                       <a href="{{ route('About') }}" class="btn">{{ trans('messages.ReadMore') }}<i
                             class="fa-solid fa-arrow-right mx-2"></i></a>
                   </div>
@@ -164,7 +167,7 @@
 
                 </div>
                 <div class="col-lg-4 pt-4">
-                    <a href="{{ route('Contact')}}" class="btn2">GET IN TOUCH</a>
+                    <a href="{{ route('Contact')}}" class="btn2">{{ trans('messages.GetInTouch') }}</a>
                 </div>
                 
             </div>
@@ -176,24 +179,137 @@
             <h2 class="text-center section_title pb-3">{{ trans('messages.Our') }} {{ trans('messages.' . ucfirst($firstCategory->title)) }}</h2>
             <div class="row">
 
-                @foreach ($posts as $post)
-                    <div class="col-lg-4 col-md-6 col-sm-6 pt-3">
-                        <a href="{{ route('singlePost', ['slug' => $post->slug]) }}">
+                {{-- @foreach ($posts as $post) --}}
+                    <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
+                  
                             <div class="d-flex gap-4 align-items-center">
                                 <div class="guiding-img">
-                                    <img src="{{ asset('uploads/post/' . $post->image) }}">
+                                    <img src="{{ asset('image/transparency.png') }}">
                                 </div>
 
                                 <div>
-                                    <h3 class="pt-3 pb-2">{{ trans('messages.' . $post->title) }}</h3>
+                                    <h3 class="pt-3 pb-2">{{ trans('messages.post_title_1' ) }}</h3>
                                     <h5>
-                                        {{ Str::limit(strip_tags($post->description), 100) }}...
+                                       
+                                        {{ trans('messages.post_1')}}
+
+                                  
                                     </h5>
                                 </div>
                             </div>
-                        </a>
+                      
                     </div>
-                @endforeach
+
+
+                  
+                    <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
+                    
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="guiding-img">
+                                    <img src="{{ asset('image/adptability.png') }}">
+                                </div>
+
+                                <div>
+                                    <h3 class="pt-3 pb-2">{{ trans('messages.post_title_2' ) }}</h3>
+                                    <h5>
+                                       
+                                        {{ trans('messages.post_2')}}
+
+                                      
+                                    </h5>
+                                </div>
+                            </div>
+
+                    </div>
+
+
+                  
+                    <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
+                 
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="guiding-img">
+                                    <img src="{{ asset('image/integrity.png') }}">
+                                </div>
+
+                                <div>
+                                    <h3 class="pt-3 pb-2">{{ trans('messages.post_title_3' ) }}</h3>
+                                    <h5>
+                                       
+                                        {{ trans('messages.post_3')}}
+
+                                       
+                                    </h5>
+                                </div>
+                            </div>
+        
+                    </div>
+
+
+                  
+                  
+                    <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
+       
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="guiding-img">
+                                    <img src="{{ asset('image/clientfocus.png') }}">
+                                </div>
+
+                                <div>
+                                    <h3 class="pt-3 pb-2">{{ trans('messages.post_title_4' ) }}</h3>
+                                    <h5>
+                                       
+                                        {{ trans('messages.post_4')}}
+
+                                       
+                                    </h5>
+                                </div>
+                            </div>
+         
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
+                   
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="guiding-img">
+                                    <img src="{{ asset('image/clientdevelop.png') }}">
+                                </div>
+
+                                <div>
+                                    <h3 class="pt-3 pb-2">{{ trans('messages.post_title_5' ) }}</h3>
+                                    <h5>
+                                       
+                                        {{ trans('messages.post_5')}}
+
+                                       
+                                    </h5>
+                                </div>
+                            </div>
+               
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
+         
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="guiding-img">
+                                    <img src="{{ asset('image/ethical.png') }}">
+                                </div>
+
+                                <div>
+                                    <h3 class="pt-3 pb-2">{{ trans('messages.post_title_6' ) }}</h3>
+                                    <h5>
+                                       
+                                        {{ trans('messages.post_6')}}
+
+                                       
+                                    </h5>
+                                </div>
+                            </div>
+                     
+                    </div>
+
+
+                  
+                {{-- @endforeach --}}
 
             </div>
         </div>
@@ -204,9 +320,9 @@
             <h2 class="text-center section_title pb-3">{{ trans('messages.Testimonials') }}</h2>
             <div class="swiper-wrapper">
                 @foreach ($testimonials as $testimonial)
-                    <div class="swiper-slide  p-5">
+                    <div class="swiper-slide px-5">
                         <a href="{{ route('Testimonial') }}">
-                            <h5 class="text-center pt-3">{{ $testimonial->description }}</h5>
+                            <h5 class="text-center pt-3">"{{ trans('messages.' .( $testimonial->description )) }}"</h5>
                             <div class=" text-center text-img">
                                 <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
                                     alt="Testimonial Image" style="width: 100px;">
@@ -329,7 +445,7 @@
                                 <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}" alt="">
                             </div>
                             {{-- <h3 class="text-center pt-3">{{ trans('messages.' . $blog->title) }}</h3> --}}
-                            <h3 class="text-center pt-3">{{ $blog->title}}</h3>
+                            <h3 class="text-center pt-3">{{ trans('messages.' . $blog->title)}}</h3>
 
                         </div>
                     </a>

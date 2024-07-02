@@ -309,7 +309,7 @@
                         </div>
                         <div class="footer-text">
                             <p>
-                                {{ Str::limit(strip_tags($about->description), 400) }}
+                                {{ Str::limit(trans('messages.AboutDescription'), 300) }}
 
                             </p>
                         </div>
