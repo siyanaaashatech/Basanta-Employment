@@ -22,7 +22,7 @@
                     <i class="fa fa-arrow-left"></i> Back
                 </button>
             </a>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
@@ -31,20 +31,28 @@
         </div>
     </div>
 
-    <form id="quickForm" method="POST" action="{{ route('admin.countries.update', $country->id) }}"
-        enctype="multipart/form-data">
+    <form id="quickForm" method="POST" action="{{ route('admin.countries.update', $country->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card-body">
             <div class="form-group">
-                <label for="name">Name</label><span style="color:red; font-size:large"> *</span>
-                <input style="width:auto;" type="text" name="name" class="form-control" id="name" placeholder="Name"
-                    value="{{ old('name', $country->name) }}" required>
+                <label for="name">Name (In English)</label><span style="color:red; font-size:large"> *</span>
+                <input style="width:auto;" type="text" name="name" class="form-control" id="name" placeholder="Name" value="{{ old('name', $country->name) }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name (In Nepali)</label><span style="color:red; font-size:large"> *</span>
+                <input style="width:auto;" type="text" name="name_ne" class="form-control" id="name_ne" placeholder="Name" value="{{ old('name', $country->name_ne) }}" required>
             </div>
 
             <div>
-                <label for="content">Content:</label>
+                <label for="content">Content (In English):</label>
                 <textarea name="content" id="content" cols="30" rows="10">{{ old('content', $country->content) }}</textarea>
+            </div>
+
+            <div>
+                <label for="content_ne">Content (In Nepali):</label>
+                <textarea name="content_ne" id="content_ne" cols="30" rows="10">{{ old('content_ne', $country->content_ne) }}</textarea>
             </div>
 
             <div class="form-group">
@@ -53,45 +61,33 @@
                 <img id="preview" src="{{ asset('uploads/country/' . $country->image) }}" style="max-width: 300px; max-height: 300px;">
             </div>
         </div>
-        <!-- /.card-body -->
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </form>
 
     <script>
-        $('#content').summernote({
-            placeholder: 'content...',
-            tabsize: 2,
-            height: 300
+        $(document).ready(function() {
+            $('#content').summernote({
+                placeholder: 'Content (In English)...',
+                tabsize: 2,
+                height: 300
+            });
+
+            $('#content_ne').summernote({
+                placeholder: 'Content (In Nepali)...',
+                tabsize: 2,
+                height: 300
+            });
         });
 
-        // Function to preview selected images
-        const previewImages = e => {
-            const files = e.target.files;
-            const imagePreviews = document.getElementById('preview1');
-            imagePreviews.innerHTML = ''; // Clear existing previews
-
-            for (const file of files) {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-
-                reader.onload = () => {
-                    const preview = document.createElement('div');
-                    preview.className = 'col-md-2 mb-3';
-                    preview.innerHTML = `<img src="${reader.result}" alt="Image Preview" class="img-fluid">`;
-                    imagePreviews.appendChild(preview);
-                };
-            }
-        };
-
         function previewImage(event) {
-        var reader = new FileReader();
-        reader.onload = function() {
-            var preview = document.getElementById('preview');
-            preview.src = reader.result;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var preview = document.getElementById('preview');
+                preview.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
         }
-        reader.readAsDataURL(event.target.files[0]);
-    }
     </script>
 @endsection

@@ -455,13 +455,24 @@
                             <div class="E-B-img">
                                 <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}" alt="">
                             </div>
-                            {{-- <h3 class="text-center pt-3">{{ trans('messages.' . $blog->title) }}</h3> --}}
-                            <h3 class="text-center pt-3">{{ trans('messages.' . $blog->title)}}</h3>
-
+                            <h3 class="text-center pt-3">
+                                @if (app()->getLocale() == 'ne')
+                                {{ $blog->title_ne }}
+                                @else
+                                {{ $blog->title }}
+                                @endif
+                            </h3>
+                            <p class="text-center pt-2">
+                                @if (app()->getLocale() == 'ne')
+                                {!! $blog->content_ne !!}
+                                @else
+                                {!! $blog->content !!}
+                                @endif
+                            </p>
                         </div>
                     </a>
                 </div>
-            @endforeach
+                @endforeach
             
             </div>
         </div>

@@ -26,9 +26,21 @@
                     </div>
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ $country->name }}</h5>
+                        <span>
+                            @if (app()->getLocale() == 'ne')
+                                {{ $country->name_ne }}
+                            @else
+                                {{ $country->name }}
+                            @endif
+                        </span>
                         <p class="card-text pb-4">
-                            {{ Str::limit(strip_tags($country->content), 250) }}
+                            <span>
+                                @if (app()->getLocale() == 'ne')
+                                    {{ $country->content_ne }}
+                                @else
+                                    {{ $country->content }}
+                                @endif
+                            </span>
                         </p>
                         <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
                             <button class="btn  text-white">{{ trans('messages.ReadMore') }} &nbsp;&nbsp;<i
@@ -41,8 +53,6 @@
         </div>
     </section>
 @endsection
-
-
 
 
 {{-- 
