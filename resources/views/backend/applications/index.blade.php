@@ -11,16 +11,34 @@
                     <th>Email</th>
                     <th>Address</th>
                     <th>Phone Number</th>
+                    <th>WhatsApp Number</th>
+                    <th>CV</th>
+                    <th>Photo</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($applications as $application)
                     <tr>
-                        <td>{{ ($application->demand)->vacancy }}</td>
+                        <td>{{ $application->demand->vacancy }}</td>
                         <td>{{ $application->name }}</td>
                         <td>{{ $application->email }}</td>
                         <td>{{ $application->address }}</td>
                         <td>{{ $application->phone_no }}</td>
+                        <td>{{ $application->whatsapp_no }}</td>
+                        <td>
+                            @if ($application->cv)
+                                <a href="{{ asset('uploads/cvs/' . $application->cv) }}" target="_blank">View CV</a>
+                            @else
+                                No CV uploaded
+                            @endif
+                        </td>
+                        <td>
+                            @if ($application->photo)
+                                <img src="{{ asset('uploads/photos/' . $application->photo) }}" alt="Applicant Photo" style="max-width: 100px;">
+                            @else
+                                No photo uploaded
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
