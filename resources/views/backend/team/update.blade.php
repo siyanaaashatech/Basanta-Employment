@@ -19,15 +19,27 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label for="name">Name:</label>
+                                <label for="name">Name (in English):</label>
                                 <input type="text" name="name" id="name" class="form-control"
                                     value="{{ $teamMember->name }}" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="position">Position:</label>
+                                <label for="name">Name (In Nepali):</label>
+                                <input type="text" name="name_ne" id="name_ne" class="form-control"
+                                    value="{{ $teamMember->name_ne }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="position">Position (In English):</label>
                                 <input type="text" name="position" id="position" class="form-control"
                                     value="{{ $teamMember->position }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="position_ne">Position (In Nepali):</label>
+                                <input type="text" name="position_ne" id="position_ne" class="form-control"
+                                    value="{{ $teamMember->position_ne }}" required>
                             </div>
 
                             <div class="form-group">

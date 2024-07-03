@@ -42,7 +42,9 @@ class TeamController extends Controller
         // Validate the request data
         $request->validate([
             'name' => 'required',
+            'name_ne' => 'nullable',
             'position' => 'required',
+            'position_ne' => 'nullable',
             'phone_no' => 'required',
             'role' => 'nullable',
             'email' => 'nullable|email',
@@ -62,7 +64,9 @@ class TeamController extends Controller
 
         // Fill the team instance with request data
         $team->name = $request->input('name');
+        $team->name_ne = $request->input('name_ne');
         $team->position = $request->input('position');
+        $team->position_ne = $request->input('position_ne');
         $team->phone_no = $request->input('phone_no');
         $team->role = $request->input('role');
         $team->email = $request->input('email');
@@ -87,7 +91,9 @@ class TeamController extends Controller
         // Validate the request data
         $request->validate([
             'name' => 'required',
+            'name_ne' => 'nullable',
             'position' => 'required',
+            'position_ne' => 'nullable',
             'phone_no' => 'required',
             'role' => 'nullable',
             'email' => 'nullable|email',
@@ -105,7 +111,9 @@ class TeamController extends Controller
         // Update the team member with the new data
         $team->update([
             'name' => $request->input('name'),
+            'name_ne' => $request->input('name_ne'),
             'position' => $request->input('position'),
+            'position_ne' => $request->input('position_ne'),
             'phone_no' => $request->input('phone_no'),
             'role' => $request->input('role'),
             'email' => $request->input('email'),

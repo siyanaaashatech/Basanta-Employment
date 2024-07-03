@@ -12,7 +12,7 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Name (In English)</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -20,6 +20,22 @@
                                         value="{{ old('name') }}" required autofocus>
 
                                     @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="name_ne" class="col-md-4 col-form-label text-md-right">Name (In Nepali)</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text"
+                                        class="form-control @error('name_ne') is-invalid @enderror" name="name_ne"
+                                        value="{{ old('name_ne') }}" required autofocus>
+
+                                    @error('name_ne')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -48,7 +64,7 @@
                             <!-- End of Image Field -->
 
                             <div class="form-group row">
-                                <label for="position" class="col-md-4 col-form-label text-md-right">Position</label>
+                                <label for="position" class="col-md-4 col-form-label text-md-right">Position (In English)</label>
 
                                 <div class="col-md-6">
                                     <input id="position" type="text"
@@ -56,6 +72,22 @@
                                         value="{{ old('position') }}" required>
 
                                     @error('position')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="position_ne" class="col-md-4 col-form-label text-md-right">Position (In Nepali)</label>
+
+                                <div class="col-md-6">
+                                    <input id="position_ne" type="text"
+                                        class="form-control @error('position_ne') is-invalid @enderror" name="position_ne"
+                                        value="{{ old('position_ne') }}" required>
+
+                                    @error('position_ne')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
