@@ -27,16 +27,16 @@
                         <td>{{ $application->whatsapp_no }}</td>
                         <td>
                             @if ($application->cv)
-                                <a href="{{ asset('uploads/cvs/' . $application->cv) }}" target="_blank">View CV</a>
+                                <a href="{{ asset($application->cv) }}" target="_blank">View CV</a>
                             @else
-                                No CV uploaded
+                                Not uploaded
                             @endif
                         </td>
                         <td>
                             @if ($application->photo)
-                                <img src="{{ asset('uploads/photos/' . $application->photo) }}" alt="Applicant Photo" style="max-width: 100px;">
+                                <img src="{{ asset($application->photo) }}" alt="Applicant Photo" style="max-width: 100px;">
                             @else
-                                No photo uploaded
+                                Not uploaded
                             @endif
                         </td>
                     </tr>

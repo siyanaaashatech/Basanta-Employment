@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="mb-4">Apply For{{ $demand->vacancy }}</h1>
+        <h1 class="mb-4">Apply For {{ $demand->vacancy }}</h1>
         <form action="{{ route('apply.store', ['id' => $demand->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
