@@ -25,6 +25,7 @@ class CoverImageController extends Controller
         try {
             $this->validate($request, [
                 'title' => 'required|string',
+                'title_ne' => 'nullable|string',
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
             ]);
 
@@ -33,6 +34,7 @@ class CoverImageController extends Controller
 
             $coverimage = new CoverImage;
             $coverimage->title = $request->title;
+            $coverimage->title_ne= $request->title_ne;
             $coverimage->image = $newImageName;
 
             if ($coverimage->save()) {
@@ -59,6 +61,7 @@ class CoverImageController extends Controller
     {
         $this->validate($request, [
             'title' => 'nullable|string',
+            'title_ne' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
@@ -86,6 +89,7 @@ class CoverImageController extends Controller
         }
 
         $coverImage->title = $request->title ?? $coverImage->title;
+        $coverImage->title_ne = $request->title_ne ?? $coverImage->title_ne;
 
         if ($coverImage->save()) {
             return redirect()->route('admin.cover-images.index')->with('success', 'Success! Cover image updated.');

@@ -38,9 +38,14 @@
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="title">Title</label>
+                    <label for="title">Title (In English)</label>
                     <input type="text" name="title" class="form-control" id="title"
                         value="{{ $coverimage->title ?? '' }}">
+                </div>
+                <div class="form-group">
+                    <label for="title">Title (In Nepali)</label>
+                    <input type="text" name="title_ne" class="form-control" id="title_ne"
+                        value="{{ $coverimage->title_ne ?? '' }}">
                 </div>
                 <div class="form-group">
                     <label for="image">Image</label>

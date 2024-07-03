@@ -21,7 +21,13 @@
                                 <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block banners-imgs"
                                     width="100%" height="550px" alt="Cover Image" />
                                 <div class="carousel-caption d-md-block w-100">
-                                    <h2>{{ trans('messages.' . $coverImage->title) }}</h2>
+                                    <span>
+                                        @if (app()->getLocale() == 'ne')
+                                        {{ $coverImage->title_ne }}
+                                    @else
+                                        {{ $coverImage->title }}
+                                    @endif
+                                    </span>
                                 </div>
                             </div>
                         @endforeach
@@ -65,8 +71,11 @@
                                     {{ $demand->from_date }} - {{ $demand->to_date }} <br />
                                     {{ trans('messages.Vacancy') }}:
                                     <span>
+                                        @if (app()->getLocale() == 'ne')
+                                        {{ $demand->vacancy_ne }}
+                                    @else
                                         {{ $demand->vacancy }}
-
+                                    @endif
                                     </span>
                                 </h6>
                             </div>
@@ -99,7 +108,9 @@
                      </h2>
                       <p>
                         {{-- {{ trans('messages.AboutDescription') }} --}}
-                        {{ Str::limit(trans('messages.AboutDescription'), 400) }}
+                        <div class="col-lg-12 col-md-12 col-sm-12 order-2 order-md-3 sample_page_content">
+                            {!! app()->getLocale() === 'ne' ? $about->description_ne : $about->description !!}
+                        </div>
                     </p>
                       <a href="{{ route('About') }}" class="btn">{{ trans('messages.ReadMore') }}<i
                             class="fa-solid fa-arrow-right mx-2"></i></a>

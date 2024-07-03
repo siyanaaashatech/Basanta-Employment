@@ -48,7 +48,7 @@ return [
     'Post-Employment Support'=>'पोस्ट-रोजगार समर्थन',
     'Visa and Documentation Assistance'=>'भिसा र कागजात सहायता',
     'Recruitment and Staffing' => 'भर्ती तथा स्टाफ',
-    
+
 
     'Recruitment and Staffing' => 'कर्मचारी खोजी',
     'Vacancy' => 'भ्याकेन्सी',

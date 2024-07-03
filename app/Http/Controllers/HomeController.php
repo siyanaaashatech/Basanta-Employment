@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CoverImage;
+use App\Models\Demand;
+use App\Models\About;
+use App\Models\Service;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +28,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Fetch cover images
+        $coverImages = CoverImage::all();
+
+        // Fetch demands
+        $demands = Demand::all();
+
+        // Fetch about section
+        $about = About::first();
+
+        // Fetch services
+        $services = Service::all();
+
+        // Fetch testimonials
+        $testimonials = Testimonial::all();
+
+       
+
+        // Pass data to view
+        return view('home', compact('coverImages', 'demands', 'about', 'services', 'testimonials'));
     }
 }
