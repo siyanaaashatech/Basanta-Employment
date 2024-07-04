@@ -34,7 +34,8 @@ class ServiceController extends Controller
             'title' => 'required|string',
             'title_ne' => 'required|string',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2536',
-            'description' => 'required|string'
+            'description' => 'required|string',
+            'description_ne' => 'nullable|string'
         ]);
 
         $newImageName = time() . '-' . $request->image->getClientOriginalName();
@@ -43,6 +44,7 @@ class ServiceController extends Controller
         // Process the Summernote content
         $summernoteContent = new SummernoteContent();
         $processedDescription = $summernoteContent->processContent($request->description);
+        $processedDescription = $summernoteContent->processContent($request->description_ne);
 
         $service = new Service;
         $service->title = $request->title;
@@ -50,6 +52,7 @@ class ServiceController extends Controller
         $service->slug = SlugService::createSlug(Service::class, 'slug', $request->title);
         $service->image = $newImageName;
         $service->description = $processedDescription;
+        $service->description_ne = $processedDescription;
 
         if ($service->save()) {
             return redirect()->route('admin.services.index')->with('success', 'Success! Service created.');
@@ -78,6 +81,7 @@ class ServiceController extends Controller
             'title_ne' => 'required|string',
             'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:1536',
             'description' => 'required|string',
+            'description_ne' => 'nullable|string',
 
         ]);
 
@@ -98,6 +102,7 @@ class ServiceController extends Controller
             $service->title = $request->title;
             $service->title_ne= $request->title_ne;
             $service->description = $request->description;
+            $service->description_ne = $request->description_ne;
             $service->slug = SlugService::createSlug(Service::class, 'slug', $request->title);
 
             // $project->type = $request->type;

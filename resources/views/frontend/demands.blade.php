@@ -21,7 +21,11 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">{{ trans('messages.' . $demand->country->name) }}</h5>
+                                <h5 class="card-title">@if (app()->getLocale() == 'ne')
+                                    {{ $demand->country->name_ne}}
+                                @else
+                                    {{ $demand->country->name }}
+                                @endif</h5>
                                 <p class="card-text">
                                     {{ $demand->from_date }} - {{ $demand->to_date }} <br />
                                     {{ trans('messages.Vacancy') }}:
@@ -32,7 +36,11 @@
                                             {{ $demand->vacancy }}
                                         @endif
                                     </span>
-                                    {!! $demand->content !!}
+                                    @if (app()->getLocale() == 'ne')
+                                        {!! $demand->content_ne !!}
+                                    @else
+                                        {!! $demand->content !!}
+                                    @endif
                                 </p>
                             </div>
                         </a>

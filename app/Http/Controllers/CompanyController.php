@@ -51,6 +51,7 @@ class CompanyController extends Controller
         $company = new Company;
         $company ->logo = $newLogo;
         $company ->title = $request->title;
+        $company ->title_ne = $request->title_ne;
         $company ->address = $request->address;
         $company ->country_id = $request->country_id;
         $company ->slug = $slug; // Assign generated slug
@@ -86,6 +87,7 @@ class CompanyController extends Controller
         $this->validate($request, [
             'logo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:1536',
             'title' => 'required|string|max:255',
+            'title_ne' => 'nullable|string|max:255',
             'address' => 'required|string|max:255',
             'country_id' => 'required|exists:countries,id',
             'phone_no' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/',
@@ -106,6 +108,7 @@ class CompanyController extends Controller
                 $company->logo = $newLogo;
             }
             $company->title = $request->title;
+            $company->title_ne = $request->title_ne;
             $company->address = $request->address;
             $company->country_id = $request->country_id;
             $company->phone_no = $request->phone_no;

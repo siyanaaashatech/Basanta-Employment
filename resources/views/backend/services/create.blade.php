@@ -60,11 +60,16 @@
 
 
             <div>
-                <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
+                <label for="description">Description (In English)</label><span style="color:red; font-size:large"> *</span>
                 <textarea style="max-width: 100%; min-height: 200px;" class="form-control summernote" name="description" id="summernote"
                     placeholder="Add Description">{{ old('description') }}</textarea>
             </div>
 
+            <div>
+                <label for="description">Description (In Nepali)</label>
+                <textarea style="max-width: 100%; min-height: 200px;" class="form-control summernote" name="description_ne" id="summernote"
+                    placeholder="Add Description">{{ old('description_ne') }}</textarea>
+            </div>
 
         </div>
         <!-- /.card-body -->

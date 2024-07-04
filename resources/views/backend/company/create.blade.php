@@ -45,8 +45,12 @@
                 <img id="preview" style="max-width: 150px; max-height:150px; margin-top:10px;">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Company Title</label>
+                <label for="exampleInputEmail1">Company Title (In English)</label>
                 <input type="text" name="title" class="form-control" placeholder="Company Title" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Company Title (In Nepali)</label>
+                <input type="text" name="title_ne" class="form-control" placeholder="Company Title" required>
             </div>
             <div class="form-group">
                 <label for="address">Address</label>

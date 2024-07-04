@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTitleNeToServicesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddTitleNeToServicesTable extends Migration
      */
     public function up()
     {
-        Schema::table('services', function (Blueprint $table) {
-            $table->string('title_ne')->nullable()->after('title'); 
-            $table->string('description_ne')->nullable()->after('description'); 
+        Schema::table('companies', function (Blueprint $table) {
+            $table->string('title_ne')->nullable()->after('title');
         });
     }
 
@@ -26,10 +25,8 @@ class AddTitleNeToServicesTable extends Migration
      */
     public function down()
     {
-        Schema::table('services', function (Blueprint $table) {
+        Schema::table('companies', function (Blueprint $table) {
             $table->dropColumn('title_ne');
-            $table->dropColumn('description_ne');
         });
     }
-}
-
+};

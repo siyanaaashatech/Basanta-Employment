@@ -50,9 +50,14 @@
                         style="max-width: 150px; max-height:150px; margin-top:10px;">
                 </div>
                 <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control" id="title" placeholder="University Title"
+                    <label for="title">Title (In English)</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Company Title"
                         value="{{ $companies->title }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="title">Title (In Nepali)</label>
+                    <input type="text" name="title_ne" class="form-control" id="title_ne" placeholder="Company Title"
+                        value="{{ $companies->title_ne }}" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>

@@ -28,7 +28,11 @@
                                     @endif
                                 </h5>
                                 <p class="card-text">
-                                    {{ Str::limit(strip_tags($service->description), 250) }}
+                                    @if (app()->getLocale() == 'ne')
+                                        {!! $service->description_ne !!}
+                                    @else
+                                        {!! $service->description !!}
+                                    @endif
                                 </p>
                             </div>
                         </a>
