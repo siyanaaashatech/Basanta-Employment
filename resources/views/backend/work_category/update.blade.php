@@ -37,9 +37,14 @@
                 @method('PUT')
                 <input type="hidden" name="id" value="{{ $work_categories->id }}">
                 <div class="form-group">
-                    <label for="title">Title</label>
+                    <label for="title">Title (In English)</label>
                     <input type="text" name="title" class="form-control" id="title"
                         value="{{ $work_categories->title ?? '' }}">
+                </div>
+                <div class="form-group">
+                    <label for="title">Title (In Nepali)</label>
+                    <input type="text" name="title_ne" class="form-control" id="title_ne"
+                        value="{{ $work_categories->title_ne ?? '' }}">
                 </div>
                 <div class="form-group">
                     <label for="image">Image</label>
@@ -48,9 +53,14 @@
                         style="max-width: 300px; max-height:300px" />
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Description</label>
-                    <textarea style="width: 100%; min-height: 150px;;" type="text" class="form-control" name="description"
+                    <label for="exampleInputEmail1">Description (In English)</label>
+                    <textarea style="width: 100%; min-height: 150px;" type="text" class="form-control" name="description"
                         id="description" placeholder="Add Description" value="{{ old('description') }}">{{ $work_categories->description ?? '' }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Description (In Nepali)</label>
+                    <textarea style="width: 100%; min-height: 150px;" type="text" class="form-control" name="description_ne"
+                        id="description_ne" placeholder="Add Description" value="{{ old('description_ne') }}">{{ $work_categories->description_ne ?? '' }}</textarea>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -74,6 +84,12 @@
         $(document).ready(function() {
             $('#description').summernote({
                 placeholder: 'Add Description', // Placeholder text
+                tabsize: 2, // Tab size
+                height: 300 // Height of the editor
+            });
+
+            $('#description_ne').summernote({
+                placeholder: 'Add Description in Nepali', // Placeholder text
                 tabsize: 2, // Tab size
                 height: 300 // Height of the editor
             });

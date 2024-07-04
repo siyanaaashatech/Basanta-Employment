@@ -4,27 +4,18 @@
     <div class="background">
         <h1 class="page_title">{{ __('Countries') }}</h1>
     </div>
-
-   
-
-
-
     <section class="multi_post">
         <div class="container">
             <div class="multi_poster row justify-content-center">
-
                 @foreach ($countries as $country)
                 <div class="card col-lg-4">
                     <div class="multi_post_image">
                         @if ($country->image)
-                            <img src="{{ asset('uploads/country/' . $country->image) }}"
-                                class="card-img-top" alt="Services Image">
+                            <img src="{{ asset('uploads/country/' . $country->image) }}" class="card-img-top" alt="Country Image">
                         @else
-                            <img src="https://plus.unsplash.com/premium_photo-1705091309202-5838aeedd653?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
-                                class="card-img-top" alt="Services Image">
+                            <img src="https://plus.unsplash.com/premium_photo-1705091309202-5838aeedd653?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8" class="card-img-top" alt="Country Image">
                         @endif
                     </div>
-
                     <div class="card-body">
                         <span>
                             @if (app()->getLocale() == 'ne')
@@ -43,29 +34,12 @@
                             </span>
                         </p>
                         <a href="{{ route('singleCountry', ['slug' => $country->slug]) }}">
-                            <button class="btn  text-white">{{ trans('messages.ReadMore') }} &nbsp;&nbsp;<i
-                                class="fa-solid fa-arrow-right"></i></button>                        </a>
+                            <button class="btn text-white">{{ trans('messages.ReadMore') }} &nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+                        </a>
                     </div>
                 </div>
                 @endforeach
-
             </div>
         </div>
     </section>
 @endsection
-
-
-{{-- 
-<div class="container">
-    <div class="projcard-container">
-        @foreach ($newsPosts as $post)
-            <div class="projcard projcard-blue">
-                <div class="projcard-innerbox row">
-                    <h2>{{ $post->title }}</h2>
-                    <p>{{ $post->content }}</p>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    {{ $newsPosts->links() }}
-</div> --}}

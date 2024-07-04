@@ -32,13 +32,16 @@ class WorkCategoryController extends Controller
         try {
             $this->validate($request, [
                 'title' => 'required|string',
+                'title_ne' => 'nullable|string',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
                 'description' => 'required|string',
+                'description_ne' => 'nullable|string',
 
             ]);
             // Process Summernote content using the SummernoteContent model
             $summernoteContent = new SummernoteContent();
             $processedDescription = $summernoteContent->processContent($request->description);
+            $processedDescription = $summernoteContent->processContent($request->description_ne);
 
 
             $newImageName = time() . '-' . $request->image->getClientOriginalName();
@@ -46,7 +49,9 @@ class WorkCategoryController extends Controller
 
             $about = new WorkCategory;
             $about->title = $request->title;
+            $about->title_ne= $request->title_ne;
             $about->description = $processedDescription;
+            $about->description_ne = $processedDescription;
             $about->slug = SlugService::createSlug(WorkCategory::class, 'slug', $request->title);
             $about->image = $newImageName;
 
@@ -70,8 +75,10 @@ class WorkCategoryController extends Controller
         try {
             $this->validate($request, [
                 'title' => 'required|string',
+                'title_ne' => 'nullable|string',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
                 'description' => 'required|string',
+                'description_ne' => 'nullable|string',
             ]);
 
             $work_category = WorkCategory::find($id);
@@ -89,9 +96,12 @@ class WorkCategoryController extends Controller
             $summernoteContent = new SummernoteContent();
             $processedDescription = $summernoteContent->processContent($request->description);
             $work_category->description = $processedDescription; 
+            $work_category->description_ne = $processedDescription; 
 
             $work_category->title = $request->title;
+            $work_category->title_ne = $request->title;
             $work_category->description = $request->description;
+            $work_category->description_ne = $request->description_ne;
 
             if ($work_category->save()) {
                 return redirect()->route('admin.work_categories.index')->with('success', 'Success! Work Category updated.');

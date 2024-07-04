@@ -10,11 +10,7 @@ return [
     'AboutUs' => 'About Us',
     'OurTeams' => 'Our Teams' ,
     'Services' => 'Our Services',
-    'Work in UAE' => 'Work in UAE',
-    'Work in Qatar' => 'Work in Qatar',
-    'Work in Malaysia' => 'Work in Malaysia',
-    'Work in Kuwait' => 'Work in Kuwait',
-    'Work in Europe' => 'Work in Europe',
+    
     'PhotoGallery' => 'Photo Gallery',
     'Demands' => 'Demands',
     'Apply' => 'Apply',
@@ -56,11 +52,7 @@ return [
     'Opportunities In Nepal Vs Abroad'  => 'Opportunities In Nepal Vs Abroad',
     'Basanta Employment' => 'Basanta Employment',
 
-     'WorkCategoryTitle' =>  [
-        'Construction' => 'Construction',
-        'Cleaner' => 'Cleaner',
-        'Hospitality' => 'Hospitality',
-     ]
+     
 
 
 

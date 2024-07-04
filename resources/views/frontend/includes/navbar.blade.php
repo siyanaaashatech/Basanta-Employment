@@ -70,7 +70,11 @@
                                 <li>
                                     <a class="dropdown-item"
                                         href="{{ route('singleCountry', ['slug' => ucfirst($country->slug)]) }}">
-                                        {{ trans('messages.' . ucfirst($country->name)) }}
+                                        @if (app()->getLocale() == 'ne')
+                                        {{ $country->name_ne }}
+                                    @else
+                                        {{ $country->name }}
+                                    @endif
                                     </a>
                                 </li>
                             @endforeach
@@ -88,7 +92,11 @@
                             @foreach ($workcategories as $workcategory)
                                 <li><a class="dropdown-item"
                                         href="{{ route('singleworkCategory', ['slug' => $workcategory->slug]) }}">
-                                        {{ trans('messages.WorkCategoryTitle.' . $workcategory->title) }}
+                                        @if (app()->getLocale() == 'ne')
+                              {{ $workcategory->title_ne }}
+                               @else
+                             {{ $workcategory->title }}
+                        @endif
                                     </a></li>
                             @endforeach
                         </ul>

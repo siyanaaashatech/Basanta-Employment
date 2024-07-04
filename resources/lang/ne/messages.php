@@ -12,11 +12,7 @@ return [
     'OurDemands' => 'हाम्रो डिमान्डहरू',
     'Demand' => 'डिमान्ड',
     'Services' => 'सेवाहरू',
-    'Work in UAE' => 'युएइमा रोजगार',
-    'Work in Qatar' => 'कतारमा रोजगार',
-    'Work in Malaysia' => 'मलेसियामा रोजगार',
-    'Work in Kuwait' => 'कुवेतमा रोजगार',
-    'Work in Europe' => 'युरोपमा रोजगार',
+    
     'Sample' => 'नमूना',
     'PhotoGallery' => 'फोटो ग्यालेरी',
     'VideoGallery' => 'भिडियो ग्यालेरी',
@@ -64,14 +60,7 @@ return [
     'Business Process Outsourcing' => 'व्यापार प्रक्रिया आउटसोर्सिंग',
 
 
-    'WorkCategoryTitle' => [
-        'Construction' => 'निर्माण',
-        'Cleaner' => 'क्लीनर',
-        'Hospitality' => 'आतिथ्य',
-        'Security Personnel'=> 'सुरक्षा गार्ड',
-        'Health Workers'=>'स्वास्थ्यकर्मी',
-        'Supermarket' =>'सुपरमार्केट'
-    ],
+    
     // Add more translations as needed...
     'RelatedPosts' => 'सम्बन्धित पोस्ट',
     'Demands'=>'रोजगारीका लागी माग',

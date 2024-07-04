@@ -33,8 +33,13 @@
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Title</label>
+                <label for="exampleInputEmail1">Title (In English)</label>
                 <input type="text" name="title" class="form-control" placeholder="Title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title (In Nepali)</label>
+                <input type="text" name="title_ne" class="form-control" placeholder="Title" required>
             </div>
 
             <div class="form-group">
@@ -45,10 +50,17 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
+                <label for="description">Description (In English)</label><span style="color:red; font-size:large"> *</span>
 
                 <textarea style="max-width: 100%; min-height: 100px;" type="text" class="form-control summernote" name="description"
                     id="description" placeholder="Add Description" value="{{ old('description') }}"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description (In Nepali)</label>
+
+                <textarea style="max-width: 100%; min-height: 100px;" type="text" class="form-control summernote" name="description_ne"
+                    id="description_ne" placeholder="Add Description" value="{{ old('description_ne') }}"></textarea>
             </div>
 
         </div>
