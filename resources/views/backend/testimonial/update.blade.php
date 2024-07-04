@@ -40,9 +40,14 @@
         @method('PUT')
         <div class="card-body">
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Name (In English)</label>
                 <input type="text" name="name" class="form-control" id="name" placeholder="Enter name"
                     value="{{ $testimonials->name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Name (In Nepali)</label>
+                <input type="text" name="name_ne" class="form-control" id="name_ne" placeholder="Enter name"
+                    value="{{ $testimonials->name_ne }}" required>
             </div>
             <div class="form-group">
                 <label for="image">Image</label>
@@ -73,8 +78,12 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
+                <label for="description">Description (In English)</label>
                 <textarea class="form-control" name="description" id="description" rows="3" required>{{ $testimonials->description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="description_ne">Description (In Nepali)</label>
+                <textarea class="form-control" name="description_ne" id="description_ne" rows="3" required>{{ $testimonials->description_ne}}</textarea>
             </div>
         </div>
         <!-- /.card-body -->

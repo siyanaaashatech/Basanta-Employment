@@ -28,10 +28,12 @@ class TestimonialController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
+            'name_ne' => 'nullable|string|max:255',
             'company_id' => 'required|exists:companies,id',
             'work_category_id' => 'required|exists:work_categories,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048',
             'description' => 'required|string',
+            'description_ne' => 'nullable|string',
         ]);
 
         try {
@@ -40,10 +42,12 @@ class TestimonialController extends Controller
 
             $testimonial = new Testimonial();
             $testimonial->name = $request->name;
-             $testimonial->company_id = $request->company_id;
+            $testimonial->name_ne = $request->name_ne;
+            $testimonial->company_id = $request->company_id;
             $testimonial->work_category_id = $request->work_category_id;
             $testimonial->image = $newImageName;
             $testimonial->description = $request->description;
+            $testimonial->description_ne = $request->description_ne;
 
             $testimonial->save();
             return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial created successfully.');
@@ -75,10 +79,12 @@ class TestimonialController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
+            'name_ne' => 'nullable|string|max:255',
             'company_id' => 'required|exists:companies,id',
             'work_category_id' => 'required|exists:work_categories,id',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,avif,webp|nullable|max:2048',
             'description' => 'required|string',
+            'description_ne' => 'nullable|string',
         ]);
 
         try {
@@ -102,9 +108,11 @@ class TestimonialController extends Controller
 
             // Update the testimonial with the new data
             $testimonial->name = $request->name;
+            $testimonial->name_ne = $request->name_ne;
             $testimonial->company_id = $request->company_id;
             $testimonial->work_category_id = $request->work_category_id;
             $testimonial->description = $request->description;
+            $testimonial->description_ne = $request->description_ne;
             $testimonial->save();
 
             return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial updated successfully.');

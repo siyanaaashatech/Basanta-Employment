@@ -1,9 +1,7 @@
 @extends('backend.layouts.master')
 
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
-
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -16,15 +14,23 @@
         </div>
     @endif
 
-
-
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
-                    Back</button></a>
-        </div><!-- /.col -->
+            <a href="{{ url('admin') }}">
+                <button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</button>
+            </a>
+        </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
@@ -33,14 +39,16 @@
         </div>
     </div>
 
-
-
     <form id="quickForm" method="POST" action="{{ route('admin.testimonials.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Name (In English)</label>
                 <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Name (In Nepali)</label>
+                <input type="text" name="name_ne" class="form-control" id="name_ne" placeholder="Enter name" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Image</label>
@@ -62,13 +70,17 @@
                 <select name="work_category_id" class="form-control" id="work_category_id" required>
                     <option value="">Select Work Category</option>
                     @foreach ($work_categories as $work_category)
-                    <option value="{{ $work_category->id }}">{{ $work_category->title }}</option>
-                @endforeach
+                        <option value="{{ $work_category->id }}">{{ $work_category->title }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
+                <label for="description">Description (In English)</label>
                 <textarea class="form-control" name="description" id="description" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="description">Description (In Nepali)</label>
+                <textarea class="form-control" name="description_ne" id="description_ne" rows="3" required></textarea>
             </div>
         </div>
         <!-- /.card-body -->
