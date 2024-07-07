@@ -41,15 +41,27 @@
                 <div class="card-body">
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Image Title</label>
+                        <label for="exampleInputEmail1">Image Title (In English)</label>
                         <input type="text" name="title" class="form-control" placeholder="Title"
                             value="{{ $gallery->title }}" required>
                     </div>
 
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Image Title (In Neplai) </label>
+                        <input type="text" name="title_ne" class="form-control" placeholder="Title"
+                            value="{{ $gallery->title_ne }}" required>
+                    </div>
+
                     <div>
-                        <label for="content">Description</label><span style="color:red; font-size:large">*</span>
+                        <label for="content">Description (In English)</label><span style="color:red; font-size:large">*</span>
                         <textarea style="max-width: 100%;min-height: 60px;" type="text" class="form-control" id="img_desc" name="img_desc"
                             placeholder="Add Description">{{ $gallery->img_desc }}</textarea>
+                    </div>
+
+                    <div>
+                        <label for="content">Description (In Nepali)</label>
+                        <textarea style="max-width: 100%;min-height: 60px;" type="text" class="form-control" id="img_desc_ne" name="img_desc_ne"
+                            placeholder="Add Description">{{ $gallery->img_desc_ne }}</textarea>
                     </div>
 
                     <div class="form-group">

@@ -45,7 +45,7 @@
 
                             <div class="form-group">
                                 <label for="vacancy">Vacancy (In Nepali)</label>
-                                <input type="text" name="vacancy_ne" id="vacancy" class="form-control" value="{{ $demand->vacancy_ne }}">
+                                <input type="text" name="vacancy_ne" id="vacancy_ne" class="form-control" value="{{ $demand->vacancy_ne }}">
                             </div>
 
                             <div class="form-group">
@@ -56,8 +56,13 @@
                             <div id="imagePreview" class="mt-2"></div>
 
                             <div class="form-group">
-                                <label for="content">Content:</label>
+                                <label for="content">Content (In English):</label>
                                 <textarea class="form-control summernote" id="content" name="content" rows="5" required>{{ $demand->content }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content_ne">Content (In Nepali):</label>
+                                <textarea class="form-control summernote" id="content_ne" name="content_ne" rows="5" required>{{ $demand->content_ne }}</textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Update</button>
@@ -69,13 +74,15 @@
     </div>
 
     <script>
-        $('#content').summernote({
-            placeholder: 'Enter message here...',
-            tabsize: 2,
-            height: 100
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                placeholder: 'Enter message here...',
+                tabsize: 2,
+                height: 100
+            });
         });
-        
-       const previewImage = e => {
+
+        const previewImage = e => {
             const reader = new FileReader();
             reader.readAsDataURL(e.target.files[0]);
             reader.onload = () => {

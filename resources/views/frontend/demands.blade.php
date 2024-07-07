@@ -37,9 +37,9 @@
                                         @endif
                                     </span>
                                     @if (app()->getLocale() == 'ne')
-                                        {!! $demand->content_ne !!}
+                                       <p> {!! $demand->content_ne !!} </p>
                                     @else
-                                        {!! $demand->content !!}
+                                        <p> {!! $demand->content !!} </p>
                                     @endif
                                 </p>
                             </div>

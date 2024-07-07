@@ -42,6 +42,7 @@ class DemandController extends Controller
             $demand->from_date = $request->from_date;
             $demand->to_date = $request->to_date;
             $demand->content = $request->content;
+            $demand->content_ne = $request->content_ne;
             $demand->vacancy = $request->vacancy;
             $demand->vacancy_ne = $request->vacancy_ne;
             $demand->image = $newImageName; // Set the image attribute
@@ -73,36 +74,45 @@ public function edit($id)
 
 public function update(Request $request, $id)
 {
+    // Validate the request data
     $request->validate([
         'country_id' => 'required',
         'from_date' => 'required|date',
         'to_date' => 'required|date',
         'vacancy' => 'required',
         'vacancy_ne' => 'required',
-        'content' => 'required',
-        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // adjust validation rules as needed
+        'content' => 'required|string',
+        'content_ne' => 'nullable|string',
+        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
     ]);
 
+    // Find the Demand instance by its ID
     $demand = Demand::findOrFail($id);
-    $demand->country_id = $request->country_id;
-    $demand->from_date = $request->from_date;
-    $demand->to_date = $request->to_date;
-    $demand->vacancy = $request->vacancy;
-    $demand->vacancy_ne = $request->vacancy_ne;
-    $demand->content = $request->content;
 
-    // Handle image upload
+    // Assign the validated request data to the Demand instance
+    $demand->country_id = $request->input('country_id');
+    $demand->from_date = $request->input('from_date');
+    $demand->to_date = $request->input('to_date');
+    $demand->vacancy = $request->input('vacancy');
+    $demand->vacancy_ne = $request->input('vacancy_ne');
+    $demand->content = $request->input('content');
+    $demand->content_ne = $request->input('content_ne') ?? '';
+
+    // Handle the image upload if a new image is provided
     if ($request->hasFile('image')) {
         $image = $request->file('image');
-        $imageName = time().'.'.$image->getClientOriginalExtension();
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('uploads/demands'), $imageName);
         $demand->image = $imageName;
     }
 
+    // Save the updated Demand instance
     $demand->save();
 
+    // Redirect back to the index with a success message
     return redirect()->route('admin.demands.index')->with('success', 'Demand updated successfully.');
 }
+
     public function destroy(Demand $demand)
     {
         $demand->delete();

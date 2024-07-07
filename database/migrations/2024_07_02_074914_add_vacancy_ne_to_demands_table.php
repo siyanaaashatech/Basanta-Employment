@@ -14,7 +14,8 @@ class AddVacancyNeToDemandsTable extends Migration
     public function up()
     {
         Schema::table('demands', function (Blueprint $table) {
-            $table->string('vacancy_ne')->nullable()->after('vacancy'); 
+            $table->string('vacancy_ne')->nullable()->after('vacancy');
+            $table->string('content_ne')->nullable()->after('content'); 
         });
     }
 
@@ -27,6 +28,7 @@ class AddVacancyNeToDemandsTable extends Migration
     {
         Schema::table('demands', function (Blueprint $table) {
             $table->dropColumn('vacancy_ne');
+            $table->dropColumn('content_ne');
         });
     }
 }

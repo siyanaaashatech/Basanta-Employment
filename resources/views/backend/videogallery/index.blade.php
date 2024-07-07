@@ -49,8 +49,8 @@
         </thead>
         <tbody>
             @php
-            $serialNumber = ($videos->currentPage() - 1) * $videos->perPage() + 1;
-        @endphp
+                $serialNumber = ($videos->currentPage() - 1) * $videos->perPage() + 1;
+            @endphp
             @foreach ($videos as $video)
                 <tr>
                     <td width="5%">{{ $serialNumber }}</td>
@@ -74,9 +74,8 @@
                     </td>
                 </tr>
                 @php
-        $serialNumber++;
-    @endphp
-
+                    $serialNumber++;
+                @endphp
             @endforeach
         </tbody>
     </table>
@@ -84,59 +83,64 @@
     <!-- Edit Video Modal -->
     <div class="modal fade" id="editVideoModal" tabindex="-1" role="dialog" aria-labelledby="editVideoModalLabel"
         aria-hidden="true">
-        <!-- Modal content for editing video -->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
     </div>
 
     <!-- Delete Video Modal -->
     <div class="modal fade" id="deleteVideoModal" tabindex="-1" role="dialog" aria-labelledby="deleteVideoModalLabel"
         aria-hidden="true">
-        <!-- Modal content for deleting video -->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
     </div>
 
     <!-- JavaScript functions for modals -->
     <script>
-        // Function to open edit video modal and set action URL
         function editVideo(id) {
             var url = "{{ route('admin.video-galleries.edit', ':id') }}";
             url = url.replace(':id', id);
-            $('#editVideoModal').load(url, function() {
-                $(this).modal('show');
+            $('#editVideoModal .modal-content').load(url, function() {
+                $('#editVideoModal').modal('show');
             });
         }
 
-        // Function to open delete video modal and set action URL
         function deleteVideo(id) {
             var url = "{{ route('admin.video-galleries.destroy', ':id') }}";
             url = url.replace(':id', id);
-            $('#deleteVideoModal').load(url, function() {
-                $(this).modal('show');
+            $('#deleteVideoModal .modal-content').load(url, function() {
+                $('#deleteVideoModal').modal('show');
             });
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <!-- Pagination -->
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        @if ($videos->onFirstPage())
-            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
-        @else
-            <li class="page-item"><a class="page-link" href="{{ $videos->previousPageUrl() }}" rel="prev">&laquo;</a></li>
-        @endif
 
-        @foreach ($videos->getUrlRange(1, $videos->lastPage()) as $page => $url)
-            @if ($page == $videos->currentPage())
-                <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if ($videos->onFirstPage())
+                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
             @else
-                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                <li class="page-item"><a class="page-link" href="{{ $videos->previousPageUrl() }}" rel="prev">&laquo;</a></li>
             @endif
-        @endforeach
 
-        @if ($videos->hasMorePages())
-            <li class="page-item"><a class="page-link" href="{{ $videos->nextPageUrl() }}" rel="next">&raquo;</a></li>
-        @else
-            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
-        @endif
-    </ul>
-</nav>
+            @foreach ($videos->getUrlRange(1, $videos->lastPage()) as $page => $url)
+                @if ($page == $videos->currentPage())
+                    <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                @endif
+            @endforeach
 
+            @if ($videos->hasMorePages())
+                <li class="page-item"><a class="page-link" href="{{ $videos->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            @else
+                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+            @endif
+        </ul>
+    </nav>
 @endsection

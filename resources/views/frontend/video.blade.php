@@ -22,7 +22,13 @@
                             <div class="card-body text-center">
 
                                 <span class="vid_desc">
-                                    {{ $video->vid_desc }}
+                                    <span>
+                                        @if (app()->getLocale() == 'ne')
+                                            {{ $video->title_ne }}
+                                        @else
+                                            {{ $video->title }}
+                                        @endif
+                                    </span>
                                 </span><br>
 
 

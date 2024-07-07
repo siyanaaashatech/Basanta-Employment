@@ -62,10 +62,14 @@
                            
 
                             <div class="form-group">
-                                <label for="content">Content</label>
+                                <label for="content">Content (In English)</label>
                                 <textarea name="content" id="content" class="form-control summernote" rows="5"></textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label for="content">Content (In Nepali)</label>
+                                <textarea name="content_ne" id="content_ne" class="form-control summernote" rows="5"></textarea>
+                            </div>
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Create</button>

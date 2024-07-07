@@ -27,7 +27,9 @@ class PhotoGalleryController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string',
+            'title_ne' => 'nullable|string',
             'img_desc' => 'nullable|string',
+            'img_desc_ne' => 'nullable|string',
             'img' => 'required|array', // Ensure at least one image is uploaded
             'img.*' => 'required|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048' // Maximum file size of 2 MB
         ]);
@@ -35,7 +37,9 @@ class PhotoGalleryController extends Controller
         try {
             $gallery = new PhotoGallery;
             $gallery->title = $request->title;
+            $gallery->title_ne = $request->title_ne;
             $gallery->img_desc = $request->img_desc;
+            $gallery->img_desc_ne = $request->img_desc_ne;
             $gallery->slug = SlugService::createSlug(PhotoGallery::class, 'slug', $request->title);
             
             // Save each uploaded image
@@ -65,7 +69,9 @@ class PhotoGalleryController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string',
+            'title_ne' => 'nullable|string',
             'img_desc' => 'nullable|string',
+            'img_desc_ne' => 'nullable|string',
             'img' => 'nullable|array', // Allow null or array (for single or multiple photo updates)
             'img.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,avif,webp,avi|max:2048' // Maximum file size of 2 MB
         ]);
@@ -73,8 +79,11 @@ class PhotoGalleryController extends Controller
         try {
             $gallery = PhotoGallery::findOrFail($id);
             $gallery->title = $request->title;
+            $gallery->title_ne = $request->title_ne;
             $gallery->img_desc = $request->img_desc;
+            $gallery->img_desc_ne = $request->img_desc_ne;
             $gallery->slug = SlugService::createSlug(PhotoGallery::class, 'slug', $request->title);
+            $gallery->slug = SlugService::createSlug(PhotoGallery::class, 'slug', $request->title_ne);
 
             // Check if new images are uploaded
             if ($request->hasFile('img')) {

@@ -26,7 +26,13 @@
                         @foreach ($listservices as $service)
                             <li>
                                 <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
-                                    {{ $service->title }}
+                                    <span>
+                                        @if (app()->getLocale() == 'ne')
+                                            {{ $service->title_ne }}
+                                        @else
+                                            {{ $service->title }}
+                                        @endif
+                                    </span>
                                 </a>
                             </li>
                         @endforeach

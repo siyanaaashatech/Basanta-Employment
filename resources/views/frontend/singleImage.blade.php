@@ -4,14 +4,26 @@
 
 <div class="background">
     <h1 class="page_title">
-        {{ __($image->title) }}
+        <span>
+            @if (app()->getLocale() == 'ne')
+                {{ $image->title_ne }}
+            @else
+                {{ $image->title }}
+            @endif
+        </span>
     </h1>
 </div>
 
 <section class="single_page">
     <div class="container">
         <div class="row mt-3">
-            <p class="text-center">{{ $image->img_desc }}</p>
+            <p class="text-center"> <span>
+                @if (app()->getLocale() == 'ne')
+                    {{ $image->img_desc_ne }}
+                @else
+                    {{ $image->img_desc }}
+                @endif
+            </span></p>
             @foreach ($image->img as $imgUrl)
             <div class="col-md-4 mb-3">
                 <a class="image-link" href="{{ asset($imgUrl) }}" style="color: var(--first)">

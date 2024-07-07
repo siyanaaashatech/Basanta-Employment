@@ -74,7 +74,7 @@
                 <script type="text/javascript">
                     var onloadCallback = function() {
                         grecaptcha.render('html_element', {
-                            'sitekey' : '6LdJRrspAAAAAMHgf6vvqik5fcTUD2ZKCZtG9Vaf',
+                            'sitekey' : '6LdAPAoqAAAAADCgyV-AMkcB0Il2IkaZuAMlgjYx',
                             'callback': verifyCallback,
                             'expired-callback': recaptchaExpired
                         });

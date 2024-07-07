@@ -14,64 +14,81 @@ class VideoGalleryController extends Controller
         
         return view('backend.videogallery.index', ['videos' => $videos, 'page_title' => 'Video Gallery']);
     }
+
     public function create()
     {
         return view('backend.videogallery.create', ['page_title' => 'Add VideoGallerys']);
     }
+
     public function store(Request $request)
-    {
-        $this->validate($request, [
-            'title' => 'required|string',
-            'url' => 'required',
-        ]);
+{
+    $this->validate($request, [
+        'title' => 'required|string',
+        'title_ne' => 'nullable|string',
+        'url' => 'required',
+    ]);
 
-        try {
-            $video = new VideoGallery();
+    try {
+        $video = new VideoGallery();
 
-            $video->title = $request->title;
-            $video->slug = SlugService::createSlug(VideoGallery::class, 'slug', $request->title);
-            $video->url = $request->url;
+        $video->title = $request->title;
+        $video->title_ne = $request->title_ne;
+        $video->slug = SlugService::createSlug(VideoGallery::class, 'slug', $request->title);
 
-            if ($video->save()) {
-                return redirect()->route('admin.video-galleries.index')->with('success', 'Success! Video created.');
-            } else {
-                return redirect()->back()->with('error', 'Error! Video not created.');
-            }
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error! Something went wrong.');
+        if (!is_null($request->title_ne)) {
+            $video->slug_ne = SlugService::createSlug(VideoGallery::class, 'slug', $request->title_ne);
         }
+
+        $video->url = $request->url;
+
+        if ($video->save()) {
+            return redirect()->route('admin.video-galleries.index')->with('success', 'Success! Video created.');
+        } else {
+            return redirect()->back()->with('error', 'Error! Video not created.');
+        }
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Error! Something went wrong.');
     }
+}
+
     public function edit($id)
     {
         $video = VideoGallery::find($id);
 
         return view('backend.videogallery.update', ['video' => $video, 'page_title' => 'Update Video Gallery']);
-
     }
+
     public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'title' => 'required|string',
-            'url' => 'nullable',
-        ]);
-        try {
+{
+    $this->validate($request, [
+        'title' => 'required|string',
+        'title_ne' => 'nullable|string',
+        'url' => 'required',
+    ]);
 
-            $video = VideoGallery::findOrFail($id);
+    try {
+        $video = VideoGallery::findOrFail($id);
 
-            $video->title = $request->title ?? '';
-            $video->slug = SlugService::createSlug(VideoGallery::class, 'slug', $request->title);
-            $video->url = $request->url ?? '';
+        $video->title = $request->title;
+        $video->title_ne = $request->title_ne;
+        $video->slug = SlugService::createSlug(VideoGallery::class, 'slug', $request->title);
 
-
-            if ($video->save()) {
-                return redirect()->route('admin.video-galleries.index')->with('success', 'Success! Video Updated.');
-            } else {
-                return redirect()->back()->with('error', 'Error! Video not updated.');
-            }
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error! Something went wrong.');
+        if (!is_null($request->title_ne)) {
+            $video->slug_ne = SlugService::createSlug(VideoGallery::class, 'slug', $request->title_ne);
         }
+
+        $video->url = $request->url;
+
+        if ($video->save()) {
+            return redirect()->route('admin.video-galleries.index')->with('success', 'Success! Video Updated.');
+        } else {
+            return redirect()->back()->with('error', 'Error! Video not updated.');
+        }
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Error! Something went wrong.');
     }
+}
+
     public function destroy($id)
     {
         $video = VideoGallery::find($id);
@@ -82,6 +99,5 @@ class VideoGalleryController extends Controller
         } else {
             return redirect()->route('admin.video-galleries.index')->with('error', 'VideoGallery not found.');
         }
-
     }
 }

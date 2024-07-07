@@ -66,7 +66,15 @@
                            
                             </div>
                             <div class="profile-details">
-                                <h3 class="pb-2">{{ trans('messages.' . $demand->country->name) }}</h3>
+                                <h3 class="pb-2">
+                                    <span>
+                                        @if (app()->getLocale() == 'ne')
+                                        {{ $demand->country->name_ne }}
+                                    @else
+                                        {{ $demand->country->name }}
+                                    @endif
+                                    </span>
+                                </h3>
                                 <h6>
                                     {{ $demand->from_date }} - {{ $demand->to_date }} <br />
                                     {{ trans('messages.Vacancy') }}:
@@ -333,13 +341,40 @@
                 @foreach ($testimonials as $testimonial)
                     <div class="swiper-slide px-5">
                         <a href="{{ route('Testimonial') }}">
-                            <h5 class="text-center pt-3">"{{ trans('messages.' .( $testimonial->description )) }}"</h5>
+                            <h5 class="text-center pt-3">
+                              <span>
+                                    @if (app()->getLocale() == 'ne')
+                                    {{ $testimonial->description_ne }}
+                                @else
+                                    {{ $testimonial->description }}
+                                @endif
+                                </span>
+                            </h5>
                             <div class=" text-center text-img">
                                 <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
                                     alt="Testimonial Image" style="width: 100px;">
-                                    <h3>{{ $testimonial->name }}</h3>
-                                    <h5>{{ $testimonial->company->title }}</h5>
-                                    <h6>({{ $testimonial->work_category->title }})</h6>
+                                    <h3><span>
+                                        @if (app()->getLocale() == 'ne')
+                                        {{ $testimonial->name_ne }}
+                                    @else
+                                        {{ $testimonial->name }}
+                                    @endif
+                                    </span></h3>
+                                    <h5><span>
+                                        @if (app()->getLocale() == 'ne')
+                                        {{ $testimonial->company->title_ne }}
+                                    @else
+                                        {{ $testimonial->company->title }}
+                                    @endif
+                                    </span></h5>
+                                    <h6>
+                                        @if (app()->getLocale() == 'ne')
+                                            {{ $testimonial->work_category ? $testimonial->work_category->title_ne : 'Default Title' }}
+                                        @else
+                                            {{ $testimonial->work_category ? $testimonial->work_category->title : 'Default Title' }}
+                                        @endif
+                                    </h6>
+                                    
                                     
                             </div>
                         </a>
