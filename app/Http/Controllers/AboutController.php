@@ -35,7 +35,7 @@ class AboutController extends Controller
                 'title' => 'required|string',
                 'subtitle' => 'nullable|string',
                 'description' => 'required|string',
-                'description_ne' => 'required|string',
+                'description_ne' => 'nullable|string',
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
                 'content' => 'required|string',
             ]);
@@ -73,7 +73,7 @@ class AboutController extends Controller
             'title' => 'required|string',
             'subtitle' => 'nullable|string',
             'description' => 'required|string',
-            'description_ne' => 'required|string',
+            'description_ne' => 'nullable|string',
             'image' => 'sometimes|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
             'content' => 'required|string',
         ]);
@@ -97,7 +97,7 @@ class AboutController extends Controller
             $about->title = $request->title;
             $about->subtitle = $request->subtitle ?? '';
             $about->description = $request->description;
-            $about->description = $request->description_ne;
+            $about->description_ne = $request->description_ne;
             $about->slug = SlugService::createSlug(About::class, 'slug', $request->title);
             $about->content = $request->content;
 

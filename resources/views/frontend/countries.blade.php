@@ -27,9 +27,9 @@
                         <p class="card-text pb-4">
                             <span>
                                 @if (app()->getLocale() == 'ne')
-                                    {{ $country->content_ne }}
+                                    {!! $country->content_ne !!}
                                 @else
-                                    {{ $country->content }}
+                                    {!! $country->content !!}
                                 @endif
                             </span>
                         </p>

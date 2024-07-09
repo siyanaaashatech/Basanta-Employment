@@ -315,7 +315,7 @@
                         </div>
                         <div class="footer-text">
                             <p>
-                                {{ Str::limit(trans('messages.AboutDescription'), 300) }}
+                                {{-- {{ Str::limit(trans('messages.AboutDescription'), 300) }} --}}
 
                             </p>
                         </div>
@@ -362,7 +362,13 @@
                         
                             @foreach ($services as $service)
                                 <li><a
-                                        href="{{ route('SingleService', ['slug' => $service->slug]) }}">{{ trans('messages.' .($service->title)) }}</a>
+                                        href="{{ route('SingleService', ['slug' => $service->slug]) }}"><span>
+                                            @if (app()->getLocale() == 'ne')
+                                                {{ $service->title_ne }}
+                                            @else
+                                                {{ $service->title }}
+                                            @endif
+                                        </span></a>
                                 </li>
                             @endforeach 
 

@@ -116,8 +116,8 @@
                      </h2>
                       <p>
                         {{-- {{ trans('messages.AboutDescription') }} --}}
-                        <div class="col-lg-12 col-md-12 col-sm-12 order-2 order-md-3 sample_page_content">
-                            {!! app()->getLocale() === 'ne' ? $about->description_ne : $about->description !!}
+                        <div class="col-lg-9 col-md-9 col-sm-9 order-2 order-md-2 sample_page_content">
+                            {!! app()->getLocale() === 'ne' ? $about->content_ne : $about->content !!}
                         </div>
                     </p>
                       <a href="{{ route('About') }}" class="btn">{{ trans('messages.ReadMore') }}<i
@@ -165,7 +165,13 @@
                                 <div class="Ebox-img">
                                     <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Service Image">
                                 </div>
-                                <h3 class="text-center pt-3 Ebox-text">{{ trans('messages.' .($service->title)) }}</h3>
+                                <h3 class="text-center pt-3 Ebox-text"><span>
+                                    @if (app()->getLocale() == 'ne')
+                                        {{ $service->title_ne }}
+                                    @else
+                                        {{ $service->title }}
+                                    @endif
+                                </span></h3>
                             </div>
                         </a>
                     </div>
@@ -186,20 +192,20 @@
 
                 </div>
                 <div class="col-lg-4 pt-4">
-                    <a href="{{ route('Contact')}}" class="btn2">{{ trans('messages.GetInTouch') }}</a>
+                    <a href="{{ route('Contact')}}" class="btn2">{{ trans('GetInTouch') }}</a>
                 </div>
                 
             </div>
         </div>
     </section>
 
-    <section class="guiding py-5">
+    {{-- <section class="guiding py-5">
         <div class="container">
             <h2 class="text-center section_title pb-3">{{ trans('messages.Our') }} {{ trans('messages.' . ucfirst($firstCategory->title)) }}</h2>
             <div class="row">
 
                 {{-- @foreach ($posts as $post) --}}
-                    <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
+                    {{-- <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
                   
                             <div class="d-flex gap-4 align-items-center">
                                 <div class="guiding-img">
@@ -217,11 +223,11 @@
                                 </div>
                             </div>
                       
-                    </div>
+                    </div> --}}
 
 
                   
-                    <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
+                    {{-- <div class="col-lg-4 col-md-6 col-sm-6 pt-3 guiding_box">
                     
                             <div class="d-flex gap-4 align-items-center">
                                 <div class="guiding-img">
@@ -325,7 +331,7 @@
                             </div>
                      
                     </div>
-
+ --}} 
 
                   
                 {{-- @endforeach --}}
