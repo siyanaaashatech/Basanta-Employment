@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
+
 class SiteSettingController extends Controller
 {
     public function index()
@@ -25,11 +26,15 @@ class SiteSettingController extends Controller
     public function store(Request $request)
 {
     $this->validate($request, [
-        'office_name' => 'required|string',
-        'office_address.*' => 'required|string', // Validate each address in the array
-        'office_contact.*' => 'required|string', // Validate each contact in the array
+        'office_name' => 'nullable|string',
+        'office_name_ne' => 'nullable|string',
+        'office_address.*' => 'required|string',
+        'office_address_ne.*' => 'nullable|string', // Validate each address in the array
+        'office_contact.*' => 'required|string',
+        'office_contact_ne.*' => 'nullable|string', // Validate each contact in the array
         'office_email.*' => 'required|string',
         'whatsapp_number' => 'required|string',
+        'whatsapp_number_ne' => 'nullable|string',
         'main_logo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
         'side_logo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
         'company_registered_date' => 'required|date_format:Y-m-d',
@@ -58,7 +63,9 @@ class SiteSettingController extends Controller
 
         $sitesetting = new SiteSetting;
         $sitesetting->office_name = $request->office_name;
+        $sitesetting->office_name_ne = $request->office_name_ne;
         $sitesetting->whatsapp_number = $request->whatsapp_number;
+        $sitesetting->whatsapp_number_ne = $request->whatsapp_number_ne;
         $sitesetting->main_logo = $newMainLogo;
         $sitesetting->side_logo = $newSideLogo ?? '';
         $sitesetting->company_registered_date = $request->company_registered_date;
@@ -71,9 +78,11 @@ class SiteSettingController extends Controller
 
         // Save addresses
         $sitesetting->office_address = json_encode($request->office_address);
+        $sitesetting->office_address_ne = json_encode($request->office_address_ne);
 
         // Save contacts
         $sitesetting->office_contact = json_encode($request->office_contact);
+        $sitesetting->office_contact_ne = json_encode($request->office_contact_ne);
 
          // Save email
          $sitesetting->office_email = json_encode($request->office_email);
@@ -84,10 +93,9 @@ class SiteSettingController extends Controller
             return redirect()->back()->with('error', 'Error !! SiteSetting not created');
         }
     } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Error !! Something went wrong');
+        return redirect()->back()->with('error','Error !! Something went wrong');
     }
 }
-
 
     public function edit($id)
     {
@@ -98,11 +106,15 @@ class SiteSettingController extends Controller
    public function update(Request $request, $id)
 {
     $request->validate([
-        'office_name' => 'required|string',
-        'office_address.*' => 'required|string', // Validate each address in the array
-        'office_contact.*' => 'required|string', // Validate each contact in the array
+        'office_name' => 'nullable|string',
+        'office_name_ne' => 'nullable|string',
+        'office_address.*' => 'required|string',
+        'office_address_ne.*' => 'nullable|string', // Validate each address in the array
+        'office_contact.*' => 'required|string',
+        'office_contact_ne.*' => 'nullable|string', // Validate each contact in the array
         'office_email.*' => 'required|string',
         'whatsapp_number' => 'required|string',
+        'whatsapp_number_ne' => 'nullable|string',
         'main_logo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
         'side_logo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
         'company_registered_date' => 'required|date_format:Y-m-d',
@@ -112,6 +124,7 @@ class SiteSettingController extends Controller
         'linkedin_link' => 'nullable|url',
         'google_maps_link' => 'nullable|url',
         'slogan' => 'nullable|string', // New field: Slogan
+        'slogan_ne' => 'nullable|string',
     ]);
 
     try {
@@ -139,7 +152,9 @@ class SiteSettingController extends Controller
 
         // Update other fields
         $sitesetting->office_name = $request->office_name;
+        $sitesetting->office_name_ne = $request->office_name_ne;
         $sitesetting->whatsapp_number = $request->whatsapp_number;
+        $sitesetting->whatsapp_number_ne = $request->whatsapp_number_ne;
         $sitesetting->company_registered_date = $request->company_registered_date;
         $sitesetting->facebook_link = $request->facebook_link ?? '';
         $sitesetting->instagram_link = $request->instagram_link ?? '';
@@ -147,11 +162,14 @@ class SiteSettingController extends Controller
         $sitesetting->linkedin_link = $request->linkedin_link ?? '';
         $sitesetting->google_maps_link = $request->google_maps_link ?? '';
         $sitesetting->slogan = $request->slogan ?? '';
+        $sitesetting->slogan_ne = $request->slogan_ne ?? '';
 
         // Encode the array data before saving
         $sitesetting->office_address = json_encode($request->office_address);
+        $sitesetting->office_address_ne = json_encode($request->office_address_ne);
         $sitesetting->office_contact = json_encode($request->office_contact);
-          $sitesetting->office_email = json_encode($request->office_email);
+        $sitesetting->office_contact_ne = json_encode($request->office_contact_ne);
+        $sitesetting->office_email = json_encode($request->office_email);
 
         if ($sitesetting->save()) {
             return redirect()->route('admin.site-settings.index')->with('success', 'SiteSetting Updated Successfully');

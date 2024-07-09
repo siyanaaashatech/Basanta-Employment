@@ -69,7 +69,7 @@
             border: 1px solid black;
             padding: 1px 10px;
             cursor: pointer;
-            margin-left: 10px;
+            margin-left: 350px;
             border-radius: 5px;
             text-decoration: none; 
             display: inline-block; 

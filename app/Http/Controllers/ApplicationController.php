@@ -48,8 +48,9 @@ class ApplicationController extends Controller
         $application->address = $request->input('address');
         $application->phone_no = $request->input('phone_no');
         $application->whatsapp_no = $request->input('whatsapp_no');
-        $application->cv= $cv;
+        $application->cv = $cv;
         $application->photo = $photo;
+        $application->status = 'pending'; // Initial status is pending
 
         // Save the application
         $application->save();
@@ -65,5 +66,41 @@ class ApplicationController extends Controller
 
         // Return the admin view with the applications
         return view('backend.applications.index', compact('applications'));
+    }
+
+    public function accept($id)
+    {
+        try {
+            // Find the application by ID
+            $application = Application::findOrFail($id);
+
+            // Update status to accepted
+            $application->status = 'accepted';
+            $application->save();
+
+            // Return success response
+           
+        } catch (\Exception $e) {
+            // Return error response
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    public function reject($id)
+    {
+        try {
+            // Find the application by ID
+            $application = Application::findOrFail($id);
+
+            // Update status to rejected
+            $application->status = 'rejected';
+            $application->save();
+
+            // Return success response
+            return response()->json(['status' => 'success']);
+        } catch (\Exception $e) {
+            // Return error response
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+        }
     }
 }

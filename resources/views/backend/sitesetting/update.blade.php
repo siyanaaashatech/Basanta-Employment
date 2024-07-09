@@ -27,7 +27,6 @@
         </div>
     </div>
 
-
     <section class="content">
         <div class="container-fluid">
             <form id="quickForm" method="POST" action="{{ route('admin.site-settings.update', $sitesetting->id) }}"
@@ -38,13 +37,19 @@
                 <div class="card-body">
                     <div>
                         <div class="form-group">
-                            <label for="office_name">Office Name</label>
+                            <label for="office_name">Office Name (In English)</label>
                             <input type="text" name="office_name" class="form-control" placeholder="Office Name"
                                 id="office_name" value="{{ $sitesetting->office_name }}">
                         </div>
 
-                        <div class="form-group" id="office_addresses_container">
-                            <label for="office_address">Office Address</label>
+                        <div class="form-group">
+                            <label for="office_name_ne">Office Name (In Nepali)</label>
+                            <input type="text" name="office_name_ne" class="form-control" placeholder="Office Name"
+                                id="office_name_ne" value="{{ $sitesetting->office_name_ne }}">
+                        </div>
+
+                        <div class="form-group" id="office_addresses_container_en">
+                            <label for="office_address">Office Address (In English)</label>
                             @foreach(json_decode($sitesetting->office_address) as $address)
                                 <div class="input-group mb-3">
                                     <input type="text" name="office_address[]" class="form-control" placeholder="Address" value="{{ $address }}">
@@ -55,9 +60,35 @@
                                 </div>
                             @endforeach
                         </div>
-        
-                        <div class="form-group" id="office_contacts_container">
-                            <label for="office_contact">Office Contact</label>
+
+                        <div class="form-group" id="office_addresses_container_ne">
+                            <label for="office_address_ne">Office Address (In Nepali)</label>
+                            @php
+                            $addresses = json_decode($sitesetting->office_address_ne);
+                            @endphp
+                            @if (is_array($addresses) && !empty($addresses))
+                                @foreach($addresses as $address_ne)
+                                <div class="input-group mb-3">
+                                    <input type="text" name="office_address_ne[]" class="form-control" placeholder="Address" value="{{ $address_ne }}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary remove-address-ne" type="button">-</button>
+                                        <button class="btn btn-outline-secondary add-address-ne" type="button">+</button>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @else
+                                <div class="input-group mb-3">
+                                    <input type="text" name="office_address_ne[]" class="form-control" placeholder="Address">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary remove-address-ne" type="button">-</button>
+                                        <button class="btn btn-outline-secondary add-address-ne" type="button">+</button>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="form-group" id="office_contacts_container_en">
+                            <label for="office_contact">Office Contact (In English)</label>
                             @foreach(json_decode($sitesetting->office_contact) as $contact)
                                 <div class="input-group mb-3">
                                     <input type="text" name="office_contact[]" class="form-control" placeholder="Office Contact" value="{{ $contact }}">
@@ -68,9 +99,39 @@
                                 </div>
                             @endforeach
                         </div>
+
+                        <div class="form-group" id="office_contacts_container_ne">
+                            <label for="office_contact_ne">Office Contact (In Nepali)</label>
+                            @php
+                            $contacts_ne = json_decode($sitesetting->office_contact_ne);
+                            @endphp
+                            @if (is_array($contacts_ne) && !empty($contacts_ne))
+                                @foreach($contacts_ne as $contact_ne)
+                                <div class="input-group mb-3">
+                                    <input type="text" name="office_contact_ne[]" class="form-control" placeholder="Office Contact" value="{{ $contact_ne }}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary remove-contact-ne" type="button">-</button>
+                                        <button class="btn btn-outline-secondary add-contact-ne" type="button">+</button>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @else
+                                <div class="input-group mb-3">
+                                    <input type="text" name="office_contact_ne[]" class="form-control" placeholder="Office Contact">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary remove-contact-ne" type="button">-</button>
+                                        <button class="btn btn-outline-secondary add-contact-ne" type="button">+</button>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+
                         <div class="form-group" id="office_emails_container">
                             <label for="office_email">Office Emails</label>
-                            @foreach(json_decode($sitesetting->office_email) as $email)
+                            @php
+                            $emails = json_decode($sitesetting->office_email) ?? [];
+                            @endphp
+                            @foreach($emails as $email)
                                 <div class="input-group mb-3">
                                     <input type="email" name="office_email[]" class="form-control" placeholder="Email" value="{{ $email }}">
                                     <div class="input-group-append">
@@ -79,12 +140,27 @@
                                     </div>
                                 </div>
                             @endforeach
+                            @if(empty($emails))
+                                <div class="input-group mb-3">
+                                    <input type="email" name="office_email[]" class="form-control" placeholder="Email">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary remove-email" type="button">-</button>
+                                        <button class="btn btn-outline-secondary add-email" type="button">+</button>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                         
                         <div class="form-group">
-                            <label for="whatsapp_number">Whatsapp Number</label>
+                            <label for="whatsapp_number">Whatsapp Number (In English)</label>
                             <input type="text" name="whatsapp_number" class="form-control" placeholder="Whatsapp Number"
                                 id="whatsapp_number" value="{{ $sitesetting->whatsapp_number }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="whatsapp_number">Whatsapp Number (In Nepali)</label>
+                            <input type="text" name="whatsapp_number_ne" class="form-control" placeholder="Whatsapp Number"
+                                id="whatsapp_number" value="{{ $sitesetting->whatsapp_number_ne }}">
                         </div>
 
                         <div class="form-group">
@@ -93,6 +169,7 @@
                                 placeholder="Enter Registered Date" id="company_registered_date"
                                 value="{{ $sitesetting->company_registered_date }}">
                         </div>
+
                         <div class="form-group">
                             <label for="main_logo">Main Logo</label>
                             <input type="file" name="main_logo" class="form-control" placeholder="Main Logo"
@@ -111,11 +188,16 @@
                                 style="max-width: 300px; max-height:300px" />
                         </div>
 
-
                         <div class="form-group">
-                            <label for="slogan">Slogan</label>
+                            <label for="slogan">Slogan (In Englsih)</label>
                             <input type="text" name="slogan" class="form-control" placeholder="Slogan" id="slogan"
                                 value="{{ $sitesetting->slogan }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="slogan">Slogan (In Nepali)</label>
+                            <input type="text" name="slogan_ne" class="form-control" placeholder="Slogan" id="slogan_ne"
+                                value="{{ $sitesetting->slogan_ne }}">
                         </div>
 
                         <div class="form-group">
@@ -123,6 +205,7 @@
                             <input name="facebook_link" class="form-control" placeholder="Facebook URL (https://)"
                                 id="facebook_link" value="{{ $sitesetting->facebook_link }}">
                         </div>
+
                         <div class="form-group">
                             <label for="instagram_link">Insta URL</label>
                             <input name="instagram_link" class="form-control" placeholder="Insta URL (https://)"
@@ -130,42 +213,33 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="snapchat_link">Snapchat URL</label>
-                            <input name="snapchat_link" class="form-control" placeholder="Snapchat URL (https://)"
-                                id="snapchat_link" value="{{ $sitesetting->snapchat_link }}">
-                        </div>
-
-                        <div class="form-group">
                             <label for="linkedin_link">Linkedin URL</label>
-                            <input name="linkedin_link" class="form-control" placeholder="LinkedIn URL (https://)"
+                            <input name="linkedin_link" class="form-control" placeholder="Linkedin URL (https://)"
                                 id="linkedin_link" value="{{ $sitesetting->linkedin_link }}">
                         </div>
+
                         <div class="form-group">
-                            <label for="google_maps_link">Google Map</label>
-                            <input name="google_maps_link" class="form-control" placeholder="Google Maps URL (https://)"
-                                id="google_maps_link" value="{{ $sitesetting->google_maps_link }}">
+                            <label for="twitter_link">Twitter URL</label>
+                            <input name="twitter_link" class="form-control" placeholder="Twitter URL (https://)"
+                                id="twitter_link" value="{{ $sitesetting->twitter_link }}">
                         </div>
 
+
+                        
+
                     </div>
-                </div>
-                <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div>
     </section>
 
-
-
-
-    </form>
     <script>
         const previewMainImage = e => {
             const reader = new FileReader();
             reader.readAsDataURL(e.target.files[0]);
             reader.onload = () => {
-                const preview = document.getElementById('main_preview');
-                preview.src = reader.result;
+                document.getElementById('main_preview').src = reader.result;
             };
         };
 
@@ -173,62 +247,100 @@
             const reader = new FileReader();
             reader.readAsDataURL(e.target.files[0]);
             reader.onload = () => {
-                const preview = document.getElementById('side_preview');
-                preview.src = reader.result;
+                document.getElementById('side_preview').src = reader.result;
             };
         };
-        
-        $(document).ready(function() {
-            // Add new address input field
-            $(".add-address").click(function() {
-                $("#office_addresses_container").append('<div class="input-group mb-3">' +
-                    '<input type="text" name="office_address[]" class="form-control" placeholder="Address">' +
-                    '<div class="input-group-append">' +
-                    '<button class="btn btn-outline-secondary remove-address" type="button">-</button>' +
-                    '<button class="btn btn-outline-secondary add-address" type="button">+</button>' +
-                    '</div>' +
-                    '</div>');
-            });
 
-            // Remove address input field
-            $(document).on("click", ".remove-address", function() {
-                $(this).parents(".input-group").remove();
-            });
+        document.addEventListener('click', e => {
+            if (e.target.classList.contains('add-address')) {
+                const container = document.getElementById('office_addresses_container_en');
+                const newAddress = document.createElement('div');
+                newAddress.classList.add('input-group', 'mb-3');
+                newAddress.innerHTML = `
+                    <input type="text" name="office_address[]" class="form-control" placeholder="Address">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary remove-address" type="button">-</button>
+                        <button class="btn btn-outline-secondary add-address" type="button">+</button>
+                    </div>
+                `;
+                container.appendChild(newAddress);
+            }
 
-            // Add new contact input field
-            $(".add-contact").click(function() {
-                $("#office_contacts_container").append('<div class="input-group mb-3">' +
-                    '<input type="text" name="office_contact[]" class="form-control" placeholder="Office Contact">' +
-                    '<div class="input-group-append">' +
-                    '<button class="btn btn-outline-secondary remove-contact" type="button">-</button>' +
-                    '<button class="btn btn-outline-secondary add-contact" type="button">+</button>' +
-                    '</div>' +
-                    '</div>');
-            });
+            if (e.target.classList.contains('remove-address')) {
+                e.target.closest('.input-group').remove();
+            }
 
-            // Remove contact input field
-            $(document).on("click", ".remove-contact", function() {
-                $(this).parents(".input-group").remove();
-            });
+            if (e.target.classList.contains('add-address-ne')) {
+                const container = document.getElementById('office_addresses_container_ne');
+                const newAddress = document.createElement('div');
+                newAddress.classList.add('input-group', 'mb-3');
+                newAddress.innerHTML = `
+                    <input type="text" name="office_address_ne[]" class="form-control" placeholder="Address">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary remove-address-ne" type="button">-</button>
+                        <button class="btn btn-outline-secondary add-address-ne" type="button">+</button>
+                    </div>
+                `;
+                container.appendChild(newAddress);
+            }
 
-            // Add new email input field
-            $(".add-email").click(function() {
-                $("#office_emails_container").append('<div class="input-group mb-3">' +
-                    '<input type="text" name="office_email[]" class="form-control" placeholder="Office Email">' +
-                    '<div class="input-group-append">' +
-                    '<button class="btn btn-outline-secondary remove-email" type="button">-</button>' +
-                    '<button class="btn btn-outline-secondary add-email" type="button">+</button>' +
-                    '</div>' +
-                    '</div>');
-            });
+            if (e.target.classList.contains('remove-address-ne')) {
+                e.target.closest('.input-group').remove();
+            }
 
-            // Remove email input field
-            $(document).on("click", ".remove-email", function() {
-                $(this).parents(".input-group").remove();
-            });
+            if (e.target.classList.contains('add-contact')) {
+                const container = document.getElementById('office_contacts_container_en');
+                const newContact = document.createElement('div');
+                newContact.classList.add('input-group', 'mb-3');
+                newContact.innerHTML = `
+                    <input type="text" name="office_contact[]" class="form-control" placeholder="Office Contact">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary remove-contact" type="button">-</button>
+                        <button class="btn btn-outline-secondary add-contact" type="button">+</button>
+                    </div>
+                `;
+                container.appendChild(newContact);
+            }
+
+            if (e.target.classList.contains('remove-contact')) {
+                e.target.closest('.input-group').remove();
+            }
+
+            if (e.target.classList.contains('add-contact-ne')) {
+                const container = document.getElementById('office_contacts_container_ne');
+                const newContact = document.createElement('div');
+                newContact.classList.add('input-group', 'mb-3');
+                newContact.innerHTML = `
+                    <input type="text" name="office_contact_ne[]" class="form-control" placeholder="Office Contact">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary remove-contact-ne" type="button">-</button>
+                        <button class="btn btn-outline-secondary add-contact-ne" type="button">+</button>
+                    </div>
+                `;
+                container.appendChild(newContact);
+            }
+
+            if (e.target.classList.contains('remove-contact-ne')) {
+                e.target.closest('.input-group').remove();
+            }
+
+            if (e.target.classList.contains('add-email')) {
+                const container = document.getElementById('office_emails_container');
+                const newEmail = document.createElement('div');
+                newEmail.classList.add('input-group', 'mb-3');
+                newEmail.innerHTML = `
+                    <input type="email" name="office_email[]" class="form-control" placeholder="Email">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary remove-email" type="button">-</button>
+                        <button class="btn btn-outline-secondary add-email" type="button">+</button>
+                    </div>
+                `;
+                container.appendChild(newEmail);
+            }
+
+            if (e.target.classList.contains('remove-email')) {
+                e.target.closest('.input-group').remove();
+            }
         });
-
-        
-
     </script>
-    @endsection
+@endsection

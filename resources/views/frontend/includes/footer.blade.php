@@ -267,7 +267,13 @@
                                         {{ $contact }} <br>
                                     @endforeach
                                 @else
-                                    {{ $sitesetting->office_contact }} <br>
+                                <span>
+                                    @if (app()->getLocale() == 'ne')
+                                        {{ $sitesetting->office_contact_ne }}
+                                    @else
+                                        {{ $sitesetting->office_contact }}
+                                    @endif
+                                </span> <br>
                                 @endif
                             @endif
                                 </span>

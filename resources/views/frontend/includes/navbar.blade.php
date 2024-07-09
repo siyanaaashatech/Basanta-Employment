@@ -12,7 +12,13 @@
                     @endif
                     <div class="c-name">
                         <h3>
-                            {{ trans('messages.' . ucfirst($sitesetting->office_name)) }}
+                            <span>
+                                @if (app()->getLocale() == 'ne')
+                                    {{ $sitesetting->office_name_ne }}
+                                @else
+                                    {{ $sitesetting->office_name }}
+                                @endif
+                            </span>
                             {{-- {{ $sitesetting->office_name }}</h3> --}}
                     </div>
                     {{-- <div class="slogon">

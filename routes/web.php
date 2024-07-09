@@ -199,4 +199,6 @@ Route::get('/courses/{slug}', 'FrontViewController@viewCourse');
 
 Route::post('/apply/{id}', [ApplicationController::class, 'store'])->name('apply.store');
 Route::get('/admin/applications', [ApplicationController::class, 'adminIndex'])->name('admin.applications.index');
+Route::post('/applications/{id}/accept', [ApplicationController::class, 'accept'])->name('applications.accept');
+Route::post('/applications/{id}/reject', [ApplicationController::class, 'reject'])->name('applications.reject');
 

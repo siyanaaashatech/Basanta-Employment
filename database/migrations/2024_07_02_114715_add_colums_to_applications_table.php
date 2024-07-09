@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('whatsapp_no')->required();
             $table->string('cv')->required();
             $table->string('photo')->required();
+            $table->string('status')->required();
         });
     }
 
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->dropColumn('whatsapp_no');
             $table->dropColumn('cv');
             $table->dropColumn('photo');
+            $table->dropColumn('status');
         });
     }
 };
