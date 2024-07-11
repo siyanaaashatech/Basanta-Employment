@@ -4,21 +4,45 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
+use Illuminate\Support\Facades\Http;
 
 class ApplicationController extends Controller
 {
     public function store(Request $request, $id)
     {
-        // Validate the incoming request data
+        // Validate the incoming request data including reCAPTCHA
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'address' => 'nullable|string|max:255',
-            'phone_no' => 'required|string',
-            'whatsapp_no' => 'nullable|string',
+            'name' => 'required|string|max:255|regex:/^[a-zA-Z\s]+$/u', // Only allow letters and spaces
+            'email' => 'nullable|email|max:255|ends_with:@gmail.com',
+            'address' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9\s]+$/u', // Only allow letters, numbers, and spaces
+            'phone_no' => 'required|string|regex:/^[0-9]+$/|digits:10', // Must be exactly 10 digits
+            'whatsapp_no' => 'nullable|string|regex:/^[0-9]+$/|digits:10', // Must be exactly 10 digits
             'cv' => 'required|file|mimes:pdf,doc,docx|max:2048', // Adjust file types and size limit as needed
             'photo' => 'nullable|image|max:2048', // Adjust image size limit as needed
+            'g-recaptcha-response' => 'required'
+        ], [
+            'name.regex' => 'Only letters and spaces are allowed in the name field.',
+            'address.regex' => 'Only letters, numbers, and spaces are allowed in the address field.',
+            'phone_no.regex' => 'Phone number should only contain digits.',
+            'phone_no.digits' => 'Phone number should be exactly 10 digits.',
+            'whatsapp_no.regex' => 'WhatsApp number should only contain digits.',
+            'whatsapp_no.digits' => 'WhatsApp number should be exactly 10 digits.',
+            'email.ends_with' => 'The email must end with @gmail.com.',
         ]);
+
+        // Verify reCAPTCHA
+        $recaptchaResponse = $request->input('g-recaptcha-response');
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => env('RECAPTCHA_SECRET_KEY'),
+            'response' => $recaptchaResponse,
+            'remoteip' => $request->ip(),
+        ]);
+
+        $recaptchaData = $response->json();
+
+        if (!$recaptchaData['success']) {
+            return back()->withErrors(['g-recaptcha-response' => 'ReCAPTCHA validation failed.'])->withInput();
+        }
 
         // Handle CV file upload
         if ($request->hasFile('cv')) {
@@ -55,7 +79,7 @@ class ApplicationController extends Controller
         // Save the application
         $application->save();
 
-        // Redirect back with success message or any other action
+        // Redirect back with success message or errors
         return redirect()->route('SingleDemand', ['id' => $id])->with('success', 'Application submitted successfully!');
     }
 

@@ -246,7 +246,11 @@
                                         {{ $address }} <br>
                                     @endforeach
                                 @else
-                                    {{ $sitesetting->office_address }} <br>
+                                @if (app()->getLocale() == 'ne')
+                                {{ $sitesetting->office_address_ne }}
+                            @else
+                                {{ $sitesetting->office_address }}
+                            @endif  <br>
                                 @endif
                             @endif</span>
                         </div>

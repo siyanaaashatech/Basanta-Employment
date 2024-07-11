@@ -38,6 +38,8 @@
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                 </div> --}}
+
+                
                 <div class="col-md-6 cform_left">
                     <iframe src="{{ $googleMapsLink }}" width="100%" height="500" style="border:0;" allowfullscreen=""
                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -47,20 +49,37 @@
                     <form id="contactForm" class="form-horizontal" method="POST" role="form"
                         action="{{ route('Contact.store') }}">
                         @csrf
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder="NAME" name="name"
-                                value="" required>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Enter your name" value="{{ old('name') }}">
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email"
-                                value="" required>
+        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter a valid email address" value="{{ old('email') }}">
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="form-group">
-                            <input type="phone" name="phone_no" class="form-control" id="phone_no"
-                                placeholder="Phone No." required>
-
+        
+                        <div class="mb-3">
+                            <label for="phone_no" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control @error('phone_no') is-invalid @enderror" id="phone_no" name="phone_no" placeholder="Enter your phone number" value="{{ old('phone_no') }}">
+                            @error('phone_no')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <textarea class="form-control message-box" rows="10" placeholder="MESSAGE" name="message" required></textarea>
+        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control @error('message') is-invalid @enderror" id="message" name="message" rows="3" placeholder="Enter your message">{{ old('message') }}</textarea>
+                            @error('message')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
                         <!-- Add reCAPTCHA field -->
                          <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div> 

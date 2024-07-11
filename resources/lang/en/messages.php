@@ -41,7 +41,7 @@ return [
     'Visa and Documentation Assistance'=>'Visa and Documentation Assistance',
     'Recruitment and Staffing' => 'Recruitment and Staffing',
     'Vacancy' => 'Vacancy',
-    'AboutDescription' => 'Lunar Overseas is a pioneer organization in overseas employment. The organization is recognized by various overseas companies and a large number of workers who have been successfully placed in different companies all over the globe',
+    
 
     'Transparency and Communication' => 'Transparency and Communication',
     'Innovation and Adaptability' => 'Innovation and Adaptability',
@@ -50,7 +50,19 @@ return [
     'Choose Qatar For Employment' => 'Choose Qatar For Employment',
     'Why Work In Kuwait' => 'Why Work In Kuwait',
     'Opportunities In Nepal Vs Abroad'  => 'Opportunities In Nepal Vs Abroad',
-    'Basanta Employment' => 'Basanta Employment',
+
+    //Application Form
+
+    'Name' => 'Name',
+    'Email' => 'Email',
+    'Address' => 'Address',
+    'Phone Number' => 'Phone Number',
+    'WhatsApp Number' =>'WhatsApp Number',
+    'Upload CV' => 'Upload CV',
+    'Upload Photo' => 'Upload Photo'
+
+
+  
 
      
 

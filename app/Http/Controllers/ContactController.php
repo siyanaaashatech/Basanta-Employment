@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
-// use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
-
-use Closure;
 
 class ContactController extends Controller
 {
@@ -22,24 +19,19 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string',
-            'email' => 'required|string',
-            'phone_no' => 'required|string',
+        $request->validate([
+            'name' => 'required|string|max:255|regex:/^[a-zA-Z\s]+$/u', // Only allow letters and spaces
+            'email' => 'required|email|max:255|ends_with:@gmail.com', // Must be a valid email ending with @gmail.com
+            'phone_no' => 'required|string|regex:/^[0-9]+$/|digits:10', // Must be exactly 10 digits
             'message' => 'required|string',
             'g-recaptcha-response' => 'required',
-            function ($attribute, $value, $fail) {
-
-                $g_response = Http::asForm()->post("https://www.google.com/recaptcha/api/siteverify", [
-                    'secret' => config('services.recaptcha.secret_key'),
-                    'response' => $value,
-                    'remoteip' => \request()->ip()
-                ]);
-
-                if (!$g_response->json('success')) {
-                    $fail('The ' . $attribute . ' is invalid.');
-                }
-            },
+        ], [
+            'name.regex' => 'Only letters and spaces are allowed in the name field.',
+            'email.email' => 'The email must be a valid email address.',
+            'email.required' => 'The email field is required.',
+            'email.ends_with' => 'The email must end with @gmail.com.',
+            'phone_no.regex' => 'Phone number should only contain digits.',
+            'phone_no.digits' => 'Phone number should be exactly 10 digits.',
         ]);
 
         $contact = new Contact;
@@ -49,9 +41,7 @@ class ContactController extends Controller
         $contact->message = $request->message;
         $contact->save();
 
-        // return response()->json(['success' => true]);
-        return redirect()->back()->with('success', 'Your message has been submitted successfully!');
+        // Assuming you want to return a success response for AJAX handling
+        return response()->json(['success' => true]);
     }
-
-
 }

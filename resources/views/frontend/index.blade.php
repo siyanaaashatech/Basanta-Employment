@@ -460,20 +460,39 @@
                         </div>
                     @endif
 
-                    <form id="contactForm" class="form-horizontal" method="POST" role="form" action="{{ route('Contact.store') }}">
+                    <form id="contactForm" method="POST" action="{{ route('Contact.store') }}">
                         @csrf
-                        <div class="inp">
-                            <input type="text" name="name" id="" placeholder="ENTER YOUR NAME">
+        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Enter your name" value="{{ old('name') }}">
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="inp">
-                            <input type="email" name="email" id=""
-                                placeholder="ENTER A VALID EMAIL ADDRESS">
+        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter a valid email address" value="{{ old('email') }}">
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="inp">
-                            <input type="tel" name="phone_no" id="" placeholder="ENTER YOUR PHONE NO.">
+        
+                        <div class="mb-3">
+                            <label for="phone_no" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control @error('phone_no') is-invalid @enderror" id="phone_no" name="phone_no" placeholder="Enter your phone number" value="{{ old('phone_no') }}">
+                            @error('phone_no')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="inp">
-                            <textarea name="message" id="" rows="3" placeholder="ENTER YOUR MESSAGE"></textarea>
+        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control @error('message') is-invalid @enderror" id="message" name="message" rows="3" placeholder="Enter your message">{{ old('message') }}</textarea>
+                            @error('message')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                                <!-- Add reCAPTCHA field -->
                                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div> 
@@ -485,6 +504,34 @@
                            </form>
                        </div>          
                     </form>
+
+                    <script>
+                        function submitForm() {
+                            var form = document.getElementById('contactForm');
+                            var formData = new FormData(form);
+                
+                            fetch(form.action, {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    // Show success message
+                                    alert('Your message has been submitted successfully!');
+                                    // Optionally clear form fields
+                                    form.reset();
+                                } else {
+                                    // Handle errors if needed
+                                    alert('Submission failed. Please check your input and try again.');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('An error occurred. Please try again later.');
+                            });
+                        }
+                    </script>
 
                     {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
                     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
