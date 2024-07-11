@@ -16,7 +16,7 @@ class ApplicationController extends Controller
             'address' => 'nullable|string|max:255',
             'phone_no' => 'required|string',
             'whatsapp_no' => 'nullable|string',
-            'cv' => 'nullable|file|mimes:pdf,doc,docx|max:2048', // Adjust file types and size limit as needed
+            'cv' => 'required|file|mimes:pdf,doc,docx|max:2048', // Adjust file types and size limit as needed
             'photo' => 'nullable|image|max:2048', // Adjust image size limit as needed
         ]);
 

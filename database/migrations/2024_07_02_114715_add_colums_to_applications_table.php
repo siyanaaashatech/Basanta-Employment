@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('applications', function (Blueprint $table) {
             $table->string('whatsapp_no')->required();
             $table->string('cv')->required();
-            $table->string('photo')->required();
+            $table->string('photo')->nullable();
             $table->string('status')->required();
         });
     }
