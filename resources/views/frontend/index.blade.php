@@ -47,56 +47,95 @@
         </div>
     </section>
 
-
-
-
-
-
     <section class="country py-4">
         <div class="container swiper p-4">
             <div class="slide-container">
                 <div class="card-wrapper swiper-wrapper">
                     @foreach ($demands as $demand)
-                   
-                        <div class="card swiper-slide text-center ">
-                            <a href="{{ route('SingleDemand',['id' => $demand->id]) }}">
-                            <div class="img-box">
-                               
-                                <img class="" src="{{ asset('uploads/demands/' . $demand->image) }}" alt="" />
-                           
+                        <div class="card swiper-slide text-center d-flex flex-column">
+                            <a href="{{ route('SingleDemand', ['id' => $demand->id]) }}" class="flex-grow-1 d-flex flex-column">
+                                <div class="img-box">
+                                    <img class="" src="{{ asset('uploads/demands/' . $demand->image) }}" alt="" />
+                                </div>
+                                <div class="profile-details flex-grow-1">
+                                    <h3 class="pb-2">
+                                        <span>
+                                            @if (app()->getLocale() == 'ne')
+                                                {{ $demand->country->name_ne }}
+                                            @else
+                                                {{ $demand->country->name }}
+                                            @endif
+                                        </span>
+                                    </h3>
+                                    <h6>
+                                        {{ $demand->from_date }} - {{ $demand->to_date }} <br />
+                                        {{ trans('messages.Vacancy') }}:
+                                        <span>
+                                            @if (app()->getLocale() == 'ne')
+                                                {{ $demand->vacancy_ne }}
+                                            @else
+                                                {{ $demand->vacancy }}
+                                            @endif
+                                        </span>
+                                    </h6>
+                                </div>
+                            </a>
+                            <div class="apply-button mt-2">
+                                <a href="{{ route('apply', ['id' => $demand->id]) }}" class="apply-btn">
+                                    {{ 'Apply now' }}
+                                </a>
                             </div>
-                            <div class="profile-details">
-                                <h3 class="pb-2">
-                                    <span>
-                                        @if (app()->getLocale() == 'ne')
-                                        {{ $demand->country->name_ne }}
-                                    @else
-                                        {{ $demand->country->name }}
-                                    @endif
-                                    </span>
-                                </h3>
-                                <h6>
-                                    {{ $demand->from_date }} - {{ $demand->to_date }} <br />
-                                    {{ trans('messages.Vacancy') }}:
-                                    <span>
-                                        @if (app()->getLocale() == 'ne')
-                                        {{ $demand->vacancy_ne }}
-                                    @else
-                                        {{ $demand->vacancy }}
-                                    @endif
-                                    </span>
-                                </h6>
-                            </div>
-                        </a>
                         </div>
-                  
                     @endforeach
                 </div>
             </div>
         </div>
     </section>
-
-
+    
+    <!-- Custom CSS -->
+    <style>
+        .apply-btn {
+            background-color: rgba(99, 2, 2, 0.8);
+            color: whitesmoke;
+            border: 1px solid black;
+            padding: 1px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+    
+        .apply-btn:hover {
+            background-color: grey;
+            color: whitesmoke;
+        }
+    
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 90%;
+            padding: 1rem;
+            border-radius: 23px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .img-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    
+        .profile-details {
+            margin-top: 1rem;
+            flex-grow: 1;
+        }
+    
+        .apply-button {
+            margin-top: 1rem;
+        }
+    </style>
+    
 
 <section class="about-us">
   <div class="container">
