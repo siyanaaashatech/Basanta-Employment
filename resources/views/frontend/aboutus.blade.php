@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="col-lg-12 col-md-12 col-sm-12 order-2 order-md-3 sample_page_content">
-                    {!! app()->getLocale() === 'ne' ? $about->content_ne : $about->content !!}
+                    {!! app()->getLocale() === 'ne' ? $about->description_ne : $about->description !!}
                 </div>
 
                 <div class="col-lg-4 col-md-4 col-sm-12 order-3 order-md-2 sample_page_list mt-2 mb-2 p-4">

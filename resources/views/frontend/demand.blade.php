@@ -8,7 +8,7 @@
             @else
                 {{ $demand->country->name }}
             @endif
-        </span></h1>
+        </span></h1>   
     </div>
     <section class="sample_page">
         <div class="container">
@@ -35,8 +35,8 @@
                         <p>{!! $demand->content !!}</p>
                     @endif
 
-                    {{-- <!-- Apply button linked to the apply route -->
-                    <a href="{{ route('apply', ['id' => $demand->id]) }}" class="apply-btn">Apply now</a>--}}
+                    <!-- Apply button linked to the apply route -->
+                    <a href="{{ route('apply', ['id' => $demand->id]) }}" class="apply-btn">Apply now</a>
                 </div> 
 
                 <div class="col-lg-4 col-md-4 col-sm-12 order-3 order-md-2 sample_page_list mt-2 mb-2 p-4">

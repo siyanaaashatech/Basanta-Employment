@@ -33,13 +33,13 @@
                             <li>
                                 <a href="{{ route('SingleService', ['slug' => $item->slug]) }}">
                                     @if (app()->getLocale() == 'ne')
-                                        {{ trans('messages.' . ucfirst($item->title_ne)) }}
+                                        {{ ucfirst($item->title_ne) }}
                                     @else
-                                        {{ trans('messages.' . ucfirst($item->title)) }}
+                                        {{ ucfirst($item->title) }}
                                     @endif
                                 </a>
                             </li>
-                        @endforeach
+                        @endforeach 
                     </ul>
                 </div>
             </div>

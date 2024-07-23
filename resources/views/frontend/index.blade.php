@@ -156,7 +156,7 @@
                       <p>
                         {{-- {{ trans('messages.AboutDescription') }} --}}
                         <div class="col-lg-9 col-md-9 col-sm-9 order-2 order-md-2 sample_page_content">
-                            {!! app()->getLocale() === 'ne' ? $about->content_ne : $about->content !!}
+                            {!! app()->getLocale() === 'ne' ? $about->description_ne : $about->description !!}
                         </div>
                     </p>
                       <a href="{{ route('About') }}" class="btn">{{ trans('messages.ReadMore') }}<i
@@ -573,7 +573,7 @@
 
     <section class="blogs py-5">
         <div class="container">
-            <h2 class="text-center section_title pb-3">{{ trans('messages.Blogs') }}</h2>
+            {{-- <h2 class="text-center section_title pb-3">{{ trans('messages.Blogs') }}</h2> --}}
             <div class="row g-4">
                 @foreach ($blogs as $blog)
                 <div class="col-lg-4 col-md-4">
@@ -734,3 +734,43 @@
 
 
 @stop --}}
+
+{{-- <section class="banner">
+    <div class="container-fluid">
+        <div class="row g-4 align-items-center">
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- First Carousel Item -->
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="./image/herosection.png" class="d-block w-100" alt="First slide">
+                        <div class="carousel-caption d-flex flex-column ">
+                            <h1>basanta International </h1>
+                            <h1>working  <span>since 2018</span></h1>
+                            <p>Check if there is a typo in typo -solutions.com.</p>
+                            <a href="#" class="btn my-3 ">READ MORE </a>
+                        </div>
+                    </div>
+                    <!-- Second Carousel Item -->
+                    <div class="carousel-item" data-bs-interval="3000 row">
+                        <img src="./image/herosection.png" class="d-block w-100" alt="second slide">
+                        <div class="carousel-caption d-flex flex-column ">
+                            <h1>SUPPly more </h1>
+                            <h1>then <span>20k member</span></h1>
+                            <p>Check if there is a typo in typo  -solutions.com.</p>
+                            <a href="#" class="btn my-3">READ MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+  </section> --}}

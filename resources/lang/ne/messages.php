@@ -4,7 +4,7 @@ return [
     'WorkAbroad' => 'वैदेशिक रोजगार',
     'Employment' => 'रोजगारी क्षेत्र',
     'Gallery' => 'ग्यालेरी',
-    'Reviews' => 'प्रतिक्रिया',
+    'Testimonial' => 'प्रतिक्रिया',
     'Blogs' => 'ब्लग्स',
     'Contact' => 'सम्पर्क',
     'AboutUs' => 'हाम्रो बारेमा',
@@ -63,7 +63,7 @@ return [
     
     // Add more translations as needed...
     'RelatedPosts' => 'सम्बन्धित पोस्ट',
-    'Demands'=>'रोजगारीका लागी माग',
+    'Demands'=>'डिमान्डहरू',
     'People working in Construction Industry' => 'कन्सट्रक्सन मा काम गरिरहेका कामदारहरू',
     'Work in Rail Roads' => 'रेलरोडमा काम गरिरहेका कामदारहरू',
     'A Worker using the machinary' => 'मेशीनरी चलाइहेका कामदार',
@@ -78,6 +78,8 @@ return [
     'Phone Number' => 'फोन नम्बर',
     'WhatsApp Number' =>'व्हाट्सएप नम्बर',
     'Upload CV' => 'सिभी अपलोड गर्नुहोस्',
-    'Upload Photo' => 'फोटो अपलोड गर्नुहोस्'
+    'Upload Photo' => 'फोटो अपलोड गर्नुहोस्',
+    'Home page' => 'गृहपृष्ठ ',
+    
 ];
 

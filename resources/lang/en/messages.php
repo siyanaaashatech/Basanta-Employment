@@ -59,7 +59,9 @@ return [
     'Phone Number' => 'Phone Number',
     'WhatsApp Number' =>'WhatsApp Number',
     'Upload CV' => 'Upload CV',
-    'Upload Photo' => 'Upload Photo'
+    'Upload Photo' => 'Upload Photo',
+    'Home page' => 'Home page',
+    'Testimonial' => 'Testimonial',
 
 
   

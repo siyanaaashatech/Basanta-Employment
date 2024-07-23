@@ -36,38 +36,36 @@
                 <ul class="navbar-nav m-auto navbar-nav-scroll" style="--bs-scroll-height: 500px;">
                     <li class="nav-item dropdown">
 
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="{{ route('index') }}">
+                                {{ trans('messages.Home page') }} </a>
+                        </li>
 
-                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ trans('messages.Introduction') }}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ trans('messages.Introduction') }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('About') }}"> {{ trans('messages.AboutUs') }}</a>
+                                </li>
+                                {{-- <li>
+                                    <a class="dropdown-item" href="{{ route('Team') }}"> {{ trans('messages.OurTeams') }}</a>
+                                </li> --}}
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('Service') }}">{{ trans('messages.Services') }}</a>
+                                </li>
+                            </ul>
+                        </li>
 
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="{{ route('About') }}"> {{ trans('messages.AboutUs') }}
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('Team') }}"> {{ trans('messages.OurTeams') }}
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('Service') }}">
-                                    {{ trans('messages.Services') }}
-                                </a>
-                            </li>
-                            
-                            <li>
-                                <a class="dropdown-item" href="{{ route('Demand') }}">
-                                    {{ trans('messages.Demands') }}
-                                </a>
-                            </li> 
-                           
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="{{ route('Demand') }}">
+                            {{ trans('messages.Demands') }} </a>
                     </li>
+
                     <li class="nav-item dropdown">
 
-                        <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                        {{-- <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             {{ trans('messages.WorkAbroad') }}
                         </a>
@@ -85,9 +83,9 @@
                                 </li>
                             @endforeach
                         </ul>
-                    </li>
+                    </li> --}}
 
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle text-primary" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -106,6 +104,11 @@
                                     </a></li>
                             @endforeach
                         </ul>
+                    </li> --}}
+
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">
+                            {{ trans('messages.Blogs') }} </a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -124,12 +127,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-primary" href="{{ route('Testimonial') }}">
-                            {{ trans('messages.Reviews') }} </a>
+                            {{ trans('messages.Testimonial') }} </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-primary" href="{{ route('Blogpostcategory') }}">
-                            {{ trans('messages.Blogs') }} </a>
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link text-primary" href="{{ route('Contact') }}">
                             {{ trans('messages.Contact') }} </a>
@@ -203,4 +203,9 @@
 </script>
 
 <style>
+    .nav-item .dropdown-menu {
+    top: 100%; /* Position the dropdown menu directly below the parent */
+    left: 0; /* Align the dropdown menu to the left edge of the parent */
+    transform: none; /* Remove any transform that may affect positioning */
+}
 </style>

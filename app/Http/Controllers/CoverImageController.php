@@ -26,7 +26,7 @@ class CoverImageController extends Controller
             $this->validate($request, [
                 'title' => 'required|string',
                 'title_ne' => 'nullable|string',
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:1536',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
             ]);
 
             $newImageName = time() . '-' . $request->image->getClientOriginalName();
@@ -72,8 +72,8 @@ class CoverImageController extends Controller
 
         if ($request->hasFile('image')) {
             // Check if the uploaded image size is within the limit
-            if ($request->file('image')->getSize() > 2097152) { // 2MB in bytes
-                return redirect()->back()->with('error', 'Error! Make sure the size of the image is less than 2MB');
+            if ($request->file('image')) { // 2MB in bytes
+                return redirect()->back()->with('error', '');
             }
 
             $newImageName = time() . '-' . $request->image->getClientOriginalName();
