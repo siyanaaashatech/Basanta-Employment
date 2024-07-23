@@ -9,7 +9,7 @@
                             alt="" />
                         <h3>{{ $sitesetting->office_name }}</h3>
                         <p>{{ $sitesetting->slogan }}</p>
-                        <a href="{{ route('Contact') }}"><button class="btn">CONTACT US</button></a>
+                      
                 </div> 
 
                 <div class="col-lg-12 "> --}}
@@ -20,12 +20,14 @@
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
                                 <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block banners-imgs"
                                     width="100%" height="550px" alt="Cover Image" />
-                                <div class="carousel-caption d-md-block w-100">
+                                <div class="carousel-caption d-md-block ">
                                     <span>
                                         @if (app()->getLocale() == 'ne')
                                         {{ $coverImage->title_ne }}
                                     @else
-                                        {{ $coverImage->title }}
+                                        <h1 class="herosectiontitle">{{ $coverImage->title }}</h1>
+                                        <p>Check if there is a typo in typo  -solutions.com.</p>
+                                        <a href="#"><button class="btn">READ MORE</button></a>
                                     @endif
                                     </span>
                                 </div>
@@ -47,7 +49,7 @@
         </div>
     </section>
 
-    <section class="country py-4">
+    <section class="country py-4 ">
         <div class="container swiper p-4">
             <div class="slide-container">
                 <div class="card-wrapper swiper-wrapper">
@@ -68,19 +70,21 @@
                                         </span>
                                     </h3>
                                     <h6>
-                                        {{ $demand->from_date }} - {{ $demand->to_date }} <br />
+                                        {{ $demand->from_date }} <span class="to">to</span> {{ $demand->to_date }} <br />
+                                        
+                                        </h6>
+                                        <span class="my-1">
                                         {{ trans('messages.Vacancy') }}:
-                                        <span>
                                             @if (app()->getLocale() == 'ne')
                                                 {{ $demand->vacancy_ne }}
                                             @else
                                                 {{ $demand->vacancy }}
                                             @endif
                                         </span>
-                                    </h6>
+                                   
                                 </div>
                             </a>
-                            <div class="apply-button mt-2">
+                            <div class="apply-button  mt-2">
                                 <a href="{{ route('apply', ['id' => $demand->id]) }}" class="apply-btn">
                                     {{ 'Apply now' }}
                                 </a>
@@ -92,52 +96,9 @@
         </div>
     </section>
     
-    <!-- Custom CSS -->
-    <style>
-        .apply-btn {
-            background-color: rgba(99, 2, 2, 0.8);
-            color: whitesmoke;
-            border: 1px solid black;
-            padding: 1px 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-        }
-    
-        .apply-btn:hover {
-            background-color: grey;
-            color: whitesmoke;
-        }
-    
-        .card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 90%;
-            padding: 1rem;
-            border-radius: 23px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-    
-        .img-box img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-    
-        .profile-details {
-            margin-top: 1rem;
-            flex-grow: 1;
-        }
-    
-        .apply-button {
-            margin-top: 1rem;
-        }
-    </style>
-    
 
-<section class="about-us">
+ <!-- ceo message -->
+<section class="about-us my-5 ">
   <div class="container">
       <div class="container-box">
           <div class="left position-relative">
@@ -169,48 +130,24 @@
   </div>
 </section>
 
-
     <!-- Experience -->
-    {{-- <section class="experience py-4">
-        <div class="container">
-            <h2 class="text-center pb-3 section_title">MORE THAN 10 YEARS OF EXPERIENCE</h2>
-            <div class="row py-4 g-4">
-                @foreach ($services as $service)
-                    <div class="col-lg-4 col-md-4">
-                        <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
-                            <div class="Ebox1">
-                                <div class="E-B-img">
-                                    <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Service Image">
-                                </div>
-                                <h3 class="text-center pt-3">{{ $service->title }}</h3>
-                            </div>
-                    </div>
-                @endforeach
-            </div>
-
-        </div>
-        
-    </section> --}}
-
-    <!-- Experience -->
-    <section class="experience py-4">
+    <section class="experience py-4 my-5">
         <div class="container">
             <h2 class="text-center pb-3 section_title">{{ trans('messages.SeviceSectionTitle') }}</h2>
             <div class="row py-4 g-4">
                 @foreach ($services as $service)
-                    <div class="col-lg-4 col-md-4 Ebox-wrap">
+                    <div class="col-lg-3 col-md-3 Ebox-wrap">
                         <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
-                            <div class="Ebox1">
-                                <div class="Ebox-img">
-                                    <img src="{{ asset('uploads/service/' . $service->image) }}" alt="Service Image">
-                                </div>
-                                <h3 class="text-center pt-3 Ebox-text"><span>
+                            <div class="Ebox1  pt-3 px-3 d-flex flex-column  ">
+                            <h3 class="text-center">Factory worker</h3>
+                                <h6 class=" Ebox-text text-justify"><span>
                                     @if (app()->getLocale() == 'ne')
+                                  
                                         {{ $service->title_ne }}
                                     @else
                                         {{ $service->title }}
                                     @endif
-                                </span></h3>
+                                </span></h6>
                             </div>
                         </a>
                     </div>
@@ -220,24 +157,103 @@
     </section>
 
 
+    <section class="ceomessage py-5">
+    <div class="container w-90 d-flex justify-content-center">
+      <div class="row d-flex justify-content-center align-items-center w-60">
+        <div class="col-md-5">
+          <img src="" alt="" class="">
+        </div>
+        <div class="col-md-5 m-box py-2 animated-image">
+          <h1 class="ceopositionmes">CEO MESSAGE</h1>
+          <p class="d-flex text-justify">There are so many ways to describe food, including taste, texture, preparation style, and more. Whether you’re looking to spice There are so many ways to describe food, including taste, texture, preparation style, and more. Whether you’re looking to spice u texture, preparation style, and more. Whether you’re looking to spice utexture, preparation style, and more. Whether you’re looking to spice u There are so many ways to describe food, including taste, texture, preparation style, and more. Whether you’re looking to spice up your food related vocabulary or you’re s</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- our client -->
+<section class="container">
+    <div class="client-section d-flex flex-column align-items-center">
+    <h2 class="text-center pb-3 section_title">{{ trans('messages.client') }}</h2>
+      <div class="row">
+        <div class="client-img col-md-3">
+          <img src="./image/client2.png" alt="" />
+        </div>
+        <div class="client-img col-md-3">
+          <img src="./image/clinet1.png" alt="" />
+        </div>
+        <div class="client-img col-md-3">
+          <img src="./image/client2.png" alt="" />
+        </div>
+        <div class="client-img col-md-3">
+          <img src="./image/clinet1.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- what your client say -->
+
+<section class="experience py-2 my-5 clientsay">
+    <div class="container">
+        <h2 class="text-center pb-2 section_title">{{ trans('messages.clientsay') }}</h2>
+        <div class="row py-2 g-4">
+            <div class="col-lg-3 col-md-3 Ebox-wrap">
+            
+                    <div class="Ebox1 clientcard pt-3 px-3 d-flex flex-column position-relative">
+                        <!-- Adjusted positioning for the icon -->
+                        <div class="clientcard-icon position-absolute top-2 left-4">
+                        <i class="fas fa-heart heart-icon"></i>
+                        </div>
+                        
+                            <p class=" d-flex text-justify messagefromclient my-4 ">We wanted to take a moment to tell you what a pleasure it has been to work with you
+                                and your team at Al Asar. Your team professionalism has been by far beyond industry
+                                firms and even our expectations. It's a pleasure to work with a firm which not only
+                                understands and commodes customers request but a
+                            </p>
+                            <h4 class="whosaidit">basanta Safety and Security, Kuwait</h4>
+                        
+                    </div>
+            
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
     <!-- Get in touch -->
-    <section class="Find-country">
+    <!-- <section class="Find-country">
         <div class="container py-5">
             <div class="row d-flex align-items-center find-count-row">
-                <div class="col-lg-8">
-                    <h2 class="fw-bold">{{ trans('messages.BestCountry') }}</h2>
-                    <h5 class="pt-3">{{ trans('messages.BestCountryLineOne') }}<br> {{ trans('messages.BestCountryLineTwo') }}
-                    </h5>
-
-                </div>
-                <div class="col-lg-4 pt-4">
-                    <a href="{{ route('Contact')}}" class="btn2">{{ trans('GetInTouch') }}</a>
-                </div>
+             <div class="col">
+        
+             </div>
                 
             </div>
         </div>
-    </section>
+    </section> -->
 
+
+<!-- 
     {{-- <section class="guiding py-5">
         <div class="container">
             <h2 class="text-center section_title pb-3">{{ trans('messages.Our') }} {{ trans('messages.' . ucfirst($firstCategory->title)) }}</h2>
@@ -377,9 +393,9 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="testimonial">
+    <!-- <section class="testimonial">
         <div class="container swiper mySwiper">
             <h2 class="text-center section_title pb-3">{{ trans('messages.Testimonials') }}</h2>
             <div class="swiper-wrapper">
@@ -430,7 +446,7 @@
             <div class="swiper-button-prev arrow"></div>
             <div class="swiper-pagination"></div>
         </div>
-    </section>
+    </section> -->
 
 
 
