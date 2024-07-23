@@ -10,6 +10,7 @@ return [
     'AboutUs' => 'About Us',
     'OurTeams' => 'Our Teams' ,
     'Services' => 'Our Services',
+    'client' => 'OUR CLIent',
     
     'PhotoGallery' => 'Photo Gallery',
     'Demands' => 'Demands',
@@ -26,10 +27,11 @@ return [
     'RecommendedCountries' => 'Recommended Countries',
     'Lunar Overseas'=> 'Lunar Overseas',
     'About Us' => 'About Us',
-    'SeviceSectionTitle' => 'More Than 10 Years Of Experience',
+    'SeviceSectionTitle' => 'Service Than 10 Years Of Experience',
     'BestCountry' => "Let's Find a Perfect Country For You",
     'BestCountryLineOne' => 'Find the perfect solution for your needs',
     'BestCountryLineTwo' => '100% satisfaction guaranteed',
+    'clientsay' => 'What our Clients Say',
   
     'Guiding Principles' => 'Guiding Principles',
     'Our' => 'Our',
