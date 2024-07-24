@@ -1,23 +1,32 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="background">
-        <h1 class="page_title">{{ trans('messages.Testimonials') }}</h1>
-    </div>
 
+<!-- herosection for about contact and dem -->
+<section class="herosectionforallpage my-4">
+    <div class="container">
+    <img src="./image/candidate2.jpg" alt="">
+    <div class="d-flex flex-column innercontent">
+     <span class="maintitle">Testimonial</span>
+     <span class="navigatetitle py-2 px-3 mb-1">
+      <a href="" style="color: white !important; text-decoration: none;">Home</a> > <span>Testimonial</span>
+  </span>
+    </div>
+  </div>
+  </section>
     <section class="testimonial_page">
         <div class="container">
-            <div class="row">
+            <div class="row ">
                 @foreach ($testimonials as $testimonial)
-                    <div class="col-lg-6 row test_row">
-                        <div class="col-lg-4">
+                    <div class="col-md-6 row test_row">
+                        <div class="">
                             @if ($testimonial->image)
-                                <img src="{{ asset('uploads/testimonial/' .$testimonial->image) }}" class="test_image" alt="">
+                            <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}" class="test_image" alt="">
+
                             @else
                                 <img src="{{ asset('image/girl.jpg') }}" class="test_image" alt="">
                             @endif
-                        </div>
-                        <div class="col-lg-8">
+                            </div>
                             <p> @if (app()->getLocale() == 'ne')
                                 {{ $testimonial->description_ne }}
                             @else
@@ -41,10 +50,12 @@
                                 @endif
                             </h6>
                             <hr>
+                          
                         </div>
+                       
                     </div>
                 @endforeach
             </div>
-        </div>
+       </div>
     </section>
 @endsection

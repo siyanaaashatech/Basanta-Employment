@@ -1,10 +1,27 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="background">
-        <h1 class="page_title">{{ trans('messages.Services') }}</h1>
-    </div>
+<!-- herosection -->
+<section class="servicepagehero py-4">
+    <div class="container">
+      <div class="row d-flex flex-column justify-content-center align-items-center" >
 
+      <h2 class="col-6">Empowering potential , fueling success Strength in unity, success assured</h2>
+      <img src="./image/candidate.jpg" alt="" srcset="">
+      <div class="row py-4">
+        <h2 class="col-7">Empowering talents abroad, connecting global expertise for impactful and sustainable growth
+          across borders.</h2>
+        <p class="col-4">ThemeForest offers thousands of easy to customize themes, templates & CMS products for any
+          project. Browse categories such as WordPress, eCommerce, Site Templates, Marketing, CMS,</p>
+
+      </div>
+    </div>
+  </div>
+
+  </section>
+
+
+<!-- multiple post of service -->
     <section class="multi_post">
         <div class="container">
             <div class="multi_poster row justify-content-center gap-5">
