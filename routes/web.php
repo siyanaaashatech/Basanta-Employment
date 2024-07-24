@@ -31,6 +31,7 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\DirectorMessageController;
 use App\Http\Controllers\BlogPostsCategoryController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\CeoMessageController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -110,6 +111,7 @@ Route::prefix('/')->group(function () {
     Route::get('/singlepost/{slug}', [SingleController::class, 'render_singlePost'])->name('singlePost');
     Route::get('/gallerys/{slug}', [SingleController::class, 'render_singleImage'])->name('singleImage');
 
+    // Route::get('/ceo-message', [CeomessageController::class, 'showCeoMessage'])->name('ceo.message');
 
 });
 
@@ -132,6 +134,10 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     // About us
     Route::resource('about-us', AboutController::class);
+
+    // CEO Message
+    Route::resource('ceomessage', CeoMessageController::class);
+
 
     // Services
     Route::resource('services', ServiceController::class);

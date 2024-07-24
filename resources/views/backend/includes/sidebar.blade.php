@@ -124,6 +124,18 @@
                                 </li>
                             @endcan
 
+                            {{-- CEO Message --}}
+                            @can('list_ceomessage')
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::segment(2) == 'contact-details' && Request::segment(3) == 'ceomessage' ? 'active' : '' }}"
+                                        href="{{ route('admin.ceomessage.index') }}">
+                                        <div class="d-flex align-items-center"><i class="fa fa-angle-double-right"></i>
+                                            CEO Message
+                                        </div>
+                                    </a>
+                                </li>
+                            @endcan
+
                             {{-- Student Details --}}
                             @can('list_student_details')
                                 <li class="nav-item">

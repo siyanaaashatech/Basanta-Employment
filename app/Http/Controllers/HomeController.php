@@ -6,6 +6,7 @@ use App\Models\CoverImage;
 use App\Models\Demand;
 use App\Models\About;
 use App\Models\Service;
+use App\Models\Message;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -43,9 +44,10 @@ class HomeController extends Controller
         // Fetch testimonials
         $testimonials = Testimonial::all();
 
-       
+        // Fetch Messages
+        $messages = Message::all();
 
         // Pass data to view
-        return view('home', compact('coverImages', 'demands', 'about', 'services', 'testimonials'));
+        return view('home', compact('coverImages', 'demands', 'about', 'services', 'testimonials', 'messages'));
     }
 }

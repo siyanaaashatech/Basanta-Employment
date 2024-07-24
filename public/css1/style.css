@@ -1765,7 +1765,10 @@ height: 500px;
 
 
 
-
+.ceomessage img{
+   width: 100%;
+   height: 50vh;
+}
 
 
  /* From the new site */

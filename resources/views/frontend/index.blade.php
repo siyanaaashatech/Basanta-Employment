@@ -132,20 +132,22 @@
 
     <!-- Experience -->
     <section class="experience py-4 my-5">
-        <div class="container">
+        <div class="container w-90 d-flex justify-content-center">
             <h2 class="text-center pb-3 section_title">{{ trans('messages.SeviceSectionTitle') }}</h2>
             <div class="row py-4 g-4">
                 @foreach ($services as $service)
                     <div class="col-lg-3 col-md-3 Ebox-wrap">
                         <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
                             <div class="Ebox1  pt-3 px-3 d-flex flex-column  ">
-                            <h3 class="text-center">Factory worker</h3>
+                            <h3 class="text-center"></h3>
                                 <h6 class=" Ebox-text text-justify"><span>
                                     @if (app()->getLocale() == 'ne')
                                   
                                         {{ $service->title_ne }}
+                                        <p>{!! $service->description_ne !!}</p>
                                     @else
                                         {{ $service->title }}
+                                        <p>{!! $service->description_ne !!}</p>
                                     @endif
                                 </span></h6>
                             </div>
@@ -158,31 +160,53 @@
 
 
     <section class="ceomessage py-5">
+        <div class="container w-90 d-flex justify-content-center">
+            <div class="row d-flex justify-content-center align-items-center w-60">
+                <div class="col-md-5">
+                    <img src="{{ asset('uploads/message/' . $message->image) }}" alt="{{ $message->title }}" class="">
+                </div>
+                
+                <div class="col-md-5 m-box py-2 animated-image">
+                    <h1 class="ceopositionmes">CEO MESSAGE</h1>
+                    <p class="d-flex text-justify">
+                        @if (app()->getLocale() == 'ne')
+                            {{ $message->title_ne }}
+                            <p>{!! $message->description_ne !!}</p>
+                        @else
+                            {{ $message->title }}
+                            <p>{!! $message->description !!}</p>
+                        @endif
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+ <!-- CEO Message -->
+{{-- <section class="ceomessage py-5">
     <div class="container w-90 d-flex justify-content-center">
-      <div class="row d-flex justify-content-center align-items-center w-60">
-        <div class="col-md-5">
-          <img src="" alt="" class="">
+        <div class="row d-flex justify-content-center align-items-center w-60">
+            <div class="col-md-5">
+                @if($ceomessage && $ceomessage->image)
+                    <img src="{{ asset('uploads/message/' . $ceomessage->image) }}" alt="CEO Image" class="img-fluid">
+                @else
+                    <img src="{{ asset('default-image.jpg') }}" alt="Default Image" class="img-fluid">
+                @endif
+            </div>
+            <div class="col-md-5 m-box py-2 animated-image">
+                <h1 class="ceopositionmes">CEO MESSAGE</h1>
+                <p class="d-flex text-justify">
+                    @if (app()->getLocale() == 'ne')
+                        {!! $ceomessage ? $ceomessage->description_ne : '' !!}
+                    @else
+                        {!! $ceomessage ? $ceomessage->description : '' !!}
+                    @endif
+                </p>
+            </div>
         </div>
-        <div class="col-md-5 m-box py-2 animated-image">
-          <h1 class="ceopositionmes">CEO MESSAGE</h1>
-          <p class="d-flex text-justify">There are so many ways to describe food, including taste, texture, preparation style, and more. Whether you’re looking to spice There are so many ways to describe food, including taste, texture, preparation style, and more. Whether you’re looking to spice u texture, preparation style, and more. Whether you’re looking to spice utexture, preparation style, and more. Whether you’re looking to spice u There are so many ways to describe food, including taste, texture, preparation style, and more. Whether you’re looking to spice up your food related vocabulary or you’re s</p>
-        </div>
-      </div>
     </div>
-  </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
+</section> --}}
 
 
 <!-- our client -->

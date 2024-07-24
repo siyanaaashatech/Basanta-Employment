@@ -19,60 +19,45 @@ use App\Models\Testimonial;
 use App\Models\PhotoGallery;
 use Illuminate\Http\Request;
 use App\Models\BlogPostsCategory;
+use App\Models\Message;
 
 class FrontViewController extends Controller
 {
     public function index()
     {
         $sitesetting = SiteSetting::first();
-        $about= About::first();
+        $about = About::first();
         $services = Service::latest()->get()->take(6);
         $contacts = Contact::latest()->get();
         $blogs = BlogPostsCategory::latest()->get()->take(3);
-        // $courses = Course::latest()->get()->take(6);
         $testimonials = Testimonial::latest()->get()->take(10);
         $coverImages = CoverImage::all();
         $demands = Demand::latest()->get()->take(12);
-
-        // $countries = Country::latest()->get()->take(10);
-
-   // Fetch the first category
-   $firstCategory = Category::first();
-
-   // Fetch posts related to the first category
-   $posts = $firstCategory->posts()->latest()->take(6)->get();
-        // $enrollPost = $countryUniversityCategory->posts()->orderBy('id', 'desc')->skip(1)->first();
-
-
-
-
-
+        
+        // Fetch the most recent message
+        $message = Message::latest()->first(); // Fetch a single latest message
+    
+        // Fetch the first category
+        $firstCategory = Category::first();
+    
+        // Fetch posts related to the first category
+        $posts = $firstCategory->posts()->latest()->take(6)->get();
+    
         return view('frontend.index', compact([
             'services',
             'contacts',
             'blogs',
             'sitesetting',
-            // 'courses',
             'testimonials',
             'coverImages',
+            'message', // Updated to single message
             'demands',
             'about',
             'posts',
             'firstCategory'
-
-            // 'countries',
-            // 'sliderPost',
-            // 'enrollPost'
         ]));
     }
-    public function singlePost($slug)
-    {
-        $post = Post::where('slug', $slug)->firstOrFail();
-        $relatedPosts = Post::where('id', '!=', $post->id)->get();
-
-        return view('frontend.posts', compact('post', 'relatedPosts'));
-    }
-
+    
 
     // public function about()
     // {
