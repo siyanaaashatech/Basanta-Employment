@@ -63,6 +63,12 @@
                             {{ trans('messages.Demands') }} </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="{{ route('Team') }}">
+                            {{ trans('messages.Teams') }} </a>
+                    </li>
+
+
                     <li class="nav-item dropdown">
 
                         {{-- <a class="nav-link dropdown-toggle text-primary" href="#" role="button"

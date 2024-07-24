@@ -1,8 +1,23 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="background">
-        <h1 class="page_title">{{ trans('messages.AboutUs') }}</h1>
+    <!-- herosection -->
+    <section class="aboutherosection">
+    <div class="container py-5 ">
+      <div class="row align-items-center mx-5">
+        <div class="col-md-7 order-md-1 order-2">
+          <h3 class="text-center pt-4">What We Give?</h3>
+          <p style="text-align: justify; line-height: 1.6;">Embarking on an odyssey through the digital landscape of
+            virtual reality, we are beckoned into a realm where pixels dance with possibility and imagination knows no
+            bounds. But what is this elusive phenomenon that whispers promises of alternate realities and immersive
+            experiences? Virtual reality, a symphony of code and creativity, transports us beyond the confines of the
+            tangible world into a universe of endless potential. It's the artful fusion of technology and human
+            curiosity, inviting us to explore realms both familiar and new.</p>
+        </div>
+        <div class="col-md-5 order-md-2 order-1">
+          <img src="./image/aboutheroimage.png" alt="" style="max-width: 100%; height: auto;">
+        </div>
+      </div>
     </div>
 
     <section class="sample_image">

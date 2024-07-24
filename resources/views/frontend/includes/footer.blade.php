@@ -2,212 +2,13 @@
 
 
 
-<style>
- /* For Footer */
-.footer_serv {
-    text-align: right;
-}
-
-.footer_serv h3 {
-    color: white;
-}
-
-.footer_serv p {
-    color: white;
-}
-
-ul {
-    margin: 0px;
-    padding: 0px;
-}
-
-.footer-section {
-    background: rgba(99, 2, 2, 0.8);
-    position: relative;
-    box-shadow: rgba(33, 37, 109, 0.15);
-    padding: 5px 0; /* Further adjusted padding to decrease footer size */
-}
-
-.footer-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    opacity: 0.3;
-}
-
-.footer-cta {
-    border-bottom: 1px solid #373636;
-    padding: 5px 0; /* Further adjusted padding to decrease footer size */
-}
-
-.single-cta i {
-    color: #fff;
-    font-size: 30px;
-    float: left;
-    margin-top: 8px;
-}
-
-.cta-text {
-    padding-left: 15px;
-    display: inline-block;
-}
-
-.cta-text h4 {
-    color: #fff;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 2px;
-}
-
-.cta-text span {
-    color: #b5b4bb;
-    font-size: 15px;
-}
-
-.footer-content {
-    position: relative;
-    z-index: 2;
-    padding: 10px 0; /* Further adjusted padding to decrease footer size */
-}
-
-.footer-pattern img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 330px;
-    background-size: cover;
-    background-position: 100% 100%;
-}
-
-.footer-logo {
-    margin-bottom: 5px; /* Further adjusted margin to decrease footer size */
-}
-
-.footer-logo img {
-    max-width: 130px;
-}
-
-.footer-text p {
-    margin-bottom: 5px; /* Further adjusted margin to decrease footer size */
-    font-size: 14px;
-    color: #7e7e7e;
-    line-height: 28px;
-}
-
-.footer-social-icon i {
-    height: 40px;
-    width: 40px;
-    text-align: center;
-    line-height: 38px;
-    border-radius: 50%;
-}
-
-.footer-social-icon .social-buttons .social-button__inner {
-    margin-left: 5px;
-}
-
-.facebook-bg {
-    background: #3B5998;
-}
-
-.twitter-bg {
-    background: #55ACEE;
-}
-
-.google-bg {
-    background: #DD4B39;
-}
-
-.footer-widget-heading h3 {
-    color: #fff;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 8px; /* Further adjusted margin to decrease footer size */
-    position: relative;
-    font-family: 'Mukta', sans-serif;
-}
-
-.footer-widget-heading h3::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -15px;
-    height: 2px;
-    width: 50px;
-    background: #6a88ac;
-}
-
-.footer-widget ul li {
-    display: inline-block;
-    float: left;
-    width: 50%;
-    margin-bottom: 12px;
-}
-
-.footer-widget .quicknepal_link li {
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 12px;
-}
-
-.footer-widget ul li a:hover {
-    font-weight: bold;
-}
-
-.footer-widget ul li a {
-    color: #c7bfbf;
-    text-transform: capitalize;
-    text-decoration: none;
-}
-
-.copyright-area {
-    background: rgba(99, 2, 2, 0.8);
-    padding: 5px 0; /* Further adjusted padding to decrease footer size */
-    margin-top: 0px; /* Adjusted margin to fix gap */
-    margin-bottom: 0px;
-}
-
-.copyright-text p {
-    margin: 0;
-    font-size: 14px;
-    color: #878787;
-}
-
-.copyright-text p a {
-    color: #ff5e14;
-}
-
-.footer-menu li {
-    display: inline-block;
-    margin-left: 20px;
-}
-
-.footer-menu li:hover a {
-    color: #ff5e14;
-}
-
-.footer-menu li a {
-    font-size: 14px;
-    color: #878787;
-}
-
-
-</style>
-
-
 
 {{-- For Footer --}}
 <footer class="footer-section">
-    <div class="container">
-        <div class="footer-cta pt-5 pb-5">
+    <div class="container pt-5">
+        <div class="footer-cta pb-3">
             <div class="row">
-                <div class="col-xl-4 col-md-4 mb-30 mt-3">
+                <div class="col-xl-4 col-md-4">
                     <div class="single-cta">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <div class="cta-text">
@@ -231,7 +32,7 @@ ul {
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-4 mb-30 mt-3">
+                <div class="col-xl-4 col-md-4 ">
                     <div class="single-cta">
                         <i class="fa fa-mobile" aria-hidden="true"></i>
                         <div class="cta-text">
@@ -259,7 +60,7 @@ ul {
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-4 mb-30 mt-3">
+                <div class="col-xl-4 col-md-4 ">
                     <div class="single-cta">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                         <div class="cta-text">
@@ -377,7 +178,7 @@ ul {
     </div>
     <div class="copyright-area">
         <div class="container">
-            <div class="row text-center">
+            <div class="row text-center py-1">
 
                 <div class="copyright-text">
                     <p>Copyright &copy; 2024, All Right Reserved {{ $sitesetting->office_name }}
