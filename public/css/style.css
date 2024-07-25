@@ -31,13 +31,6 @@
 
 
 
-
-
-
-
-
-
-
 *,
 *:before,
 *:after {
@@ -325,7 +318,7 @@ li {
 }
 
 .social-button--facebook::after {
-  background: #3b5999;
+  background: var(--bs-yellow);
 }
 
 .social-button--snapchat {
@@ -333,49 +326,49 @@ li {
 }
 
 .social-button--snapchat::after {
-  background: #f0cc00;
+  background: var(--bs-yellow);
 }
 
 .social-button--linkedin {
-  color: #0077b5;
+  color: #3b5999;
 }
 
 .social-button--linkedin::after {
-  background: #0077b5;
+  background: var(--bs-yellow);
 }
 
 .social-button--github {
-  color: #e91515;
+  background: #f0cc00;
 }
 
 .social-button--github::after {
-  background: #e91515;
+  background: #f0cc00;
 }
 
 .social-button--codepen {
-  color: #212121;
+  color: #3b5999;
 }
 
 .social-button--codepen::after {
-  background: #212121;
+  background: var(--bs-yellow);
 }
 
 .social-button--instagram {
-  color: #e4405f;
+  color: #3b5999;
 }
 
 .social-button--instagram::after {
-  background: #e4405f;
+  background: var(--bs-yellow);
 }
 
 
 .social-button--snapchat {
-  color: #000;
+  color: #3b5999;
 
 }
 
 .social-button--snapchat::after {
-  background: #F7F300;
+  background: var(--bs-yellow);
 }
 
 .header {
@@ -687,7 +680,14 @@ li {
   border: 1px solid gray;
   background-color: #0000008d;
 }
-
+.experiencebox {
+  max-height: 26vh;
+  overflow: hidden;
+  position: relative; /* Ensure relative positioning for absolute positioning of button */
+  border: 1px solid #ccc; /* Example border styling */
+  padding: 15px; /* Example padding */
+  border-radius: 4px;
+}
 
 
 
@@ -2207,6 +2207,16 @@ color: rgba(255, 255, 255, 0.885);
 }
 
 /* Define the animation keyframes */
+
+
+
+.ceomessage img {
+  height:40vh;
+  width: 100%;
+  object-fit: contain;
+  margin: 0!;
+
+}
 @keyframes moveImage {
   0% {
     transform: translateY(0);
@@ -2481,7 +2491,7 @@ ul {
 }
 
 .cta-text span {
-    color: #b5b4bb;
+    color: #ffffffcc;
     font-size: 15px;
 }
 
@@ -2511,7 +2521,7 @@ ul {
 .footer-text p {
     margin-bottom: 5px; /* Further adjusted margin to decrease footer size */
     font-size: 14px;
-    color: #7e7e7e;
+    color: #ffffffcc;
     line-height: 28px;
 }
 
@@ -2565,7 +2575,7 @@ ul {
 
 
 .footer-widget ul li a {
-    color: #c7bfbf;
+  color: #ffffffcc;
     text-transform: capitalize;
     text-decoration: none;
 }
@@ -2580,7 +2590,7 @@ ul {
 .copyright-text p {
     margin: 0;
     font-size: 14px;
-    color: #878787;
+    color: #ffffffcc;
 }
 
 .copyright-text p a {

@@ -65,12 +65,13 @@ return [
     'Home page' => 'Home page',
     'Testimonial' => 'Testimonial',
 
-
-  
-
      
 
-
+    'AboutDescription'=>'In this third millennium era", where Human Resources 
+    have become one of the most important subjects in the field of development
+     globally, hence looking forward in being part of the Global Development team.
+      We planted a foundation stone
+     in developing ourselves to be the part M/s Al Asar International...'
 
     // Add more translations as needed...
 ];
