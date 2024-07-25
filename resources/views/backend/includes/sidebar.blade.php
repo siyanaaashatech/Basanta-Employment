@@ -592,7 +592,7 @@
                          aria-controls="clients">
                          <div class="d-flex align-items-center">
                              <span class="nav-link-icon"><i class="fas fa-question-circle"></i></span>
-                             <span class="nav-link-text ps-1">Clients</span>
+                             <span class="nav-link-text ps-1"> Our Clients</span>
                          </div>
                      </a>
                      <ul class="nav collapse {{ Request::segment(2) == 'clients' ? 'show' : '' }}" id="clients">
