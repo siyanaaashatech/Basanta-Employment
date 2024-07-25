@@ -132,7 +132,7 @@
 
     <!-- Experience -->
     <section class="experience py-4 my-5">
-        <div class="container w-90 d-flex justify-content-center">
+        <div class="container w-90 justify-content-center">
             <h2 class="text-center pb-3 section_title">{{ trans('messages.SeviceSectionTitle') }}</h2>
             <div class="row py-4 g-4">
                 @foreach ($services as $service)
@@ -159,76 +159,64 @@
     </section>
 
 
+    <!-- CEO Message -->
     <section class="ceomessage py-5">
         <div class="container w-90 d-flex justify-content-center">
             <div class="row d-flex justify-content-center align-items-center w-60">
-                <div class="col-md-5">
-                    <img src="{{ asset('uploads/message/' . $message->image) }}" alt="{{ $message->title }}" class="">
-                </div>
-                
-                <div class="col-md-5 m-box py-2 animated-image">
-                    <h1 class="ceopositionmes">CEO MESSAGE</h1>
-                    <p class="d-flex text-justify">
-                        @if (app()->getLocale() == 'ne')
-                            {{ $message->title_ne }}
-                            <p>{!! $message->description_ne !!}</p>
+                @if(isset($message) && $message)
+                    <div class="col-md-5">
+                        @if($message->image)
+                            <img src="{{ asset('uploads/message/' . $message->image) }}" alt="{{ $message->title }}" class="">
                         @else
-                            {{ $message->title }}
-                            <p>{!! $message->description !!}</p>
+                            <img src="{{ asset('path/to/default/image.jpg') }}" alt="Default Image" class="">
                         @endif
-                    </p>
-                </div>
+                    </div>
+                    
+                    <div class="col-md-5 m-box py-2 animated-image">
+                        <h1 class="ceopositionmes">CEO MESSAGE</h1>
+                        <p class="d-flex text-justify">
+                            @if (app()->getLocale() == 'ne')
+                                {{ $message->title_ne }}
+                                <p>{!! $message->description_ne !!}</p>
+                            @else
+                                {{ $message->title }}
+                                <p>{!! $message->description !!}</p>
+                            @endif
+                        </p>
+                    </div>
+                @else
+                    <div class="col-md-12">
+                        <p>No CEO message available at this time.</p>
+                    </div>
+                @endif
             </div>
         </div>
     </section>
-    
-    
- <!-- CEO Message -->
-{{-- <section class="ceomessage py-5">
-    <div class="container w-90 d-flex justify-content-center">
-        <div class="row d-flex justify-content-center align-items-center w-60">
-            <div class="col-md-5">
-                @if($ceomessage && $ceomessage->image)
-                    <img src="{{ asset('uploads/message/' . $ceomessage->image) }}" alt="CEO Image" class="img-fluid">
-                @else
-                    <img src="{{ asset('default-image.jpg') }}" alt="Default Image" class="img-fluid">
-                @endif
-            </div>
-            <div class="col-md-5 m-box py-2 animated-image">
-                <h1 class="ceopositionmes">CEO MESSAGE</h1>
-                <p class="d-flex text-justify">
-                    @if (app()->getLocale() == 'ne')
-                        {!! $ceomessage ? $ceomessage->description_ne : '' !!}
-                    @else
-                        {!! $ceomessage ? $ceomessage->description : '' !!}
-                    @endif
-                </p>
-            </div>
-        </div>
-    </div>
-</section> --}}
 
 
 <!-- our client -->
 <section class="container">
     <div class="client-section d-flex flex-column align-items-center">
-    <h2 class="text-center pb-3 section_title">{{ trans('messages.client') }}</h2>
-      <div class="row">
-        <div class="client-img col-md-3">
-          <img src="./image/client2.png" alt="" />
+        <h2 class="text-center pb-3 section_title">{{ trans('messages.client') }}</h2>
+        <div class="row">
+            @if(isset($clients) && $clients->count() > 0)
+                @foreach($clients as $client)
+                    <div class="client-img col-md-3">
+                        @if($client->image)
+                            <img src="{{ asset('uploads/client/' . $client->image) }}" alt="{{ $client->name }}" />
+                        @else
+                            <img src="{{ asset('image/default-client.png') }}" alt="Default Client Image" />
+                        @endif
+                    </div>
+                @endforeach
+            @else
+                <div class="col-md-12">
+                    <p>No clients available at this time.</p>
+                </div>
+            @endif
         </div>
-        <div class="client-img col-md-3">
-          <img src="./image/clinet1.png" alt="" />
-        </div>
-        <div class="client-img col-md-3">
-          <img src="./image/client2.png" alt="" />
-        </div>
-        <div class="client-img col-md-3">
-          <img src="./image/clinet1.png" alt="" />
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
 
   <!-- what your client say -->

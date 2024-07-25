@@ -32,6 +32,7 @@ use App\Http\Controllers\DirectorMessageController;
 use App\Http\Controllers\BlogPostsCategoryController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CeoMessageController;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -137,6 +138,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     // CEO Message
     Route::resource('ceomessage', CeoMessageController::class);
+
+    // Client
+    Route::resource('client', ClientController::class);
 
 
     // Services

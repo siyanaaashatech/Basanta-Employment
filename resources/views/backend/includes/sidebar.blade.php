@@ -124,7 +124,7 @@
                                 </li>
                             @endcan
 
-                            {{-- CEO Message --}}
+                            {{-- CEO Message
                             @can('list_ceomessage')
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::segment(2) == 'contact-details' && Request::segment(3) == 'ceomessage' ? 'active' : '' }}"
@@ -134,7 +134,7 @@
                                         </div>
                                     </a>
                                 </li>
-                            @endcan
+                            @endcan --}}
 
                             {{-- Student Details --}}
                             @can('list_student_details')
@@ -541,33 +541,33 @@
                 @endhasanyrole
                 {{-- End of FAQs --}}
 
-                {{-- Beginning of DIRECTORMESSAGE --}}
+                {{-- Beginning of CEOMESSAGE --}}
                 @hasanyrole('superadmin')
                     <li class="nav-item">
                         <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                            <div class="col-auto navbar-vertical-label">Director Messages</div>
+                            <div class="col-auto navbar-vertical-label">CEO Messages</div>
                             <div class="col ps-0">
                                 <hr class="mb-0 navbar-vertical-divider">
                             </div>
                         </div>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'director_messages' ? 'active' : '' }}"
+                        <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'ceomessage' ? 'active' : '' }}"
                             href="#d_msg" role="button" data-bs-toggle="collapse" aria-expanded="true"
                             aria-controls="d_msg">
                             <div class="d-flex align-items-center">
                                 <span class="nav-link-icon"><i class="fas fa-question-circle"></i></span>
-                                <span class="nav-link-text ps-1">Director Messages</span>
+                                <span class="nav-link-text ps-1">CEO Messages</span>
                             </div>
                         </a>
-                        <ul class="nav collapse {{ Request::segment(2) == 'director_messages' ? 'show' : '' }}"
+                        <ul class="nav collapse {{ Request::segment(2) == 'ceomessage' ? 'show' : '' }}"
                             id="d_msg" id="dashboard21">
-                            {{-- Director Messages --}}
+                            {{-- CEO Messages --}}
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::segment(2) == 'director_messages' ? 'active' : '' }}"
-                                    href="{{ route('admin.director_messages.index') }}">
+                                <a class="nav-link {{ Request::segment(2) == 'ceomessage' ? 'active' : '' }}"
+                                    href="{{ route('admin.ceomessage.index') }}">
                                     <div class="d-flex align-items-center">
                                         <i class="fa fa-list"></i>
-                                        <span class="nav-link-text ps-1">Director Message</span>
+                                        <span class="nav-link-text ps-1">CEO Message</span>
                                     </div>
                                 </a>
                             </li>
@@ -575,7 +575,42 @@
                     </li>
                     </li>
                 @endhasanyrole
-                {{-- End of DIRECTORMESSAGE --}}
+                {{-- End of CEOMESSAGE --}}
+
+                 {{-- Beginning of Our Clients --}}
+                 @hasanyrole('superadmin|admin')
+                 <li class="nav-item">
+                     <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                         <div class="col-auto navbar-vertical-label">Our Clients</div>
+                         <div class="col ps-0">
+                             <hr class="mb-0 navbar-vertical-divider">
+                         </div>
+                     </div>
+                 <li class="nav-item">
+                     <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'clients' ? 'active' : '' }}"
+                         href="#clients" role="button" data-bs-toggle="collapse" aria-expanded="true"
+                         aria-controls="clients">
+                         <div class="d-flex align-items-center">
+                             <span class="nav-link-icon"><i class="fas fa-question-circle"></i></span>
+                             <span class="nav-link-text ps-1">Clients</span>
+                         </div>
+                     </a>
+                     <ul class="nav collapse {{ Request::segment(2) == 'clients' ? 'show' : '' }}" id="clients">
+                         {{-- Clients --}}
+                         <li class="nav-item">
+                             <a class="nav-link {{ Request::segment(2) == 'faqs' ? 'active' : '' }}"
+                                 href="{{ route('admin.client.index') }}">
+                                 <div class="d-flex align-items-center">
+                                     <i class="fa fa-list"></i>
+                                     <span class="nav-link-text ps-1">Clients</span>
+                                 </div>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+                 </li>
+             @endhasanyrole
+             {{-- End of FAQs --}}
 
 
             </ul>
