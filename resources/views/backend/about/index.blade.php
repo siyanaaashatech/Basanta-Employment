@@ -36,7 +36,8 @@
                 <th>Subtitle</th>
                 <th>Image</th>
                 <th>Description</th>
-                <th>Content</th> <!-- Add this column -->
+                <th>Content</th>
+                <th>Scope</th> <!-- Add this column -->
                 <th>Action</th>
             </tr>
         </thead>
@@ -50,6 +51,7 @@
                             style="width: 150px; height:150px" /></td>
                     <td>{{ Str::limit(strip_tags($about->description), 200) }}</td>
                     <td>{{ Str::limit(strip_tags($about->content), 200) }}</td>
+                    <td>{{ Str::limit(strip_tags($about->scope), 200) }}</td>
 
                     <td>
                         <div style="display: flex; flex-direction:row;">

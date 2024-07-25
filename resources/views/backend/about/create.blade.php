@@ -33,8 +33,12 @@
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Title</label>
+                <label for="exampleInputEmail1">Title (In English)</label><span style="color:red; font-size:large"> *</span>
                 <input type="text" name="title" class="form-control" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title (In Nepali)</label>
+                <input type="text" name="title_ne" class="form-control" placeholder="Title" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Subtitle</label>
@@ -49,21 +53,45 @@
             <img id="preview" style="max-width: 500px; max-height:500px" />
 
             <div class="form-group">
-                <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
+                <label for="description">Description (In English)</label><span style="color:red; font-size:large"> *</span>
                 <textarea style="width: 100%; min-height: 150px;" type="text" class="form-control" name="description"
                     id="description" placeholder="Add Description">{{ old('description') }}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="description">Description</label><span style="color:red; font-size:large"> *</span>
+                <label for="description">Description (In Nepali)</label>
                 <textarea style="width: 100%; min-height: 150px;" type="text" class="form-control" name="description_ne"
                     id="description_ne" placeholder="Add Description">{{ old('description_ne') }}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="summernote">Content</label><span style="color:red; font-size:large"> *</span>
-                <textarea style="width: 100%; min-height: 300px;" id="summernote" name="content">{{ old('content') }}</textarea>
+                <label for="description_image">Description Image</label>
+                <input type="file" class="form-control" id="description_image" name="description_image">
             </div>
+
+            <div class="form-group">
+                <label for="summernote">Content (In English)</label><span style="color:red; font-size:large"> *</span>
+                <textarea style="width: 100%; min-height: 200px;" id="summernote" name="content">{{ old('content') }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="summernote_ne">Content (In Nepali)</label>
+                <textarea style="width: 100%; min-height: 200px;" id="summernote_ne" name="content_ne">{{ old('content_ne') }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="scope">Scope (In English)
+                <textarea style="width: 545%; min-height: 150px;" type="text" class="form-control" name="scope"
+                    id="scope" placeholder="Add Scope">{{ old('scope') }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="scope">Scope (In Nepali)
+                <textarea style="width: 545%; min-height: 150px;" type="text" class="form-control" name="scope_ne"
+                    id="scope_ne" placeholder="Add Scope">{{ old('scope_ne') }}</textarea>
+            </div>
+
+
 
         </div>
         <!-- /.card-body -->
@@ -81,7 +109,12 @@
                 maxHeight: null, // set maximum height of editor
                 focus: true // set focus to editable area after initializing summernote
             });
+            $('#summernote_ne').summernote({
+                height: 300, // set editor height
+                minHeight: null, // set minimum height of editor
+                maxHeight: null, // set maximum height of editor
+                focus: true // set focus to editable area after initializing summernote
+            });
         });
     </script>
-
 @stop

@@ -488,28 +488,15 @@
 
 
     <section class="container">
-        <div class="d-flex flex-column justify-content-center my-5 row">
+        <div class="d-flex flex-column justify-content-center my-5 row customconnectwithus">
             <span class="d-flex flex-column justify-content-center align-items-center containertitle">
                 <h2 class="d-flex justify-content-center">{{ trans('messages.Contact') }}</h2>
-                {{-- <img src="../image/banner.png" alt="Banner Image" /> --}}
             </span>
             <div class="d-flex flex-column justify-content-center customconnectwithus row">
                 <p class="my-4">
                     Are you prepared to enhance your skills, unlock new career opportunities, and achieve personal growth? Join our Professional Development and Training program, and connect with us to discover the empowering potential of targeted learning and career advancement.
                 </p>
-    
-                @if (Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-    
-                @if (Session::has('error'))
-                    <div class="alert alert-danger">
-                        {{ Session::get('error') }}
-                    </div>
-                @endif
-    
+
                 <div class="customconnectwithus-innersection d-flex justify-content-between">
                     <div class="customconnectwithus-innersection-left col-md-5">
                         <form id="contactForm" class="form-horizontal" method="POST" action="{{ route('Contact.store') }}">
@@ -617,15 +604,40 @@
             </div>
         </div>
     </section>
-    
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <script>
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            var response = grecaptcha.getResponse();
-            if(response.length === 0) { // reCAPTCHA not verified
-                event.preventDefault(); // Prevent form submission
-                alert("Please tick the reCAPTCHA box before submitting.");
-            }
+        $(document).ready(function() {
+            $('#contactForm').on('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                var form = $(this);
+                var formData = new FormData(this);
+                var recaptchaResponse = grecaptcha.getResponse();
+
+                if (recaptchaResponse.length === 0) {
+                    alert("Please tick the reCAPTCHA box before submitting.");
+                    return;
+                }
+
+                $.ajax({
+                    url: form.attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Assuming the server returns JSON with 'success' and 'message'
+                        if (response.success) {
+                            alert("Message sent successfully!");
+                        } else {
+                            alert("Error in sending message. Please try again.");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert("An unexpected error occurred. Please try again.");
+                    }
+                });
+            });
         });
     </script>
     

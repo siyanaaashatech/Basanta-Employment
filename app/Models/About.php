@@ -27,4 +27,9 @@ class About extends Model
             ]
         ];
     }
+
+    public function siteSetting()
+    {
+        return $this->hasOne(SiteSetting::class);
+    }
 }

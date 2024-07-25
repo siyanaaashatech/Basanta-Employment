@@ -63,10 +63,10 @@
                             {{ trans('messages.Demands') }} </a>
                     </li>
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link text-primary" href="{{ route('Team') }}">
-                            {{ trans('messages.Teams') }} </a>
-                    </li>
+                            {{ trans('Teams') }} </a>
+                    </li> --}}
 
 
                     <li class="nav-item dropdown">

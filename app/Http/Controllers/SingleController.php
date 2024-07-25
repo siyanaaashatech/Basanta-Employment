@@ -26,22 +26,14 @@ class SingleController extends Controller
 
     public function render_about()
     {
-        // $page_title = "About Us";
-   
         $about = About::first();
-        // $teams = Team::all();
-
         $posts = Post::with('category')->latest()->get()->take(3);
-     
         $listservices = Service::latest()->get()->take(5);
         $message = DirectorMessage::first();
-  
-        
-
-        return view('frontend.aboutus', compact('about', 'posts','listservices', 'message'));
-
+        $siteSetting = SiteSetting::first(); // Fetch the site setting
+    
+        return view('frontend.aboutus', compact('about', 'posts', 'listservices', 'message', 'siteSetting'));
     }
-
 
 
     public function render_team(Request $request)
