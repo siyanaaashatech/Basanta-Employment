@@ -262,38 +262,6 @@
     </div>
 </section>
 
-  <!-- what your client say -->
-
-{{-- <section class="experience py-2 my-5 clientsay">
-    <div class="container">
-        <h2 class="text-center pb-2 section_title">{{ trans('messages.clientsay') }}</h2>
-        <div class="row py-2 g-4">
-            <div class="col-lg-3 col-md-3 Ebox-wrap">
-            
-                    <div class="Ebox1 clientcard pt-3 px-3 d-flex flex-column position-relative">
-                        <!-- Adjusted positioning for the icon -->
-                        <div class="clientcard-icon position-absolute top-2 left-4">
-                        <i class="fas fa-heart heart-icon"></i>
-                        </div>
-                        
-                            <p class=" d-flex text-justify messagefromclient my-4 ">We wanted to take a moment to tell you what a pleasure it has been to work with you
-                                and your team at Al Asar. Your team professionalism has been by far beyond industry
-                                firms and even our expectations. It's a pleasure to work with a firm which not only
-                                understands and commodes customers request but a
-                            </p>
-                            <h4 class="whosaidit">basanta Safety and Security, Kuwait</h4>
-                        
-                    </div>
-            
-            </div>
-        </div>
-    </div>
-</section> --}}
-
-
-
-
-
 
     <!-- Get in touch -->
     <!-- <section class="Find-country">
