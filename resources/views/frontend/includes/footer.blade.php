@@ -1,5 +1,3 @@
-{{-- For Footer --}}
-
 
 
 
@@ -83,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-content pt-5 pb-5">
+        <div class="footer-content pt-4 pb-5">
             <div class="row">
                 <div class="col-xl-4 col-lg-4 mb-50">
                     <div class="footer-widget">
@@ -93,9 +91,9 @@
                                     class="img-fluid" alt="aashatechlogo">
                             </a>
                         </div>
-                        <div class="footer-text">
+                        <div class="footer-text pt-3">
                             <p>
-                                {{-- {{ Str::limit(trans('messages.AboutDescription'), 300) }} --}}
+                                 {{ Str::limit(trans('messages.AboutDescription'), 310) }}
 
                             </p>
                         </div>
