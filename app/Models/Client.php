@@ -5,9 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DirectorMessage extends Model
+class Client extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'position', 'companyName', 'image', 'message'];
+
+    protected $table = 'clients';
+
+    protected $fillable = [
+        'name',
+        'image',
+       
+    ];
 
 }
