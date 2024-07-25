@@ -27,44 +27,44 @@
         </div>
     </div>
 
-    <form id="quickForm" method="POST" action="{{ route('admin.director_messages.store') }}" enctype="multipart/form-data">
+    <form id="quickForm" method="POST" action="{{ route('admin.client_messages.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <label for="name">Name</label><span style="color:red; font-size:large"> *</span>
+                <label for="name">Client Name (In English)</label><span style="color:red; font-size:large"> *</span>
                 <input style="width:auto;" type="text" name="name" class="form-control" id="name"
                     placeholder="Name" value="{{ old('name') }}" required>
             </div>
 
             <div class="form-group">
-                <label for="position">Position</label><span style="color:red; font-size:large"> *</span>
-                <input style="width:auto;" type="text" name="position" class="form-control" id="position"
-                    placeholder="Position" value="{{ old('position') }}" required>
+                <label for="name">Client Name (In Nepali)</label>
+                <input style="width:auto;" type="text" name="name_ne" class="form-control" id="name_ne"
+                    placeholder="Name" value="{{ old('name_ne') }}" required>
             </div>
 
             <div class="form-group">
-                <label for="companyName">Company Name</label><span style="color:red; font-size:large"> *</span>
-                <input style="width:auto;" type="text" name="companyName" class="form-control" id="companyName"
-                    placeholder="Company Name" value="{{ old('companyName') }}" required>
+                <label for="content">Message (In English)</label><span style="color:red; font-size:large"> *</span>
+                <textarea name="message" id="message" class="form-control" rows="3">{{ old('message') }}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="content">Message</label>
-                <textarea name="message" id="message" class="form-control" rows="3"></textarea>
+                <label for="content">Message (In Nepali)</label>
+                <textarea name="message_ne" id="message_ne" class="form-control" rows="3">{{ old('message_ne') }}</textarea>
             </div>
-
-            <div class="form-group">
-                <label for="image">Image</label><span style="color:red; font-size:large"> *</span>
-                <input type="file" name="image" class="form-control" onchange="previewImage(event)" placeholder="Image"
-                    required>
-            </div>
-            <img id="preview1" style="max-width: 200px; max-height:500px" />
 
             <script>
-                $('#message').summernote({
-                    placeholder: 'Enter message here...',
-                    tabsize: 2,
-                    height: 100
+                $(document).ready(function() {
+                    $('#message').summernote({
+                        placeholder: 'Enter message here...',
+                        tabsize: 2,
+                        height: 100
+                    });
+                    
+                    $('#message_ne').summernote({
+                        placeholder: 'Enter message here...',
+                        tabsize: 2,
+                        height: 100
+                    });
                 });
             </script>
         </div>

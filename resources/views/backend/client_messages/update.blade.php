@@ -27,39 +27,31 @@
         </div>
     </div>
 
-    <form id="quickForm" method="POST" action="{{ route('admin.director_messages.update', $message->id) }}"
+    <form id="quickForm" method="POST" action="{{ route('admin.client_messages.update', $message->id) }}"
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card-body">
             <div class="form-group">
-                <label for="name">Name</label><span style="color:red; font-size:large"> *</span>
+                <label for="name"> Client Name (In English) </label><span style="color:red; font-size:large"> *</span>
                 <input style="width:auto;" type="text" name="name" class="form-control" id="name"
                     placeholder="Name" value="{{ old('name', $message->name) }}" required>
             </div>
 
             <div class="form-group">
-                <label for="position">Position</label><span style="color:red; font-size:large"> *</span>
-                <input style="width:auto;" type="text" name="position" class="form-control" id="position"
-                    placeholder="Position" value="{{ old('position', $message->position) }}" required>
+                <label for="name"> Client Name (In Nepali) </label><span style="color:red; font-size:large"> *</span>
+                <input style="width:auto;" type="text" name="name_ne" class="form-control" id="name_ne"
+                    placeholder="Name" value="{{ old('name_ne', $message->name_ne) }}" required>
             </div>
 
             <div class="form-group">
-                <label for="companyName">Company Name</label><span style="color:red; font-size:large"> *</span>
-                <input style="width:auto;" type="text" name="companyName" class="form-control" id="companyName"
-                    placeholder="Company Name" value="{{ old('companyName', $message->companyName) }}" required>
-            </div>
-
-            <div>
-                <label for="message">Message</label>
+                <label for="message">Message (In English)</label>
                 <textarea name="message" id="message" class="form-control" rows="3">{{ old('message', $message->message) }}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="image">Image</label>
-                <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
-                <img id="preview1" src="{{ asset('uploads/director_messages/' . $message->image) }}"
-                    style="max-width: 300px; max-height:300px" />
+                <label for="message_ne">Message (In Nepali)</label>
+                <textarea name="message_ne" id="message_ne" class="form-control" rows="3">{{ old('message_ne', $message->message_ne) }}</textarea>
             </div>
         </div>
         <div class="card-footer">
@@ -68,19 +60,18 @@
     </form>
 
     <script>
-        $('#message').summernote({
-            placeholder: 'Enter message here...',
-            tabsize: 2,
-            height: 100
+        $(document).ready(function() {
+            $('#message').summernote({
+                placeholder: 'Enter message here...',
+                tabsize: 2,
+                height: 100
+            });
+            
+            $('#message_ne').summernote({
+                placeholder: 'Enter message here...',
+                tabsize: 2,
+                height: 100
+            });
         });
-
-        const previewImage = e => {
-            const reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onload = () => {
-                const preview = document.getElementById('preview1');
-                preview.src = reader.result;
-            };
-        };
     </script>
 @endsection

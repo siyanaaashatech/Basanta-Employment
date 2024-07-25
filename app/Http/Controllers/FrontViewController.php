@@ -20,6 +20,7 @@ use App\Models\PhotoGallery;
 use Illuminate\Http\Request;
 use App\Models\BlogPostsCategory;
 use App\Models\Client;
+use App\Models\ClientMessage;
 use App\Models\Message;
 
 class FrontViewController extends Controller
@@ -45,6 +46,8 @@ class FrontViewController extends Controller
         $posts = $firstCategory->posts()->latest()->take(6)->get();
 
         $clients = Client::latest()->get();
+
+        $clientMessages = ClientMessage::latest()->get();
     
         return view('frontend.index', compact([
             'services',
@@ -58,7 +61,8 @@ class FrontViewController extends Controller
             'demands',
             'about',
             'posts',
-            'firstCategory'
+            'firstCategory',
+            'clientMessages'
         ]));
     }
     

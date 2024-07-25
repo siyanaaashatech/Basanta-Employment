@@ -17,7 +17,7 @@
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">{{ $page_title }}</h1>
-            <a href="{{ route('admin.director_messages.create') }}"><button class="btn btn-primary btn-sm"><i
+            <a href="{{ route('admin.client_messages.create') }}"><button class="btn btn-primary btn-sm"><i
                         class="fa fa-plus"></i>Add
                   </button></a>
             <a href="{{ url('admin') }}"><button class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
@@ -37,31 +37,23 @@
             <tr>
                 <th>S.N.</th>
                 <th>Name</th>
-                <th>Position</th>
-                <th>Company Name</th>
-                <th>Image</th>
                 <th>Message</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @if ($directorMessages && count($directorMessages) > 0)
-                @foreach ($directorMessages as $directorMessage)
+            @if ($clientMessages && count($clientMessages) > 0)
+                @foreach ($clientMessages as $clientMessage)
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td width="5%">{{ $loop->iteration }}</td>
-                        <td>{{ $directorMessage->name }}</td>
-                        <td>{{ $directorMessage->position }}</td>
-                        <td>{{ $directorMessage->companyName }}</td>
-                        <td> <img id="preview{{ $loop->iteration }}"
-                                src="{{ asset('uploads/director_messages/' . $directorMessage->image) }}"
-                                style="width: 150px; height:150px" /></td>
-                          <td>      {{ Str::limit(strip_tags($directorMessage->message), 200) }}</td>
+                        <td>{{ $clientMessage->name }}</td>
+                          <td>      {{ Str::limit(strip_tags($clientMessage->message), 200) }}</td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
-                                <a href="{{ route('admin.director_messages.edit', $directorMessage->id) }}"
+                                <a href="{{ route('admin.client_messages.edit', $clientMessage->id) }}"
                                     class="btn btn-warning btn-sm" style="margin-right: 5px;"><i class="fas fa-edit"></i>
                                     Edit</a>
-                                <form action="{{ route('admin.director_messages.destroy', $directorMessage->id) }}"
+                                <form action="{{ route('admin.client_messages.destroy', $clientMessage->id) }}"
                                     method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');">
                                     @csrf
                                     @method('DELETE')
@@ -73,7 +65,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="7">No director messages found.</td>
+                    <td colspan="7">No client messages found.</td>
                 </tr>
             @endif
         </tbody>

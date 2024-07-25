@@ -28,11 +28,12 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\VideoGalleryController;
 use App\Http\Controllers\StudentDetailController;
 use App\Http\Controllers\UserManagementController;
-use App\Http\Controllers\DirectorMessageController;
+use App\Http\Controllers\ClientMessageController;
 use App\Http\Controllers\BlogPostsCategoryController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CeoMessageController;
 use App\Http\Controllers\ClientController;
+use App\Models\ClientMessage;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -193,7 +194,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['web', 'auth'])->group(func
 
     //DirectorMessage Controller
 
-    Route::resource('director_messages', DirectorMessageController::class);
+    Route::resource('client_messages', ClientMessageController::class);
 
     // Demands
     Route::resource('demands', DemandController::class);

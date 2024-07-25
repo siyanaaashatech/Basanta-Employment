@@ -578,39 +578,47 @@
                 {{-- End of CEOMESSAGE --}}
 
                  {{-- Beginning of Our Clients --}}
-                 @hasanyrole('superadmin|admin')
-                 <li class="nav-item">
-                     <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                         <div class="col-auto navbar-vertical-label">Our Clients</div>
-                         <div class="col ps-0">
-                             <hr class="mb-0 navbar-vertical-divider">
-                         </div>
-                     </div>
-                 <li class="nav-item">
-                     <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'clients' ? 'active' : '' }}"
-                         href="#clients" role="button" data-bs-toggle="collapse" aria-expanded="true"
-                         aria-controls="clients">
-                         <div class="d-flex align-items-center">
-                             <span class="nav-link-icon"><i class="fas fa-question-circle"></i></span>
-                             <span class="nav-link-text ps-1"> Our Clients</span>
-                         </div>
-                     </a>
-                     <ul class="nav collapse {{ Request::segment(2) == 'clients' ? 'show' : '' }}" id="clients">
-                         {{-- Clients --}}
-                         <li class="nav-item">
-                             <a class="nav-link {{ Request::segment(2) == 'faqs' ? 'active' : '' }}"
-                                 href="{{ route('admin.client.index') }}">
-                                 <div class="d-flex align-items-center">
-                                     <i class="fa fa-list"></i>
-                                     <span class="nav-link-text ps-1">Clients</span>
-                                 </div>
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
-                 </li>
-             @endhasanyrole
-             {{-- End of FAQs --}}
+@hasanyrole('superadmin|admin')
+<li class="nav-item">
+    <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+        <div class="col-auto navbar-vertical-label">Our Clients</div>
+        <div class="col ps-0">
+            <hr class="mb-0 navbar-vertical-divider">
+        </div>
+    </div>
+    <a class="nav-link dropdown-indicator {{ Request::segment(2) == 'clients' ? 'active' : '' }}"
+       href="#clients" role="button" data-bs-toggle="collapse" aria-expanded="true"
+       aria-controls="clients">
+        <div class="d-flex align-items-center">
+            <span class="nav-link-icon"><i class="fas fa-question-circle"></i></span>
+            <span class="nav-link-text ps-1">Our Clients</span>
+        </div>
+    </a>
+    <ul class="nav collapse {{ Request::segment(2) == 'clients' ? 'show' : '' }}" id="clients">
+        {{-- Clients --}}
+        <li class="nav-item">
+            <a class="nav-link {{ Request::segment(2) == 'clients' ? 'active' : '' }}"
+               href="{{ route('admin.client.index') }}">
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-link-text ps-1">Clients</span>
+                </div>
+            </a>
+        </li>
+        {{-- Clients Messages --}}
+        <li class="nav-item">
+            <a class="nav-link {{ Request::segment(2) == 'clients' ? 'active' : '' }}"
+               href="{{ route('admin.client_messages.index') }}">
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-link-text ps-1">Clients Messages</span>
+                </div>
+            </a>
+        </li>
+    </ul>
+</li>
+@endhasanyrole
+             {{-- End of Our Clients --}}
 
 
             </ul>
