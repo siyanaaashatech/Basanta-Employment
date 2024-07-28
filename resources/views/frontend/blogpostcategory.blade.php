@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="background">
+    <div class="">
         <h1 class="page_title">
             {{ app()->getLocale() === 'ne' ? $blogpostcategory->title_ne : $blogpostcategory->title }}
         </h1>

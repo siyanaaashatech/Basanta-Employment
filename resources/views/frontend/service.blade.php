@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="background">
+    {{-- <div class="background">
         <h1 class="page_title">
             @if (app()->getLocale() == 'ne')
                 {{  ucfirst($service->title_ne) }}
@@ -9,7 +9,7 @@
                 {{  ucfirst($service->title) }}
             @endif
         </h1>
-    </div>
+    </div> --}}
 
     <section class="sample_page">
         <div class="container">

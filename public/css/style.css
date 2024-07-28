@@ -148,8 +148,8 @@ li {
   transition: 0.1s all;
 }
 
-.en_ne:hover {
-  font-weight: 800;
+.en_ne:hover{
+  font-weight: 800 !important;
 
 }
 
@@ -160,7 +160,7 @@ li {
   background: var(--first);
   /* margin-bottom: 5px; */
   transition: 0.2s all;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -172,7 +172,7 @@ li {
 
 .btn_en.active {
   color: #fff;
-  background-color: red;
+  background-color: var(--bs-yellow);
 }
 
 
@@ -395,6 +395,7 @@ li {
   top: 0;
   left: 0;
   z-index: 1000;
+  padding:  0 !important;
   /* Ensure it stays on top of other elements */
 }
 
@@ -404,7 +405,7 @@ li {
 
 
 .nav-small .image img {
-  height: 60px;
+  height: 0px;
 
 }
 
@@ -419,7 +420,7 @@ li {
 
 
 .navbar-nav .nav-link {
-  color: #333 !important;
+  color: white !important;
   font-size: 16px;
   text-transform: uppercase;
 }
@@ -436,7 +437,7 @@ li {
 .navbar-nav .nav-link.active {
   /* background-color: #070842 !important; */
   /* color: #C92028 !important; */
-  color:#bf6613 !important;
+  color:var(--bs-yellow) !important;
   border-radius: 5px;
   font-weight: 600;
 }
@@ -2022,8 +2023,8 @@ color: rgba(255, 255, 255, 0.885);
 }
 
 .sample_page_content p{
-  margin-top:-30px !important;
-  margin-bottom: 40px;
+  margin-top:10px !important;
+  margin-bottom: 20px !important;
 
 }
 
@@ -2036,13 +2037,16 @@ color: rgba(255, 255, 255, 0.885);
 }
 
 .sample_page_list {
-  background-image: linear-gradient(#4e0206, #37080b);
+  /* background-image: linear-gradient(#4e0206, #37080b); */
+  background:rgba(249, 158, 2, 0.865);
   height: fit-content;
+border-radius: 4px ;
+
 
 }
 
 .sample_page_list h3 {
-  color: #fff;
+  color:white;
   text-align: center;
   text-transform: capitalize;
 }
@@ -2057,6 +2061,7 @@ color: rgba(255, 255, 255, 0.885);
   position: relative;
   font-size: 20px;
   margin: 10px;
+  color: white !important;
 }
 
 .sample_page_list ul li::before {
@@ -2078,7 +2083,7 @@ color: rgba(255, 255, 255, 0.885);
 
 .sample_page_list ul li a {
   text-decoration: none;
-  color: #d7d6de;
+  color:white;
 }
 
 
@@ -2608,7 +2613,7 @@ footer li {
 
 /* Contact */
 .customconnectwithus {
-  background: var(--dark-yellow);
+  background:rgba(249, 160, 2, 0.1);
   color: var(--bs-brown);
   padding: 20px;
 }

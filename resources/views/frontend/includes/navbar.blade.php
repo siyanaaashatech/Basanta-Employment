@@ -6,9 +6,9 @@
                 <div class="image">
                     @if ($sitesetting->main_logo)
                         <img src="{{ asset('uploads/sitesetting/' . $sitesetting->main_logo) }}" alt="Main Logo"
-                            height="100">
+                            height="50">
                     @else
-                        <img src="{{ asset('image/header-image.png') }}" alt="" height="100">
+                        <img src="{{ asset('image/header-image.png') }}" alt="" height="50">
                     @endif
                     <div class="c-name">
                         <h3>
@@ -38,7 +38,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link text-primary" href="{{ route('index') }}">
-                                {{ trans('messages.Home page') }} </a>
+                                {{ trans('messages.Home') }} </a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -209,6 +209,9 @@
 </script>
 
 <style>
+    .header {
+    background-color: var(--bs-brown);
+}
     .nav-item .dropdown-menu {
     top: 100%; /* Position the dropdown menu directly below the parent */
     left: 0; /* Align the dropdown menu to the left edge of the parent */

@@ -1,9 +1,26 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="background">
+
+<!-- herosection -->
+
+<section class="herosectionforallpage my-4">
+    <div class="container">
+    <img src="./image/candidate2.jpg" alt="">
+    <div class="d-flex flex-column innercontent">
+     <span class="maintitle">BLOG</span>
+     <span class="navigatetitle py-2 px-3 mb-1">
+      <a href="" style="color: white !important; text-decoration: none;">Home</a> > <span>Blog</span>
+  </span>
+    </div>
+  </div>
+  </section>
+
+    <div class="">
         <h1 class="page_title"> {{ trans('messages.Blogs') }} </h1>
     </div>
+
+
 
     <section class="multi_post">
         <div class="container">

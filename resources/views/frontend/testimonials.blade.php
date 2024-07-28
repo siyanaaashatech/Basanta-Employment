@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
 <!-- herosection for about contact and dem -->
 <section class="herosectionforallpage my-4">
     <div class="container">
@@ -14,6 +16,9 @@
     </div>
   </div>
   </section>
+  <div class="">
+    <h1 class="page_title">{{ trans('messages.Testimonial') }}</h1>
+</div>
     <section class="testimonial_page">
         <div class="container">
             <div class="row ">

@@ -64,20 +64,19 @@
     <!-- Custom CSS -->
     <style>
         .apply-btn {
-            background-color: rgba(99, 2, 2, 0.8);
+            background-color:#F9A002;
             color: whitesmoke;
-            border: 1px solid black;
-            padding: 5px 10px;
+            padding:10px;
             cursor: pointer;
             margin-top: 10px; /* Adjust spacing as needed */
             margin-bottom: 10px;
-            border-radius: 5px;
+            border-radius: 4px;
             text-decoration: none; 
             display: inline-block; 
-        }
+        }       
 
         .apply-btn:hover {
-            background-color: grey;
+            background-color:rgba(100, 59, 19, 0.97);
             color: whitesmoke;
         }
     </style>

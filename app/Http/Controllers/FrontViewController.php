@@ -28,6 +28,7 @@ class FrontViewController extends Controller
     public function index()
     {
         $sitesetting = SiteSetting::first();
+        $teams= Team::first();
         $about = About::first();
         $services = Service::latest()->get()->take(6);
         $contacts = Contact::latest()->get();

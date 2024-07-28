@@ -1,3 +1,5 @@
+{{-- @extends('frontend.includes.navbar') --}}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
             <span class="d-flex flex-column justify-content-center align-items-center containertitle">
                 <h2 class="d-flex justify-content-center">{{ trans('messages.Contact') }}</h2>
             </span>
-            <div class="d-flex flex-column justify-content-center customconnectwithus row">
+            <div class="d-flex flex-column justify-content-center  row">
                 <p class="my-4">
                     Are you prepared to enhance your skills, unlock new career opportunities, and achieve personal growth? Join our Professional Development and Training program, and connect with us to discover the empowering potential of targeted learning and career advancement.
                 </p>
@@ -31,13 +33,13 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="customconnectwithus-innersection-left_inputcontainer d-flex flex-column">
+                            {{-- <div class="customconnectwithus-innersection-left_inputcontainer d-flex flex-column">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="EMAIL" name="email" value="{{ old('email') }}" required>
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="customconnectwithus-innersection-left_inputcontainer d-flex flex-column">
                                 <label for="phone_no">Contact Number</label>
                                 <input type="tel" class="form-control @error('phone_no') is-invalid @enderror" id="phone_no" placeholder="Phone No." name="phone_no" value="{{ old('phone_no') }}" required>

@@ -35,7 +35,6 @@
                 <tr>
                     <th width="5%">S.N</th>
                     <th>Name</th>
-                    <th>Email</th>
                     <th>Phone</th>
                     <th>Message</th>
                 </tr>
@@ -49,7 +48,6 @@
                     <tr>
                         <td>{{ $serialNumber }}</td>
                         <td>{{ $contact->name ?? '' }}</td>
-                        <td>{{ $contact->email ?? '' }}</td>
                         <td>{{ $contact->phone_no ?? '' }}</td>
                         <td>{{ $contact->message ?? '' }}</td>
                     </tr>
