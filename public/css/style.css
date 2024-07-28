@@ -435,7 +435,8 @@ li {
 
 .navbar-nav .nav-link.active {
   /* background-color: #070842 !important; */
-  color: #C92028 !important;
+  /* color: #C92028 !important; */
+  color:#bf6613 !important;
   border-radius: 5px;
   font-weight: 600;
 }
@@ -445,7 +446,7 @@ li {
 .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #C92028;
+  background-color: #bf6613;
 }
 
 
@@ -2608,7 +2609,7 @@ footer li {
 /* Contact */
 .customconnectwithus {
   background: var(--dark-yellow);
-  color: var(--primary-brown);
+  color: var(--bs-brown);
   padding: 20px;
 }
 
@@ -2622,22 +2623,22 @@ footer li {
 
 .customconnectwithus-innersection-left_inputcontainer input:focus,
 .customconnectwithus-innersection-left_inputcontainer textarea:focus {
-  border: 1px solid var(--primary-brown) !important;
+  border: 1px solid var(--bs-brown) !important;
   stroke: none;
   outline: none;
 }
 
 .customconnectwithus-innersection-left_inputcontainer button {
-  background: var(--primary-brown);
+  background: var(--bs-brown);
   border-radius: var(--border-radius);
   padding: 12px;
   margin: 8px 0;
   border: 1px solid #9CA3AF;
-  color: var(--white);
+  color: white;
 }
 
 .customconnectwithus-innersection-left_inputcontainer button:hover {
-  background: var(--primary-yellow);
+  background: var(--bs-yellow);
 }
 
 .customconnectwithus-innersection-right {
@@ -2646,7 +2647,7 @@ footer li {
 }
 
 .customconnectwithus-innersection-right-ourdetail {
-  background-color: var(--primary-brown);
+  background-color: var(--bs-brown);
   color: rgb(97, 14, 14);
   border-radius: 8px;
 }

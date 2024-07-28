@@ -17,22 +17,30 @@
                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($coverImages as $key => $coverImage)
-                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
-                                <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block banners-imgs"
-                                    width="100%" height="550px" alt="Cover Image" />
-                                <div class="carousel-caption d-md-block ">
-                                    <span>
-                                        @if (app()->getLocale() == 'ne')
-                                        {{ $coverImage->title_ne }}
-                                    @else
-                                        <h1 class="herosectiontitle">{{ $coverImage->title }}</h1>
-                                        <p>Check if there is a typo in typo  -solutions.com.</p>
-                                        <a href="#"><button class="btn">READ MORE</button></a>
-                                    @endif
-                                    </span>
-                                </div>
-                            </div>
-                        @endforeach
+    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="2000">
+        <img src="{{ asset('uploads/coverimage/' . $coverImage->image) }}" class="d-block banners-imgs" width="100%" height="550px" alt="Cover Image" />
+        <div class="carousel-caption d-md-block">
+            <h1 class="herosectiontitle">
+                @if (app()->getLocale() == 'ne')
+                    {{ $coverImage->title_ne }}
+                @else
+                    {{ $coverImage->title }}
+                @endif
+            </h1>
+           
+            <a href="{{ route('About') }}"><button class="btn">
+                @if (app()->getLocale() == 'ne')
+                    थप पढ्नुहोस्
+                @else
+                    READ MORE
+                @endif
+            </button></a>
+        </div>
+    </div>
+@endforeach
+
+                    
+                    
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

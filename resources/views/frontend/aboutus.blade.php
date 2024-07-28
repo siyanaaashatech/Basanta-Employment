@@ -112,7 +112,7 @@
             <h3 class="featurette-heading fw-normal lh-5 py-1">
                 Company Scope
             </h3>
-            <p class="lead d-flex text-justify">
+            <p cla ss="lead d-flex text-justify">
                 {!! app()->getLocale() === 'ne' ? $about->scope_ne : $about->scope !!}
             </p>
         </div>
