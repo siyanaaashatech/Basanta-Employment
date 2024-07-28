@@ -149,10 +149,10 @@
                                     @if (app()->getLocale() == 'ne')
                                   
                                         {{ $service->title_ne }}
-                                        <p>{!! $service->description_ne !!}</p>
+                                        <p>{!! Str::limit($service->description_ne, 100)  !!}</p>
                                     @else
                                         {{ $service->title }}
-                                        <p>{!! $service->description_ne !!}</p>
+                                        <p>{!! Str::limit($service->description, 100)  !!}</p>
                                     @endif
                                 </span></h6>
                               
@@ -491,6 +491,40 @@
 
 
 
+    <section class="blogs py-5">
+        <div class="container">
+            <h2 class="text-center section_title pb-3">{{ trans('messages.Blogs') }}</h2>
+            <div class="row g-4">
+                @foreach ($blogs as $blog)
+                <div class="col-lg-4 col-md-4">
+                    <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
+                        <div class="Ebox1">
+                            <div class="E-B-img">
+                                <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}" alt="">
+                            </div>
+                            <h3 class="text-center pt-3">
+                                @if (app()->getLocale() == 'ne')
+                                {{ $blog->title_ne }}
+                                @else
+                                {{ $blog->title }}
+                                @endif
+                            </h3>
+                            <p class="text-center pt-2">
+                                @if (app()->getLocale() == 'ne')
+                                {!! $blog->content_ne !!}
+                                @else
+                                {!! $blog->content !!}
+                                @endif
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+            
+            </div>
+        </div>
+    </section>
+
 
     <section class="container">
         <div class="d-flex flex-column justify-content-center my-5 row customconnectwithus">
@@ -642,40 +676,6 @@
     </script>
     
 
-
-    <section class="blogs py-5">
-        <div class="container">
-            {{-- <h2 class="text-center section_title pb-3">{{ trans('messages.Blogs') }}</h2> --}}
-            <div class="row g-4">
-                @foreach ($blogs as $blog)
-                <div class="col-lg-4 col-md-4">
-                    <a href="{{ route('SingleBlogpostcategory', ['slug' => $blog->slug]) }}">
-                        <div class="Ebox1">
-                            <div class="E-B-img">
-                                <img src="{{ asset('uploads/blogpostcategory/' . $blog->image) }}" alt="">
-                            </div>
-                            <h3 class="text-center pt-3">
-                                @if (app()->getLocale() == 'ne')
-                                {{ $blog->title_ne }}
-                                @else
-                                {{ $blog->title }}
-                                @endif
-                            </h3>
-                            <p class="text-center pt-2">
-                                @if (app()->getLocale() == 'ne')
-                                {!! $blog->content_ne !!}
-                                @else
-                                {!! $blog->content !!}
-                                @endif
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                @endforeach
-            
-            </div>
-        </div>
-    </section>
 @endsection
 
 

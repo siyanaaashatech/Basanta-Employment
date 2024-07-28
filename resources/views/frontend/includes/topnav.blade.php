@@ -29,21 +29,54 @@
 
             </div>
 
-
-         <!-- <div class="col-md-6 col-sm-12 top_right row">
-            <div class="info d-flex align-center col-3">
-                <i class="fab fa-instagram mt-1 mx-1"></i> 
-                <span class="">{{ $sitesetting->office_contact }}</span></div>
-                <div class="info d-flex align-center col-3">
-                <i class="fab fa-instagram mt-1 mx-1"></i> 
-                <span class="">{{ $sitesetting->office_address }}</span></div>
-                <div class="info d-flex align-center col-3">
-                <i class="fab fa-instagram mt-1 mx-1"></i> 
-                <span class="">{{ $sitesetting->office_contact }}</span></div>
-
+            <div class="col-md-6 col-sm-12 top_right row">
+                <div class="info d-flex align-items-center col-6">
+                    <i class="fab fa-instagram mt-1 mx-1"></i> 
+                    <span>
+                        @if (!empty($sitesetting->office_contact))
+                            @php
+                                $officeContacts = json_decode($sitesetting->office_contact, true);
+                            @endphp
+                            @if (is_array($officeContacts))
+                                @foreach ($officeContacts as $contact)
+                                    {{ $contact }} <br>
+                                @endforeach
+                            @else
+                                <span>
+                                    @if (app()->getLocale() == 'ne')
+                                        {{ $sitesetting->office_contact_ne }}
+                                    @else
+                                        {{ $sitesetting->office_contact }}
+                                    @endif
+                                </span> <br>
+                            @endif
+                        @endif
+                    </span>
+                </div>
+                <div class="info d-flex align-items-center col-6">
+                    <i class="fa fa-home mt-1 mx-1"></i> 
+                    <span>
+                        @if (!empty($sitesetting->office_address))
+                            @php
+                                $officeAddresses = json_decode($sitesetting->office_address, true);
+                            @endphp
+                            @if (is_array($officeAddresses))
+                                @foreach ($officeAddresses as $address)
+                                    {{ $address }} <br>
+                                @endforeach
+                            @else
+                                <span>
+                                    @if (app()->getLocale() == 'ne')
+                                        {{ $sitesetting->office_address_ne }}
+                                    @else
+                                        {{ $sitesetting->office_address }}
+                                    @endif
+                                </span> <br>
+                            @endif
+                        @endif
+                    </span>
+                </div>
+            </div>
             
-
-        </div> -->
-
 </section>
 
