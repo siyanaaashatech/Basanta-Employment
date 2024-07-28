@@ -53,6 +53,7 @@ class FrontViewController extends Controller
         return view('frontend.index', compact([
             'services',
             'contacts',
+            'teams',
             'blogs',
             'sitesetting',
             'testimonials',
