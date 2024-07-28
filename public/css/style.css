@@ -124,18 +124,6 @@ li {
   color: #fff !important;
 }
 
-.fb {
-  color: #4064AC;
-}
-
-.ln {
-  color: #0076B3;
-}
-
-.insta {
-  color: #E04E4D;
-}
-
 
 /* For Tap Navbar */
 
@@ -191,13 +179,29 @@ li {
 }
 
 /* For Top Navbar */
+.topheader .fab {
+   color: var(--bs-brown);
+}
+.top_right  span{
+   padding:  0 !important;
+   margin:  0 !important;
+}
+.info {
+   display:flex;
+   text-align: center;
+}
 
+.topheader input {
+   color: var(--bs-yellow);
+   border: 2px solid var(--bs-yellow);
+   padding-left: 8px;
+   padding-right: 2px;
+}
 
 /* For Phone Numbers */
 .left_top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .contact_no {
@@ -207,12 +211,10 @@ li {
 
 .top_right {
   display: flex;
-  align-items: center;
-  /* vertically center items */
-  justify-content: flex-end;
+  /* vertically center items *
   /* space between items */
   /* example text color */
-  padding: 10px 20px;
+  padding: 10px 0px;
 }
 
 
@@ -223,8 +225,9 @@ li {
 }
 
 .search-form button {
-  background-color: #0b1f6d;
+  background-color:var(--bs-yellow);
   color: #fff;
+  border: 2px solid var(--bs-yellow)
 }
 
 
@@ -2639,7 +2642,7 @@ footer li {
   padding: 12px;
   margin: 8px 0;
   border: 1px solid #9CA3AF;
-  color: white;
+  color: white !important;
 }
 
 .customconnectwithus-innersection-left_inputcontainer button:hover {
@@ -2647,13 +2650,13 @@ footer li {
 }
 
 .customconnectwithus-innersection-right {
-  background-color: rgba(56, 36, 1, 0.05);
+  background:rgba(249, 160, 2, 0.1);
   border-radius: 8px;
 }
 
 .customconnectwithus-innersection-right-ourdetail {
   background-color: var(--bs-brown);
-  color: rgb(97, 14, 14);
+  color:white;
   border-radius: 8px;
 }
 
