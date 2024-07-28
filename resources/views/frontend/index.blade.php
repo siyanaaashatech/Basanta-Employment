@@ -37,10 +37,7 @@
             </button></a>
         </div>
     </div>
-@endforeach
-
-                    
-                    
+@endforeach           
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -105,7 +102,7 @@
     </section>
     
 
- <!-- about-->
+ <!-- ceo message -->
 <section class="about-us my-5 ">
   <div class="container">
       <div class="container-box">
@@ -139,64 +136,39 @@
 </section>
 
     <!-- Experience -->
-  <!-- Experience -->
-<section class="experience py-4 my-5">
-    <div class="container w-90 justify-content-center">
-        <h2 class="text-center pb-3 section_title">{{ trans('messages.SeviceSectionTitle') }}</h2>
-        <div class="row py-4 g-2">
-            @foreach ($services as $service)
-                <div class="col-lg-4 col-md-4 Ebox-wrap">
-                    <a href="{{ route('SingleService', ['slug' => $service->slug]) }}">
-                        <div class="Ebox1 p-3 d-flex flex-column experiencebox">
+    <section class="experience py-4 my-5">
+        <div class="container w-90 justify-content-center">
+            <h2 class="text-center pb-3 section_title">{{ trans('messages.SeviceSectionTitle') }}</h2>
+            <div class="row py-4 g-2">
+                @foreach ($services as $service)
+                    <div class="col-lg-3 col-md-3 Ebox-wrap">
+                        <a href="{{ route('SingleService', ['slug' => $service->slug]) }}" >
+                            <div class="Ebox1  p-3 d-flex flex-column  experiencebox ">
                             <h3 class="text-center"></h3>
-                            <h6 class="Ebox-text text-justify">
-                                @if (app()->getLocale() == 'ne')
-                                    {{ $service->title_ne }}
-                                @else
-                                    {{ $service->title }}
-                                @endif
-                            </h6>
-                            <div class="description">
-                                @if (app()->getLocale() == 'ne')
-                                    {!! Str::limit($service->description_ne,200) !!}
-                                @else
-                                    {!! Str::limit($service->description, 100) !!}
-                                @endif
+                                <h6 class=" Ebox-text text-justify"><span>
+                                    @if (app()->getLocale() == 'ne')
+                                  
+                                        {{ $service->title_ne }}
+                                        <p>{!! $service->description_ne !!}</p>
+                                    @else
+                                        {{ $service->title }}
+                                        <p>{!! $service->description_ne !!}</p>
+                                    @endif
+                                </span></h6>
+                              
                             </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
+                    
+                        </a>
+                 
+                    </div>
+                
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-   
+    <!-- ceomessage -->
 
     <!-- CEO Message -->
     <section class="ceomessage py-5">
@@ -238,8 +210,30 @@
     </div>
 </section>
 
+<!-- our client -->
+<section class="container">
+    <div class="client-section d-flex flex-column align-items-center">
+        <h2 class="text-center pb-3 section_title">{{ trans('messages.client') }}</h2>
+        <div class="row">
+            @if(isset($clients) && $clients->count() > 0)
+                @foreach($clients as $client)
+                <div class="client-img col-md-4 d-flex justify-content-center align-items-center">
+                    @if($client->image)
+                        <img src="{{ asset('uploads/client/' . $client->image) }}" alt="{{ $client->name }}" class="img-fluid" /> <!-- Added img-fluid for responsive images -->
+                    @else
+                        <img src="{{ asset('image/default-client.png') }}" alt="Default Client Image" class="img-fluid" /> <!-- Added img-fluid for responsive images -->
+                    @endif
+                </div>
+                @endforeach
+            @else
+                <div class="col-md-12">
+                    <p>No clients available at this time.</p>
+                </div>
+            @endif
+        </div>
+    </div>
+</section>
 
-<!-- what client says -->
 
 <section class="experience py-2 my-5 clientsay">
     <div class="container">
@@ -278,30 +272,6 @@
             @else
                 <div class="col-md-12">
                     <p>No client messages available at this time.</p>
-                </div>
-            @endif
-        </div>
-    </div>
-</section>
-
-<!-- our client -->
-<section class="container">
-    <div class="client-section d-flex flex-column align-items-center">
-        <h2 class="text-center pb-3 section_title">{{ trans('messages.client') }}</h2>
-        <div class="row">
-            @if(isset($clients) && $clients->count() > 0)
-                @foreach($clients as $client)
-                <div class="client-img col-md-4 d-flex justify-content-center align-items-center">
-                    @if($client->image)
-                        <img src="{{ asset('uploads/client/' . $client->image) }}" alt="{{ $client->name }}" class="img-fluid" /> <!-- Added img-fluid for responsive images -->
-                    @else
-                        <img src="{{ asset('image/default-client.png') }}" alt="Default Client Image" class="img-fluid" /> <!-- Added img-fluid for responsive images -->
-                    @endif
-                </div>
-                @endforeach
-            @else
-                <div class="col-md-12">
-                    <p>No clients available at this time.</p>
                 </div>
             @endif
         </div>
@@ -525,9 +495,10 @@
     <section class="container">
         <div class="d-flex flex-column justify-content-center my-5 row customconnectwithus">
             <span class="d-flex flex-column justify-content-center align-items-center containertitle">
-                <h2 class="d-flex justify-content-center">{{ trans('messages.Contact') }}</h2>
+                <h2 class="d-flex justify-content-center"></h2>
+                <h2 class="text-center pb-2 section_title">{{ trans('messages.Contact') }}</h2>
             </span>
-            <div class="d-flex flex-column justify-content-center row">
+            <div class="d-flex flex-column justify-content-center  row">
                 <p class="my-4">
                     Are you prepared to enhance your skills, unlock new career opportunities, and achieve personal growth? Join our Professional Development and Training program, and connect with us to discover the empowering potential of targeted learning and career advancement.
                 </p>
@@ -543,13 +514,7 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="customconnectwithus-innersection-left_inputcontainer d-flex flex-column">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="EMAIL" name="email" value="{{ old('email') }}" required>
-                                @error('email')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
+            
                             <div class="customconnectwithus-innersection-left_inputcontainer d-flex flex-column">
                                 <label for="phone_no">Contact Number</label>
                                 <input type="tel" class="form-control @error('phone_no') is-invalid @enderror" id="phone_no" placeholder="Phone No." name="phone_no" value="{{ old('phone_no') }}" required>
@@ -572,7 +537,7 @@
                     </div>
                     <div class="customconnectwithus-innersection-right p-4 col-md-6">
                         <span>Feel free to connect with us through the contact details provided below for any type of inquiry or to establish a connection. We are here to assist you in a positive and helpful manner.</span>
-                        <div class="customconnectwithus-innersection-right-ourdetail my-4 p-4">
+                        <div class="customconnectwithus-innersection-right-ourdetail my-4 px-4 py-3">
                             <h6>Contact</h6>
                             <div class="py-2">
                                 @if (!empty($sitesetting->office_contact))
@@ -592,7 +557,7 @@
                                     @endif
                                 @endif
                             </div>
-                            <div class="py-2">
+                            <div class="">
                                 @if (!empty($sitesetting->office_email))
                                     @php
                                         $officeEmails = json_decode($sitesetting->office_email, true);
@@ -611,7 +576,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="customconnectwithus-innersection-right-ourdetail my-3 p-4">
+                        <div class="customconnectwithus-innersection-right-ourdetail my-3 px-4 py-3">
                             <h6>Address</h6>
                             <div class="py-2">
                                 @if (!empty($sitesetting->office_address))
@@ -620,15 +585,15 @@
                                     @endphp
                                     @if (is_array($officeAddresses))
                                         @foreach ($officeAddresses as $address)
-                                            <div class="d-flex align-items-start">
+                                            <div class="d-flex align-items-start py-1">
                                                 <i class="fa-solid fa-location-dot"></i>
-                                                <span class="px-2">{{ $address }}</span>
+                                                <span class="px-2 pt-">{{ $address }}</span>
                                             </div>
                                         @endforeach
                                     @else
                                         <div class="d-flex align-items-start">
                                             <i class="fa-solid fa-location-dot"></i>
-                                            <span class="px-2">{{ $sitesetting->office_address }}</span>
+                                            <span class="px-2 ">{{ $sitesetting->office_address }}</span>
                                         </div>
                                     @endif
                                 @endif
@@ -680,7 +645,7 @@
 
     <section class="blogs py-5">
         <div class="container">
-            <h2 class="text-center section_title pb-3">{{ trans('messages.Blogs') }}</h2>
+            {{-- <h2 class="text-center section_title pb-3">{{ trans('messages.Blogs') }}</h2> --}}
             <div class="row g-4">
                 @foreach ($blogs as $blog)
                 <div class="col-lg-4 col-md-4">
