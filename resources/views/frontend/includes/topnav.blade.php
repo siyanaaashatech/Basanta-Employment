@@ -30,8 +30,8 @@
             </div>
 
             <div class="col-md-6 col-sm-12 top_right row">
-                <div class="info d-flex align-items-center col-6">
-                    <i class="fab fa-instagram mt-1 mx-1"></i> 
+                <div class="info d-flex align-items-center col-md-4">
+                    <i class="fa fa-phone mt-1 mx-1"></i> 
                     <span>
                         @if (!empty($sitesetting->office_contact))
                             @php
@@ -53,8 +53,8 @@
                         @endif
                     </span>
                 </div>
-                <div class="info d-flex align-items-center col-6">
-                    <i class="fa fa-home mt-1 mx-1"></i> 
+                <div class="info d-flex align-items-center col-md-4">
+                    <i class="fa-solid fa-location-dot mt-1 mx-1"></i>
                     <span>
                         @if (!empty($sitesetting->office_address))
                             @php
@@ -76,6 +76,30 @@
                         @endif
                     </span>
                 </div>
+                <div class="info d-flex align-items-center col-md-4">
+            
+                <i class="fa-solid fa-envelope  mt-1 mx-1"></i>
+                <span>
+                    @if (!empty($sitesetting->office_email))
+                        @php
+                            $officeAddresses = json_decode($sitesetting->office_email, true);
+                        @endphp
+                        @if (is_array($officeAddresses))
+                            @foreach ($officeAddresses as $address)
+                                {{ $address }} <br>
+                            @endforeach
+                        @else
+                            <span>
+                                @if (app()->getLocale() == 'ne')
+                                    {{ $sitesetting->office_email_ne }}
+                                @else
+                                    {{ $sitesetting->office_email }}
+                                @endif
+                            </span> <br>
+                        @endif
+                    @endif
+                </span>
+            </div>
             </div>
             
 </section>
